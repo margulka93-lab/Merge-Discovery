@@ -2,9 +2,9 @@
 
 ## Codex readiness
 
-**READY FOR PHASE 0 + PHASE 1**
+**PHASE 0 + PHASE 1 MERGED · READY FOR PHASE 2**
 
-The design gate is closed for the first implementation task defined in `CODEX_TASK.md`.
+Phase 0 + 1 were completed in PR #2 and merged. The current bounded implementation task is Phase 2 in `CODEX_TASK.md`.
 
 Legend:
 
@@ -50,7 +50,8 @@ Legend:
 | Monetization | ⚪ | Not required / no dependency |
 | Analytics | ⚪ | Optional future layer |
 | Codex PR breakdown | ✅ | IMPLEMENTATION_PLAN.md |
-| First Codex task | ✅ | CODEX_TASK.md |
+| Phase 0 + 1 implementation | ✅ | Merged via PR #2 |
+| Phase 2 task | ✅ | CODEX_TASK.md |
 | Agent constraints | ✅ | AGENTS.md |
 
 ## Deliberately not frozen
@@ -65,7 +66,7 @@ These should be adjusted from playtesting/data without changing architecture:
 
 ## Gate criteria satisfied
 
-Before Codex Phase 0/1:
+For the current implementation sequence:
 
 - gameplay rules do not need to be invented;
 - content seed is deterministic;
@@ -78,4 +79,4 @@ Before Codex Phase 0/1:
 
 ## Next action
 
-Run `CODEX_TASK.md` only when the user decides to begin implementation.
+Run `CODEX_TASK.md` for Phase 2. Do not start Phase 3 until the Phase 2 PR is reviewed and merged.
