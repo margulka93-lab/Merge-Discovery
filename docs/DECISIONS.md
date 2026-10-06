@@ -190,3 +190,46 @@ Status: **Accepted**
 The current art direction combines a dark modern observatory/laboratory shell, brighter illustrated field-guide catalog surfaces, and restrained magical/cosmic effects for major discoveries.
 
 Status: **Accepted for concept phase**
+
+
+## D-032 — Humanity enters through biological progression
+
+The current preferred Era IV entry is Mammifero + Evoluzione → Umano. This keeps Humanity connected to the Life graph without requiring a human-made object before humans exist.
+
+Status: **Accepted for content mapping; recipe may be tuned**
+
+## D-033 — Umanità, Cultura and Tecnologia are the only core Era IV Sets
+
+Food, professions, arts subtypes, transport families and social themes are handled as Collections, optional elements or Tags unless they prove large enough to justify promotion.
+
+Status: **Accepted**
+
+## D-034 — Content must earn element status
+
+A concept becomes a real combinable element only if it has meaningful reuse, unlocks a branch, supports future content, or delivers strong collectible value. Historical completeness alone is not sufficient.
+
+Status: **Accepted**
+
+## D-035 — Mito is the preferred Arcano bridge
+
+The preferred cultural chain is Storia + Immaginazione → Leggenda, Leggenda + Tempo → Mito, followed by Mito + Energia → Magia once Arcano is eligible.
+
+Status: **Accepted for current design**
+
+## D-036 — Food is optional cross-era content
+
+Food does not receive a primary Set in the core game. A small curated food branch supports cozy flavor and Collections without becoming a cooking simulator.
+
+Status: **Accepted**
+
+## D-037 — Professions are optional, not taxonomy
+
+Mestieri is a Collection family. Only professions with strong future combinatorial value become real elements.
+
+Status: **Accepted**
+
+## D-038 — Screen concepts validate hierarchy, not pixels
+
+Concept art is used to validate screen structure, mood, density and responsive relationships. It does not freeze final implementation spacing or exact controls.
+
+Status: **Accepted**
