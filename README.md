@@ -6,9 +6,9 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 **Phase 0 + Phase 1 + Phase 2 implemented:** technical scaffold, validated canonical seed, pure discovery engine and local application/save layer.
 
-The browser page remains a diagnostic screen, now with IndexedDB save status and JSON import/export checks. The playable Laboratory is a later phase.
+The browser page remains a diagnostic screen, now with IndexedDB save status and JSON import/export checks. Phase 3 is ready to replace it with the first playable Laboratory.
 
-The first bounded implementation task is in `CODEX_TASK.md`.
+The current bounded implementation task is Phase 3 in `CODEX_TASK.md`.
 
 ## Run and verify
 
