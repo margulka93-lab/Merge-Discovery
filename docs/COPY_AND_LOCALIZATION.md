@@ -1,6 +1,6 @@
 # Copy, Naming & Localization
 
-Status: **implementation-ready content rule v1**
+Status: **implementation-ready content rule v2**
 
 Primary launch language for design/content: **Italian**.
 
@@ -174,7 +174,6 @@ Preferred player-facing terms:
 - Anomalia
 - Mappa delle scoperte
 - Livello di Scoperta
-- Intuizione — provisional hint resource/name, only if resource survives playtest
 
 Avoid using `merge` as the primary in-game verb if Italian copy feels mechanical.
 
