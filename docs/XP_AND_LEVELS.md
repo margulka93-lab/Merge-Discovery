@@ -1,93 +1,75 @@
 # XP & Level Curve
 
-Status: **provisional numeric design v1**
+Status: **implementation-ready early curve / balance-tunable v2**
 
-Numbers are intentionally concrete so the progression can be simulated later. They are not final balance values.
+## Purpose
 
-## Purpose of levels
+Discovery Level represents breadth of knowledge.
 
-Player level represents breadth of discovery.
-
-Levels should:
-
-- pace announced content;
-- unlock assistance and presentation features at sensible collection sizes;
-- provide satisfying progress feedback;
-- never replace actual discovery conditions.
-
-A level alone should rarely create an element or complete a set.
+Levels pace eligibility and feedback; they do not replace discovery gates.
 
 ## XP rewards
 
 ### New element
 
-Base reward: **100 XP**
+Base:
+**100 XP**
 
-Rarity modifier:
+Rarity bonus:
 
-| Rarity | Bonus | Total base discovery XP |
+| Rarity | Bonus | Total |
 | --- | ---: | ---: |
-| Comune | +0 | 100 |
-| Insolito | +20 | 120 |
-| Raro | +50 | 150 |
-| Straordinario | +100 | 200 |
-| Segreto | +200 | 300 |
+| Comune | 0 | 100 |
+| Insolito | 20 | 120 |
+| Raro | 50 | 150 |
+| Straordinario | 100 | 200 |
+| Segreto | 200 | 300 |
 
 ### Alternate recipe
 
-Discovering a new valid recipe for an already known result:
-
 **20 XP**
 
-First-time element discovery takes precedence; do not award both 100+ and alternate-recipe XP for the same first recipe.
+If the same recipe also discovers the element for the first time, award normal discovery XP rather than double-counting alternate XP.
 
-### Register anomaly
-
-First registration of an authored anomaly:
+### First anomaly registration
 
 **30 XP**
 
-Repeatedly triggering the same anomaly:
+Repeated anomaly:
+0 XP.
 
-**0 XP**
+### Anomaly resolution
 
-### Resolve anomaly
+**80 XP** bonus plus normal new-result discovery XP if applicable.
 
-Resolution bonus:
-
-**80 XP**, in addition to any XP earned for the resulting new element.
-
-### Reveal announced set
+### Announced Set reveal
 
 **50 XP**
 
-### Reveal hidden set
+### Hidden Set reveal
 
 **125 XP**
 
-### Reveal deep secret set
+### Deep secret Set reveal
 
 **250 XP**
 
-### Complete normal set
+### Normal Set completion
 
-Provisional formula:
+`100 + 5 × required element count`
 
-`100 + (5 × number of required elements in set)`
-
-Cap: **300 XP**
-
-Secret/easter-egg elements are excluded from normal completion requirements until discovered.
+Cap:
+300 XP.
 
 ### Repeat known recipe
 
 **0 XP**
 
-This is non-negotiable unless later playtesting finds a strong reason otherwise.
+Stable design rule.
 
-## Early cumulative level thresholds
+## Early cumulative thresholds
 
-| Level | Total XP required |
+| Level | Total XP |
 | ---: | ---: |
 | 1 | 0 |
 | 2 | 250 |
@@ -105,65 +87,57 @@ This is non-negotiable unless later playtesting finds a strong reason otherwise.
 | 14 | 7,750 |
 | 15 | 8,700 |
 
-Beyond level 15 the curve will be designed after content density through Humanity is mapped.
+These thresholds are canonical starting balance data for implementation, not immutable game design.
 
-## Expected early cadence
+Beyond level 15:
+content data may initially extrapolate a smooth increasing curve until Humanity content is fully authored.
 
-With mostly common discoveries, the intended rhythm is approximately:
+Do not hard-code thresholds in components.
 
-- Level 2 after 2–3 new discoveries;
-- Level 3 after roughly 5–6 total discoveries;
-- Levels 4–6 during the transition into Cosmo;
-- Levels 7–10 while constructing the first world and approaching Life.
+## Expected seed cadence
 
-Set and rarity bonuses will shift this naturally.
+The 67-element implementation seed is larger than one session.
 
-The first 43-element content slice is larger than a single session and is expected to span multiple early levels.
+Expected broad rhythm:
 
-## Feature unlock philosophy
+- Lv. 2 after roughly 2–3 discoveries;
+- Lv. 3 after roughly 5–6;
+- early Cosmo across Lv. 4–6;
+- first Mondo/Life progress over following levels.
 
-Core usability should not be arbitrarily level-gated.
+Actual cadence is validated by simulator/playtest and can be tuned through progression data.
+
+## Feature unlocks
 
 Prefer state-based unlocks:
 
-- Collection: after 3 discoveries;
-- Set browser: after first set expansion;
-- Anomaly archive: after first anomaly;
-- Discovery graph: after graph has enough nodes to be useful.
+- Collection after early discoveries;
+- Sets after first Set reveal;
+- Anomalies after first anomaly;
+- Map after graph density threshold.
 
-Level-based unlocks are better for:
+Levels are appropriate for:
 
-- advanced hint tools;
-- optional filtering;
-- experiment modifiers;
-- eligibility for announced future domains.
+- advanced hint availability;
+- Era eligibility;
+- future non-core features.
 
-## Level-up presentation
+**No third input/modifier slot is part of the core launch progression.**
+
+## Presentation
 
 Normal level-up:
+compact and non-blocking.
 
-- compact;
-- celebratory but non-blocking;
-- clearly secondary to a new discovery reveal.
+Major discovery/reveal always takes visual priority.
 
-A level-up must never visually overpower:
-
-- hidden set reveal;
-- first Life discovery;
-- first supernatural discovery;
-- major anomaly resolution.
-
-If level-up and major discovery occur together, combine them into one coherent celebration rather than two stacked modals.
+If events coincide, compose one coherent celebration.
 
 ## No farming
 
-XP is tied to first-time knowledge states.
+No meaningful XP from:
 
-The player cannot efficiently level by:
-
-- repeating recipes;
-- repeatedly causing the same failure;
-- repeatedly triggering the same anomaly;
-- recreating already known elements.
-
-This keeps progression aligned with the game's actual goal: discovering new relationships.
+- repeat recipe;
+- repeat failure;
+- repeat anomaly;
+- recreating a known result through an already known recipe.
