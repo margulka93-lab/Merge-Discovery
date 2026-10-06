@@ -2,9 +2,9 @@
 
 ## Codex readiness
 
-**PHASE 0 + PHASE 1 MERGED · READY FOR PHASE 2**
+**PHASE 0 + PHASE 1 + PHASE 2 MERGED · FIGMA GATE BEFORE PHASE 3**
 
-Phase 0 + 1 were completed in PR #2 and merged. The current bounded implementation task is Phase 2 in `CODEX_TASK.md`.
+Phase 0 + 1 were merged in PR #2. Phase 2 was merged in PR #3. The next required step is the Figma UI gate before Codex Phase 3.
 
 Legend:
 
@@ -51,7 +51,9 @@ Legend:
 | Analytics | ⚪ | Optional future layer |
 | Codex PR breakdown | ✅ | IMPLEMENTATION_PLAN.md |
 | Phase 0 + 1 implementation | ✅ | Merged via PR #2 |
-| Phase 2 task | ✅ | CODEX_TASK.md |
+| Phase 2 implementation | ✅ | Merged via PR #3 |
+| Figma Phase 3 UI gate | ✅ | FIGMA_TASK.md |
+| Phase 3 implementation | 🟡 | Blocked pending approved Figma references |
 | Agent constraints | ✅ | AGENTS.md |
 
 ## Deliberately not frozen
@@ -79,4 +81,4 @@ For the current implementation sequence:
 
 ## Next action
 
-Run `CODEX_TASK.md` for Phase 2. Do not start Phase 3 until the Phase 2 PR is reviewed and merged.
+Complete `FIGMA_TASK.md`. Do not start Phase 3 until the approved Figma references are added to the final Codex task.
