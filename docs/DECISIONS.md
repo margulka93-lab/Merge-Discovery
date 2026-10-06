@@ -141,3 +141,52 @@ Status: **Accepted**
 The supernatural transition should not occur through a level-up notification alone. A meaningful player-performed discovery reveals the first Arcano Set.
 
 Status: **Accepted**
+
+
+## D-024 — Humanity is the bridge from nature to ideas
+
+The Humanity Era should introduce intentional creation, social organization and symbolic concepts that later enable myths and Arcano.
+
+Status: **Accepted**
+
+## D-025 — Professions are not a primary Set
+
+Most professions belong to Collections or optional content. Profession elements are authored only when they remain useful as ingredients.
+
+Status: **Accepted**
+
+## D-026 — Technology is selective, not encyclopedic
+
+Technology progression uses a compact set of reusable conceptual milestones rather than reproducing every historical invention.
+
+Status: **Accepted**
+
+## D-027 — No combat-tech dependency
+
+Weapons and warfare are not required for the core progression path. Technology should not become a combat tree.
+
+Status: **Accepted**
+
+## D-028 — Tap-select is the baseline combine interaction
+
+Drag-and-drop may be supported, but all core laboratory actions must be fully usable through taps/clicks.
+
+Status: **Accepted**
+
+## D-029 — Explicit Combine action
+
+After selecting two inputs, the player confirms with a Combine action rather than triggering automatically on second selection.
+
+Status: **Accepted**
+
+## D-030 — One responsive information architecture
+
+Desktop and mobile share the same game model and navigation. Layout adapts, but features are not designed as separate games.
+
+Status: **Accepted**
+
+## D-031 — Visual direction uses a hybrid system
+
+The current art direction combines a dark modern observatory/laboratory shell, brighter illustrated field-guide catalog surfaces, and restrained magical/cosmic effects for major discoveries.
+
+Status: **Accepted for concept phase**
