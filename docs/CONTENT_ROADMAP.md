@@ -1,66 +1,71 @@
 # Content Roadmap
 
-This is a design target, not a shipping commitment.
+Status: **scale plan v2**
 
-The purpose is to size the universe before individual recipes are authored.
+## Implementation seed
 
-## Scale targets
-
-### Prototype content slice
-
-Target: 30–40 elements.
+**67 elements**
 
 Purpose:
 
-- prove combination feel;
-- prove reveal loop;
-- prove catalog;
-- prove locked-set behavior;
-- prove anomaly behavior.
+- validate engine;
+- validate catalog;
+- validate Set visibility;
+- validate alternate recipe;
+- validate hidden Set;
+- validate anomaly;
+- validate save/versioning.
 
-No art-complete requirement.
+Canonical details:
+`IMPLEMENTATION_SEED_CONTENT.md`
 
-### First complete playable design slice
+## First substantial playable content pack
 
-Target: 120–160 elements.
+Target:
+**120–160 elements**
+
+Coverage:
+
+- Origini
+- Cosmo
+- Mondo
+- Life branch deep enough to include Animali
+- early Umanità
+- at least one meaningful stored anomaly
 
 Purpose:
+prove navigation and progression beyond a tiny prototype.
 
-- cover Origins through Life;
-- include early Humanity;
-- include at least one intentionally hidden supernatural reveal;
-- prove that the game remains navigable once the catalog is no longer tiny.
+## Core launch target
 
-### Core launch target
+Working target:
+**280–360 elements**
 
-Working target: 280–360 elements.
+Coverage:
 
-Purpose:
+- full primary progression through first Impossibile layer;
+- enough optional/alternate/hidden content that the path is not linear;
+- Arcano/Invisibile twist structure;
+- meaningful Collections.
 
-- cover the full main progression through the first layer of Impossible content;
-- provide enough alternate recipes and secrets that completion is not a straight line;
-- leave clear expansion space.
+## Long-term architecture target
 
-### Long-term architecture target
+**1,000+ element definitions** without redesigning core engine/data model.
 
-1,000+ elements without redesigning the core engine.
+This is an architecture target, not a launch promise.
 
-This is an architecture goal, not a content promise.
-
-## Provisional full-set sizing
+## Mature Set sizing — working ranges
 
 | Set | Target range | Visibility |
 | --- | ---: | --- |
-| Origini | 10–14 | announced |
-| Cosmo | 18–24 | announced |
-| Materia | 14–20 | announced |
-| Geologia | 18–26 | announced |
-| Atmosfera e Acque | 20–28 | announced |
-| Vita | 10–16 | discovery |
-| Piante | 24–36 | announced |
-| Funghi | 10–16 | discovery |
+| Origini | 10–16 | current/announced |
+| Cosmo | 18–26 | announced |
+| Mondo | 35–50 | announced |
+| Vita | 12–20 | discovery |
+| Piante | 24–36 | discovery |
+| Funghi | 10–16 | hidden |
 | Animali | 40–60 | announced |
-| Umanità | 20–30 | announced |
+| Umanità | 18–28 | announced |
 | Cultura | 24–36 | announced |
 | Tecnologia | 28–40 | announced |
 | Magia | 18–28 | hidden |
@@ -72,97 +77,83 @@ This is an architecture goal, not a content promise.
 | Paradossi | 14–22 | hidden |
 | Entità | 10–18 | secret |
 
-The sum of maximums is intentionally larger than the first launch target. Not every set needs to ship at full mature size.
+Ranges are content-design targets, not schema constraints.
 
-## Content density rule
+## Content density
 
-A set should contain enough internal variety that:
+Every mature Set should include:
 
-- at least some discoveries are made from within-set combinations;
-- some discoveries require cross-set combinations;
-- some elements remain useful well after their own set is unlocked.
+- internal recipes;
+- cross-Set recipes;
+- long-lived ingredients;
+- some optional branches.
 
-Avoid disposable early elements that stop participating after the tutorial.
+Avoid disposable tutorial concepts.
 
 ## Cross-era reuse
 
-Early elements should remain relevant.
+Early elements should remain valuable.
 
-Examples of intended long-tail ingredients:
+Priority long-tail examples:
 
 - Vuoto
 - Luce
 - Calore
 - Acqua
-- Fuoco
 - Luna
 - Albero
-- Gatto
+- Animali
 - Umano
-- Specchio
 - Libro
+- Specchio
 
-Later recipes can reinterpret familiar ingredients.
+Late Eras reinterpret familiar concepts rather than replacing them.
 
-Examples:
+## Hidden-content budget
 
-- early: Acqua + Terra → Fango
-- later: Acqua + Magia → Acqua incantata
-- later: Luna + Animale → lycanthropic/mythic branch
-- later: Specchio + Sogno → hidden surreal result
+Working mature target:
 
-## Hidden content budget
+- 75–85% normal/discoverable;
+- 10–20% hidden/optional;
+- 2–5% deep secret/easter egg.
 
-The game should contain secrets, but normal completion must remain legible.
-
-Provisional target:
-
-- 75–85% of launch content belongs to normal or discoverable progression;
-- 10–20% is hidden/optional;
-- 2–5% is deep secret or easter-egg content.
-
-Exact proportions will be adjusted after the first content map.
+Visible completion excludes unrevealed secrets.
 
 ## Alternate recipe budget
 
-Not every element needs multiple discovery recipes.
+Working mature distribution:
 
-Suggested mature distribution:
+- ~60% one primary route;
+- ~30% multiple legitimate routes;
+- ~10% special/secret structures.
 
-- ~60% one primary recipe;
-- ~30% two or more legitimate routes;
-- ~10% special/secret route structure.
+Do not add alternates merely to inflate counts.
 
-Alternate routes should solve navigation and reward insight, not merely inflate recipe counts.
+## No-reaction
 
-## No-reaction philosophy
+No reaction is normal and necessary.
 
-“No reaction” is valid and necessary.
+Player friction is addressed by:
 
-The game should not create nonsense just to reward every pair.
-
-However, repeated blind failure must be softened by:
-
-- remembered tested pairs;
-- filtering;
+- tested-pair memory;
 - hints;
-- resonance;
-- clear indicators that an element has unexplored reactions.
+- filtering;
+- exhaustion state;
+- new-possibility markers.
 
-## First hidden-supernatural reveal
+## First supernatural transition
 
-The first full playable content slice should include one supernatural event even if most advanced fantasy content is not yet built.
+Exact bridge is now designed in `ARCANE_TRANSITION.md`.
 
-Reason:
+Preferred cultural path includes:
 
-It proves the central promise that the game's scope can unexpectedly widen.
+- Storia
+- Immaginazione
+- Leggenda
+- Mito
 
-Current preferred structure:
+Then, once eligible:
 
-1. player experiments with a pair that produces a stored anomaly;
-2. several levels later, a progression/discovery condition changes;
-3. the archive marks the anomaly as newly resolvable;
-4. resolving it creates the first element in a previously invisible set;
-5. the catalog visibly expands.
+`Mito + Energia → Magia`
 
-Exact recipe and set are deliberately not chosen yet.
+Old mythic anomalies can become revisitable.
