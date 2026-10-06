@@ -116,3 +116,28 @@ Status: **Accepted**
 For the early content architecture, geology, waters and atmospheric phenomena are grouped in one player-facing Set called Mondo. Smaller themes remain Tags/Collections unless later scale justifies promotion.
 
 Status: **Accepted for current design; revisit after full content mapping**
+
+
+## D-020 — Collections do not gate the main path
+
+Collections are optional thematic goals. Their rewards may support discovery but cannot contain mandatory progression gates.
+
+Status: **Accepted**
+
+## D-021 — Set completion survives later secret discoveries
+
+A completed normal Set remains completed when optional secret content is discovered later. Secrets become bonus completion rather than retroactively reducing earned progress.
+
+Status: **Accepted**
+
+## D-022 — Arcano should pay off old anomalies
+
+The first major supernatural transition should reactivate previously archived intuitive anomalies and old elements instead of behaving as an isolated new content island.
+
+Status: **Accepted**
+
+## D-023 — Level makes Arcano eligible; discovery reveals it
+
+The supernatural transition should not occur through a level-up notification alone. A meaningful player-performed discovery reveals the first Arcano Set.
+
+Status: **Accepted**
