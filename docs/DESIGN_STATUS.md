@@ -52,7 +52,7 @@ Legend:
 | Codex PR breakdown | ✅ | IMPLEMENTATION_PLAN.md |
 | Phase 0 + 1 implementation | ✅ | Merged via PR #2 |
 | Phase 2 implementation | ✅ | Merged via PR #3 |
-| Figma Phase 3 UI gate | ✅ | FIGMA_TASK.md |
+| Figma Phase 3 UI gate | 🟡 | Frames built; awaiting user visual approval · FIGMA_PHASE_3_HANDOFF.md |
 | Phase 3 implementation | 🟡 | Blocked pending approved Figma references |
 | Agent constraints | ✅ | AGENTS.md |
 
