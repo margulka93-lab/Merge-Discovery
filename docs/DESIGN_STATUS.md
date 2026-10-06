@@ -5,55 +5,64 @@ Legend:
 - ✅ stable direction
 - 🟡 active design
 - 🔴 not designed enough
-- ⚪ deferred until design requires it
+- ⚪ deliberately deferred
 
 | Area | Status | Notes |
 | --- | --- | --- |
 | High concept | ✅ | Discovery-driven combination game |
 | Design pillars | ✅ | Discovery, collection, progression, mystery, expansion |
-| Era / Set / Collection / Tag taxonomy | ✅ | Defined in TAXONOMY.md |
+| Era / Set / Collection / Tag taxonomy | ✅ | Defined |
+| Core set architecture | 🟡 | Seven-era structure aligned; underfilled Sets remain |
 | Combination resolution model | 🟡 | Core priority defined; edge cases remain |
-| Anomalies | 🟡 | Core behavior defined; exact UX/economy remains |
-| Hidden sets | ✅ | Accepted as core mystery device |
-| Player inventory semantics | 🟡 | Infinite reusable concepts proposed |
-| Same-element recipes | ✅ | Supported intentionally |
+| Hidden sets | ✅ | Core mystery device |
+| Player inventory semantics | ✅ | Discovered concepts reusable infinitely |
+| Same-element recipes | ✅ | Explicitly supported |
 | Recipe order | ✅ | Unordered by default |
-| Player progression | 🟡 | Era bands and gate philosophy drafted |
-| XP curve | 🔴 | Exact math not designed |
-| Set unlock rules | 🟡 | Modes defined; exact set-by-set mapping remains |
-| Hint system | 🔴 | Principles only |
-| Anti-stuck logic | 🟡 | Requirements defined; mechanics not finalized |
-| Catalog information architecture | 🟡 | States and goals defined |
-| Discovery graph | 🟡 | Concept defined; UX not designed |
-| Collections/achievements | 🔴 | Taxonomy exists; content/rewards not designed |
-| Onboarding | 🔴 | Starting principles chosen in draft only |
-| Early content graph | 🟡 | First 43-element draft exists |
-| Full content map | 🔴 | Only macro sizing exists |
+| Player progression | 🟡 | Era bands and gates designed |
+| XP curve | 🟡 | Early numeric curve drafted; needs simulation/playtest |
+| Set unlock rules | 🟡 | Unlock modes defined; exact map remains |
+| Hint system | 🟡 | Tiered hint ladder drafted |
+| Anti-stuck logic | 🟡 | Failure memory and recovery rules drafted |
+| Catalog information architecture | 🟡 | Detailed v1 drafted |
+| Discovery graph | 🟡 | Modes and spoiler rules drafted |
+| Collections/achievements | 🔴 | Taxonomy exists; reward/content design remains |
+| Onboarding | 🟡 | First 30–60 minute experience drafted |
+| Early content graph | 🟡 | 43-element v1 graph; needs expansion and audit |
+| Full content map | 🔴 | Macro sizing only |
 | Fantasy transition | 🟡 | Structural intent defined; exact reveal not chosen |
 | Endgame | 🔴 | Themes only |
 | Desktop UX | 🔴 | Direction only |
 | Mobile UX | 🔴 | Direction only |
 | Visual identity | 🔴 | Initial concept direction only |
-| Motion / VFX | 🔴 | Reveal tiers mentioned only |
+| Motion / VFX | 🔴 | Reveal hierarchy only |
 | Audio | 🔴 | Not designed |
 | Accessibility | 🔴 | Not designed |
 | Save behavior | 🔴 | Not designed |
-| Monetization | ⚪ | Intentionally deferred |
+| Monetization | ⚪ | Deliberately deferred |
 | Analytics | ⚪ | Deferred |
-| Technical architecture | ⚪ | Deferred until gameplay is stable |
+| Technical architecture | ⚪ | Deferred until gameplay stabilizes |
 | Codex task breakdown | ⚪ | Deferred |
-| Validators | 🟡 | Core reachability requirement identified |
+| Validators | 🟡 | Reachability/spoiler requirements identified |
 
 ## Current design sequence
 
-1. Validate and refine the first content graph.
-2. Design onboarding and first-session pacing.
-3. Finalize progression/XP and set unlock cadence.
-4. Design catalog, hints and anti-brute-force tools.
-5. Expand content map through Humanity.
-6. Design first supernatural/anomaly reveal.
-7. Expand Arcane → Invisible → Impossible.
-8. Design desktop/mobile UX.
-9. Lock visual system, motion and audio direction.
-10. Define save/accessibility/meta systems.
-11. Translate stable design into implementation specifications.
+Completed enough to proceed:
+
+1. foundational taxonomy;
+2. first content graph;
+3. first-session pacing;
+4. early XP model;
+5. hint/failure principles;
+6. catalog information architecture.
+
+Next:
+
+1. expand the content graph through Animali;
+2. design Collections and optional objectives;
+3. design the first true supernatural transition and anomaly payoff;
+4. expand through Umanità;
+5. design desktop/mobile interaction flows;
+6. lock visual system, motion and audio;
+7. define save/accessibility/meta systems;
+8. simulate reachability and progression;
+9. translate stable design into implementation specifications.
