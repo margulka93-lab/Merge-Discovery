@@ -231,3 +231,80 @@ wonder, but risks visual overload.
 Current preferred direction:
 
 **A as shell + B for collection surfaces + restrained C during major reveals.**
+
+
+## Screen concept rules
+
+Concept art should now be produced as individual product screens, not only overview posters.
+
+### Laboratory — desktop
+
+Must show:
+
+- persistent left navigation rail;
+- large central two-slot combine stage;
+- explicit Combine button;
+- right-side searchable element library;
+- warm modern observatory/laboratory environment;
+- readable cards with illustrated icons;
+- no currencies beyond Discovery Level/progress;
+- state should look playable, not like a marketing splash page.
+
+### Laboratory — mobile
+
+Must preserve the same hierarchy:
+
+- compact top status;
+- two large touch-friendly slots;
+- Combine button;
+- quick favorites;
+- searchable 3-column element library;
+- bottom navigation.
+
+### Collection / Set
+
+Use the lighter field-guide surface:
+
+- ivory paper-like cards;
+- illustrated element grid;
+- visible completion only for known content;
+- no placeholders for hidden secret Sets.
+
+### Element detail
+
+Hero illustration with editorial field-guide treatment.
+
+Show:
+- name;
+- Set;
+- short description;
+- discovered recipes;
+- “possibilities” state;
+- small relationship graph.
+
+### Anomaly archive
+
+Keep global shell but darken the central surface.
+
+Use:
+- restrained indigo/violet distortion;
+- known input pairs;
+- statuses rather than hidden results;
+- “something changed” state for revisitable anomalies.
+
+### Discovery map
+
+Dark cosmic canvas with legible illustrated nodes and restrained glowing edges.
+
+Do not render hundreds of nodes; show a local neighborhood around the selected discovery.
+
+### Arcano reveal
+
+Same laboratory, transformed rather than replaced.
+
+Add:
+- violet-gold impossible geometry;
+- stabilized anomaly particles;
+- a hidden Set appearing for the first time.
+
+The visual message is: **the room did not change; the rules did.**
