@@ -1,6 +1,6 @@
 # Catalog & Discovery Graph
 
-Status: **design draft v1**
+Status: **stable information architecture v1**
 
 The catalog is a primary gameplay surface, not a passive encyclopedia.
 
