@@ -1,68 +1,81 @@
 # Design Status
 
+## Codex readiness
+
+**READY FOR PHASE 0 + PHASE 1**
+
+The design gate is closed for the first implementation task defined in `CODEX_TASK.md`.
+
 Legend:
 
-- ✅ stable direction
-- 🟡 active design
-- 🔴 not designed enough
-- ⚪ deliberately deferred
+- ✅ specified enough to implement
+- 🟡 intentionally tunable / content-production follow-up
+- ⚪ future optional layer
 
 | Area | Status | Notes |
 | --- | --- | --- |
-| High concept | ✅ | Discovery-driven combination game |
-| Design pillars | ✅ | Discovery, collection, progression, mystery, expansion |
-| Era / Set / Collection / Tag taxonomy | ✅ | Defined |
-| Core set architecture | 🟡 | Seven-era structure aligned; underfilled Sets remain |
-| Combination resolution model | 🟡 | Core priority defined; edge cases remain |
-| Hidden sets | ✅ | Core mystery device |
-| Player inventory semantics | ✅ | Discovered concepts reusable infinitely |
-| Same-element recipes | ✅ | Explicitly supported |
-| Recipe order | ✅ | Unordered by default |
-| Player progression | 🟡 | Era bands and gates designed |
-| XP curve | 🟡 | Early numeric curve drafted; needs simulation/playtest |
-| Set unlock rules | 🟡 | Unlock modes defined; exact map remains |
-| Hint system | 🟡 | Tiered hint ladder drafted |
-| Anti-stuck logic | 🟡 | Failure memory and recovery rules drafted |
-| Catalog information architecture | 🟡 | Detailed v1 drafted |
-| Discovery graph | 🟡 | Modes and spoiler rules drafted |
-| Collections/achievements | 🟡 | Collection rules and first themes drafted; achievements remain |
-| Onboarding | 🟡 | First 30–60 minute experience drafted |
-| Early content graph | 🟡 | 43-element v1 graph; needs expansion and audit |
-| Full content map | 🟡 | Life/Animals plus detailed Humanity/Culture/Technology selection matrix exist |
-| Fantasy transition | 🟡 | Full Arcano transition draft exists; exact Humanity bridge recipes remain provisional |
-| Endgame | 🔴 | Themes only |
-| Desktop UX | 🟡 | Detailed screen specs now define laboratory, collection, detail, anomaly and map flows |
-| Mobile UX | 🟡 | Detailed portrait-first screen specs and tap flows defined |
-| Visual identity | 🟡 | Observatory + field guide hybrid direction documented |
-| Motion / VFX | 🔴 | Reveal hierarchy only |
-| Audio | 🔴 | Not designed |
-| Accessibility | 🔴 | Not designed |
-| Save behavior | 🔴 | Not designed |
-| Monetization | ⚪ | Deliberately deferred |
-| Analytics | ⚪ | Deferred |
-| Technical architecture | ⚪ | Deferred until gameplay stabilizes |
-| Codex task breakdown | ⚪ | Deferred |
-| Validators | 🟡 | Reachability/spoiler requirements identified |
+| High concept / pillars | ✅ | Locked |
+| Era / Set / Collection / Tag taxonomy | ✅ | Materia folded into Origini; Mondo consolidated |
+| Data model | ✅ | DATA_MODEL.md |
+| Combination resolver | ✅ | Deterministic precedence/edge cases specified |
+| Hidden/secret visibility | ✅ | Projection rules specified |
+| Player inventory semantics | ✅ | Infinite reusable discoveries |
+| Pair order / A+A | ✅ | Locked |
+| Implementation seed content | ✅ | 67 elements, exact recipes, anomaly, Collections |
+| Seed reachability | ✅ | 67/67 design simulation; code must reproduce |
+| Progression structure | ✅ | System locked; numbers remain data-tunable |
+| XP early curve | ✅ | Seed implementation values available |
+| Set unlock behavior | ✅ | Reveal modes/seed triggers specified |
+| Hints / anti-brute-force | ✅ | Free tiered system, no currency |
+| Catalog / discovery graph | ✅ | Information architecture + spoiler rules |
+| Collections / objectives | ✅ | Optional, seed Collections locked |
+| Onboarding | ✅ | First-session flow specified |
+| Humanity / Culture / Technology | ✅ | Content framework and selection matrix |
+| Arcano transition | ✅ | Transition logic / preferred bridge specified |
+| Endgame / retention | ✅ | Meta and expansion policy specified |
+| Desktop UX | ✅ | Screen specs + responsive rules |
+| Mobile UX | ✅ | Portrait-first flows + exact breakpoint defaults |
+| UI empty/error/offline/update states | ✅ | Responsive state spec |
+| Visual identity | ✅ | Visual direction + semantic design system |
+| Final production art | 🟡 | Asset production occurs after/alongside UI validation |
+| Motion / VFX behavior | ✅ | Event tiers and reduced-motion mapping |
+| Production audio assets | 🟡 | Logical event language locked; files not yet produced |
+| Accessibility | ✅ | WCAG 2.2 AA target and interaction requirements |
+| Save / migration / export | ✅ | Local-first versioned persistence spec |
+| Localization / copy | ✅ | Italian-first key-based system |
+| Technical architecture | ✅ | TECH_SPEC.md |
+| Validation / tests | ✅ | CI/content/reachability strategy |
+| PWA direction | ✅ | Offline-first requirement specified |
+| Android architecture | ✅ | Later Capacitor wrapper, no gameplay fork |
+| Monetization | ⚪ | Not required / no dependency |
+| Analytics | ⚪ | Optional future layer |
+| Codex PR breakdown | ✅ | IMPLEMENTATION_PLAN.md |
+| First Codex task | ✅ | CODEX_TASK.md |
+| Agent constraints | ✅ | AGENTS.md |
 
-## Current design sequence
+## Deliberately not frozen
 
-Completed enough to proceed:
+These should be adjusted from playtesting/data without changing architecture:
 
-1. foundational taxonomy;
-2. first content graph;
-3. first-session pacing;
-4. early XP model;
-5. hint/failure principles;
-6. catalog information architecture.
+- exact long-term XP curve;
+- final launch element count within roadmap range;
+- final asset polish;
+- exact audio files;
+- later content recipes beyond the locked seed.
 
-Next:
+## Gate criteria satisfied
 
-1. expand the content graph through Animali;
-2. design Collections and optional objectives;
-3. design the first true supernatural transition and anomaly payoff;
-4. expand through Umanità;
-5. design desktop/mobile interaction flows;
-6. lock visual system, motion and audio;
-7. define save/accessibility/meta systems;
-8. simulate reachability and progression;
-9. translate stable design into implementation specifications.
+Before Codex Phase 0/1:
+
+- gameplay rules do not need to be invented;
+- content seed is deterministic;
+- save semantics are defined;
+- hidden-content leakage rules are defined;
+- responsive/accessibility requirements exist;
+- tests/validators are specified;
+- architecture boundaries are specified;
+- PR scope is bounded.
+
+## Next action
+
+Run `CODEX_TASK.md` only when the user decides to begin implementation.
