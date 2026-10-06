@@ -1,293 +1,252 @@
 # Hints, Failure & Anti-Brute-Force
 
-Status: **design draft v1**
+Status: **stable system v2**
 
 ## Core principle
 
-Discovery should reward reasoning and curiosity, not exhaustive pair testing.
+Discovery rewards reasoning and curiosity, not exhaustive pair testing.
 
-The game needs assistance systems that reduce combinatorial fatigue without reducing play to “click the glowing answer”.
+Hints reduce combinatorial fatigue without turning the game into “click the highlighted answer”.
 
-## Failure types
+## Outcomes
 
-The player can receive four distinct experiment outcomes.
+### New discovery
 
-### 1. New discovery
+Previously unknown element.
 
-A previously unknown element is created.
+### Known reaction
 
-### 2. Known reaction
+Known recipe/result.
 
-A valid recipe creates an already discovered element.
+Repeat XP:
+0.
 
-Useful for confirming a relationship, but grants no meaningful repeat XP.
+### Anomaly
 
-### 3. Anomaly
+Authored meaningful reaction that cannot yet resolve.
 
-The pair is intentionally meaningful but cannot yet fully resolve.
-
-The reaction is recorded if its recipe is flagged `anomaly`.
-
-### 4. No reaction
-
-The current pair does not produce anything under current rules.
+### No reaction
 
 Message:
 
 > Nessuna reazione.
 
-A failed pair is remembered.
+The pair is remembered.
 
-## Failed-pair memory
+## Tested-pair memory
 
-Every attempted unordered pair is stored as tested.
+Every attempted unordered pair is stored.
 
-`A + B` and `B + A` are one tested pair.
+A+B and B+A are the same PairKey.
 
-Selecting an element should eventually allow the inventory to distinguish:
+Contextual states may include:
 
-- untested partner;
-- tested — no reaction;
-- tested — known recipe;
-- tested — anomaly.
+- untested;
+- tested no-reaction;
+- known success;
+- anomaly.
 
-This is informational memory, not a hint cost.
+This memory is always free and never a resource.
 
-The default visual treatment should remain subtle.
+## Hint philosophy
+
+**There is no hint currency in the core product.**
+
+No Intuizione points, tickets, ads or timers are required to request help.
+
+Stronger hints become available through:
+
+- player request;
+- progression;
+- collection size;
+- detected stall.
+
+Using hints does not reduce rewards or disable achievements.
 
 ## Hint ladder
 
-Assistance becomes stronger only when requested or when the player is demonstrably stalled.
+### Tier 0 — natural information
 
-### Tier 0 — Natural affordance
+Always available:
 
-Always available.
+- art/name semantics;
+- Set organization;
+- recipe history;
+- tested-pair memory;
+- current exhaustion state where the information mode permits it.
 
-Examples:
+### Tier 1 — reaction availability
 
-- semantic art and naming;
-- set organization;
-- known recipe history;
-- tested-pair memory.
-
-### Tier 1 — Reaction availability
-
-Unlocked after the collection becomes large enough to make brute force unreasonable.
-
-For a selected discovered element, the game may state:
+Example:
 
 > Hai ancora reazioni non scoperte con elementi che conosci.
 
-It should not always give an exact count.
+No exact answer.
 
-Exact counts can become an advanced catalog option later.
-
-### Tier 2 — Directional clue
+### Tier 2 — directional clue
 
 Example:
 
-> L'Acqua sembra avere ancora qualcosa da fare con il mondo naturale.
+> L’Acqua sembra avere ancora qualcosa da fare con il mondo naturale.
 
-This points toward a semantic family or set, not a specific element.
-
-### Tier 3 — Partner-family clue
+### Tier 3 — partner-family clue
 
 Example:
 
-> Una delle reazioni mancanti dell'Acqua coinvolge un elemento di Geologia.
+> Una delle reazioni mancanti coinvolge un elemento del Mondo.
 
-Still no exact partner.
-
-### Tier 4 — Strong clue
+### Tier 4 — strong conceptual clue
 
 Example:
 
-> Prova a pensare a cosa accade quando l'Acqua incontra qualcosa di molto caldo.
+> Pensa a cosa succede quando l’acqua incontra qualcosa di molto caldo.
 
-This can nearly identify the idea but preserves the final action.
+### Tier 5 — partner reveal
 
-### Tier 5 — Reveal partner
-
-Last-resort accessibility / anti-stuck option.
+Last-resort / explicit strong-help request.
 
 Example:
 
 > Acqua + Calore → ?
 
-The result remains unrevealed until performed.
+The player still performs the experiment and discovers the result.
 
-The game should very rarely reveal the complete recipe and result without player action.
+## Availability
 
-## Hint access model
+Tier 1:
+available once the catalog is large enough that blind matrix testing is unreasonable.
 
-Current preferred direction: **no paid or time-gated hint energy**.
+Tier 2:
+available on explicit request.
 
-Hints should be earned through normal discovery progress and available as a player-controlled assistance feature.
+Tier 3:
+available after repeated stall or in Relaxed information preference.
 
-Possible implementation model:
+Tier 4:
+available after stronger stall or repeated request for a clearer hint.
 
-- Tier 1 is free information.
-- Tier 2 is free after a short stall condition or user request.
-- Tier 3 uses a limited-but-renewable Insight resource.
-- Tier 4 costs more Insight.
-- Tier 5 is always available after prolonged stall, accessibility mode, or repeated failed attempts.
+Tier 5:
+available as an explicit “Mostrami con cosa provare” action after prolonged stall.
 
-Exact economy is not yet locked.
-
-## Insight resource — provisional
-
-Working name: **Intuizione**.
-
-Purpose: gate stronger hints without gating experimentation.
-
-Possible sources:
-
-- new element discovery;
-- set milestones;
-- alternate recipe;
-- anomaly resolution.
-
-Critical rule:
-
-A player can always continue experimenting at zero Intuizione.
-
-The resource must never function like stamina.
+No real-time waiting period.
 
 ## Stall detection
 
-The game may infer that assistance is useful when several conditions overlap:
+May consider:
 
-- many consecutive no-reaction attempts;
-- no new discoveries for a significant number of experiments;
-- repeated testing concentrated around already exhausted elements;
-- progression gate is close but the player lacks one of several keystones.
+- consecutive no-reactions;
+- many experiments without discovery;
+- repeating exhausted branches;
+- player near a critical progression gate without a keystone.
 
-Stall detection should only offer help.
+Stall detection only offers help.
 
-It must never secretly alter recipe outcomes.
+It never:
 
-## Contextual offer
+- changes recipe odds;
+- secretly grants discoveries;
+- changes canonical outcomes.
 
-After a stall threshold:
+## Proactive offer
+
+Example:
 
 > Vuoi un indizio?
 
-Options:
+Choices:
 
-- No
+- Non ora
 - Leggero
 - Più chiaro
 
-The game should remember if the player repeatedly declines and avoid nagging.
+If repeatedly declined, suppress further proactive offers for the session/context.
 
-## “Exhausted element” concept
+## Currently exhausted
 
-An element can be marked as **currently exhausted** when, among the player's presently known elements and unlocked rules, it has no remaining undiscovered valid reactions.
+An element is currently exhausted when no discoverable non-secret reaction currently exists with:
 
-This is extremely useful information.
+- known elements;
+- unlocked rules;
+- active experiment mode.
 
-However, display should be optional because some players enjoy uncertainty.
+This state is recalculated whenever content/progression changes.
 
-Suggested catalog toggle:
+Player-facing language:
 
-> Mostra elementi senza reazioni note rimanenti
+> Hai esplorato tutte le reazioni attualmente note con ciò che possiedi.
 
-Important: “currently exhausted” is not permanent. New sets can make old elements useful again.
+Never imply permanent exhaustion.
 
-## Why exact reaction counts are dangerous
+## Exact counts
 
-Showing:
+Default Balanced mode:
+avoid exact missing-recipe counts.
 
-> Acqua — 7/8 ricette
+Mystery mode:
+show even less.
 
-can turn discovery into completion accounting.
+Collector mode:
+may show exact missing counts for **currently eligible non-secret** recipe space.
 
-Recommended compromise:
+Secret/dormant content never inflates visible counts.
 
-- early game: no counts;
-- midgame: vague availability;
-- advanced completion view: exact counts for already-unlocked, non-secret recipe space;
-- secret recipes never inflate visible required completion before discovery.
+## Secret protection
 
-## Secret recipe protection
+Hints must not expose:
 
-Hidden/secret recipes do not contribute to visible “missing recipe” counts before the player has discovered the relevant secret layer.
+- hidden Set name;
+- secret result;
+- partner whose very existence is hidden;
+- secret missing count.
 
-Otherwise the interface leaks that something exists.
+## No-reaction history
 
-## No-reaction visibility
+No global A×B spreadsheet.
 
-The catalog should not display a giant global matrix of failed pairs.
+Element Detail includes an Experiments view with:
 
-For a selected element, tested partners can be filtered or softly marked.
+- Successi
+- Anomalie
+- Nessuna reazione
 
-A dedicated experiment history may exist later, but it should not become a spreadsheet-like burden.
+This is memory, not a puzzle solution screen.
 
-## Resonance — advanced hint mechanic
+## Resonance
 
-Working concept.
+Resonance is an **optional future advanced browsing aid**, not required for seed implementation.
 
-The player activates Resonance on one element.
+If implemented after large catalogs:
 
-For a short inspection state, known elements are grouped into:
+- selected element can group known partners into semantic response bands;
+- response is suggestive, not a guarantee;
+- it never highlights the exact solution by default.
 
-- quiet;
-- faint response;
-- strong response.
-
-Important:
-
-A response category is not a guarantee that a direct recipe exists.
-
-It may indicate:
-
-- direct undiscovered recipe;
-- anomaly;
-- useful semantic family;
-- ingredient relevant after another unlock.
-
-This keeps Resonance suggestive rather than deterministic.
-
-Resonance should unlock only after the collection is large enough to need it.
+Do not build Resonance in initial Codex phases unless separately scoped.
 
 ## Critical progression protection
 
-No required era transition may depend on:
+No required Era transition can depend on:
 
-- a secret recipe;
-- an unhinted single recipe;
-- a same-element recipe unless the game has already taught `A + A`;
-- an anomaly that looks identical to a normal failure;
-- a recipe involving a currently invisible concept with no clue path.
+- hidden secret recipe;
+- one obscure unhinted recipe;
+- A+A before A+A has been taught;
+- an anomaly indistinguishable from ordinary failure;
+- invisible concept without clue path.
 
-Each critical gate needs at least two of:
+Critical gates have at least two recovery mechanisms.
 
-- multiple possible keystones;
-- alternate recipes;
-- contextual clue;
-- set clue;
-- progress fallback.
+## Player information preferences
 
-## Player styles
+### Mystery
 
-The hint system should support three natural play styles.
+Minimal proactive information.
 
-### Explorer
+### Balanced
 
-Wants minimal guidance and enjoys strange experiments.
-
-Can suppress proactive hint offers.
+Default.
 
 ### Collector
 
-Wants completion information and clear remaining-work indicators.
+More completion/exhaustion counts.
 
-Can enable more counts and filters.
-
-### Relaxed
-
-Wants frequent suggestions without outright solutions.
-
-Can enable earlier contextual clues.
-
-These should be preferences, not separate difficulty modes requiring different save files.
+Hint strength remains separately user-controlled; these are not difficulty modes.
