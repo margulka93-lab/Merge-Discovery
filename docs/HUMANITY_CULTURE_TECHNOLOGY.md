@@ -1,621 +1,934 @@
-# Humanity, Culture & Technology — Content Expansion v0
+# Humanity, Culture & Technology — Content Design v1
 
-Status: **content design draft**
+Status: **active design**
 
-Purpose: build the bridge from the natural world into intentional creation, culture, science and eventually Arcano.
+Purpose: define the complete bridge from the natural world to human society, symbolic culture, science and selective technology, while deciding which concepts deserve to be real combinable elements and which should remain Collections, Tags or flavor.
 
-This Era must feel like a genuine expansion of the combination vocabulary, not a pile of modern objects.
+The Era must not become an encyclopedia of human history. Every real element must earn its place by creating useful future combinations.
 
-## Core fantasy of the Era
+---
 
-Until now, the player creates what exists in nature.
+## 1. Design thesis
 
-With Humanity, the player begins creating what **someone decided to make, remember, organize or imagine**.
+Before Humanity, the player mostly discovers what the universe can **be**.
 
-This introduces four powerful new ingredient families:
+During Humanity, the player begins discovering what living beings can **make, organize, remember, represent and imagine**.
 
-- people and social organization;
-- tools and materials shaped by intent;
-- culture and symbolic systems;
-- technology and engineered systems.
+This Era introduces four kinds of causality that become essential later:
 
-This Era is therefore the conceptual bridge between:
+1. **Intent** — natural materials become tools and structures.
+2. **Society** — people create settlements, exchange and shared systems.
+3. **Representation** — language, writing, maps and books turn reality into symbols.
+4. **Abstraction** — memory, imagination, knowledge and myth become valid ingredients.
 
-`Mondo naturale → Umanità → Idee → Leggende → Magia`
+This is the conceptual bridge into Arcano:
 
-## Primary Sets
+`Natura → Umano → Cultura → Mito → Magia`
 
-### Umanità
+---
 
-Purpose:
+## 2. Entry from Animali to Umanità
 
-- people;
-- social organization;
-- settlement;
-- agriculture;
-- trade;
-- basic work and survival.
+The route to Umano should be legible and should reuse the biological graph.
 
-### Cultura
+Preferred current chain:
 
-Purpose:
+- Creatura + Terra → Mammifero
+- Creatura + Tempo → Evoluzione
+- Mammifero + Evoluzione → Umano
 
-- language;
-- writing;
-- memory;
-- story;
-- art;
-- music;
-- ritual;
-- knowledge.
+Reasons:
 
-### Tecnologia
+- it avoids a magical or theological origin while the game is still in its natural phase;
+- it does not require a human-made tool before humans exist;
+- Mammifero and Evoluzione remain useful elsewhere;
+- it feels conceptual rather than falsely scientific.
 
-Purpose:
+`Mammifero + Evoluzione → Umano` is therefore the current preferred **Era IV keystone**.
 
-- tools;
-- machines;
-- energy use;
-- transport;
-- communications;
-- computing;
-- space technology.
+Umano reveals the Set **Umanità**.
 
-## Design rule: professions are mostly Collections, not core elements
+---
 
-Avoid filling the main graph with dozens of occupations.
+## 3. Content-selection tiers
 
-Instead:
+Every candidate concept is classified before it becomes content.
 
-- `Umano + Fuoco → Cuoco` may exist if Cuoco is genuinely useful later;
-- most professions should be Collections, achievements or flavor classifications;
-- use profession elements only when they become reusable ingredients.
+### Tier A — Core element
 
-Good candidate profession elements:
+Use when the concept:
 
+- unlocks a major branch;
+- participates in several recipes;
+- remains useful in later Eras;
+- or is a strong progression milestone.
+
+Core elements contribute to normal Set completion.
+
+### Tier B — Optional combinable element
+
+Use when the concept:
+
+- has appealing recipes;
+- enriches Collections;
+- has good visual identity;
+- or creates future secrets;
+
+but is not required for main progression.
+
+Optional elements may contribute to bonus completion rather than mandatory Set completion.
+
+### Tier C — Collection / Tag only
+
+Use when the concept is useful for grouping or goals but weak as an ingredient.
+
+Examples: many professions, genre labels, animal families.
+
+### Tier D — Noise / reject
+
+Do not add if the concept:
+
+- only exists to make one other recipe work;
+- has no meaningful reuse;
+- duplicates another concept;
+- creates historical trivia rather than gameplay;
+- forces arbitrary recipes.
+
+---
+
+# 4. Set: Umanità
+
+Target mature core: **15–20 Tier A elements**, plus a small optional layer.
+
+## Tier A — Core
+
+### Umano
+
+Entry:
+`Mammifero + Evoluzione → Umano`
+
+Long-term uses:
+culture, society, technology, dreams, spirits, mythology.
+
+### Comunità
+
+`Umano + Umano → Comunità`
+
+Why:
+social grouping without assuming family structure.
+
+### Casa
+
+Preferred:
+`Umano + Legno → Casa`
+
+Requires Legno to exist as a natural plant material.
+
+### Villaggio
+
+`Casa + Comunità → Villaggio`
+
+### Città
+
+`Villaggio + Strada → Città`
+
+### Agricoltura
+
+`Umano + Seme → Agricoltura`
+
+### Allevamento
+
+`Umano + Mammifero → Allevamento`
+
+### Scambio
+
+`Umano + Umano → Comunità` already occupies the direct pair.
+
+Preferred:
+`Comunità + Oggetto/Strumento → Scambio`
+
+Current exact recipe unresolved until the Strumento branch is fixed.
+
+### Mercato
+
+`Scambio + Villaggio → Mercato`
+
+### Strada
+
+`Umano + Terra → Strada`
+
+Readable symbolic route: repeated human movement turns land into paths.
+
+### Ponte
+
+`Strada + Fiume → Ponte`
+
+Strong cross-set recipe.
+
+### Viaggio
+
+`Umano + Strada → Viaggio`
+
+### Navigazione
+
+`Umano + Oceano → Navigazione`
+
+Useful precursor to Nave and exploration.
+
+### Comunità urbana / Società
+
+Do **not** create both unless later content proves they differ mechanically.
+
+Current preference:
+keep `Comunità`; reject generic `Società` as redundant.
+
+### Festa
+
+Tier A/B boundary.
+
+Possible:
+`Comunità + Musica → Festa`
+
+Useful for cozy tone and later Culture Collections.
+
+Current status: **Tier B**.
+
+## Tier B — Optional
+
+- Famiglia
+- Festa
+- Pace
 - Esploratore
 - Inventore
-- Alchimista — later Arcano bridge
 - Artista
 
-Weak candidates:
+These become real elements only if downstream recipes justify them.
+
+## Tier C — Collection/Tag
+
+- Mestieri
+- Vita quotidiana
+- Agricoltori
+- Artigiani
+- Viaggiatori
+- Cittadini
+
+## Tier D — Reject by default
 
 - Cassiere
 - Contabile
-- Barista
+- Impiegato
+- specific modern job titles with no combinatorial role
+- bureaucracy subtypes
 
-The latter add taxonomy but little combinatorial value.
+---
 
-## Umanità candidate elements
+# 5. Natural materials needed by Humanity
 
-Core candidates:
+These are not necessarily part of Umanità.
 
-- Umano
-- Famiglia
-- Gruppo
-- Villaggio
-- Città
-- Casa
-- Agricoltura
-- Allevamento
-- Mercato
-- Viaggio
-- Strada
-- Ponte
-- Nave
-- Festa
-- Guerra — optional, tone-sensitive
-- Pace
-- Commercio
-- Regno — possibly Collection-level rather than core
-- Comunità
+## Legno — Piante
 
-### Candidate recipes
+Preferred:
+`Albero + Tempo → Legno`
 
-- Vita + Tempo → Umano — too reductive; reject as primary route.
-- Animale + Evoluzione → Umano — scientifically readable but depends on keeping Evoluzione as an element.
-- Creatura + Intelligenza → Umano — requires a useful Intelligenza concept.
-- Umano + Umano → Famiglia — intuitive but socially reductive; use `Umano + Legame → Famiglia` if Legame exists later.
-- Umano + Terra → Agricoltura
-- Umano + Animale → Allevamento
-- Umano + Albero → Casa — too literal; better through materials/tools.
-- Casa + Casa → Villaggio
-- Villaggio + Villaggio → Città
-- Umano + Scambio → Mercato
-- Città + Strada → Commercio
-- Umano + Acqua → Viaggio — too broad; reject.
-- Legno + Acqua → Nave — better once tools/materials exist.
+Interpretation: fallen/aged wood as natural material, not processed lumber.
 
-The Era needs at least one clean route to `Umano`, but it should not rely on a crude symbolic shortcut.
+High reuse:
+Casa, Strumento, Carta, Nave, Ruota.
 
-## New bridge concepts
+Status: **Tier A**
 
-Candidate Set ownership: mostly Umanità or Cultura.
+## Metallo — Mondo
 
-- Intelligenza
-- Linguaggio
-- Memoria
-- Legame
-- Immaginazione
-- Curiosità
-- Conoscenza
-- Scambio
+Preferred:
+`Roccia + Calore → Metallo`
 
-These are powerful because they later support:
+Symbolic extraction/smelting precursor.
 
-- culture;
-- science;
-- emotions;
-- dreams;
-- myths.
+High reuse:
+technology, mirror, machine, later magical artifacts.
 
-However, abstract concepts should be introduced gradually so the game does not jump abruptly from concrete animals to pure philosophy.
+Status: **Tier A**
 
-## Preferred Humanity entry structure
+## Argilla — Mondo
 
-Current preferred direction:
+`Terra + Acqua → Fango` already exists conceptually.
 
-1. animal/life progression unlocks a higher cognition concept;
-2. cognition plus social interaction creates Umano;
-3. Umano becomes a major cross-set ingredient.
+Possible:
+`Fango + Tempo → Argilla`
 
-Candidate chain:
-
-- Creatura + Tempo → Evoluzione
-- Evoluzione + Curiosità → Intelligenza
-- Intelligenza + Creatura → Umano
-
-Problem:
-
-`Curiosità` is itself abstract and currently has no natural entry path.
+But this may be semantically weak.
 
 Alternative:
+`Terra + Acqua → Argilla` conflicts with Fango.
 
-- Creatura + Strumento → Umano
+Current status: **Tier B / unresolved**.
 
-Problem:
+## Fibra — Piante
 
-Strumento logically depends on Umano.
+Possible:
+`Erba + Strumento → Fibra`
 
-### Better structural approach
+But this requires Strumento.
 
-Create `Intelligenza` as a Life keystone from:
+Useful for Corda/Tessuto.
 
-`Creatura + Tempo → Intelligenza`
+Status: **Tier B**.
 
-Then:
+---
 
-`Creatura + Intelligenza → Umano`
+# 6. First tool branch
 
-This is symbolic rather than literal science, but readable.
+A human-made concept should appear soon after Umano.
 
-Preferred for current design unless a stronger route emerges.
+Preferred:
 
-## Cultura candidate elements
+`Umano + Roccia → Strumento`
 
-Core candidates:
+This is symbolic but immediately readable.
 
-- Linguaggio
-- Parola
-- Simbolo
-- Scrittura
-- Libro
-- Storia
-- Musica
-- Arte
-- Pittura
-- Danza
-- Mappa
-- Calendario
-- Scienza
-- Filosofia
-- Religione / Fede — tone-sensitive
-- Leggenda
-- Mito
-- Immaginazione
-- Conoscenza
-- Memoria
+**Strumento belongs to Tecnologia**, and its discovery reveals Tecnologia as an announced Set earlier than advanced machines.
 
-### Candidate recipes
+This is acceptable: Tecnologia begins with the simplest deliberate tool, not electricity.
 
-- Umano + Umano → Linguaggio
-- Linguaggio + Segno → Scrittura
-- Scrittura + Materiale → Libro
-- Umano + Memoria → Storia
-- Suono + Umano → Musica
-- Colore + Umano → Pittura
-- Musica + Movimento → Danza
-- Mondo + Disegno → Mappa — requires a useful Disegno concept
-- Tempo + Scrittura → Calendario
-- Curiosità + Conoscenza → Scienza
-- Storia + Immaginazione → Leggenda
-- Leggenda + Tempo → Mito
+### Strumento — Tier A
 
-Several support concepts still need clean entry routes.
+Future uses:
+- Legno
+- Carta
+- Corda
+- Ruota
+- crafted materials
+- science tools
 
-## Preferred Culture bridge toward Arcano
+---
 
-The current strongest conceptual chain remains:
+# 7. Set: Cultura
+
+Target mature core: **18–24 Tier A elements**.
+
+Cultura begins when humans represent or transmit ideas.
+
+## Core abstract bridge elements
+
+### Linguaggio — Tier A
+
+`Umano + Comunità → Linguaggio`
+
+This is preferred over Umano + Umano because the direct human pair already makes Comunità.
+
+### Memoria — Tier A
+
+Preferred:
+`Umano + Tempo → Memoria`
+
+Elegant and reusable.
+
+Future:
+Storia, Nostalgia, Spiriti, Sogni.
+
+### Immaginazione — Tier A
+
+Preferred:
+`Umano + Vuoto → Immaginazione`
+
+Interpretation: the mind fills what is absent.
+
+This is poetic but highly reusable.
+
+Future:
+Arte, Leggenda, Sogni, Magia.
+
+### Curiosità — Tier A/B
+
+Preferred:
+`Umano + Stella → Curiosità`
+
+Interpretation: looking outward creates inquiry.
+
+It supports Scienza.
+
+Current status: **Tier A**, subject to tone test.
+
+### Conoscenza — Tier A
+
+Preferred:
+`Memoria + Linguaggio → Conoscenza`
+
+Alternative later:
+Libro + Tempo → Conoscenza as alternate recipe.
+
+---
+
+## Symbolic culture
+
+### Simbolo — Tier A
+
+Preferred:
+`Linguaggio + Immaginazione → Simbolo`
+
+### Scrittura — Tier A
+
+Preferred:
+`Simbolo + Strumento → Scrittura`
+
+The tool makes symbols persistent.
+
+### Carta — Tier A
+
+Preferred:
+`Legno + Strumento → Carta`
+
+Conceptually simplified papermaking.
+
+### Libro — Tier A
+
+`Carta + Scrittura → Libro`
+
+High-value bridge element.
+
+### Storia — Tier A
+
+Preferred:
+`Memoria + Scrittura → Storia`
+
+Alternative:
+`Memoria + Linguaggio → Storia` conflicts with Conoscenza.
+
+Use writing to distinguish recorded history.
+
+### Mappa — Tier A/B
+
+`Mondo + Scrittura → Mappa`
+
+“Mondo” here refers to an element only if such a concept exists; currently the Set name is Mondo, not an element.
+
+Preferred alternative:
+`Viaggio + Scrittura → Mappa`
+
+This is stronger and uses Umanità.
+
+Status: **Tier A**.
+
+### Calendario — Tier B
+
+`Tempo + Scrittura → Calendario`
+
+Useful but not main-path.
+
+---
+
+## Arts
+
+### Arte — Tier A
+
+`Umano + Immaginazione → Arte`
+
+### Suono — Tier A support concept
+
+Preferred world recipe to add:
+`Energia + Atmosfera → Suono`
+
+This can be discovered before Humanity.
+
+### Musica — Tier A
+
+`Umano + Suono → Musica`
+
+### Danza — Tier B
+
+`Musica + Movimento → Danza`
+
+### Pittura — Tier B
+
+Needs a clean pigment/color route.
+
+Do not force a weak recipe merely to include painting.
+
+Possible later:
+`Arte + Minerale/Pigmento → Pittura`
+
+Current status: optional until Pigmento earns a place.
+
+---
+
+## Knowledge and myth
+
+### Scienza — Tier A
+
+Preferred:
+`Curiosità + Conoscenza → Scienza`
+
+Major bridge into advanced Tecnologia.
+
+### Leggenda — Tier A
+
+`Storia + Immaginazione → Leggenda`
+
+### Mito — Tier A
+
+`Leggenda + Tempo → Mito`
+
+This is the preferred cultural keystone for Arcano.
+
+### Fede — Tier B
+
+Potentially useful later for spirits/ritual.
+
+Keep broad and fictionalized; do not encode real-world religions.
+
+### Rito — Tier B
+
+Possible:
+`Comunità + Mito → Rito`
+
+### Filosofia — Tier B
+
+Could be:
+`Curiosità + Umano → Filosofia`
+
+But may be conceptually redundant with Conoscenza/Scienza.
+
+Current preference: **Collection/optional, not core**.
+
+---
+
+# 8. Arcano bridge
+
+Preferred canonical structure:
 
 `Storia + Immaginazione → Leggenda`
 
 `Leggenda + Tempo → Mito`
 
-Then Arcano eligibility allows:
+At Arcano eligibility:
 
-`Energia + Mito → Magia`
+`Mito + Energia → Magia`
 
-or:
+Reasons:
 
-`Mito + Immaginazione → Magia`
+- Mito brings symbolic meaning;
+- Energia brings force;
+- an ancient starter element becomes relevant again;
+- the supernatural emerges from culture rather than appearing as a level reward.
 
-The first has stronger continuity with ancient elements.
-The second is semantically cleaner.
+This remains the preferred Arcano trigger.
 
-Current preference:
+---
 
-**Mito + Energia → Magia**
+# 9. Set: Tecnologia
 
-Reason:
+Target mature core: **20–28 elements**.
 
-- Mito supplies meaning;
-- Energia supplies force;
-- the recipe feels like stories becoming active reality.
+Technology should be selective and combinatorially useful.
 
-## Technology design philosophy
+## Foundations
 
-Technology should progress by conceptual leaps, not every historical invention.
-
-We do not need:
-
-- every type of hammer;
-- every vehicle;
-- every computer generation.
-
-We need a compact set of highly reusable technological concepts.
-
-## Technology candidate elements
-
-### Foundations
-
-- Strumento
-- Legno
-- Pietra lavorata
-- Metallo
-- Fuoco controllato
-- Ruota
-- Corda
-- Vetro
-- Carta
-
-### Mechanisms
-
-- Ingranaggio
-- Macchina
-- Motore
-- Elettricità
-- Batteria
-- Lampada
-
-### Transport
-
-- Carro
-- Nave
-- Treno
-- Automobile
-- Aereo
-- Razzo
-
-### Communication
-
-- Segnale
-- Radio
-- Telefono
-- Rete
-
-### Computing
-
-- Calcolo
-- Computer
-- Robot
-
-### Science / exploration
-
-- Telescopio
-- Microscopio
-- Laboratorio
-- Satellite
-- Astronave
-
-## Candidate technology recipes
-
-- Umano + Pietra → Strumento
-- Strumento + Albero → Legno
-- Strumento + Roccia → Pietra lavorata
-- Strumento + Metallo → Ingranaggio
-- Ingranaggio + Energia → Macchina
-- Macchina + Fuoco → Motore
-- Energia + Metallo → Elettricità — weak scientifically; needs refinement.
-- Elettricità + Metallo → Batteria — also weak; likely requires chemistry/material concepts.
-- Macchina + Ruota → Automobile
-- Macchina + Strada → Carro/Automobile — ambiguous.
-- Uccello + Macchina → Aereo — playful and readable.
-- Fuoco + Macchina → Motore
-- Motore + Cielo/Spazio → Razzo
-- Razzo + Spazio → Satellite
-- Razzo + Umano → Astronave
-
-## Technology chronology is not sacred
-
-The game is not a history simulator.
-
-A player may discover Radio before Automobile if the graph allows it.
-
-However:
-
-- prerequisite logic should still feel sensible;
-- high-complexity technology should not appear before basic tools/materials;
-- major technological leaps should have recognizable precursor concepts.
-
-## Human-made materials
-
-Candidate elements:
-
-- Vetro
-- Carta
-- Tessuto
-- Ceramica
-- Acciaio
-- Plastica
-
-Do not add all immediately.
-
-Each must earn its place through multiple future uses.
-
-Strong candidates:
-
-### Vetro
-
-Useful for:
-
-- finestra;
-- bottiglia;
-- lente;
-- microscopio;
-- telescopio;
-- potion bottle;
-- mirror-related chains.
-
-### Carta
-
-Useful for:
-
-- libro;
-- mappa;
-- lettera;
-- origami/arte;
-- spell scroll later.
-
-### Metallo
-
-Extremely reusable across:
-
-- tools;
-- machines;
-- weapons if ever included;
-- technology;
-- magical artifacts.
-
-## Proposed human-made bridge chain
-
-One possible robust line:
-
+### Strumento — Tier A
 `Umano + Roccia → Strumento`
 
-`Strumento + Albero → Legno`
+### Corda — Tier B
+Preferred:
+`Fibra + Strumento → Corda`
 
-`Strumento + Terra → Argilla`
+Only add if Fibra survives.
 
+### Ruota — Tier A
+`Legno + Strumento → Ruota`
+
+Conflict: Legno + Strumento currently produces Carta.
+
+Therefore these cannot share the same base pair unless one is a modifier/context recipe.
+
+Resolve by introducing `Forma`? Not worth it.
+
+Preferred revision:
+- `Legno + Scrittura → Carta` is semantically poor.
+- `Legno + Acqua → Carta` is intuitive papermaking enough.
+- reserve `Legno + Strumento → Ruota`.
+
+**Decision candidate:**
+`Legno + Acqua → Carta`
+`Legno + Strumento → Ruota`
+
+This removes the conflict.
+
+### Vetro — Tier A
+`Sabbia + Fuoco/Calore → Vetro`
+
+Recipe becomes available only after human crafting capability is unlocked.
+
+### Ceramica — Tier B
 `Argilla + Fuoco → Ceramica`
 
-`Sabbia + Fuoco → Vetro`
-
-`Legno + Strumento → Carta`
-
+### Ingranaggio — Tier A
 `Metallo + Strumento → Ingranaggio`
 
-This creates materials that later feed both Technology and Arcano.
+### Lente — Tier A
+`Vetro + Strumento → Lente`
 
-## Book chain
+---
 
+## Science instruments
+
+### Telescopio — Tier A
+`Lente + Stella → Telescopio`
+
+### Microscopio — Tier A
+`Lente + Cellula → Microscopio`
+
+These are excellent because early Cosmo/Vita ingredients gain new relevance.
+
+### Laboratorio — Tier B
+Could be:
+`Scienza + Strumento → Laboratorio`
+
+Useful as a Collection/visual concept but may not need to be a core element.
+
+---
+
+## Energy and machines
+
+### Fulmine — add to Mondo, Tier A support
+`Nuvola + Energia → Fulmine`
+
+### Elettricità — Tier A
 Preferred:
+`Fulmine + Metallo → Elettricità`
 
-`Carta + Scrittura → Libro`
+Conceptually “captured/conducted lightning”.
 
-Libro is a high-value long-term ingredient.
+### Lampada — Tier B
+`Elettricità + Vetro → Lampada`
 
-Future uses:
+### Macchina — Tier A
+`Ingranaggio + Energia → Macchina`
 
-- Libro + Tempo → Storia/Archivio
-- Libro + Mito → Leggenda/Grimorio
-- Libro + Magia → Grimorio
-- Libro + Scienza → Manuale / Enciclopedia — maybe Collection, not element
-- Libro + Segreto → forbidden/secret branch later
+### Motore — Tier A
+`Macchina + Fuoco → Motore`
 
-## Mirror chain
+### Automobile — Tier A/B
+`Motore + Ruota → Automobile`
 
-Specchio is valuable for later dreams, spirits and dimensions.
+Visually strong but not essential to Arcano.
 
+### Aereo — Tier A/B
+`Macchina + Uccello → Aereo`
+
+Playful and highly legible.
+
+### Razzo — Tier A
+`Motore + Spazio → Razzo`
+
+Reconnects Technology with Cosmo.
+
+### Astronave — Tier B
+`Razzo + Umano → Astronave`
+
+### Satellite — Tier B
+Requires a better route than Razzo + Spazio, which already makes Razzo.
+
+Possible:
+`Razzo + Segnale → Satellite`
+
+Only add if Segnale survives.
+
+---
+
+## Computing
+
+### Calcolo — Tier A/B
 Preferred:
+`Umano + Scrittura → Calcolo`
 
-`Vetro + Metallo → Specchio`
+This is broad but understandable.
 
-Future:
+### Computer — Tier A
+`Calcolo + Elettricità → Computer`
 
-- Specchio + Notte → anomaly
-- Specchio + Sogno → surreal result
-- Specchio + Tempo → paradox
-- Specchio + Magia → enchanted mirror
+### Robot — Tier A/B
+`Computer + Macchina → Robot`
 
-This makes Specchio a deliberate bridge element.
+Strong end-of-Era technological discovery.
 
-## Music chain
+### Rete / Internet — Tier C/B
+Not required before Arcano.
 
-Potential structure:
+It can be expansion content later.
 
-- Umano + Suono → Musica
-- Musica + Movimento → Danza
+### Telefono / Radio — Tier C
+Useful culturally but not necessary for the core graph.
 
-Need `Suono` first.
+Do not add merely for technological chronology.
 
-Candidate:
+---
 
-`Vento + Movimento → Suono` — too broad.
-`Aria/Atmosfera + Vibrazione → Suono` — requires Vibrazione.
+# 10. Food — optional cross-era content
 
-Better to introduce `Suono` as a conceptual result from:
+Food is **not a primary Set**.
 
-`Energia + Aria → Suono`
+Use a Collection and a small number of appealing elements.
 
-But `Aria` is not currently a standalone element.
+## Keep as real elements
 
-Leave unresolved until world content is expanded.
+### Grano — Tier B
+`Seme + Agricoltura → Grano`
 
-## Food
+### Pane — Tier B
+`Grano + Fuoco → Pane`
 
-Food should exist, but not dominate the main Set structure.
+### Miele — Tier B
+`Ape + Fiore → Miele`
 
-Use a cross-era Collection plus a limited number of reusable food elements.
+### Latte — Tier B
+`Allevamento + Mammifero → Latte`
 
-Strong candidates:
+### Formaggio — Tier B
+`Latte + Tempo → Formaggio`
 
+### Tè — Tier B
+Requires Erba aromatica.
+Only add if that plant exists for other reasons.
+
+## Collection: Tavola del mondo
+
+Potential members:
+- Frutto
+- Miele
 - Pane
 - Latte
 - Formaggio
-- Miele
-- Frutta
-- Zuppa
-- Tè
+- future Tè
+- future Zuppa
 
-Why keep some:
+Reward should be cosmetic/Insight, never main progression.
 
-- cozy identity;
-- intuitive recipes;
-- useful cultural/fantasy transformations;
-- strong collectible art.
+## Reject as core
 
-Examples:
+- dozens of individual dishes;
+- recipe-book simulation;
+- ingredients used only once.
 
-- Grano + Fuoco + process step → Pane
-- Latte + Tempo → Formaggio
-- Ape + Fiore → Miele
-- Erba aromatica + Acqua → Tè
+---
 
-Pair-only limitation suggests intermediate ingredients/process elements may be necessary.
+# 11. Professions — Collection strategy
 
-Avoid bloating main progression with kitchen recipes.
+**Mestieri is a Collection family, not a Set.**
 
-## War and weapons
+Only a few professions become actual elements.
 
-Not required for the core fantasy.
+## Optional real elements
 
-Possible approach:
+### Esploratore
+`Umano + Mappa → Esploratore`
 
-- omit entirely from first launch;
-- include only broad historical concepts if needed for Civilization;
-- avoid turning Technology into a weapon tree.
+Can later interact with:
+- Oceano
+- Montagna
+- Spazio
+- Dimensioni
 
-Current recommendation:
+Good long-term value.
 
-**Do not make combat technology a core progression branch.**
+### Artista
+`Umano + Arte → Artista`
 
-## Religion / belief
+Potential later use is limited.
+Status: optional.
 
-Potentially useful for myth and spirits but culturally sensitive.
+### Inventore
+`Umano + Ingranaggio → Inventore`
 
-Prefer broad fictionalized concepts:
+Could later interact with:
+- Macchina
+- Robot
+- Magia
 
-- Fede
-- Rito
-- Mito
-- Tempio
+Status: optional but promising.
 
-rather than mapping real-world religions.
+### Alchimista
+Do not unlock before Arcano.
 
-Possible later recipes:
+Possible later:
+`Umano + Pozione → Alchimista`
 
-- Comunità + Mito → Rito
-- Rito + Luogo → Tempio
-- Mito + Energia → Magia
+Strong cross-Era profession.
 
-## Humanity Collections
+## Keep as Collection-only
 
-Strong candidates:
+- Cuoco
+- Contadino
+- Musicista
+- Scrittore
+- Scienziato
+- Artigiano
 
-### Vita quotidiana
+Unless a later content chain explicitly needs them as ingredients.
 
-- Casa
-- Pane
-- Tessuto
+---
+
+# 12. Social concepts: what is real and what is noise
+
+## Real elements
+
+- Comunità
+- Villaggio
+- Città
+- Agricoltura
+- Allevamento
 - Mercato
+- Viaggio
+- Navigazione
 - Strada
+- Ponte
+
+## Collection/Tag
+
+- Famiglia
+- Mestieri
+- Vita quotidiana
+- Civiltà
+- Commercio as a theme
+
+## Reject for core launch
+
+- government-system taxonomy;
+- dozens of institutions;
+- money/economy simulation;
+- legal systems;
+- political ideologies;
+- detailed military progression.
+
+They can exist in future thematic expansions if the game ever needs them.
+
+---
+
+# 13. High-value bridge elements
+
+The following are intentionally selected because they remain useful well beyond Era IV.
+
+| Element | Early role | Later role |
+| --- | --- | --- |
+| Umano | unlock Humanity | dreams, spirits, myth, magic |
+| Memoria | culture | nostalgia, ghosts, dreams |
+| Immaginazione | art | myths, dreams, impossible content |
+| Libro | knowledge | grimoires, secrets, cursed books |
+| Mappa | travel | hidden worlds, dimensions |
+| Specchio | crafted object | spirits, dreams, paradoxes |
+| Vetro | technology | potions, magical artifacts |
+| Metallo | machines | magical artifacts, golems |
+| Scienza | technology | paradoxes, cosmic exploration |
+| Razzo | space | dimensions/alien branches |
+| Computer | technology | simulation/paradox branches |
+| Robot | late technology | artificial-life branches |
+| Mito | Arcano bridge | magical creatures, rituals |
+
+This table is a design filter: content that cannot create future value should be scrutinized.
+
+---
+
+# 14. Specchio — deliberate bridge element
+
+Add to Tecnologia or Cultura?
+
+Preferred primary Set: **Tecnologia**, because it is a crafted material object.
+
+Recipe:
+
+`Vetro + Metallo → Specchio`
+
+Future uses:
+- Specchio + Notte → anomaly
+- Specchio + Magia → Specchio incantato
+- Specchio + Sogno → dream branch
+- Specchio + Tempo → paradox branch
+- Specchio + Spirito → haunted mirror
+
+Status: **Tier A**
+
+---
+
+# 15. Humanity Collections
+
+Recommended first set:
 
 ### Prime invenzioni
+Strumento, Ruota, Vetro, Carta, Ingranaggio.
 
-- Strumento
-- Ruota
-- Corda
-- Vetro
-- Carta
+### Vita quotidiana
+Casa, Strada, Mercato, Pane, Libro.
 
-### Arti
-
-- Musica
-- Pittura
-- Danza
-- Libro
+### Arti e storie
+Arte, Musica, Libro, Leggenda, Mito.
 
 ### Idee che cambiano il mondo
-
-- Scrittura
-- Scienza
-- Mappa
-- Calendario
-- Computer
+Scrittura, Mappa, Calendario, Scienza, Computer.
 
 ### Cose che viaggiano
+Cometa, Uccello, Viaggio, Nave, Automobile, Aereo, Razzo.
 
-Cross-era:
-- Cometa
-- Animali migratori
-- Nave
-- Treno
-- Automobile
-- Aereo
-- Razzo
+### Guardare più lontano
+Stella, Lente, Telescopio, Cellula, Microscopio.
 
-## First Humanity keystones
+### Mestieri
+Optional profession elements and collection-only profession badges.
 
-Candidate keystones for Era IV:
+---
 
-- Umano
-- Città
-- Scrittura
-- Libro
-- Strumento
-- Macchina
-- Scienza
-- Mito
+# 16. Current proposed Humanity-era content count
 
-The player should not need all of them to reach Arcano eligibility.
+Approximate, before final graph audit:
 
-## Open content problems
+- Umanità core: 12–15
+- Cultura core: 16–20
+- Tecnologia core: 18–22
+- optional food/professions: 8–12
+- supporting additions to older Sets: 6–10
 
-- Clean discovery route to Umano.
-- Clean route to Suono.
-- Whether Intelligenza, Memoria, Immaginazione and Curiosità belong in existing Sets or a later abstract Set.
-- Whether Materia should absorb human-made materials or remain early-only.
-- Whether Scienza belongs to Cultura or Tecnologia.
-- Whether food has enough value for standalone elements.
-- How much modern technology is appropriate before Arcano.
-- Whether digital concepts such as Rete belong before or after the first fantasy transition.
+Expected Era IV content contribution:
+
+**approximately 55–70 discoveries**, including optional content.
+
+This is enough to feel like a major new stage without becoming a history encyclopedia.
+
+---
+
+# 17. Main-path keystones
+
+Recommended Era IV keystones:
+
+1. Umano
+2. Strumento
+3. Comunità
+4. Scrittura
+5. Libro
+6. Scienza
+7. Macchina
+8. Mito
+
+Arcano eligibility should require:
+- a Discovery Level threshold;
+- Umano;
+- Mito;
+- and any 3 of the remaining 6 keystones.
+
+This avoids one rigid recipe chain.
+
+---
+
+# 18. Current unresolved items
+
+Still open:
+
+- whether Curiosità from `Umano + Stella` is too poetic;
+- whether Legno + Acqua → Carta is intuitive enough;
+- whether Vetro should unlock directly from Sabbia + Calore once Humanity exists;
+- exact route to Scambio/Mercato;
+- whether Automobile belongs in core completion or bonus Technology;
+- whether Calcolo is useful enough outside Computer;
+- whether Pintura needs a Pigmento element;
+- exact first profession element;
+- whether Fede/Rito enters before Arcano or waits until Invisibile.
+
+These should be tested against the full graph rather than resolved in isolation.
