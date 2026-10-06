@@ -4,11 +4,45 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 ## Status
 
-**Pre-production complete enough for Codex Phase 0 + Phase 1.**
+**Phase 0 + Phase 1 implemented:** technical scaffold, validated canonical seed and pure discovery engine.
 
-No gameplay implementation has started yet.
+The browser page is a minimal diagnostic status screen. The playable Laboratory and persistence are later phases.
 
 The first bounded implementation task is in `CODEX_TASK.md`.
+
+## Run and verify
+
+Use Node.js 22.12+ (22, 24 or 26+) and npm. CI uses Node 22.
+
+```sh
+npm ci
+npm run dev
+npm run typecheck
+npm run lint
+npm test
+npm run validate:content
+npm run simulate:content
+npm run build
+npm run preview
+```
+
+`npm run check` runs typecheck, lint, all domain/content/component tests and the validated production build. Build runs both validators before bundling. `npm run test:watch` is available during development.
+
+## Phase 0 + 1 architecture
+
+- `src/domain/`: plain TypeScript models, unordered PairKey, indexed deterministic resolver, requirement evaluation, event projection, XP/reveal/completion foundations, visibility projections and fixed-point reachability. No browser, React, storage, clock or randomness.
+- `src/content/data/`: reviewable canonical JSON, including all 67 elements, 64 recipes, 6 Sets, 4 Collections, reveal paths and the unresolved lunar anomaly. `src/content/localization/it.json` holds Italian labels and placeholder descriptions.
+- `src/content/schemas/`, `validate.ts`, `indexes/`: strict Zod parsing, semantic/reference/localization/ambiguity validation and startup indexes. Domain receives an index; it never imports bundled content.
+- `src/application/diagnostics.ts`: minimal composition root for boot validation; no save or combine transaction implementation.
+- `src/app/`, `src/ui/`, `src/styles/`: React diagnostic screen and CSS token foundation. Recipe knowledge stays out of components; the screen exposes no hidden-content totals.
+- `src/persistence/`, `src/platform/`: reserved layers only. Phase 2 adapters and later platform integrations are not implemented.
+- `scripts/`: executable content validation and deterministic simulation with intermediate checkpoints, blocked unlock diagnostics and non-secret required-path audit.
+- `tests/`: resolver, visibility, completion, invalid authoring, locked Markdown-to-JSON transcription and diagnostic boot/failure tests.
+- `.github/workflows/ci.yml`: clean install and complete check on pushes/PRs.
+
+Explicit recipes win over tag rules. Gated recipes use authored behavior/fallback; standalone anomalies need no current result. Positive requirements are ANDed and may overlap, so validation conservatively requires unique priorities for overlapping explicit variants. Tag-rule ambiguity is checked against every concrete unordered pair, including A+A. Indexes are built once at startup, never authored separately from source content.
+
+See [Phase 0 + 1 implementation notes](docs/PHASE_0_1_NOTES.md) for schema details, scope and verification evidence.
 
 ## Core fantasy
 

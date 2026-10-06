@@ -1,0 +1,99 @@
+{
+  "initialRevealedSetIds": [
+    "origins"
+  ],
+  "setAnnouncements": [
+    {
+      "setId": "origins",
+      "paths": [
+        []
+      ]
+    },
+    {
+      "setId": "cosmos",
+      "paths": [
+        []
+      ]
+    },
+    {
+      "setId": "world",
+      "paths": [
+        [
+          {
+            "type": "set_revealed",
+            "setId": "cosmos"
+          }
+        ]
+      ]
+    },
+    {
+      "setId": "plants",
+      "paths": [
+        [
+          {
+            "type": "set_revealed",
+            "setId": "life"
+          }
+        ]
+      ]
+    }
+  ],
+  "collectionReveals": [
+    {
+      "collectionId": "water_cycle",
+      "paths": [
+        [
+          {
+            "type": "element_discovered",
+            "elementId": "steam"
+          }
+        ],
+        [
+          {
+            "type": "element_discovered",
+            "elementId": "cloud"
+          }
+        ]
+      ]
+    },
+    {
+      "collectionId": "children_of_stars",
+      "paths": [
+        [
+          {
+            "type": "element_discovered",
+            "elementId": "star"
+          }
+        ]
+      ]
+    },
+    {
+      "collectionId": "rocky_world",
+      "paths": [
+        [
+          {
+            "type": "element_discovered",
+            "elementId": "rock"
+          }
+        ]
+      ]
+    },
+    {
+      "collectionId": "green_everywhere",
+      "paths": [
+        [
+          {
+            "type": "element_discovered",
+            "elementId": "seed"
+          }
+        ],
+        [
+          {
+            "type": "element_discovered",
+            "elementId": "moss"
+          }
+        ]
+      ]
+    }
+  ]
+}

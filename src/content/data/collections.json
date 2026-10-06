@@ -1,0 +1,58 @@
+[
+  {
+    "id": "water_cycle",
+    "nameKey": "collections.water_cycle.name",
+    "descriptionKey": "collections.water_cycle.description",
+    "visibility": "hidden",
+    "memberElementIds": [
+      "water",
+      "steam",
+      "cloud",
+      "rain",
+      "ocean"
+    ]
+  },
+  {
+    "id": "children_of_stars",
+    "nameKey": "collections.children_of_stars.name",
+    "descriptionKey": "collections.children_of_stars.description",
+    "visibility": "hidden",
+    "memberElementIds": [
+      "star",
+      "planet",
+      "moon",
+      "comet",
+      "asteroid",
+      "galaxy"
+    ]
+  },
+  {
+    "id": "rocky_world",
+    "nameKey": "collections.rocky_world.name",
+    "descriptionKey": "collections.rocky_world.description",
+    "visibility": "hidden",
+    "memberElementIds": [
+      "rock",
+      "soil",
+      "sand",
+      "mountain",
+      "volcano",
+      "island"
+    ]
+  },
+  {
+    "id": "green_everywhere",
+    "nameKey": "collections.green_everywhere.name",
+    "descriptionKey": "collections.green_everywhere.description",
+    "visibility": "hidden",
+    "memberElementIds": [
+      "moss",
+      "grass",
+      "flower",
+      "tree",
+      "forest",
+      "fern",
+      "cactus"
+    ]
+  }
+]

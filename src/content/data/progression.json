@@ -1,0 +1,38 @@
+{
+  "levelThresholds": [
+    0,
+    250,
+    600,
+    1000,
+    1450,
+    1950,
+    2500,
+    3100,
+    3750,
+    4450,
+    5200,
+    6000,
+    6850,
+    7750,
+    8700
+  ],
+  "rewards": {
+    "newElementBase": 100,
+    "rarityBonus": {
+      "common": 0,
+      "uncommon": 20,
+      "rare": 50,
+      "extraordinary": 100,
+      "secret": 200
+    },
+    "alternateRecipe": 20,
+    "anomalyRegistered": 30,
+    "anomalyResolved": 80,
+    "announcedSetReveal": 50,
+    "hiddenSetReveal": 125,
+    "secretSetReveal": 250,
+    "setCompletionBase": 100,
+    "setCompletionPerElement": 5,
+    "setCompletionCap": 300
+  }
+}

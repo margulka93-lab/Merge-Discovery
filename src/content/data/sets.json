@@ -1,0 +1,68 @@
+[
+  {
+    "id": "origins",
+    "nameKey": "sets.origins.name",
+    "descriptionKey": "sets.origins.description",
+    "eraId": "origins",
+    "visibility": "announced",
+    "completionMode": "required_elements",
+    "accentToken": "--accent-origins",
+    "iconKey": "sets.origins",
+    "sortOrder": 0
+  },
+  {
+    "id": "cosmos",
+    "nameKey": "sets.cosmos.name",
+    "descriptionKey": "sets.cosmos.description",
+    "eraId": "origins",
+    "visibility": "announced",
+    "completionMode": "required_elements",
+    "accentToken": "--accent-cosmos",
+    "iconKey": "sets.cosmos",
+    "sortOrder": 1
+  },
+  {
+    "id": "world",
+    "nameKey": "sets.world.name",
+    "descriptionKey": "sets.world.description",
+    "eraId": "world",
+    "visibility": "announced",
+    "completionMode": "required_elements",
+    "accentToken": "--accent-world",
+    "iconKey": "sets.world",
+    "sortOrder": 2
+  },
+  {
+    "id": "life",
+    "nameKey": "sets.life.name",
+    "descriptionKey": "sets.life.description",
+    "eraId": "life",
+    "visibility": "discovery",
+    "completionMode": "required_elements",
+    "accentToken": "--accent-life",
+    "iconKey": "sets.life",
+    "sortOrder": 3
+  },
+  {
+    "id": "plants",
+    "nameKey": "sets.plants.name",
+    "descriptionKey": "sets.plants.description",
+    "eraId": "life",
+    "visibility": "discovery",
+    "completionMode": "required_elements",
+    "accentToken": "--accent-plants",
+    "iconKey": "sets.plants",
+    "sortOrder": 4
+  },
+  {
+    "id": "fungi",
+    "nameKey": "sets.fungi.name",
+    "descriptionKey": "sets.fungi.description",
+    "eraId": "life",
+    "visibility": "hidden",
+    "completionMode": "required_elements",
+    "accentToken": "--accent-fungi",
+    "iconKey": "sets.fungi",
+    "sortOrder": 5
+  }
+]

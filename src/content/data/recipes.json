@@ -1,0 +1,642 @@
+[
+  {
+    "id": "void_energy_to_light",
+    "inputs": [
+      "void",
+      "energy"
+    ],
+    "resultElementId": "light",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "energy_energy_to_heat",
+    "inputs": [
+      "energy",
+      "energy"
+    ],
+    "resultElementId": "heat",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "energy_matter_to_plasma",
+    "inputs": [
+      "energy",
+      "matter"
+    ],
+    "resultElementId": "plasma",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "void_time_to_space",
+    "inputs": [
+      "void",
+      "time"
+    ],
+    "resultElementId": "space",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "matter_space_to_gravity",
+    "inputs": [
+      "matter",
+      "space"
+    ],
+    "resultElementId": "gravity",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "matter_heat_to_gas",
+    "inputs": [
+      "matter",
+      "heat"
+    ],
+    "resultElementId": "gas",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "matter_time_to_cosmic_dust",
+    "inputs": [
+      "matter",
+      "time"
+    ],
+    "resultElementId": "cosmic_dust",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "cosmic_dust_light_to_nebula",
+    "inputs": [
+      "cosmic_dust",
+      "light"
+    ],
+    "resultElementId": "nebula",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "plasma_gravity_to_star",
+    "inputs": [
+      "plasma",
+      "gravity"
+    ],
+    "resultElementId": "star",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "cosmic_dust_gravity_to_asteroid",
+    "inputs": [
+      "cosmic_dust",
+      "gravity"
+    ],
+    "resultElementId": "asteroid",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "cosmic_dust_space_to_comet",
+    "inputs": [
+      "cosmic_dust",
+      "space"
+    ],
+    "resultElementId": "comet",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "star_cosmic_dust_to_planet",
+    "inputs": [
+      "star",
+      "cosmic_dust"
+    ],
+    "resultElementId": "planet",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "planet_cosmic_dust_to_moon",
+    "inputs": [
+      "planet",
+      "cosmic_dust"
+    ],
+    "resultElementId": "moon",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "star_planet_to_star_system",
+    "inputs": [
+      "star",
+      "planet"
+    ],
+    "resultElementId": "star_system",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "star_star_to_galaxy",
+    "inputs": [
+      "star",
+      "star"
+    ],
+    "resultElementId": "galaxy",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "planet_heat_to_lava",
+    "inputs": [
+      "planet",
+      "heat"
+    ],
+    "resultElementId": "lava",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "lava_time_to_rock",
+    "inputs": [
+      "lava",
+      "time"
+    ],
+    "resultElementId": "rock",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "planet_comet_to_water",
+    "inputs": [
+      "planet",
+      "comet"
+    ],
+    "resultElementId": "water",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "comet_heat_to_water",
+    "inputs": [
+      "comet",
+      "heat"
+    ],
+    "resultElementId": "water",
+    "kind": "explicit",
+    "discovery": "alternate"
+  },
+  {
+    "id": "water_planet_to_ocean",
+    "inputs": [
+      "water",
+      "planet"
+    ],
+    "resultElementId": "ocean",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "rock_time_to_soil",
+    "inputs": [
+      "rock",
+      "time"
+    ],
+    "resultElementId": "soil",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "rock_water_to_sand",
+    "inputs": [
+      "rock",
+      "water"
+    ],
+    "resultElementId": "sand",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "rock_planet_to_mountain",
+    "inputs": [
+      "rock",
+      "planet"
+    ],
+    "resultElementId": "mountain",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "mountain_lava_to_volcano",
+    "inputs": [
+      "mountain",
+      "lava"
+    ],
+    "resultElementId": "volcano",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "gas_gravity_to_atmosphere",
+    "inputs": [
+      "gas",
+      "gravity"
+    ],
+    "resultElementId": "atmosphere",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "atmosphere_energy_to_wind",
+    "inputs": [
+      "atmosphere",
+      "energy"
+    ],
+    "resultElementId": "wind",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "water_heat_to_steam",
+    "inputs": [
+      "water",
+      "heat"
+    ],
+    "resultElementId": "steam",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "steam_atmosphere_to_cloud",
+    "inputs": [
+      "steam",
+      "atmosphere"
+    ],
+    "resultElementId": "cloud",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "cloud_cloud_to_rain",
+    "inputs": [
+      "cloud",
+      "cloud"
+    ],
+    "resultElementId": "rain",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "rain_heat_to_humidity",
+    "inputs": [
+      "rain",
+      "heat"
+    ],
+    "resultElementId": "humidity",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "soil_water_to_mud",
+    "inputs": [
+      "soil",
+      "water"
+    ],
+    "resultElementId": "mud",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "mud_water_to_swamp",
+    "inputs": [
+      "mud",
+      "water"
+    ],
+    "resultElementId": "swamp",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "mountain_water_to_river",
+    "inputs": [
+      "mountain",
+      "water"
+    ],
+    "resultElementId": "river",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "river_soil_to_lake",
+    "inputs": [
+      "river",
+      "soil"
+    ],
+    "resultElementId": "lake",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "sand_heat_to_desert",
+    "inputs": [
+      "sand",
+      "heat"
+    ],
+    "resultElementId": "desert",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "soil_ocean_to_island",
+    "inputs": [
+      "soil",
+      "ocean"
+    ],
+    "resultElementId": "island",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "planet_void_to_night",
+    "inputs": [
+      "planet",
+      "void"
+    ],
+    "resultElementId": "night",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "light_void_to_shadow",
+    "inputs": [
+      "light",
+      "void"
+    ],
+    "resultElementId": "shadow",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "ocean_energy_to_life",
+    "inputs": [
+      "ocean",
+      "energy"
+    ],
+    "resultElementId": "life",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "life_water_to_cell",
+    "inputs": [
+      "life",
+      "water"
+    ],
+    "resultElementId": "cell",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "cell_soil_to_bacterium",
+    "inputs": [
+      "cell",
+      "soil"
+    ],
+    "resultElementId": "bacterium",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "life_light_to_algae",
+    "inputs": [
+      "life",
+      "light"
+    ],
+    "resultElementId": "algae",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "life_energy_to_movement",
+    "inputs": [
+      "life",
+      "energy"
+    ],
+    "resultElementId": "movement",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "life_movement_to_creature",
+    "inputs": [
+      "life",
+      "movement"
+    ],
+    "resultElementId": "creature",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "creature_time_to_evolution",
+    "inputs": [
+      "creature",
+      "time"
+    ],
+    "resultElementId": "evolution",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "creature_life_to_egg",
+    "inputs": [
+      "creature",
+      "life"
+    ],
+    "resultElementId": "egg",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "life_ocean_to_plankton",
+    "inputs": [
+      "life",
+      "ocean"
+    ],
+    "resultElementId": "plankton",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "algae_soil_to_moss",
+    "inputs": [
+      "algae",
+      "soil"
+    ],
+    "resultElementId": "moss",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "life_soil_to_seed",
+    "inputs": [
+      "life",
+      "soil"
+    ],
+    "resultElementId": "seed",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "seed_water_to_sprout",
+    "inputs": [
+      "seed",
+      "water"
+    ],
+    "resultElementId": "sprout",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "sprout_soil_to_grass",
+    "inputs": [
+      "sprout",
+      "soil"
+    ],
+    "resultElementId": "grass",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "sprout_light_to_flower",
+    "inputs": [
+      "sprout",
+      "light"
+    ],
+    "resultElementId": "flower",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "sprout_time_to_tree",
+    "inputs": [
+      "sprout",
+      "time"
+    ],
+    "resultElementId": "tree",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "tree_tree_to_forest",
+    "inputs": [
+      "tree",
+      "tree"
+    ],
+    "resultElementId": "forest",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "seed_sand_to_cactus",
+    "inputs": [
+      "seed",
+      "sand"
+    ],
+    "resultElementId": "cactus",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "sprout_swamp_to_reed",
+    "inputs": [
+      "sprout",
+      "swamp"
+    ],
+    "resultElementId": "reed",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "flower_water_to_water_lily",
+    "inputs": [
+      "flower",
+      "water"
+    ],
+    "resultElementId": "water_lily",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "tree_flower_to_fruit",
+    "inputs": [
+      "tree",
+      "flower"
+    ],
+    "resultElementId": "fruit",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "moss_time_to_fern",
+    "inputs": [
+      "moss",
+      "time"
+    ],
+    "resultElementId": "fern",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "life_humidity_to_mold",
+    "inputs": [
+      "life",
+      "humidity"
+    ],
+    "resultElementId": "mold",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "mold_time_to_fungus",
+    "inputs": [
+      "mold",
+      "time"
+    ],
+    "resultElementId": "fungus",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "fungus_soil_to_mycelium",
+    "inputs": [
+      "fungus",
+      "soil"
+    ],
+    "resultElementId": "mycelium",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "fungus_atmosphere_to_spore",
+    "inputs": [
+      "fungus",
+      "atmosphere"
+    ],
+    "resultElementId": "spore",
+    "kind": "explicit",
+    "discovery": "normal"
+  },
+  {
+    "id": "algae_fungus_to_lichen",
+    "inputs": [
+      "algae",
+      "fungus"
+    ],
+    "resultElementId": "lichen",
+    "kind": "explicit",
+    "discovery": "normal"
+  }
+]

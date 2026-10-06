@@ -1,0 +1,100 @@
+[
+  {
+    "id": "reveal_cosmos_via_star",
+    "target": {
+      "type": "set",
+      "setId": "cosmos"
+    },
+    "requirements": [
+      {
+        "type": "element_discovered",
+        "elementId": "star"
+      }
+    ],
+    "revealMode": "normal"
+  },
+  {
+    "id": "reveal_world_via_lava",
+    "target": {
+      "type": "set",
+      "setId": "world"
+    },
+    "requirements": [
+      {
+        "type": "element_discovered",
+        "elementId": "lava"
+      }
+    ],
+    "revealMode": "normal"
+  },
+  {
+    "id": "reveal_world_via_water",
+    "target": {
+      "type": "set",
+      "setId": "world"
+    },
+    "requirements": [
+      {
+        "type": "element_discovered",
+        "elementId": "water"
+      }
+    ],
+    "revealMode": "normal"
+  },
+  {
+    "id": "reveal_life_via_life",
+    "target": {
+      "type": "set",
+      "setId": "life"
+    },
+    "requirements": [
+      {
+        "type": "element_discovered",
+        "elementId": "life"
+      }
+    ],
+    "revealMode": "normal"
+  },
+  {
+    "id": "reveal_plants_via_seed",
+    "target": {
+      "type": "set",
+      "setId": "plants"
+    },
+    "requirements": [
+      {
+        "type": "element_discovered",
+        "elementId": "seed"
+      }
+    ],
+    "revealMode": "normal"
+  },
+  {
+    "id": "reveal_plants_via_moss",
+    "target": {
+      "type": "set",
+      "setId": "plants"
+    },
+    "requirements": [
+      {
+        "type": "element_discovered",
+        "elementId": "moss"
+      }
+    ],
+    "revealMode": "normal"
+  },
+  {
+    "id": "reveal_fungi_via_mold",
+    "target": {
+      "type": "set",
+      "setId": "fungi"
+    },
+    "requirements": [
+      {
+        "type": "element_discovered",
+        "elementId": "mold"
+      }
+    ],
+    "revealMode": "normal"
+  }
+]

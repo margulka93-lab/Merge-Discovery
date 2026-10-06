@@ -1,0 +1,12 @@
+[
+  {
+    "id": "lunar_life_instability",
+    "inputs": [
+      "moon",
+      "life"
+    ],
+    "visibility": "archive",
+    "category": "mythic",
+    "messageKey": "anomalies.lunar_life_instability.message"
+  }
+]
