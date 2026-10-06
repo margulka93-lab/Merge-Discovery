@@ -1,90 +1,55 @@
 # Open Questions
 
-Questions are grouped by area and will be closed during design.
+Status: **non-blocking questions only**
 
-## Content structure
+All questions that would block Phase 0/1 Codex implementation have been resolved.
 
-- Which candidate macro-domains deserve a full set versus a tag/subcollection?
-- How many elements should be in the first playable content pack?
-- How many sets should be available at release?
-- Which sets are announced and which are secret?
-- How scientifically literal should early progression be?
-- At what point should abstract concepts enter the vocabulary?
-- How strange can endgame recipes become before internal logic feels arbitrary?
+The items below are intentionally left tunable or future-facing.
 
-## Progression
+## Balance
 
-- Exact level curve.
-- What raises player level?
-- Which unlocks are level-based versus discovery-based?
-- Should set completion be required anywhere?
-- How are optional branches handled?
-- Can a player become stuck, and what recovery tools exist?
+- Exact XP thresholds beyond the currently authored early curve.
+- Final Era level bands after 120–160 element playtest.
+- Exact proactive-hint stall thresholds.
 
-## Combination system
+These values live in data and do not require architecture changes.
 
-- How many no-reaction outcomes are acceptable?
-- Should failed/no-reaction pairs be remembered?
-- Should recipes ever consume or transform inventory, or is inventory conceptual/infinite?
-- Exact priority rules for tags, overrides and anomalies.
-- Whether environmental modifiers are items, modes or separate experiment slots.
+## Content beyond implementation seed
 
-## Hints
+- Final 120–160 element first substantial playable pack.
+- Final mature Animali roster.
+- Exact full Arcano / Invisibile / Impossibile recipes.
+- Which optional concepts move from Tier B to launch content.
+- Final deep-secret/easter-egg roster.
 
-- Free contextual hints versus earned hint resource.
-- How much information resonance reveals.
-- Whether the game shows counts such as “3 undiscovered reactions remain”.
-- How hints avoid turning experimentation into highlighted-answer clicking.
+These are content production questions, not engine blockers.
 
-## Catalog
+## Art production
 
-- Exact hidden/unknown/glimpsed rules.
-- Whether undiscovered slots preserve fixed ordering.
-- Element page layout.
-- Recipe completion UI.
-- Discovery graph navigation on mobile.
-- Search/filter/favorites.
+- Final logo.
+- Final bundled typography choice beyond the system fallback.
+- Approved master art for every element.
+- Final Set illustration motifs.
+- Production audio files/composition.
 
-## UX
+The UI/asset contracts are already specified.
 
-- Drag-and-drop versus tap-select behavior.
-- Desktop layout.
-- Mobile bottom navigation.
-- How large inventories remain fast to navigate.
-- Accessibility and reduced-motion behavior.
+## Later product choices
 
-## Presentation
+- Whether cloud sync/accounts are worth adding.
+- Whether analytics are added and under what privacy policy.
+- Whether Android notifications are useful.
+- Monetization model, if any.
+- Whether future expansions introduce a third/modifier experiment mode.
 
-- Final art direction.
-- Degree of illustration detail per element.
-- Set-specific visual accents.
-- Reveal animation tiers.
-- Sound identity.
-- Naming voice for descriptions and clues.
+## Public release details
 
-## Retention and meta
+- Final browser support matrix.
+- Store listing / Android release process.
+- Final content rating/privacy/store requirements.
 
-- Daily/weekly goals, if any.
-- Whether discovery streaks exist.
-- Achievements.
-- Secret discoveries/easter eggs.
-- Whether there is an end-state or only collection expansion.
+## Gate statement
 
-## Monetization
+None of the above requires Codex Phase 0 or Phase 1 to make a game-design decision.
 
-Not yet designed.
-
-The design should remain enjoyable without stamina pressure, forced waiting or pay-to-discover mechanics.
-
-## Technical design for later
-
-Deferred until gameplay design stabilizes:
-
-- frontend framework;
-- persistence;
-- cloud sync;
-- PWA;
-- Android wrapper;
-- analytics;
-- content validation pipeline;
-- localization structure.
+If implementation exposes a genuine contradiction in the locked specifications, it should be returned to design rather than guessed.
