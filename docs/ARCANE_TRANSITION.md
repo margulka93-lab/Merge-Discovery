@@ -1,6 +1,6 @@
 # First Supernatural Transition — Arcano
 
-Status: **major design draft v1**
+Status: **stable transition framework v1**
 
 This is one of the most important emotional turns in the game.
 
