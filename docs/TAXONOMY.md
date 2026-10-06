@@ -1,14 +1,18 @@
 # Taxonomy
 
-This document defines the hierarchy used to organize content. The distinction is important for scaling the game without turning every theme into a first-class set.
+Status: **stable design v2**
+
+This document defines the hierarchy used to organize content.
 
 ## 1. Era
 
 An **Era** is a macro progression chapter.
 
-It answers: **what kind of reality is the player currently learning to create?**
+It answers:
 
-Examples:
+> What kind of reality is the player currently learning to create?
+
+Current Eras:
 
 - Origini
 - Mondo
@@ -18,20 +22,20 @@ Examples:
 - Invisibile
 - Impossibile
 
-Eras are progression structure, not element ownership. An element does not need an `era_id` if its set already determines the relevant era.
+Eras organize progression. They are not element ownership buckets.
 
 ## 2. Set
 
 A **Set** is the primary catalog family of an element.
 
-Every element belongs to exactly one set.
+Every element belongs to exactly one Set.
 
 Examples:
 
+- Origini
 - Cosmo
-- Geologia
+- Mondo
 - Piante
-- Funghi
 - Animali
 - Cultura
 - Tecnologia
@@ -41,58 +45,72 @@ Examples:
 Sets drive:
 
 - catalog sections;
-- completion percentage;
-- unlock events;
-- presentation accents;
+- completion;
+- reveal events;
+- visual accents;
 - some hint logic;
-- set completion rewards.
+- Set completion rewards.
 
-A set should be large and meaningful enough that unlocking it feels like a new discovery space.
+A Set must be large/meaningful enough that revealing it opens a real new discovery space.
+
+### Important resolved choice
+
+**Materia is not a separate player-facing Set in the first game architecture.**
+
+Matter-related primitive concepts such as Plasma and Gas belong to **Origini**.
+
+Likewise:
+
+- Geologia;
+- Acque;
+- Clima;
+- Fenomeni atmosferici
+
+remain Collections/Tags inside **Mondo** unless future content volume proves a separate Set is justified.
 
 ## 3. Collection
 
-A **Collection** is an optional thematic grouping that may cross sets.
+A **Collection** is an optional thematic grouping that may cross Sets.
 
-Elements may belong to zero, one or many collections.
+Elements may belong to zero, one or many Collections.
 
 Examples:
 
 - Creature notturne
 - Cose che volano
 - Felini
-- Tempeste
-- Cose rosse
-- Spazio profondo
+- Ciclo dell'acqua
 - Vita marina
 - Inventori
 - Oggetti impossibili
 
-Collections exist for optional goals, achievements and extra discovery structure.
+Collections:
 
-They should not gate core progression.
-
-This layer solves a major taxonomy problem: themes such as Habitat, Clima, Mestieri or Cucina do not automatically need to become full sets.
+- provide optional completion goals;
+- can span multiple Eras;
+- do not gate core progression.
 
 ## 4. Tag
 
-A **Tag** is semantic metadata used primarily by game logic.
+A **Tag** is semantic metadata used mainly by game logic.
 
-Tags can support:
+Uses:
 
-- generic combination rules;
+- generic rules;
 - hint generation;
 - filtering;
-- validator checks;
-- collection membership;
-- future content tooling.
+- validation;
+- Collection authoring;
+- future tooling.
 
 Example:
 
 `Rosa`
 
-Primary set: `piante`
+Primary Set:
+`plants`
 
-Tags:
+Tags may include:
 
 - plant
 - flower
@@ -101,11 +119,11 @@ Tags:
 - terrestrial
 - fragile
 
-Tags are not necessarily visible to the player.
+Tags are not necessarily player-facing.
 
 ## 5. Rarity
 
-Rarity is orthogonal to Set.
+Rarity is independent from Set.
 
 Current scale:
 
@@ -115,108 +133,124 @@ Current scale:
 4. Straordinario
 5. Segreto
 
-Rarity describes discovery unusualness, route complexity or secrecy.
+Rarity expresses discovery unusualness, complexity or secrecy.
 
-It does not describe combat power or economic value.
+It is not power or economic value.
 
-## 6. Visibility class
+## 6. Visibility
 
-Each set and element can have a visibility class independent of rarity.
+Set/element visibility is independent from rarity.
 
 ### Announced
 
-Shown before unlock.
-
-### Hidden
-
-Not shown before a reveal condition.
-
-### Secret
-
-Designed as optional surprise content and excluded from normal completion pressure until discovered.
-
-## 7. Unlock mode
-
-A set can unlock by one of these modes.
-
-### Level
-
-Unlocked when the required player level is reached.
+Can be shown before unlock.
 
 ### Discovery
 
-Unlocked by discovering a qualifying element or concept.
+Revealed through ordinary progression discovery.
 
-### Hybrid
+### Hidden
 
-Requires both a progression threshold and a discovery condition.
+Absent until an authored reveal.
 
-### Secret trigger
+### Secret
 
-Unlocked by a specific hidden recipe, anomaly resolution or special condition.
+Optional surprise content excluded from normal completion pressure before discovery.
 
-## 8. Element ownership rule
+## 7. Unlock mode
 
-An element has exactly one primary Set even when several classifications would be defensible.
+A Set can unlock through:
+
+- level/era eligibility;
+- discovery;
+- hybrid gate;
+- secret trigger.
+
+Level opens possibility; discovery provides the reveal.
+
+## 8. Element ownership
+
+One primary Set only.
 
 Example:
 
 `Sirena`
 
-Primary set: `creature_fantastiche`
+Primary Set:
+`fantastic_creatures`
 
-Possible tags/collections:
+Possible tags/Collections:
 
 - aquatic
 - humanoid
 - mythic
 - living
-- folklore
-- sea-creatures
+- sea_creatures
 
-This prevents duplicate catalog ownership.
+No duplicate catalog ownership.
 
 ## 9. Set creation test
 
-Before creating a new Set, ask:
+Before creating a Set, ask:
 
-1. Can it support a substantial number of meaningful elements?
-2. Does unlocking it create a genuinely new search space?
-3. Does it deserve its own completion identity?
-4. Would it still matter if collections and tags existed?
-5. Does it create useful cross-set recipes?
+1. Can it support a substantial meaningful roster?
+2. Does revealing it open a new search space?
+3. Does it deserve independent completion?
+4. Would it still matter if Collections/Tags existed?
+5. Does it create useful cross-Set recipes?
 
-If most answers are no, use a Collection or Tag instead.
+If most answers are no, use Collection or Tag.
 
-## 10. Current classification decisions
+## 10. Current core Set architecture
 
-### Full sets
-
-Strong candidates:
+### Era I — Origini
 
 - Origini
 - Cosmo
-- Materia
-- Geologia
-- Atmosfera e Acque
+
+### Era II — Mondo
+
+- Mondo
+
+### Era III — Vita
+
 - Vita
 - Piante
 - Funghi
 - Animali
+
+### Era IV — Umanità
+
 - Umanità
 - Cultura
 - Tecnologia
+
+### Era V — Arcano
+
 - Magia
 - Creature fantastiche
+
+Potential future Set only if content justifies:
+- Luoghi impossibili
+
+### Era VI — Invisibile
+
 - Spiriti
 - Sogni
 - Emozioni
+
+### Era VII — Impossibile
+
 - Tempo e Dimensioni
 - Paradossi
 - Entità
 
-### Prefer collections/tags unless content proves otherwise
+## 11. Default Collection/Tag themes
 
+Prefer Collection/Tag unless later promoted:
+
+- Geologia
+- Acque
 - Clima
 - Habitat
 - Mestieri
@@ -226,7 +260,11 @@ Strong candidates:
 - Rettili
 - Uccelli
 - Mammiferi
+- Felini
 - Notturni
 - Spazio profondo
-
-These can later be promoted to Sets if content volume and progression justify it.
+- Trasporti
+- Arte
+- Scienza
+- Incubi
+- Memorie
