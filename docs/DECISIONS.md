@@ -233,3 +233,70 @@ Status: **Accepted**
 Concept art is used to validate screen structure, mood, density and responsive relationships. It does not freeze final implementation spacing or exact controls.
 
 Status: **Accepted**
+
+
+## D-039 — Materia is folded into Origini
+
+Materia is not a separate player-facing Set. Primitive matter concepts such as Plasma and Gas belong to Origini. This avoids an underfilled Set and aligns the 67-element implementation seed.
+
+Status: **Accepted**
+
+## D-040 — Core launch uses exactly two base inputs
+
+The core game uses two reusable elements per experiment. No third-slot ingredient, environment slot or directional recipe is required for the core launch. Future experiment modes may extend the experiment signature later.
+
+Status: **Accepted**
+
+## D-041 — Hints are free assistance, not a currency economy
+
+The core product has no Intuizione currency, paid hint energy or time-gated hint resource. Stronger hints unlock contextually and remain player-controlled.
+
+Status: **Accepted**
+
+## D-042 — Local-first save, no backend dependency
+
+v1 progress is stored locally behind a SaveRepository abstraction, with IndexedDB as the preferred web persistence target. Accounts/cloud are future optional layers.
+
+Status: **Accepted**
+
+## D-043 — Save schema and content version are independent
+
+Code/schema migrations and content updates are versioned separately. Derived state is recalculated after content updates so old failed pairs can gain new possibilities safely.
+
+Status: **Accepted**
+
+## D-044 — Technical architecture baseline
+
+Implementation baseline: TypeScript + React + Vite, pure domain layer, data-driven validated content, local persistence adapter, responsive PWA-first UI, later Capacitor Android wrapper.
+
+Status: **Accepted**
+
+## D-045 — First implementation seed is locked at 67 elements
+
+The canonical first Codex dataset is documented in IMPLEMENTATION_SEED_CONTENT.md and contains the exact systems coverage needed for the first engine/UI validation.
+
+Status: **Accepted**
+
+## D-046 — Accessibility target is WCAG 2.2 AA
+
+Keyboard/touch parity, no drag requirement, reduced motion, non-color-only state and accessible graph alternatives are core requirements.
+
+Status: **Accepted**
+
+## D-047 — No retention pressure loop
+
+Core retention does not use daily streak punishment, stamina refill reminders or expiring daily obligations. Return value comes from unresolved curiosity, Collections and new possibilities.
+
+Status: **Accepted**
+
+## D-048 — Monetization is not an architectural dependency
+
+The game is designed and implementable without ads, premium currency or IAP. If monetization is explored later it must wrap the finished discovery loop rather than define it.
+
+Status: **Accepted**
+
+## D-049 — Codex work is phased and PR-scoped
+
+Implementation follows IMPLEMENTATION_PLAN.md. Each task/PR has bounded scope and must not silently extend into adjacent phases.
+
+Status: **Accepted**
