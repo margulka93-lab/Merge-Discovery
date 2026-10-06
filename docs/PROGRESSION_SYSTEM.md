@@ -12,51 +12,27 @@ The player should feel:
 
 Working name: **Livello di Scoperta**.
 
-The exact public-facing name may change.
+Level represents breadth of understanding, not power.
 
-Level primarily represents breadth of understanding, not power.
-
-## Sources of progression XP
-
-XP should strongly favor novelty.
-
-Relative reward hierarchy:
-
-1. first discovery of a secret set;
-2. first discovery of a new element;
-3. set completion;
-4. anomaly resolution;
-5. discovering an alternate recipe;
-6. registering a new anomaly;
-7. repeating a known recipe: no meaningful XP.
-
-Exact numbers are deferred until the content graph is mapped.
+Exact XP values are tracked in `XP_AND_LEVELS.md`.
 
 ## Era structure
-
-The current target progression uses seven broad eras.
 
 ### Era I — Origini
 
 Approximate level band: 1–8.
 
-Focus:
-
-- primitive concepts;
-- energy;
-- matter;
-- first cosmic bodies.
-
-Primary sets:
+Primary Sets:
 
 - Origini
-- Cosmo
 - Materia
+- Cosmo
 
 Player learns:
 
 - two-input combination;
 - new discovery reveal;
+- same-element recipes;
 - catalog;
 - basic clue language.
 
@@ -64,37 +40,24 @@ Player learns:
 
 Approximate level band: 9–16.
 
-Focus:
+Primary Set:
 
-- planets becoming places;
-- geology;
-- atmosphere;
-- water;
-- climate-like phenomena.
+- Mondo
 
-Primary sets:
-
-- Geologia
-- Atmosfera e Acque
+Geology, waters and atmospheric phenomena are currently represented through tags/collections inside Mondo rather than separate Sets.
 
 Player learns:
 
-- generic tag rules;
 - alternate recipes;
-- first collections.
+- broader cross-set reuse;
+- first optional Collections;
+- tested-pair memory becoming important.
 
 ### Era III — Vita
 
 Approximate level band: 17–26.
 
-Focus:
-
-- living systems;
-- plants;
-- fungi;
-- animals.
-
-Primary sets:
+Primary Sets:
 
 - Vita
 - Piante
@@ -105,21 +68,14 @@ Player learns:
 
 - large branching discovery spaces;
 - stronger catalog filtering;
-- first “remaining reactions” hints;
-- optional collection goals.
+- remaining-reaction assistance;
+- hidden natural Sets.
 
 ### Era IV — Umanità
 
 Approximate level band: 27–36.
 
-Focus:
-
-- people;
-- culture;
-- tools;
-- technology.
-
-Primary sets:
+Primary Sets:
 
 - Umanità
 - Cultura
@@ -128,45 +84,32 @@ Primary sets:
 Player learns:
 
 - combinations between natural and human-made domains;
-- more alternate recipes;
-- richer clue types.
+- richer alternate routes;
+- broader Collection goals.
 
 ### Era V — Arcano
 
 Approximate level band: 37–46.
 
-Focus:
-
-- first major break from ordinary reality.
-
-Primary sets:
+Primary Sets:
 
 - Magia
 - Creature fantastiche
 
-Visibility:
-
-At least one primary set should be hidden before its first reveal.
+At least one major Set is hidden before reveal.
 
 Player learns:
 
 - anomaly resolution;
-- old combinations becoming valid;
-- hidden set discovery;
+- old elements gaining new possibilities;
+- hidden Set discovery;
 - secret recipes.
 
 ### Era VI — Invisibile
 
 Approximate level band: 47–56.
 
-Focus:
-
-- emotions;
-- dreams;
-- spirits;
-- memory-like concepts.
-
-Primary sets:
+Primary Sets:
 
 - Spiriti
 - Sogni
@@ -176,20 +119,13 @@ Player learns:
 
 - abstract ingredients;
 - poetic but internally consistent recipes;
-- more non-physical discovery chains.
+- non-physical discovery chains.
 
 ### Era VII — Impossibile
 
 Approximate level band: 57+.
 
-Focus:
-
-- time;
-- dimensions;
-- paradoxes;
-- cosmic or conceptual entities.
-
-Primary sets:
+Primary Sets:
 
 - Tempo e Dimensioni
 - Paradossi
@@ -203,121 +139,116 @@ Player learns:
 
 ## Level gates versus discovery gates
 
-Level gates should primarily unlock **capability**.
+Level gates primarily unlock **capability or eligibility**.
 
 Examples:
 
-- a new announced set can begin appearing;
-- a new hint type becomes available;
-- an experiment modifier slot becomes available.
+- an announced Set can become eligible;
+- an advanced hint tool becomes available;
+- a future experiment modifier can be introduced.
 
-Discovery gates should primarily unlock **meaning**.
+Discovery gates primarily unlock **meaning**.
 
 Examples:
 
-- discovering Muffa reveals Funghi;
-- resolving an impossible reaction reveals Magia;
-- discovering Incubo reveals a hidden branch of Sogni.
-
-This keeps progression from feeling like a checklist of arbitrary level locks.
+- Stella reveals Cosmo;
+- Vita reveals the Life branch;
+- Muffa reveals Funghi;
+- a future anomaly resolution may reveal Magia.
 
 ## Set unlock categories
 
-### Scheduled announced set
+### Announced
 
-The catalog shows the set in advance with a lock.
+Visible before unlock.
 
-Example:
+### Discovery
 
-`Piante — si apre durante l'Era Vita`
+Revealed by a qualifying discovery.
 
-Avoid exact level spoilers unless helpful.
+### Hybrid
 
-### Discovery set
+Requires both progression eligibility and a discovery condition.
 
-The set exists as a hidden or unnamed slot until an anchor discovery occurs.
+### Secret
 
-Example:
-
-Muffa → reveal Funghi.
-
-### Secret set
-
-No slot and no completion requirement exist before discovery.
-
-The first discovery reveals both the element and the existence of its set.
+No slot is shown before its trigger.
 
 ## Keystone discoveries
 
-Each era should contain several **keystone discoveries** that demonstrate mastery of the current search space.
+Each Era contains several keystone discoveries that demonstrate mastery.
 
 Progression must not rely on one fragile recipe.
 
-Recommended gate structure:
+Recommended gate design:
 
-- required level threshold;
-- plus any N of M keystone discoveries;
-- OR a high enough era completion percentage as fallback.
+- a minimum progression threshold;
+- plus any N of M keystones;
+- with a completion/fallback route when appropriate.
 
-This reduces the risk of players becoming stuck on one obscure combination.
+## Anomalies and future Sets
 
-## Anomalies and future sets
-
-Not every recipe leading to locked content becomes visible as an anomaly.
-
-Each future-crossing recipe must be explicitly flagged as one of:
+Each future-crossing recipe is explicitly authored as one of:
 
 - `dormant` — behaves as no reaction until eligible;
-- `anomaly` — visibly reacts and is stored;
-- `unlock_trigger` — can directly reveal a hidden set when progression conditions are met.
+- `anomaly` — visibly reacts and is archived;
+- `unlock_trigger` — can reveal a hidden Set when conditions are met.
 
-This prevents the anomaly archive from filling with accidental spoilers.
+Not every future recipe becomes an anomaly.
 
 ## Inventory semantics
 
-Current decision proposal:
+Once discovered, an element is permanently available and infinitely reusable.
 
-Once discovered, an element is conceptually owned forever and may be reused infinitely.
+Combining does not consume it.
 
-Combining does not consume elements.
-
-Reasons:
-
-- experimentation remains frictionless;
-- no farming loop is required;
-- collection state is simple and legible;
-- focus stays on discovery rather than resource management.
+This keeps experimentation frictionless and removes resource farming from the core loop.
 
 ## Same-element combinations
 
-The engine must permit explicit `A + A` recipes.
+Explicit `A + A` recipes are supported.
 
-Examples may include:
+Examples:
 
-- Albero + Albero → Foresta
-- Stella + Stella → Sistema binario
+- Energia + Energia → Calore
+- Albero + Albero → possible future forest result
 
-Same-element combination is not universally valid; it uses authored recipes like any other pair.
+Same-element combination is never universally valid.
 
 ## Recipe order
 
-Two-input recipes are unordered by default.
+Base two-input recipes are unordered.
 
 `A + B` equals `B + A`.
 
-If future experiment modifiers introduce directional behavior, that should be modeled separately rather than making base recipes order-sensitive.
+Directional behavior, if ever introduced, belongs to a separate modifier/mechanic rather than the base pair model.
 
 ## Anti-stuck design
 
-Every progression chapter must be audited for reachable paths.
+Every progression chapter must be audited for reachability.
 
-Potential recovery tools:
+Critical gates require more than one recovery path through combinations of:
 
-- free contextual clue after repeated failed experimentation;
+- alternate recipes;
+- multiple acceptable keystones;
+- contextual clue;
 - set-level clue;
 - resonance;
-- “known element still has undiscovered reactions” indicator;
-- optional goals pointing toward unexplored families;
-- alternate recipes.
+- progress fallback.
 
-No critical progression node should depend on a single obscure, unhinted recipe.
+No critical node may depend on a single obscure unhinted recipe.
+
+## First-session philosophy
+
+Detailed in `FIRST_SESSION_EXPERIENCE.md`.
+
+Core rule:
+
+Features are disclosed when they become useful rather than all appearing at level 1.
+
+Examples:
+
+- Collection after a few discoveries;
+- Set browser after the first meaningful Set expansion;
+- Anomaly archive only after the first anomaly;
+- discovery graph after enough relationships exist to justify it.
