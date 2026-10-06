@@ -1,12 +1,12 @@
-# First Content Slice — v0
+# First Content Slice — v1
 
-Status: **design draft**
+Status: **active design draft**
 
 Purpose: prove that the early universe can form a coherent reachable graph before we author hundreds of elements.
 
-This is not yet the final recipe list.
+This slice is larger than the first 30–60 minutes. It is the first several hours' content sandbox.
 
-## Starting principles
+## Starting concepts
 
 The player begins with four reusable concepts:
 
@@ -15,80 +15,89 @@ The player begins with four reusable concepts:
 3. Materia
 4. Tempo
 
-They are not consumed when used.
+They are conceptual tools, not consumable quantities.
 
-The opening should make clear that these are conceptual building blocks, not physical inventory quantities.
-
-## First 42 elements
+## Set structure in this slice
 
 ### Origini
 
-1. Vuoto — starter
-2. Energia — starter
-3. Materia — starter
-4. Tempo — starter
-5. Luce
-6. Calore
-7. Spazio
-8. Gravità
+- Vuoto
+- Energia
+- Materia
+- Tempo
+- Luce
+- Calore
+- Spazio
+- Gravità
 
 ### Materia
 
-9. Plasma
-10. Gas
+- Plasma
+- Gas
+
+This set is intentionally tiny in v1 and must later either grow or be folded into Origini.
 
 ### Cosmo
 
-11. Polvere cosmica
-12. Nebulosa
-13. Stella
-14. Asteroide
-15. Cometa
-16. Pianeta
-17. Luna
-18. Sistema stellare
-19. Galassia
+- Polvere cosmica
+- Nebulosa
+- Stella
+- Asteroide
+- Cometa
+- Pianeta
+- Luna
+- Sistema stellare
+- Galassia
 
-### Geologia
+### Mondo
 
-20. Lava
-21. Roccia
-22. Terra
-23. Sabbia
-24. Montagna
-25. Vulcano
+- Lava
+- Roccia
+- Terra
+- Sabbia
+- Montagna
+- Vulcano
+- Acqua
+- Oceano
+- Atmosfera
+- Vento
+- Vapore
+- Nuvola
+- Pioggia
+- Umidità
 
-### Atmosfera e Acque
+This replaces the earlier split between Geologia and Atmosfera e Acque for the first content pass.
 
-26. Acqua
-27. Oceano
-28. Atmosfera
-29. Vento
-30. Vapore
-31. Nuvola
-32. Pioggia
-33. Umidità
+Reason:
+
+A single `Mondo` set is more legible to the player and has healthier early content density. Geology, climate and waters can remain tags/collections unless later volume justifies promotion.
 
 ### Vita
 
-34. Vita
-35. Cellula
-36. Batterio
-37. Alga
+- Vita
+- Cellula
+- Batterio
+- Alga
+
+This is currently a small bridge set. It must expand later.
 
 ### Piante
 
-38. Muschio
-39. Seme
-40. Germoglio
-41. Albero
+- Muschio
+- Seme
+- Germoglio
+- Albero
+
+This set is underfilled and exists only to test the branch. Later content will expand it substantially.
 
 ### Funghi
 
-42. Muffa
-43. Fungo
+- Muffa
+- Fungo
 
-The draft currently contains 43 rather than 42 elements. This is intentional: content sizing should follow the graph rather than an arbitrary round number.
+Hidden set proof-of-concept only. Later content will expand it.
+
+Total current elements: **43**.
 
 ## Core recipe graph
 
@@ -117,15 +126,13 @@ The draft currently contains 43 rather than 42 elements. This is intentional: co
 
 - Pianeta + Calore → Lava
 - Lava + Tempo → Roccia
-- Cometa + Calore → Acqua
+- Pianeta + Cometa → Acqua
+- Cometa + Calore → Acqua — alternate recipe
 - Acqua + Pianeta → Oceano
 - Roccia + Tempo → Terra
 - Roccia + Acqua → Sabbia
 - Roccia + Pianeta → Montagna
 - Montagna + Lava → Vulcano
-
-### Atmosphere and water cycle
-
 - Gas + Gravità → Atmosfera
 - Atmosfera + Energia → Vento
 - Acqua + Calore → Vapore
@@ -147,133 +154,124 @@ The draft currently contains 43 rather than 42 elements. This is intentional: co
 - Seme + Acqua → Germoglio
 - Germoglio + Tempo → Albero
 
-### First hidden branch
+### First hidden natural branch
 
 - Vita + Umidità → Muffa
 - Muffa + Tempo → Fungo
 
-This draft uses Funghi as the first example of a discovery-revealed set.
-
-## Unlock demonstration
-
-The slice intentionally demonstrates several unlock modes.
+## Unlock flow
 
 ### Origini
 
 Available immediately.
 
-### Materia
-
-Announced.
-
-First qualifying discovery: Plasma or Gas.
-
 ### Cosmo
 
-Announced but locked at the start.
+Announced but initially locked.
 
-Suggested reveal trigger: first Stella.
+Preferred keystone:
 
-The player may have seen a locked `Cosmo` entry before this point.
+`Plasma + Gravità → Stella`
 
-### Geologia
+Stella reveals the full Cosmo set.
 
-Announced later.
+### Mondo
 
-Suggested reveal trigger: first Lava or Roccia after the world exists.
+Announced only after Cosmo begins.
 
-### Atmosfera e Acque
+Preferred eligibility trigger: Pianeta.
 
-Announced.
-
-Suggested reveal trigger: first Acqua.
+Preferred reveal trigger: first successful world-forming discovery such as Lava or Acqua.
 
 ### Vita
 
-Not shown as a normal locked set before its first discovery.
+Not displayed as an ordinary future locked set.
 
-Suggested reveal trigger:
+Preferred reveal:
 
 `Oceano + Energia → Vita`
 
-The reveal should feel larger than a routine element discovery.
+This should receive a major transition reveal.
 
 ### Piante
 
-Can be foreshadowed after Vita exists.
+Foreshadowed only after Vita exists.
 
-Suggested reveal trigger: Seme or Muschio.
+Preferred reveal: Seme or Muschio.
 
 ### Funghi
 
 Hidden.
 
-No catalog slot before discovery.
+No catalog slot before:
 
 `Vita + Umidità → Muffa`
 
-The first Muffa reveal also reveals the existence of the Funghi set.
+The Muffa discovery reveals the set.
 
-## Why this slice is useful
+## Water bottleneck revision
 
-It already demonstrates:
+v0 required:
 
-- starter concepts;
-- same-element recipe: Energia + Energia;
-- cross-set combinations;
-- set discovery;
-- hidden set discovery;
-- elements remaining useful across several eras;
-- one element having a long gameplay life, especially Energia, Materia, Tempo, Acqua and Calore.
+`Cometa + Calore → Acqua`
 
-## Known weaknesses to review
+That was too fragile as the only path to a critical ingredient.
 
-### Scientific looseness
+v1 makes the more conceptually legible world-building recipe primary:
 
-Some combinations are symbolic rather than scientifically literal.
+`Pianeta + Cometa → Acqua`
 
-Examples:
+Interpretation:
 
-- Materia + Spazio → Gravità
-- Stella + Polvere cosmica → Pianeta
-- Cometa + Calore → Acqua
+A young world receives water-bearing material from icy bodies.
 
-The intended tone is intuitive discovery, not a physics simulator.
+The original `Cometa + Calore → Acqua` remains as an alternate route.
 
-We should decide how far this looseness can go while early progression still feels coherent.
+This gives Acqua two paths and teaches alternate recipes naturally.
 
-### Water bottleneck
+## Scientific tone
 
-Acqua currently depends on discovering Cometa.
+The game is conceptually coherent, not a scientific simulator.
 
-This may be too obscure for a critical early ingredient.
+Early recipes should pass this test:
 
-Potential alternatives:
+> Can a curious player understand the association after seeing the result?
 
-- provide a second recipe for Acqua;
-- add Ghiaccio;
-- add Idrogeno/Ossigeno later but avoid chemistry overload;
-- use a guided clue around Cometa.
+They do not need to represent literal chemistry or astrophysics.
 
-### Atmosphere naming
+Descriptions may add a one-sentence real-world connection where appropriate without presenting symbolic recipes as exact scientific processes.
 
-`Atmosfera e Acque` may be too broad as a set name.
+## Candidate first anomaly
 
-Potential alternatives:
+Provisional only:
 
-- Mondo naturale
-- Cielo e Acque
-- Atmosfera
-- Acque
+`Luna + Vita → unstable reaction`
 
-This should be tested against future content volume.
+The future result is intentionally unspecified.
 
-### Life origin
+Purpose:
 
-`Oceano + Energia → Vita` is elegant and readable but intentionally simplified.
+- teach that a meaningful pair can exist before its domain is available;
+- foreshadow a later rule expansion;
+- avoid revealing a fantasy set name.
 
-This is probably acceptable if descriptions make clear that the game is conceptual rather than didactic.
+This recipe should remain optional and must not gate early progression.
 
-## Required validator for this content later
+## Reachability requirements
 
-When implementation begins, an automated graph validator must confirm that every non-secret element in the slice is reachable from the four starters under the intended unlock rules.
+Later automated validation must confirm:
+
+1. every required non-secret element is reachable from the starters;
+2. unlock conditions do not create circular dependencies;
+3. no critical set requires a single unhinted obscure pair;
+4. alternate recipes do not accidentally bypass intended progression;
+5. hidden recipes do not leak into visible completion counts.
+
+## Current content-design issues
+
+- Materia is too small as a mature set.
+- Vita is too small as a mature set.
+- Piante and Funghi are only skeletal proof branches.
+- Mondo may become large; tags/collections must keep navigation manageable.
+- Some cosmic recipes remain symbolic and need description review.
+- The first anomaly's eventual canonical result has not been chosen.
