@@ -25,11 +25,11 @@ Legend:
 | Anti-stuck logic | 🟡 | Failure memory and recovery rules drafted |
 | Catalog information architecture | 🟡 | Detailed v1 drafted |
 | Discovery graph | 🟡 | Modes and spoiler rules drafted |
-| Collections/achievements | 🔴 | Taxonomy exists; reward/content design remains |
+| Collections/achievements | 🟡 | Collection rules and first themes drafted; achievements remain |
 | Onboarding | 🟡 | First 30–60 minute experience drafted |
 | Early content graph | 🟡 | 43-element v1 graph; needs expansion and audit |
 | Full content map | 🔴 | Macro sizing only |
-| Fantasy transition | 🟡 | Structural intent defined; exact reveal not chosen |
+| Fantasy transition | 🟡 | Full Arcano transition draft exists; exact Humanity bridge recipes remain provisional |
 | Endgame | 🔴 | Themes only |
 | Desktop UX | 🔴 | Direction only |
 | Mobile UX | 🔴 | Direction only |
