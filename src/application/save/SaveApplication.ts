@@ -9,6 +9,7 @@ import { reconcileContent, type SaveNotice, validateActiveReferences } from '../
 import { SaveError } from './errors';
 import { migrateSave, type SaveMigration } from './migrations';
 import { createSave, engineState, projectResolution } from './projection';
+import { parseSave } from '../../domain/model/saveSchema';
 
 export interface ApplicationSnapshot {
   save: PlayerSave; revision: number; notices: SaveNotice[]; newPossibilityElementIds: string[];
@@ -90,6 +91,28 @@ export class SaveApplication {
       if (current === null) throw new SaveError('not_found', 'No save to export');
       const { save } = this.normalized(current);
       return JSON.stringify({ product: PRODUCT_ID, saveSchemaVersion: save.saveSchemaVersion, contentVersionSeen: save.contentVersionSeen, payload: save }, null, 2);
+    });
+  }
+  /** Durable favorites/settings use the same validated, revision-checked commit path. */
+  updatePreferences(change: { favoriteElementId?: string; reducedMotion?: boolean; highContrast?: boolean; textScale?: PlayerSave['settings']['textScale'] }): Promise<ApplicationSnapshot> {
+    return this.serial(async () => {
+      const slots = await this.repository.load();
+      if (slots.current === null) throw new SaveError('not_found', 'No current save');
+      const normalized = this.normalized(slots.current);
+      const save = structuredClone(normalized.save);
+      if (change.favoriteElementId !== undefined) {
+        const id = change.favoriteElementId;
+        if (!save.discoveredElements[id]) throw new SaveError('invalid_save', 'Favorite must be discovered');
+        save.favoriteElementIds = save.favoriteElementIds.includes(id) ? save.favoriteElementIds.filter(value => value !== id) : [...save.favoriteElementIds, id];
+      }
+      if (change.reducedMotion !== undefined) save.settings.reducedMotion = change.reducedMotion;
+      if (change.highContrast !== undefined) save.settings.highContrast = change.highContrast;
+      if (change.textScale !== undefined) save.settings.textScale = change.textScale;
+      save.updatedAt = this.clock();
+      const valid = parseSave(save);
+      validateActiveReferences(valid, this.index);
+      const revision = await this.repository.persist(valid, slots.revision, normalized.previousValidSave);
+      return this.snapshot(valid, revision, normalized.notices, normalized.newPossibilityElementIds);
     });
   }
   previewImport(json: string): Promise<ImportPreview> {

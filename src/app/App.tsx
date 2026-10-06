@@ -1,9 +1,261 @@
-import { engineStatus } from '../application/diagnostics';
-import { DiagnosticStatus } from '../ui/DiagnosticStatus';
-import { SaveDiagnostics } from '../ui/SaveDiagnostics';
-import { saveRuntime } from './saveRuntime';
+import { useEffect, useRef, useState } from "react";
+import { engineStatus } from "../application/diagnostics";
+import {
+  laboratoryModel,
+  laboratoryReaction,
+  type LabReaction,
+} from "../application/laboratory";
+import type {
+  ApplicationSnapshot,
+  SaveApplication,
+} from "../application/save/SaveApplication";
+import { saveErrorMessage } from "../application/save/errors";
+import { DiagnosticStatus } from "../ui/DiagnosticStatus";
+import { SaveDiagnostics } from "../ui/SaveDiagnostics";
+import { AppShell } from "../ui/shell/AppShell";
+import { Laboratory } from "../ui/lab/Laboratory";
+import { InlineNotice } from "../ui/components/LabComponents";
+import { saveRuntime } from "./saveRuntime";
 
+export function LaboratoryApplication({
+  application,
+  boot,
+}: {
+  application: SaveApplication;
+  boot: Promise<ApplicationSnapshot>;
+}) {
+  const [snapshot, setSnapshot] = useState<ApplicationSnapshot>();
+  const [slots, setSlots] = useState<[string?, string?]>([]);
+  const [reaction, setReaction] = useState<LabReaction>();
+  const [active, setActive] = useState("lab");
+  const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [announcement, setAnnouncement] = useState("");
+  const lock = useRef(false);
+  useEffect(() => {
+    let alive = true;
+    boot.then(
+      (value) => {
+        if (alive) setSnapshot(value);
+      },
+      (cause) => {
+        if (alive) setError(saveErrorMessage(cause));
+      },
+    );
+    return () => {
+      alive = false;
+    };
+  }, [boot]);
+  const run = async (action: () => Promise<void>) => {
+    if (lock.current) return;
+    lock.current = true;
+    setBusy(true);
+    setError("");
+    setAnnouncement("");
+    try {
+      await action();
+    } catch (cause) {
+      setError(saveErrorMessage(cause));
+    } finally {
+      lock.current = false;
+      setBusy(false);
+    }
+  };
+  const accept = (value: ApplicationSnapshot) => {
+    setSnapshot(value);
+    setSlots([]);
+    setReaction(undefined);
+    setActive("lab");
+    setError("");
+  };
+  if (!snapshot)
+    return (
+      <main className="boot-screen">
+        <h1>Merge Discovery</h1>
+        {error ? (
+          <>
+            <InlineNotice message={error} error />
+            <SaveDiagnostics
+              application={application}
+              boot={boot}
+              onSnapshot={accept}
+            />
+          </>
+        ) : (
+          <p role="status">Apertura dell’osservatorio…</p>
+        )}
+      </main>
+    );
+  const model = laboratoryModel(snapshot, application.index, slots[0]);
+  const reset = () => {
+    setSlots([]);
+    setReaction(undefined);
+  };
+  const preferences = (
+    change: Parameters<SaveApplication["updatePreferences"]>[0],
+  ) =>
+    void run(async () =>
+      setSnapshot(await application.updatePreferences(change)),
+    );
+  return (
+    <AppShell model={model} active={active} navigate={setActive}>
+      <div
+        className="live-announcement sr-only"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {announcement}
+      </div>
+      {error && (
+        <div className="save-warning">
+          <InlineNotice message={error} error />
+          <button
+            disabled={busy}
+            onClick={() =>
+              void run(async () => {
+                setSnapshot(await application.load());
+              })
+            }
+          >
+            Ricarica il progresso salvato
+          </button>
+        </div>
+      )}
+      <div className="lab-panels" hidden={active !== "lab"}>
+        <Laboratory
+          model={model}
+          slots={slots}
+          reaction={reaction}
+          busy={busy}
+          select={(id) => {
+            if (busy || (slots[0] && slots[1])) return;
+            setReaction(undefined);
+            setSlots(slots[0] ? [slots[0], id] : [id, slots[1]]);
+          }}
+          clear={(slot) => {
+            setSlots(
+              slot === 0 ? [undefined, slots[1]] : [slots[0], undefined],
+            );
+            setReaction(undefined);
+          }}
+          combine={() => {
+            if (!slots[0] || !slots[1]) return;
+            const [a, b] = slots as [string, string];
+            setReaction(undefined);
+            void run(async () => {
+              const transaction = await application.combine(a, b);
+              const outcome = laboratoryReaction(
+                transaction.resolution,
+                transaction.snapshot,
+                application.index,
+              );
+              setSnapshot(transaction.snapshot);
+              setReaction(outcome);
+              setAnnouncement(outcome.announcement);
+            });
+          }}
+          favorite={(id) => preferences({ favoriteElementId: id })}
+          onUseResult={() => {
+            if (reaction?.element) setSlots([reaction.element.id]);
+            setReaction(undefined);
+          }}
+          repeat={() => {
+            setSlots([slots[0]]);
+            setReaction(undefined);
+          }}
+          reset={reset}
+        />
+      </div>
+      {active !== "lab" && (
+        <main className="destination-panel">
+          <p className="eyebrow">Il tuo osservatorio</p>
+          <h2>
+            {active === "explore"
+              ? "Esplora"
+              : model.destinations.find((d) => d.id === active)?.label}
+          </h2>
+          {active === "settings" ? (
+            <>
+              <fieldset aria-busy={busy}>
+                <legend>Accessibilità</legend>
+                <label>
+                  <input
+                    type="checkbox"
+                    aria-disabled={busy}
+                    checked={model.reducedMotion}
+                    onChange={(e) =>
+                      preferences({ reducedMotion: e.target.checked })
+                    }
+                  />{" "}
+                  Movimento ridotto
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    aria-disabled={busy}
+                    checked={model.highContrast}
+                    onChange={(e) =>
+                      preferences({ highContrast: e.target.checked })
+                    }
+                  />{" "}
+                  Contrasto elevato
+                </label>
+                <label htmlFor="text-scale">Dimensione del testo</label>
+                <select
+                  id="text-scale"
+                  aria-disabled={busy}
+                  value={model.textScale}
+                  onChange={(e) =>
+                    preferences({
+                      textScale: e.target.value as LabModelTextScale,
+                    })
+                  }
+                >
+                  <option value="default">Normale</option>
+                  <option value="large">Grande</option>
+                  <option value="extra_large">Molto grande</option>
+                </select>
+              </fieldset>
+              <details>
+                <summary>Salvataggio locale · importazione e recupero</summary>
+                <SaveDiagnostics
+                  application={application}
+                  boot={boot}
+                  onSnapshot={accept}
+                />
+              </details>
+            </>
+          ) : (
+            <>
+              <p>
+                Questa destinazione è stata sbloccata. La sua schermata sarà
+                disponibile in una fase successiva.
+              </p>
+              {active === "explore" && (
+                <div>
+                  <button onClick={() => setActive("anomalies")}>
+                    Anomalie
+                  </button>
+                  <button onClick={() => setActive("map")}>Mappa</button>
+                </div>
+              )}
+            </>
+          )}
+          <button className="secondary warm" onClick={() => setActive("lab")}>
+            Torna al laboratorio
+          </button>
+        </main>
+      )}
+    </AppShell>
+  );
+}
+type LabModelTextScale = "default" | "large" | "extra_large";
 const status = engineStatus();
 export function App() {
-  return <DiagnosticStatus {...status}>{status.ready && <SaveDiagnostics {...saveRuntime()} />}</DiagnosticStatus>;
+  return status.ready ? (
+    <LaboratoryApplication {...saveRuntime()} />
+  ) : (
+    <DiagnosticStatus {...status} />
+  );
 }
