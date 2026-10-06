@@ -4,9 +4,9 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 ## Status
 
-**Phase 0 + Phase 1 + Phase 2 implemented:** technical scaffold, validated canonical seed, pure discovery engine and local application/save layer.
+**Phase 0–3 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer and first playable responsive Laboratory.
 
-The browser page remains a diagnostic screen, now with IndexedDB save status and JSON import/export checks. Phase 3 is ready to replace it with the first playable Laboratory.
+The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, repeat with A or start a new experiment. The library searches owned elements only; favorites and accessibility preferences persist in IndexedDB. Eligible future destinations are minimal placeholders. Phase 4 has not started.
 
 The current bounded implementation task is Phase 3 in `CODEX_TASK.md`.
 
@@ -24,9 +24,11 @@ npm run validate:content
 npm run simulate:content
 npm run build
 npm run preview
+npx playwright install chromium
+npm run test:e2e
 ```
 
-`npm run check` runs typecheck, lint, all domain/content/component tests and the validated production build. Build runs both validators before bundling. `npm run test:watch` is available during development.
+`npm run check` runs typecheck, lint, all domain/content/component tests and the validated production build. Build runs both validators before bundling. `npm run test:e2e` separately runs Chromium viewport, keyboard, IndexedDB reload, axe and screenshot checks; CI runs both gates. `npm run test:watch` is available during development.
 
 ## Phase 0 + 1 architecture
 
@@ -48,11 +50,13 @@ See [Phase 0 + 1 implementation notes](docs/PHASE_0_1_NOTES.md) for schema detai
 
 `src/application/save/SaveApplication.ts` coordinates load/new game, combine, migrations, reconciliation, import preview/confirmation, export and explicit recovery. `src/domain/model/save.ts` and `saveSchema.ts` define/strictly validate durable v1 facts independently of content version. `src/persistence/` provides memory and Dexie/IndexedDB adapters with one atomic current/backup row and revision conflict checks.
 
-The diagnostic JSON field shows an export of owned progress only. “Verifica import” previews without writing; “Conferma sostituzione del progresso” commits explicitly. The export/round-trip check also does not overwrite. Corruption offers original-data export and previous-backup recovery, never an automatic reset. No combine UI is implemented.
+The retained diagnostic JSON controls are under Impostazioni → Salvataggio locale. “Verifica import” previews without writing; “Conferma sostituzione del progresso” commits explicitly. Corruption offers original-data export and previous-backup recovery, never an automatic reset. The Phase 3 Laboratory uses the same combine transaction and publishes results only after persistence succeeds.
 
 Tests include the actual Dexie adapter under fake-indexeddb, atomic rollback, compatibility fixtures and confirmed import. Existing commands and the CI gate also run these Phase 2 tests.
 
 See [Phase 2 implementation notes](docs/PHASE_2_NOTES.md) for migration, quarantine, backup and concurrency contracts.
+
+See [Phase 3 implementation notes](docs/PHASE_3_NOTES.md) for UI architecture, component inventory, responsive/accessibility evidence and the three required screenshots.
 
 ## Core fantasy
 

@@ -10,11 +10,10 @@ import { MemorySaveRepository } from '../src/persistence/memory/MemorySaveReposi
 import { loadSeed } from '../src/content/load';
 
 afterEach(cleanup);
-it('boots the diagnostic scaffold without revealing hidden content', async () => {
+it('boots the playable Laboratory without revealing hidden content', async () => {
   render(<App />);
-  expect(screen.getByRole('heading', { name: 'Merge Discovery' })).toBeTruthy();
-  expect(screen.getAllByRole('status').some(e => e.textContent?.includes('Motore pronto'))).toBe(true);
-  await screen.findByText(/Salvataggio creato\/caricato/);
+  await screen.findByRole('heading', { name: 'Laboratorio' });
+  expect(screen.getByRole('button', { name: 'Combina' }).hasAttribute('disabled')).toBe(true);
   expect(document.body.textContent).not.toMatch(/Funghi|Muffa|67|lunar_life/);
 });
 it('diagnostic export/preview remains non-destructive until explicit confirmation', async () => {

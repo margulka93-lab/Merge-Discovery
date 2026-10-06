@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { ApplicationSnapshot, ImportPreview, SaveApplication } from '../application/save/SaveApplication';
 import { saveErrorMessage } from '../application/save/errors';
 
-export function SaveDiagnostics({ application, boot }: { application: SaveApplication; boot: Promise<ApplicationSnapshot> }) {
+export function SaveDiagnostics({ application, boot, onSnapshot }: { application: SaveApplication; boot: Promise<ApplicationSnapshot>; onSnapshot?: (snapshot: ApplicationSnapshot) => void }) {
   const [snapshot, setSnapshot] = useState<ApplicationSnapshot>();
   const [error, setError] = useState('');
   const [json, setJson] = useState('');
@@ -35,12 +35,12 @@ export function SaveDiagnostics({ application, boot }: { application: SaveApplic
     {preview && <div>
       <p>Preview: {preview.discoveries} scoperte · {preview.xp} XP · schema {preview.schemaVersion}.</p>
       <p>La conferma sostituirà il progresso locale. Il precedente salvataggio valido resterà nel backup.</p>
-      <button disabled={busy} onClick={() => void run(async () => { setSnapshot(await application.confirmImport(preview, true)); setPreview(undefined); })}>Conferma sostituzione del progresso</button>
+      <button disabled={busy} onClick={() => void run(async () => { const value = await application.confirmImport(preview, true); setSnapshot(value); onSnapshot?.(value); setPreview(undefined); })}>Conferma sostituzione del progresso</button>
       <button disabled={busy} onClick={() => setPreview(undefined)}>Annulla import</button>
     </div>}
     {!snapshot && error && <div>
       <button disabled={busy} onClick={() => void run(async () => setJson(await application.exportRawRecovery()))}>Esporta dati originali per recupero</button>
-      <button disabled={busy} onClick={() => void run(async () => { setSnapshot(await application.recoverBackup(true)); })}>Conferma recupero del backup precedente</button>
+      <button disabled={busy} onClick={() => void run(async () => { const value = await application.recoverBackup(true); setSnapshot(value); onSnapshot?.(value); })}>Conferma recupero del backup precedente</button>
     </div>}
   </section>;
 }
