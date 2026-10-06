@@ -1,0 +1,5 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-ui); font-size: var(--text-body); line-height: 1.6; }
+main { max-width: 48rem; margin: auto; padding: var(--space-8) var(--space-4); }
+h1 { font-size: var(--text-xl); }
+code, pre { overflow-wrap: anywhere; white-space: pre-wrap; }
