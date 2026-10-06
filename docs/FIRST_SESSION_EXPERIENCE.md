@@ -1,6 +1,6 @@
 # First Session Experience
 
-Status: **design draft v1**
+Status: **stable seed onboarding v1**
 
 This document designs the first 30–60 minutes as an experience rather than a fixed tutorial script.
 
