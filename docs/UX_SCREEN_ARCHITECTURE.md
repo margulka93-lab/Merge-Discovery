@@ -1,433 +1,285 @@
 # UX & Screen Architecture
 
-Status: **interaction design draft v1**
+Status: **stable interaction architecture v2**
 
-The game is web-first, responsive and touch-friendly from the start.
+Merge Discovery is web-first, responsive and touch-friendly.
 
-The same information architecture should support desktop and Android-sized screens.
+Desktop/mobile share one information architecture.
 
-## Navigation model
+Exact breakpoint behavior is defined in `RESPONSIVE_AND_UI_STATES.md`.
+
+## Navigation
 
 Primary destinations:
 
-1. Laboratorio
-2. Collezione
-3. Set / Collezioni
-4. Anomalie — only after first anomaly
-5. Mappa — only after enough graph density
-6. Profilo / Impostazioni
+- Laboratorio
+- Collezione
+- Set / Collezioni
+- Anomalie — after first anomaly
+- Mappa — after useful graph density
+- Impostazioni / Profilo
 
-On mobile, use bottom navigation for the most frequent destinations.
+Mobile:
+max five bottom-nav destinations.
 
-On desktop, use a persistent side rail.
+Once both Map and Anomalies exist, group them under **Esplora**.
+
+Desktop:
+persistent side rail may show them separately.
 
 ## Laboratory — desktop
 
-Three-zone layout:
+Three zones:
 
 ### Left rail
 
-- primary navigation;
-- current level;
+- navigation;
+- Discovery Level;
 - discovery count;
-- optional active objective.
+- optional **player-pinned** Collection objective.
 
-### Center workspace
+### Center
 
-- two combination slots;
-- combine action;
-- reaction/result area;
-- contextual clue area;
-- last discovery shortcut.
+- Slot A
+- Slot B
+- Combine
+- reaction/result
+- hint control
+- last discovery shortcut
 
 ### Right library
 
-- search;
-- favorites;
-- filters;
-- known elements grid/list;
-- tested-pair state relative to the selected first input.
-
-Desktop advantage:
-
-The player can keep inventory visible while combining.
+- search
+- favorites
+- filters
+- known element cards
+- tested-pair context relative to selected input
 
 ## Laboratory — mobile
 
-Single focused vertical flow.
+Order:
 
-Header:
+- compact status
+- slots
+- Combine
+- result
+- favorites/search
+- library
+- bottom navigation
 
-- level;
-- recent discovery indicator;
-- compact menu if needed.
+Tap-select is baseline.
 
-Center:
+Drag is enhancement only.
 
-- slot A;
-- plus;
-- slot B;
-- combine button;
-- reaction/result.
+## Input
 
-Lower area:
+Tap element:
+fills next free slot.
 
-- horizontal/vertical element library;
-- search;
-- quick favorites.
+Tap filled slot:
+clears it.
 
-Bottom navigation:
+Tap same element when one slot already contains it:
+fills second slot, enabling A+A naturally.
 
-- Lab
-- Collection
-- Sets
-- Map/Anomalies contextual slot
-- Profile
+## Combine
 
-Avoid tiny drag targets.
+Explicit Combine action is required after two inputs.
 
-Tap-select is the baseline interaction.
+No auto-resolve on second selection.
 
-Drag-and-drop is optional enhancement.
+## After result
 
-## Input behavior
-
-### Tap
-
-Tap an element:
-
-- fills the next free slot.
-
-Tap a filled slot:
-
-- clears it.
-
-Tap an already selected element while only one slot is filled:
-
-- if same-element recipes are supported, fill the second slot with the same element.
-
-This makes A+A discoverable without a tutorial wall.
-
-### Drag
-
-Drag into a slot is supported on desktop and touch devices where comfortable.
-
-Do not require it.
-
-## Combine button
-
-The button is active only when both slots are populated.
-
-Why explicit action is preferred:
-
-- readable intentionality;
-- consistent on mobile;
-- supports pre-reaction anticipation;
-- prevents accidental combinations during scrolling/dragging.
-
-## Post-combination state
-
-### New discovery
-
-Show:
-
-- short reveal animation;
-- new element;
-- `Nuova scoperta`;
-- actions:
-  - Use now
-  - View card
-  - Dismiss/continue
-
-### Known result
-
-Fast feedback.
-
-Do not replay the full reveal.
-
-### No reaction
-
-Short, neutral response.
-
-The pair becomes remembered.
-
-### Anomaly
-
-Distinct effect.
+Result does **not** automatically replace Slot A.
 
 Offer:
 
-- Save to archive — automatic by default, button wording may simply acknowledge.
-- View anomaly — optional.
+- **Usa risultato** — result becomes Slot A, Slot B clears
+- **Ripeti con A** — original Slot A remains, Slot B clears
+- **Nuovo esperimento** — both clear
 
-## Library item states
+Known quick reactions may use a compact version of these controls.
 
-Element card can show:
+## Failure/anomaly
 
-- favorite;
-- new;
-- currently exhausted;
-- new possibilities;
-- tested/no reaction relative to selected input;
-- anomaly relation.
+No reaction:
+neutral short feedback, pair remembered.
 
-Do not show all icons at once.
+Anomaly:
+distinct visual state, archive registration automatic.
 
-Priority and context determine which state is visible.
+## Library state priority
 
-## Selected-input mode
+Relative to selected Slot A, show at most the most useful contextual marker.
 
-When Slot A contains an element, the library becomes context-aware.
+Priority examples:
 
-Possible visual changes:
+1. anomaly/revisitable
+2. new possibilities
+3. tested failure
+4. known success
+5. default
 
-- already tested no-reaction partners become subtly muted;
-- known successful partners can show a tiny history mark;
-- anomaly partners can show instability mark;
-- untested elements remain visually normal.
+Do not light up undiscovered valid partners.
 
-Important:
+## Favorites
 
-Do not brighten all valid undiscovered partners by default.
+All favorited elements are available through filter.
 
-That would solve the game automatically.
+Quick access:
+
+- mobile: horizontal favorites strip, up to ~6 visible before scroll;
+- desktop: first 8 recent/pinned favorites before overflow.
+
+No hard cap on stored favorites.
 
 ## Search
 
-Sticky and fast.
+Always available once catalog/library size justifies it.
 
-Desktop:
-- always visible.
-
-Mobile:
-- compact bar above library or expandable search.
-
-Search results never expose hidden content.
+No hidden content in autocomplete.
 
 ## Filters
 
-Quick filters:
+Quick:
 
-- Favorites
-- New
-- Has possibilities
-- Current Set
+- Preferiti
+- Nuovi
+- Ha possibilità
+- Set corrente
 
-Advanced filters live in a sheet/panel.
+Advanced:
+sheet/panel.
 
-## Collection screen
+## Collection
 
-Default view:
+Default answers:
 
-- recent discoveries;
-- active Sets;
-- near-complete Sets;
-- favorites.
+- cosa ho appena scoperto?
+- dove sto progredendo?
+- cosa può essere interessante riesaminare?
 
-Desktop can show element detail in a right pane.
+Mobile detail:
+dedicated route/page.
 
-Mobile opens detail as dedicated page/sheet.
+Desktop:
+optional inspector pane.
 
-## Sets screen
+## Set / Collection tabs
 
-Two tabs:
+Keep Sets and Collections conceptually separate.
 
-- Sets
-- Collections
+Do not merge them into one undifferentiated list.
 
-Avoid treating both as one undifferentiated grid.
+## Element Detail
 
-### Set card
+Structure defined in `SCREEN_SPECS.md`.
 
-Shows:
+Reaction history belongs to **Element Detail → Esperimenti**, not a standalone global matrix.
 
-- name;
-- art/icon;
-- visible completion;
-- unlock state;
-- new possibilities badge.
+## Anomalies
 
-### Collection card
-
-Shows:
-
-- theme;
-- chapter completion;
-- optional reward;
-- no main-path pressure.
-
-## Element detail — mobile
-
-Recommended vertical structure:
-
-1. hero art;
-2. name / set / rarity;
-3. short description;
-4. discovered recipe;
-5. known alternate recipes;
-6. reactions / possibilities;
-7. collections;
-8. graph shortcut;
-9. experiment history.
-
-No dense two-column tables.
-
-## Element detail — desktop
-
-Two-column detail:
-
-Left:
-- artwork;
-- identity;
-- description.
-
-Right:
-- recipes;
-- relationships;
-- collections;
-- graph preview.
-
-## Anomaly archive
-
-Unavailable before first anomaly.
-
-Main list shows:
-
-- input pair;
-- status;
-- when first observed;
-- whether something changed.
+Archive unavailable before first anomaly.
 
 States:
 
-- unstable;
-- dormant;
-- revisitable;
-- resolved.
+- instabile
+- inerte
+- riesaminabile
+- risolta
 
-Never show hidden result name before resolution.
+Hidden result never appears before resolution.
 
-## Discovery map
+## Map
 
-Unlock after approximately 15–20 discoveries.
+Unlock around 15–20 discoveries or equivalent graph density.
 
-### Desktop
+Desktop:
+pan/zoom local graph.
 
-Canvas-style pan/zoom.
+Mobile:
+one-hop/local neighborhood by default.
 
-Default focus:
+Accessible relationship list always available.
 
-- selected element;
-- nearby relationships.
+## Progressive disclosure
 
-### Mobile
+Start:
+Lab + settings access.
 
-Only local neighborhood by default.
+After early discoveries:
+Collection.
 
-Full global graph is optional.
-
-Controls:
-
-- center;
-- back;
-- ancestry;
-- possibilities;
-- set filter.
-
-## First-run progressive disclosure
-
-At game start:
-
-Visible:
-- Lab only.
-
-After ~3 discoveries:
-- Collection.
-
-After first Set expansion:
-- Sets.
+After first Set reveal:
+Sets.
 
 After first anomaly:
-- Anomalies.
+Anomalies.
 
-After graph density threshold:
-- Map.
+After graph density:
+Map.
 
-Settings/Profile remain accessible through a compact control from the beginning.
+## Celebration hierarchy
 
-## Visual hierarchy of celebrations
+1. known result
+2. alternate recipe
+3. new element
+4. Collection complete
+5. normal Set reveal
+6. hidden Set reveal
+7. Era-defining discovery
+8. supernatural/anomaly culmination
 
-From least to most important:
+## Persistent header
 
-1. known reaction;
-2. alternate recipe;
-3. new element;
-4. collection complete;
-5. normal Set reveal;
-6. hidden Set reveal;
-7. Era-defining discovery;
-8. first supernatural transition / major anomaly resolution.
+Prioritize:
 
-The game must not use the same animation for all events.
+- Discovery Level
+- discovery count
+- relevant contextual alert
 
-## Persistent status
+No coin/gem/stamina bar.
 
-Header should prioritize:
+## Pinned objectives
 
-- Discovery Level;
-- total discovered count;
-- active contextual alert.
+No Collection goal appears in Lab automatically.
 
-Do not show five currencies.
+Player can pin one optional objective from Collection/Set screens.
 
-At current design stage, there is no reason for the header to contain:
+## Set reveal environment
 
-- coins;
-- stamina;
-- premium gems;
-- crafting resources.
+During reveal only, the Lab may temporarily react to the new Set accent.
 
-## Responsive breakpoints — conceptual
+Afterward it returns to the normal shell.
 
-Exact CSS values deferred.
+Do not permanently recolor the entire Lab per Set.
 
-### Wide desktop
+## Core launch experiment mode
 
-Three columns.
+Exactly two reusable inputs.
 
-### Tablet / narrow desktop
+No third ingredient slot, environment slot or directional recipe in core launch.
 
-Side navigation + center workspace, library becomes collapsible drawer.
+Future experiment modes must extend the domain signature deliberately and are not part of initial architecture scope beyond extensibility.
 
-### Mobile
+## Accessibility
 
-Single column + bottom navigation.
+See `ACCESSIBILITY.md`.
 
-Core interaction remains identical.
+Core rules:
 
-## Orientation
+- no drag requirement
+- full keyboard path
+- no color-only state
+- reduced motion
+- large text resilience
+- touch targets
 
-Portrait mobile is primary.
+## Resolved former open questions
 
-Landscape should work but does not need a unique custom layout in v1.
-
-## Accessibility interaction requirements
-
-Already known even before full accessibility design:
-
-- all actions available without drag;
-- keyboard support on web;
-- no color-only state communication;
-- reduced motion option;
-- readable touch targets;
-- text scaling must not break the combine area.
-
-## UX questions still open
-
-- whether the first slot selection should persist after a result for rapid experimentation;
-- whether “Use now” puts the new result into Slot A automatically;
-- how many favorites appear in quick access;
-- whether reaction history belongs on element detail or separate history;
-- exact placement of hint controls;
-- whether active Collection goals appear in Lab by default;
-- whether Set reveal temporarily changes Lab background/accent.
+- result persistence: explicit post-result actions, no automatic replacement;
+- reaction history: Element Detail;
+- hint control: near reaction stage / contextual detail, secondary hierarchy;
+- Lab Collection objective: player-pinned only;
+- Set reveal: temporary reveal accent only;
+- breakpoints: defined in responsive specification.
