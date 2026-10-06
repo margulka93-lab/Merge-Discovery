@@ -6,9 +6,9 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 **Phase 0–3 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer and first playable responsive Laboratory.
 
-The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, repeat with A or start a new experiment. The library searches owned elements only; favorites and accessibility preferences persist in IndexedDB. Eligible future destinations are minimal placeholders. Phase 4 has not started.
+The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, repeat with A or start a new experiment. The library searches owned elements only; favorites and accessibility preferences persist in IndexedDB. The playable Laboratory is merged. Phase 4 now turns the Collection/Set placeholders into the real field-guide catalog and Element Detail experience.
 
-The current bounded implementation task is Phase 3 in `CODEX_TASK.md`.
+The current bounded implementation task is Phase 4 in `CODEX_TASK.md`.
 
 ## Run and verify
 
