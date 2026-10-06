@@ -1,261 +1,289 @@
 # Set & Progression Framework
 
-This document defines the current macro-structure. Names, order and level thresholds are provisional until content is mapped.
+Status: **design framework v2**
 
-## Progression principle
+This document defines the current macro-progression. Exact content counts and level thresholds remain tunable.
 
-The player's journey begins with physical reality and progressively expands toward life, culture, abstraction and impossibility.
+## Core rule
 
-Unlocking must not rely exclusively on player level.
+The player progresses from comprehensible physical reality toward life, culture, abstraction and impossibility.
 
-Three unlock channels are currently intended:
+Progression uses three different structures:
 
-1. **Level unlock** — progression opens a new possibility space.
-2. **Discovery unlock** — a particular discovery reveals a new set.
-3. **Secret unlock** — the game does not announce the set before the triggering event.
+- **Era** — broad chapter of possibility;
+- **Set** — primary catalog family;
+- **Collection** — optional thematic grouping across sets.
 
-## Macro eras
+Sets are not created for every theme. Smaller themes such as insects, weather, professions or marine life should normally be Collections or Tags unless later content volume proves they deserve a full Set.
 
-### Era I — Origins
+## Unlock channels
 
-Purpose: teach combination logic with a very small vocabulary.
+A Set can unlock by:
 
-Candidate sets:
+1. **Level eligibility** — progression makes the Set possible.
+2. **Discovery reveal** — a qualifying discovery reveals the Set.
+3. **Hybrid gate** — both eligibility and discovery are required.
+4. **Secret trigger** — an unannounced event or recipe reveals it.
+
+Level should open possibility; discovery should provide meaning.
+
+## Era I — Origini
+
+Working level band: **1–8**
+
+Primary Sets:
 
 - Origini
-- Energia
 - Materia
-
-Candidate concepts:
-
-- Vuoto
-- Energia
-- Luce
-- Oscurità
-- Calore
-- Materia
-- Polvere
-- Gas
-
-### Era II — Cosmos
-
-Purpose: create the first strong expansion of scale.
-
-Candidate sets:
-
 - Cosmo
-- Corpi celesti
 
-Candidate concepts:
+Purpose:
 
+- teach combination;
+- establish reusable conceptual elements;
+- introduce same-element recipes;
+- introduce the first announced Set expansion.
+
+Key beats:
+
+- Luce
+- Calore
+- Spazio
+- Gravità
 - Stella
-- Nebulosa
-- Asteroide
-- Cometa
 - Pianeta
-- Luna
-- Sistema stellare
-- Galassia
 
-### Era III — World
+Keystone reveal:
 
-Purpose: turn an abstract universe into a recognizable physical world.
+`Plasma + Gravità → Stella`
 
-Candidate sets:
+Stella reveals Cosmo.
 
-- Elementi
+## Era II — Mondo
+
+Working level band: **9–16**
+
+Primary Set:
+
+- Mondo
+
+Mondo currently combines geology, waters and atmosphere as one player-facing Set.
+
+Candidate Collections/Tags:
+
 - Geologia
-- Atmosfera
 - Acque
 - Clima
+- Fenomeni atmosferici
+- Terre emerse
 
-Candidate concepts:
+Purpose:
 
-- Terra
+- turn abstract cosmic construction into a recognizable world;
+- introduce alternate recipes;
+- reuse early elements in new contexts.
+
+Key beats:
+
+- Lava
 - Roccia
-- Metallo
 - Acqua
 - Oceano
-- Aria
-- Nuvola
+- Atmosfera
 - Pioggia
-- Fulmine
-- Vulcano
-- Montagna
-- Isola
 
-### Era IV — Life
+## Era III — Vita
 
-Purpose: introduce organic systems and the first rich network of cross-combinations.
+Working level band: **17–26**
 
-Candidate sets:
+Primary Sets:
 
 - Vita
-- Microrganismi
 - Piante
 - Funghi
-
-Candidate concepts:
-
-- Cellula
-- Batterio
-- Alga
-- Seme
-- Germoglio
-- Erba
-- Fiore
-- Albero
-- Muschio
-- Muffa
-- Fungo
-
-### Era V — Creatures
-
-Purpose: open a large collectible domain without turning progression into pure taxonomy.
-
-Candidate sets:
-
 - Animali
-- Habitat
-- Evoluzione
 
-Candidate families may include:
+Purpose:
 
-- aquatic life
-- insects
-- fish
-- amphibians
-- reptiles
-- birds
-- mammals
+- introduce living systems;
+- create the first large combinatorial branch;
+- make the catalog and hint systems genuinely necessary.
 
-The final game should avoid requiring exhaustive real-world taxonomy.
+Visibility:
 
-### Era VI — Humanity
+- Vita: discovery reveal
+- Piante: announced after Vita
+- Funghi: hidden
+- Animali: announced after sufficient Life progression
 
-Purpose: introduce intentional actions, social systems and cultural outputs.
+Candidate Collections:
 
-Candidate sets:
+- Vita marina
+- Insetti
+- Rettili
+- Uccelli
+- Mammiferi
+- Felini
+- Creature notturne
+- Impollinatori
 
-- Umani
-- Mestieri
-- Società
+These are not full Sets by default.
+
+## Era IV — Umanità
+
+Working level band: **27–36**
+
+Primary Sets:
+
+- Umanità
 - Cultura
-- Cibo
-- Arte
-- Musica
-
-Possible discoveries:
-
-- Villaggio
-- Città
-- Agricoltura
-- Cuoco
-- Pittura
-- Libro
-- Musica
-- Festa
-
-### Era VII — Ingenuity
-
-Purpose: expand combination logic through human-made systems.
-
-Candidate sets:
-
-- Strumenti
 - Tecnologia
+
+Purpose:
+
+- introduce intentional action;
+- combine people with natural resources;
+- expand into tools, settlement, art, food, science and machines.
+
+Candidate Collections:
+
+- Mestieri
+- Cucina
+- Musica
+- Arte
 - Scienza
-- Industria
+- Trasporti
+- Città
+- Invenzioni
 
-Possible discoveries:
+The current design prefers these as Collections unless later content volume proves otherwise.
 
-- Ruota
-- Macchina
-- Elettricità
-- Motore
-- Computer
-- Razzo
-- Robot
+## Era V — Arcano
 
-The exact technological ceiling and chronology remain open.
+Working level band: **37–46**
 
-### Era VIII — Beyond Reality
+Primary Sets:
 
-Purpose: first major genre shift.
-
-Candidate sets:
-
-- Folklore
-- Miti
 - Magia
 - Creature fantastiche
+
+Possible later Set if volume justifies it:
+
 - Luoghi impossibili
-- Oggetti magici
 
-Some or all should be hidden sets.
+Purpose:
 
-The intended emotional beat is that earlier “impossible” experiments suddenly become meaningful.
+- deliver the first major genre shift;
+- resolve old anomalies;
+- show that apparently exhausted early elements can become useful again;
+- introduce secret discovery chains.
 
-### Era IX — Invisible Worlds
+At least Magia should be hidden before its first meaningful reveal.
 
-Purpose: allow non-physical concepts to enter the combination vocabulary.
+## Era VI — Invisibile
 
-Candidate sets:
+Working level band: **47–56**
+
+Primary Sets:
 
 - Spiriti
 - Sogni
 - Emozioni
-- Memoria
-- Simboli
 
-Examples:
+Possible Collections:
+
+- Memorie
+- Paure
+- Desideri
+- Simboli
+- Incubi
+
+Purpose:
+
+- allow non-physical concepts to become ingredients;
+- support more poetic relationships without abandoning internal logic.
+
+Example directions:
 
 - Paura + Notte → Incubo
 - Memoria + Luogo → Nostalgia
 
-### Era X — Impossible
+Exact canonical recipes are not yet locked.
 
-Purpose: endgame discovery space where the universe's rules become stranger but remain curated.
+## Era VII — Impossibile
 
-Candidate sets:
+Working level band: **57+**
 
-- Tempo
-- Dimensioni
+Primary Sets:
+
+- Tempo e Dimensioni
 - Paradossi
-- Abisso
 - Entità
+
+Possible Collections:
+
+- Oggetti impossibili
+- Mondi alternativi
+- Abisso
 - Assurdo
+- Fine dell'universo
 
-Possible directions:
+Purpose:
 
-- alternate dimensions;
-- impossible objects;
-- cosmic entities;
-- conceptual discoveries;
-- deliberately poetic combinations.
+- endgame discovery;
+- rare multi-stage chains;
+- conceptual and cosmic content;
+- deep secrets.
 
-## Important rule: do not expose the complete roadmap
+## Player-facing roadmap
 
-This document is for design.
+The player never sees this complete design roadmap.
 
-The player-facing game should reveal only a controlled subset of future sets.
+At any point, the interface may show:
+
+- current Sets;
+- a small number of announced future Sets;
+- no placeholder at all for hidden/secret Sets.
+
+The game should repeatedly feel larger than the player previously assumed.
 
 ## Set completion
 
-Set completion may reward:
+Normal completion rewards may include:
 
 - XP;
-- new hint capability;
 - catalog cosmetic;
-- new experiment mechanic;
-- access to a neighboring set;
-- a special discovery.
+- hint capability;
+- optional Collection reveal;
+- new experimental affordance;
+- narrative/flavor moment.
 
-Rewards should primarily expand discovery rather than grant farmable currency.
+Completion should not grant farmable production resources.
+
+Secret elements do not invalidate an already earned normal completion badge.
+
+## Set maturity test
+
+A mature Set should generally satisfy:
+
+1. enough elements to feel like a domain rather than a folder;
+2. internal recipes;
+3. cross-set recipes;
+4. meaningful reuse after its introduction;
+5. distinct catalog identity.
+
+Current underfilled proof Sets in the first slice:
+
+- Materia
+- Vita
+- Piante
+- Funghi
+
+They must either grow or be reorganized before content lock.
 
 ## Rarity
 
-Current proposal:
+Current scale:
 
 - Comune
 - Insolito
@@ -263,10 +291,18 @@ Current proposal:
 - Straordinario
 - Segreto
 
-Rarity represents unusualness or discovery complexity, not combat power.
+Rarity expresses discovery unusualness, complexity or secrecy, not power.
 
-## Open design problem
+## Current set architecture target
 
-We still need to determine whether broad themes such as `Clima`, `Habitat`, `Cibo` and `Mestieri` deserve full sets or should instead be tags/subcollections.
+The mature core currently targets approximately:
 
-This should be resolved while mapping the first 100–150 elements.
+- 3 Sets in Origini;
+- 1 broad Set in Mondo;
+- 4 Sets in Vita;
+- 3 Sets in Umanità;
+- 2+ Sets in Arcano;
+- 3 Sets in Invisibile;
+- 3 Sets in Impossibile.
+
+This is deliberately much smaller than the number of thematic Collections.
