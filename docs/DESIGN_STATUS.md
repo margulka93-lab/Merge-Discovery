@@ -28,11 +28,11 @@ Legend:
 | Collections/achievements | 🟡 | Collection rules and first themes drafted; achievements remain |
 | Onboarding | 🟡 | First 30–60 minute experience drafted |
 | Early content graph | 🟡 | 43-element v1 graph; needs expansion and audit |
-| Full content map | 🟡 | Life/Animals and Humanity/Culture/Technology expansion drafts now exist |
+| Full content map | 🟡 | Life/Animals plus detailed Humanity/Culture/Technology selection matrix exist |
 | Fantasy transition | 🟡 | Full Arcano transition draft exists; exact Humanity bridge recipes remain provisional |
 | Endgame | 🔴 | Themes only |
-| Desktop UX | 🟡 | Laboratory, catalog, set, anomaly and map architecture drafted |
-| Mobile UX | 🟡 | Portrait-first responsive flow and tap interaction drafted |
+| Desktop UX | 🟡 | Detailed screen specs now define laboratory, collection, detail, anomaly and map flows |
+| Mobile UX | 🟡 | Detailed portrait-first screen specs and tap flows defined |
 | Visual identity | 🟡 | Observatory + field guide hybrid direction documented |
 | Motion / VFX | 🔴 | Reveal hierarchy only |
 | Audio | 🔴 | Not designed |
