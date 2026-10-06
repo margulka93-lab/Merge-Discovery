@@ -73,3 +73,46 @@ Status: **Accepted**
 The encyclopedia/collection and discovery graph are core gameplay surfaces, not secondary menus.
 
 Status: **Accepted**
+
+
+## D-013 — Discovered elements are infinitely reusable
+
+Discovering an element permanently adds the concept to the player's available library. Experiments do not consume elements.
+
+Status: **Accepted**
+
+## D-014 — Base recipes are unordered
+
+Two-input base recipes treat A+B and B+A as the same pair. Directional behavior, if introduced later, belongs to separate mechanics.
+
+Status: **Accepted**
+
+## D-015 — Same-element recipes are valid when authored
+
+The system supports explicit A+A recipes such as Energia + Energia → Calore.
+
+Status: **Accepted**
+
+## D-016 — Progressive feature disclosure
+
+Catalog, Set browser, anomaly archive and discovery graph appear when the player has enough context for them, rather than all being shown at launch.
+
+Status: **Accepted**
+
+## D-017 — Hidden content does not damage visible completion
+
+Undiscovered secret elements are excluded from visible normal completion totals. Finding a secret later does not revoke an already earned completion badge.
+
+Status: **Accepted**
+
+## D-018 — Failed pairs are remembered
+
+Attempted unordered pairs are stored so players are not expected to remember or manually track failed experiments.
+
+Status: **Accepted**
+
+## D-019 — Mondo is the current early world Set
+
+For the early content architecture, geology, waters and atmospheric phenomena are grouped in one player-facing Set called Mondo. Smaller themes remain Tags/Collections unless later scale justifies promotion.
+
+Status: **Accepted for current design; revisit after full content mapping**
