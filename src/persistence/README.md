@@ -1,1 +1,1 @@
-Reserved adapter layer. SaveRepository, memory/IndexedDB adapters and transactions belong to Phase 2; none are implemented in this tranche.
+Phase 2 provides SaveRepository with memory and Dexie/IndexedDB adapters. Each atomic revision stores current and one previous valid backup. Application owns parsing/migration/reconciliation/import confirmation; adapters validate snapshots and use compare-and-swap revisions to prevent lost writes. clear removes both snapshots and retains only a revision tombstone. No UI, network, profiles or cloud adapters.

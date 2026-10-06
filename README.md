@@ -4,9 +4,9 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 ## Status
 
-**Phase 0 + Phase 1 implemented:** technical scaffold, validated canonical seed and pure discovery engine.
+**Phase 0 + Phase 1 + Phase 2 implemented:** technical scaffold, validated canonical seed, pure discovery engine and local application/save layer.
 
-The browser page is a minimal diagnostic status screen. The playable Laboratory and persistence are later phases.
+The browser page remains a diagnostic screen, now with IndexedDB save status and JSON import/export checks. The playable Laboratory is a later phase.
 
 The first bounded implementation task is in `CODEX_TASK.md`.
 
@@ -35,7 +35,7 @@ npm run preview
 - `src/content/schemas/`, `validate.ts`, `indexes/`: strict Zod parsing, semantic/reference/localization/ambiguity validation and startup indexes. Domain receives an index; it never imports bundled content.
 - `src/application/diagnostics.ts`: minimal composition root for boot validation; no save or combine transaction implementation.
 - `src/app/`, `src/ui/`, `src/styles/`: React diagnostic screen and CSS token foundation. Recipe knowledge stays out of components; the screen exposes no hidden-content totals.
-- `src/persistence/`, `src/platform/`: reserved layers only. Phase 2 adapters and later platform integrations are not implemented.
+- `src/persistence/`, `src/platform/`: reserved in Phase 0 + 1; Phase 2 persistence is described below, platform integrations remain deferred.
 - `scripts/`: executable content validation and deterministic simulation with intermediate checkpoints, blocked unlock diagnostics and non-secret required-path audit.
 - `tests/`: resolver, visibility, completion, invalid authoring, locked Markdown-to-JSON transcription and diagnostic boot/failure tests.
 - `.github/workflows/ci.yml`: clean install and complete check on pushes/PRs.
@@ -43,6 +43,16 @@ npm run preview
 Explicit recipes win over tag rules. Gated recipes use authored behavior/fallback; standalone anomalies need no current result. Positive requirements are ANDed and may overlap, so validation conservatively requires unique priorities for overlapping explicit variants. Tag-rule ambiguity is checked against every concrete unordered pair, including A+A. Indexes are built once at startup, never authored separately from source content.
 
 See [Phase 0 + 1 implementation notes](docs/PHASE_0_1_NOTES.md) for schema details, scope and verification evidence.
+
+## Phase 2 persistence
+
+`src/application/save/SaveApplication.ts` coordinates load/new game, combine, migrations, reconciliation, import preview/confirmation, export and explicit recovery. `src/domain/model/save.ts` and `saveSchema.ts` define/strictly validate durable v1 facts independently of content version. `src/persistence/` provides memory and Dexie/IndexedDB adapters with one atomic current/backup row and revision conflict checks.
+
+The diagnostic JSON field shows an export of owned progress only. “Verifica import” previews without writing; “Conferma sostituzione del progresso” commits explicitly. The export/round-trip check also does not overwrite. Corruption offers original-data export and previous-backup recovery, never an automatic reset. No combine UI is implemented.
+
+Tests include the actual Dexie adapter under fake-indexeddb, atomic rollback, compatibility fixtures and confirmed import. Existing commands and the CI gate also run these Phase 2 tests.
+
+See [Phase 2 implementation notes](docs/PHASE_2_NOTES.md) for migration, quarantine, backup and concurrency contracts.
 
 ## Core fantasy
 
