@@ -101,11 +101,12 @@ export function AppShell({
       className={`app-shell text-${model.textScale}${model.highContrast ? " high-contrast" : ""}`}
       data-reduced-motion={model.reducedMotion}
     >
-      <a className="skip-link" href="#laboratory" onClick={() => navigate('lab')}>
-        Vai al laboratorio
+      <a className="skip-link" href={active === "lab" ? "#laboratory" : "#catalog-content"}>
+        {active === "lab" ? "Vai al laboratorio" : "Vai al contenuto"}
       </a>
       <NavigationRail model={model} active={active} navigate={navigate} />
       <header className="mobile-header">
+        <h1 className="sr-only">Merge Discovery</h1>
         <span className="brand-mark" aria-hidden="true">
           ✧
         </span>

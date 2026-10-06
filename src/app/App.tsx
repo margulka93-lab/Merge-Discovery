@@ -1,4 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  BrowserRouter,
+  MemoryRouter,
+  Routes,
+  Route,
+  useInRouterContext,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import { createCatalogProjector } from "../application/catalog";
+import {
+  CollectionHome,
+  SetIndex,
+  SetDetail,
+  ElementDetail,
+  UnknownDetail,
+} from "../ui/catalog/Catalog";
 import { engineStatus } from "../application/diagnostics";
 import {
   laboratoryModel,
@@ -17,7 +34,7 @@ import { Laboratory } from "../ui/lab/Laboratory";
 import { InlineNotice } from "../ui/components/LabComponents";
 import { saveRuntime } from "./saveRuntime";
 
-export function LaboratoryApplication({
+function RoutedLaboratoryApplication({
   application,
   boot,
 }: {
@@ -27,7 +44,35 @@ export function LaboratoryApplication({
   const [snapshot, setSnapshot] = useState<ApplicationSnapshot>();
   const [slots, setSlots] = useState<[string?, string?]>([]);
   const [reaction, setReaction] = useState<LabReaction>();
-  const [active, setActive] = useState("lab");
+  const location = useLocation(),
+    navigate = useNavigate();
+  const active =
+    location.pathname === "/"
+      ? "lab"
+      : location.pathname.startsWith("/elements/")
+        ? "collection"
+        : location.pathname.split("/")[1] || "lab";
+  const setActive = (id: string) => navigate(id === "lab" ? "/" : `/${id}`);
+  const projectCatalog = useMemo(
+    () => createCatalogProjector(application.index),
+    [application],
+  );
+  const catalog = useMemo(
+    () => (snapshot && active !== "lab" ? projectCatalog(snapshot) : undefined),
+    [snapshot, active, projectCatalog],
+  );
+  const ready = Boolean(snapshot);
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      const main = document.getElementById("catalog-content");
+      main?.focus({ preventScroll: true });
+      if (main) {
+        main.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
+    }
+  }, [location.pathname, ready]);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [announcement, setAnnouncement] = useState("");
@@ -164,11 +209,61 @@ export function LaboratoryApplication({
             setSlots([slots[0]]);
             setReaction(undefined);
           }}
+          onViewDetail={() => {
+            if (reaction?.element) navigate(`/elements/${reaction.element.id}`);
+          }}
           reset={reset}
         />
       </div>
-      {active !== "lab" && (
-        <main className="destination-panel">
+      {catalog &&
+        active !== "lab" &&
+        ["collection", "sets"].includes(active) && (
+          <Routes>
+            <Route
+              path="/collection"
+              element={
+                <CollectionHome
+                  model={catalog}
+                  favorite={(id) => preferences({ favoriteElementId: id })}
+                  busy={busy}
+                />
+              }
+            />
+            <Route
+              path="/sets"
+              element={
+                <SetIndex
+                  model={catalog}
+                  favorite={(id) => preferences({ favoriteElementId: id })}
+                  busy={busy}
+                />
+              }
+            />
+            <Route
+              path="/sets/:setId"
+              element={
+                <SetDetail
+                  model={catalog}
+                  favorite={(id) => preferences({ favoriteElementId: id })}
+                  busy={busy}
+                />
+              }
+            />
+            <Route
+              path="/elements/:elementId"
+              element={
+                <ElementDetail
+                  model={catalog}
+                  favorite={(id) => preferences({ favoriteElementId: id })}
+                  busy={busy}
+                />
+              }
+            />
+            <Route path="*" element={<UnknownDetail />} />
+          </Routes>
+        )}
+      {active !== "lab" && !["collection", "sets"].includes(active) && (
+        <main id="catalog-content" tabIndex={-1} className="destination-panel">
           <p className="eyebrow">Il tuo osservatorio</p>
           <h2>
             {active === "explore"
@@ -250,11 +345,25 @@ export function LaboratoryApplication({
     </AppShell>
   );
 }
+export function LaboratoryApplication(
+  props: Parameters<typeof RoutedLaboratoryApplication>[0],
+) {
+  const routed = useInRouterContext();
+  return routed ? (
+    <RoutedLaboratoryApplication {...props} />
+  ) : (
+    <MemoryRouter>
+      <RoutedLaboratoryApplication {...props} />
+    </MemoryRouter>
+  );
+}
 type LabModelTextScale = "default" | "large" | "extra_large";
 const status = engineStatus();
 export function App() {
   return status.ready ? (
-    <LaboratoryApplication {...saveRuntime()} />
+    <BrowserRouter>
+      <LaboratoryApplication {...saveRuntime()} />
+    </BrowserRouter>
   ) : (
     <DiagnosticStatus {...status} />
   );

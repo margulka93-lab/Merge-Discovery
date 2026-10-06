@@ -17,12 +17,14 @@
     "build": "npm run validate:content && npm run simulate:content && tsc --noEmit && vite build",
     "preview": "vite preview",
     "check": "npm run typecheck && npm run lint && npm test && npm run build",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "profile:catalog": "tsx scripts/profile-catalog.ts"
   },
   "dependencies": {
     "dexie": "^4.4.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-router-dom": "^7.18.4",
     "zod": "^4.1.12"
   },
   "devDependencies": {

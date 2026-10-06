@@ -1,6 +1,6 @@
 import type { ElementDefinition, TagRuleDefinition, TagSelector } from '../model/types';
 
-function selectorMatches(selector: TagSelector, element: ElementDefinition): boolean {
+export function selectorMatches(selector: TagSelector, element: ElementDefinition): boolean {
   return (selector.all ?? []).every(t => element.tags.includes(t)) &&
     (!selector.any?.length || selector.any.some(t => element.tags.includes(t))) &&
     (selector.none ?? []).every(t => !element.tags.includes(t));

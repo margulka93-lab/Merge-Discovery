@@ -221,12 +221,14 @@ export function ReactionStage({
   onUse,
   onRepeat,
   onReset,
+  onViewDetail,
 }: {
   reaction?: LabReaction;
   busy: boolean;
   onUse: () => void;
   onRepeat: () => void;
   onReset: () => void;
+  onViewDetail: () => void;
 }) {
   return (
     <section
@@ -252,6 +254,7 @@ export function ReactionStage({
             </div>
           )}
           <div className="result-actions">
+            {reaction.element && <button className="secondary" disabled={busy} onClick={onViewDetail}>Vedi scheda</button>}
             {reaction.element && (
               <button
                 className="secondary warm"

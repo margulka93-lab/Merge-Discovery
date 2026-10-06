@@ -4,9 +4,9 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 ## Status
 
-**Phase 0–3 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer and first playable responsive Laboratory.
+**Phase 0–4 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer, responsive Laboratory and field-guide Collection/Set/Element pages.
 
-The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, repeat with A or start a new experiment. The library searches owned elements only; favorites and accessibility preferences persist in IndexedDB. The playable Laboratory is merged. Phase 4 now turns the Collection/Set placeholders into the real field-guide catalog and Element Detail experience.
+The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, view its sheet, repeat with A or start a new experiment. The Collection and Set pages use ivory field-guide surfaces and expose owned elements, visible Sets and registered recipes only. Favorites and accessibility preferences use the same IndexedDB save. Navigating back to the Laboratory preserves its inputs and search.
 
 The current bounded implementation task is Phase 4 in `CODEX_TASK.md`.
 
@@ -26,6 +26,7 @@ npm run build
 npm run preview
 npx playwright install chromium
 npm run test:e2e
+npm run profile:catalog
 ```
 
 `npm run check` runs typecheck, lint, all domain/content/component tests and the validated production build. Build runs both validators before bundling. `npm run test:e2e` separately runs Chromium viewport, keyboard, IndexedDB reload, axe and screenshot checks; CI runs both gates. `npm run test:watch` is available during development.
@@ -57,6 +58,8 @@ Tests include the actual Dexie adapter under fake-indexeddb, atomic rollback, co
 See [Phase 2 implementation notes](docs/PHASE_2_NOTES.md) for migration, quarantine, backup and concurrency contracts.
 
 See [Phase 3 implementation notes](docs/PHASE_3_NOTES.md) for UI architecture, component inventory, responsive/accessibility evidence and the three required screenshots.
+
+See [Phase 4 implementation notes](docs/PHASE_4_NOTES.md) for routing, safe catalog projections, current possibilities, validation and the five required screenshots. Phase 5 has not started. Local launch remains `npm run dev`; open the URL printed by Vite. BrowserRouter deep links require an SPA fallback on a future static host; Vite dev/preview already provide it.
 
 ## Core fantasy
 
