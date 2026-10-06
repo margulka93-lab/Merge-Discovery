@@ -1,0 +1,52 @@
+{
+  "saveSchemaVersion": 1,
+  "contentVersionSeen": "0.1.0",
+  "createdAt": "2026-10-06T10:00:00.000Z",
+  "updatedAt": "2026-10-06T10:00:00.000Z",
+  "xp": 100,
+  "discoveredElements": {
+    "void": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z"
+    },
+    "energy": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z"
+    },
+    "matter": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z"
+    },
+    "time": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z"
+    },
+    "light": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z",
+      "firstRecipeId": "void_energy_to_light"
+    }
+  },
+  "discoveredRecipeIds": [
+    "void_energy_to_light"
+  ],
+  "testedPairs": {
+    "energy::void": {
+      "lastOutcome": "success",
+      "testedAgainstContentVersion": "0.1.0",
+      "lastTestedAt": "2026-10-06T10:00:00.000Z"
+    }
+  },
+  "anomalies": {},
+  "revealedSetIds": [
+    "origins"
+  ],
+  "completedSetIds": [],
+  "completedCollectionChapterIds": [],
+  "favoriteElementIds": [],
+  "settings": {
+    "informationMode": "balanced",
+    "proactiveHints": "off",
+    "reducedMotion": true,
+    "highContrast": false,
+    "textScale": "default",
+    "soundEnabled": false,
+    "musicEnabled": false,
+    "dragEnabled": false
+  }
+}

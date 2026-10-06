@@ -1,0 +1,46 @@
+{
+  "saveSchemaVersion": 1,
+  "contentVersionSeen": "0.0.1",
+  "createdAt": "2026-10-06T10:00:00.000Z",
+  "updatedAt": "2026-10-06T10:00:00.000Z",
+  "xp": 0,
+  "discoveredElements": {
+    "void": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z"
+    },
+    "energy": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z"
+    },
+    "matter": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z"
+    },
+    "time": {
+      "firstDiscoveredAt": "2026-10-06T10:00:00.000Z"
+    }
+  },
+  "discoveredRecipeIds": [],
+  "testedPairs": {
+    "energy::void": {
+      "lastOutcome": "no_reaction",
+      "testedAgainstContentVersion": "0.0.1",
+      "lastTestedAt": "2026-10-06T10:00:00.000Z"
+    }
+  },
+  "anomalies": {},
+  "revealedSetIds": [
+    "origins"
+  ],
+  "completedSetIds": [],
+  "completedCollectionChapterIds": [],
+  "favoriteElementIds": [],
+  "settings": {
+    "informationMode": "balanced",
+    "proactiveHints": "off",
+    "reducedMotion": true,
+    "highContrast": false,
+    "textScale": "default",
+    "soundEnabled": false,
+    "musicEnabled": false,
+    "dragEnabled": false
+  }
+}

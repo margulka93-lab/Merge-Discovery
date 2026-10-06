@@ -12,6 +12,14 @@ export default tseslint.config(
     rules: { ...hooks.configs.recommended.rules },
   },
   {
+    files: ['src/persistence/**/*.ts'],
+    rules: { 'no-restricted-imports': ['error', { patterns: ['**/application/**', '**/ui/**', '**/app/**'] }] },
+  },
+  {
+    files: ['src/ui/**/*.{ts,tsx}'],
+    rules: { 'no-restricted-imports': ['error', { patterns: ['**/domain/**', '**/content/**', '**/persistence/**'] }] },
+  },
+  {
     files: ['src/domain/**/*.ts'],
     rules: {
       'no-restricted-imports': ['error', {
