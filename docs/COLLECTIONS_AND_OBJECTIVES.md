@@ -1,87 +1,76 @@
 # Collections & Optional Objectives
 
-Status: **design draft v1**
+Status: **stable system v2**
 
 Collections are optional thematic groupings that cross Sets.
 
-They are not the same as Sets and should not gate main progression.
+They never gate main progression.
 
-## Why Collections exist
+## Purpose
 
-They add:
+Collections add:
 
 - completion goals;
 - reasons to revisit old elements;
 - thematic discovery;
-- cosmetic rewards;
-- light direction for players who want a goal;
-- structure without exposing the full recipe graph.
+- cosmetic/flavor rewards;
+- light optional direction.
 
-They also solve taxonomy problems.
+Example:
 
-Examples:
+Gufo:
+- primary Set: Animali
+- Collection: Uccelli
+- Collection: Creature notturne
+- Collection: Cose che volano
 
-`Gufo` can belong to:
-
-- Animali — primary Set
-- Uccelli — Collection
-- Creature notturne — Collection
-- Cose che volano — Collection
-
-without creating three duplicate catalog homes.
-
-## Collection visibility
+## Visibility
 
 ### Visible
 
-Appears when the player owns at least one qualifying element or when the collection is deliberately announced.
+Appears once relevant.
 
 ### Hidden
 
-Appears only after a specific anchor element.
+Appears after an anchor discovery.
 
 ### Secret
 
-Appears only on completion or a special trigger.
+Appears only after its own trigger.
 
-## Completion rule
+## Completion
 
-A Collection can count only elements that are:
+Count only currently active eligible members.
 
-- active in the player's current content version;
-- eligible for that Collection;
-- not unrevealed deep secrets unless the Collection itself is secret.
+Unrevealed deep secrets do not reduce visible completion unless the Collection itself is secret.
 
-Unlike Sets, Collections may intentionally have partial hidden membership.
+Collections may use chapters so later expansion does not revoke earlier completion.
 
-## Reward philosophy
+## Rewards
 
-Collections should reward curiosity, not become mandatory currency farms.
+Preferred:
 
-Preferred rewards:
+- small XP bonus;
+- profile/catalog cosmetic;
+- alternate card frame;
+- Lab decorative accent;
+- badge/title;
+- optional flavor/lore card.
 
-- Intuizione;
-- profile/catalog cosmetics;
-- alternate card frames;
-- laboratory decorative accents;
-- titles/badges;
-- optional lore/flavor page;
-- small XP bonus.
+There is **no hint currency** reward.
 
 Avoid:
 
-- exclusive core progression element;
-- mandatory recipe;
+- mandatory progression element;
+- exclusive core recipe;
 - stamina;
-- permanent gameplay power that makes non-collectors weaker.
+- permanent power.
 
-## First candidate Collections
+## Seed Collections
+
+The canonical seed includes:
 
 ### Figli delle stelle
-
-Theme: celestial objects.
-
-Possible members:
 
 - Stella
 - Pianeta
@@ -90,13 +79,7 @@ Possible members:
 - Asteroide
 - Galassia
 
-Visibility: early.
-
-Purpose: teach Collections using content the player already understands.
-
 ### Ciclo dell'acqua
-
-Possible members:
 
 - Acqua
 - Vapore
@@ -104,13 +87,7 @@ Possible members:
 - Pioggia
 - Oceano
 
-Visibility: after Vapore or Nuvola.
-
-This is a good educational-feeling optional objective without turning the game into a lesson.
-
 ### Mondo roccioso
-
-Possible members:
 
 - Roccia
 - Terra
@@ -121,8 +98,6 @@ Possible members:
 
 ### Verde ovunque
 
-Possible members:
-
 - Muschio
 - Erba
 - Fiore
@@ -131,146 +106,74 @@ Possible members:
 - Felce
 - Cactus
 
-### Vita nella palude
+## Future examples
 
-Potential cross-Set members:
+- Vita nella palude
+- Impollinatori
+- Creature notturne
+- Cose che volano
+- Felini
+- Esploratori
+- Invenzioni
 
-- Palude
-- Canna
-- Rana
-- Lumaca
-- Fungo
-- Libellula if later added
-
-### Impollinatori
-
-Potential members:
-
-- Ape
-- Farfalla
-- future moth/beetle elements.
-
-### Creature notturne
-
-Potential members:
-
-- Gufo
-- Pipistrello
-- Ragno
-- future moth
-- future fantasy members after Arcano.
-
-Important:
-
-The Collection can expand when a new Era adds qualifying elements.
-
-A completed collection should preserve its previous badge and gain a “new entries available” state rather than revoke completion.
-
-### Cose che volano
-
-Crosses:
-
-- Cosmo;
-- weather;
-- animals;
-- technology;
-- fantasy.
-
-This is a strong long-term Collection because it grows across the whole game.
-
-Potential members:
-
-- Cometa
-- Uccello
-- Pipistrello
-- Aereo
-- Razzo
-- Drago
-- Fenice
-
-## Dynamic expansion rule
-
-Collections can have **chapters**.
+## Dynamic chapters
 
 Example:
 
-### Cose che volano
+Cose che volano:
 
-Chapter 1 — Naturale
-Chapter 2 — Ingegno
-Chapter 3 — Impossibile
+- Naturale
+- Ingegno
+- Impossibile
 
-Completing an earlier chapter remains valid when later chapters become available.
-
-This avoids retroactively destroying 100% completion.
+Completing Naturale remains valid when later chapters unlock.
 
 ## Optional objective cards
 
-The game may surface a few active Collection goals without forcing them.
+A player may **pin one Collection objective** to the Lab.
+
+It is never pinned automatically.
 
 Example:
 
-> Ciclo dell'acqua  
-> 4 / 5  
+> Ciclo dell’acqua · 4/5  
 > Ti manca ancora qualcosa che nasce tra acqua e calore.
 
-This is also a soft hint system.
+The clue respects the player’s hint/information settings.
 
-## Collection discovery moments
+## Celebration hierarchy
 
-A new Collection reveal should be lighter than a new Set reveal.
+Collection reveal/completion is lighter than a Set reveal.
 
-Suggested hierarchy:
+Do not interrupt rapid experimentation with a large modal.
 
-1. new element — normal discovery celebration;
-2. collection reveal/completion — compact celebration;
-3. normal Set reveal — strong celebration;
-4. hidden/secret Set reveal — major celebration.
+## Target count
 
-## Collection count target
+Working core launch target:
 
-Do not create hundreds of trivial Collections.
+15–25 meaningful Collections.
 
-Working launch target:
+Avoid trivial metadata-only Collections.
 
-- 15–25 meaningful Collections;
-- some early;
-- some cross-era;
-- some hidden;
-- a few secret.
+## Quality test
 
-## Collection quality test
+Create a Collection if it:
 
-Create a Collection only if at least one is true:
+- crosses Sets meaningfully;
+- encourages useful exploration;
+- has strong visual/theme identity;
+- grows across Eras;
+- creates a memorable optional goal.
 
-- it provides an interesting cross-Set theme;
-- it encourages a useful exploration path;
-- it has a satisfying visual identity;
-- it can grow across Eras;
-- it creates a memorable optional challenge.
+## Achievements
 
-Do not create collections equivalent to simple alphabetical or metadata filters.
+Achievements are separate from Collections.
 
-## Achievements versus Collections
+Achievements do not reward:
 
-Keep separate.
+- daily streaks;
+- excessive session length;
+- avoiding hints;
+- avoiding accessibility features.
 
-Collection:
-
-> Find this thematic family.
-
-Achievement:
-
-> Perform an unusual action or milestone.
-
-Possible achievements later:
-
-- first anomaly;
-- discover 10 elements without using a strong hint;
-- find three alternate recipes;
-- resolve an old anomaly;
-- discover a secret Set.
-
-Achievements should not penalize players who use accessibility/hint features.
-
-Avoid achievements that require unhealthy session length or daily streak pressure.
+See `META_ENDGAME.md`.
