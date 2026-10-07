@@ -1,0 +1,66 @@
+{
+  "entry": {
+    "file": "index-CniAYnih.js",
+    "bytes": 120076,
+    "gzipBytes": 32601
+  },
+  "largestChunk": {
+    "file": "react-runtime-DuPBgRW0.js",
+    "bytes": 263031,
+    "gzipBytes": 83616
+  },
+  "totalJsBytes": 608043,
+  "totalGzipBytes": 187517,
+  "chunks": [
+    {
+      "file": "AnomalyArchive-DHeI0YTW.js",
+      "bytes": 2150,
+      "gzipBytes": 966
+    },
+    {
+      "file": "Catalog-BJpIYvgs.js",
+      "bytes": 12259,
+      "gzipBytes": 3899
+    },
+    {
+      "file": "DiscoveryMap-BPnHGfsw.js",
+      "bytes": 7505,
+      "gzipBytes": 2768
+    },
+    {
+      "file": "index-CniAYnih.js",
+      "bytes": 120076,
+      "gzipBytes": 32601
+    },
+    {
+      "file": "react-runtime-DuPBgRW0.js",
+      "bytes": 263031,
+      "gzipBytes": 83616
+    },
+    {
+      "file": "SaveDiagnostics-qTUgbLw4.js",
+      "bytes": 2459,
+      "gzipBytes": 1130
+    },
+    {
+      "file": "SettingsPanel-CCO5s_fI.js",
+      "bytes": 3338,
+      "gzipBytes": 1213
+    },
+    {
+      "file": "storage-E3N4n8uI.js",
+      "bytes": 96411,
+      "gzipBytes": 32429
+    },
+    {
+      "file": "ThematicCollections-DnRSeDj8.js",
+      "bytes": 4174,
+      "gzipBytes": 1509
+    },
+    {
+      "file": "validation-DRBpZDWE.js",
+      "bytes": 96640,
+      "gzipBytes": 27386
+    }
+  ]
+}

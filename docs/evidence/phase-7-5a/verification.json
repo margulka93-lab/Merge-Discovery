@@ -1,0 +1,65 @@
+{
+  "phase": "7.5A",
+  "verifiedAtUtc": "2026-10-07T22:16:22.097Z",
+  "unitComponentTests": 195,
+  "unitFiles": 13,
+  "regressionE2e": 20,
+  "productionE2e": 11,
+  "contentValidation": "PASS",
+  "reachability": {
+    "reachable": 67,
+    "total": 67,
+    "maxDepth": 11,
+    "blockedUnlocks": []
+  },
+  "pwaValidation": {
+    "status": "PASS",
+    "assets": 18,
+    "jsChunks": 10
+  },
+  "productionOffline": true,
+  "updateSafe": true,
+  "responsiveViewports": 6,
+  "screenshots": [
+    {
+      "file": "1440-laboratory.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1024-laboratory.png",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "file": "390-laboratory.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "320-laboratory.png",
+      "width": 320,
+      "height": 568
+    },
+    {
+      "file": "1440-new-discovery.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-anomaly.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "390-new-discovery.png",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "manualVisualApproval": "PENDING",
+  "originalPosterInput": "not available; canonical repository visual reference used",
+  "manualAssistiveTechnology": "NOT EXECUTED",
+  "phase7_5BStarted": false,
+  "phase8Started": false
+}

@@ -1,18 +1,22 @@
 import type { ReactNode } from "react";
 import type { Destination, LabModel } from "../../application/laboratory";
 import { DiscoveryLevelBadge } from "../components/LabComponents";
+import { ObservatoryMark } from "../components/ObservatoryMarks";
 function NavigationItems({
   items,
   active,
   navigate,
+  compact = false,
 }: {
   items: Destination[];
   active: string;
   navigate: (id: string) => void;
+  compact?: boolean;
 }) {
   return items.map((d) => (
     <button
       key={d.id}
+      aria-label={d.label}
       aria-current={
         active === d.id ||
         (d.id === "explore" && ["map", "anomalies"].includes(active))
@@ -22,7 +26,7 @@ function NavigationItems({
       onClick={() => navigate(d.id)}
     >
       <span aria-hidden="true">{d.symbol}</span>
-      <span>{d.label}</span>
+      <span>{compact && d.id === "lab" ? "Lab" : compact && d.id === "settings" ? "Opzioni" : d.label}</span>
     </button>
   ));
 }
@@ -38,9 +42,7 @@ export function NavigationRail({
   return (
     <aside className="navigation-rail">
       <div className="brand">
-        <span className="brand-mark" aria-hidden="true">
-          ✧
-        </span>
+        <ObservatoryMark className="brand-mark" />
         <h1>
           Merge
           <br />
@@ -79,6 +81,7 @@ export function BottomNavigation({
     >
       <NavigationItems
         items={model.mobileDestinations}
+        compact
         active={active}
         navigate={navigate}
       />
@@ -107,9 +110,7 @@ export function AppShell({
       <NavigationRail model={model} active={active} navigate={navigate} />
       <header className="mobile-header">
         <h1 className="sr-only">Merge Discovery</h1>
-        <span className="brand-mark" aria-hidden="true">
-          ✧
-        </span>
+        <ObservatoryMark className="brand-mark" />
         <DiscoveryLevelBadge model={model} />
       </header>
       {children}

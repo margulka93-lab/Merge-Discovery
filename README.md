@@ -10,6 +10,8 @@ The Laboratory follows the canonical midnight-observatory visual reference using
 
 Phase 7 technical hardening is merged. The current bounded task is Phase 7.5: visual/UX alignment to the approved observatory + illustrated field-guide concept before Phase 8 content expansion. See [Phase 7 notes](docs/PHASE_7_NOTES.md) for cache/update policy, bundle before/after, audits and production evidence.
 
+This PR implements only **Phase 7.5A — Shell + Laboratory + shared visual language**. See [Phase 7.5A notes](docs/PHASE_7_5A_NOTES.md) for scope, production screenshots and checks. The remaining screen redesigns are deferred to Phase 7.5B. Visual approval against the Design Bible is required before merge.
+
 See [Visual & UX Alignment](docs/VISUAL_UX_ALIGNMENT.md) for the current redesign target. Functional correctness from Phases 0–7 remains authoritative; the present screen composition is not considered final until Phase 7.5 is visually approved.
 
 ## Run and verify

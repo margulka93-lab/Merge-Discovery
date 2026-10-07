@@ -10,6 +10,7 @@ import './styles/tokens.css';
 import './styles/global.css';
 // Laboratory Set/Collection callouts share this stylesheet with secondary screens.
 import './styles/world.css';
+import './styles/observatory.css';
 
 createRoot(document.getElementById('root')!).render(<StrictMode><AppErrorBoundary recovery={PlatformRecovery} exportRaw={exportRawRecovery} reload={() => window.location.reload()}><App /></AppErrorBoundary></StrictMode>);
 // Also check for a healthy waiting build if startup/render falls into recovery.

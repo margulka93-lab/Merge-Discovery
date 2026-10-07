@@ -18,6 +18,14 @@
   --accent-plants: #a9bc79;
   --accent-fungi: #be96b3;
   --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --color-brass-line: #d9b66f42;
+  --color-brass-faint: #d9b66f16;
+  --color-night-glass: #101b2bd9;
+  --color-night-deep: #080f1c;
+  --color-gold-highlight: #f0d7a0;
+  --color-gold-shadow: #b58945;
+  --shadow-specimen: inset 0 1px 0 #f0d7a014, 0 14px 36px #0003;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-body: 1rem;
