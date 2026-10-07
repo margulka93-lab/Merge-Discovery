@@ -8,7 +8,7 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, view its sheet, repeat with A or start a new experiment. The Collection and Set pages use ivory field-guide surfaces and expose owned elements, visible Sets and registered recipes only. Favorites and accessibility preferences use the same IndexedDB save. Navigating back to the Laboratory preserves its inputs and search.
 
-The current bounded implementation task is Phase 4 in `CODEX_TASK.md`.
+The current bounded implementation task is Phase 5 in `CODEX_TASK.md`.
 
 ## Run and verify
 
@@ -59,7 +59,7 @@ See [Phase 2 implementation notes](docs/PHASE_2_NOTES.md) for migration, quarant
 
 See [Phase 3 implementation notes](docs/PHASE_3_NOTES.md) for UI architecture, component inventory, responsive/accessibility evidence and the three required screenshots.
 
-See [Phase 4 implementation notes](docs/PHASE_4_NOTES.md) for routing, safe catalog projections, current possibilities, validation and the five required screenshots. Phase 5 has not started. Local launch remains `npm run dev`; open the URL printed by Vite. BrowserRouter deep links require an SPA fallback on a future static host; Vite dev/preview already provide it.
+See [Phase 4 implementation notes](docs/PHASE_4_NOTES.md) for routing, safe catalog projections, current possibilities, validation and the five required screenshots. Phase 5 is now scoped to progressive disclosure, Anomaly Archive and thematic Collections. Local launch remains `npm run dev`; open the URL printed by Vite. BrowserRouter deep links require an SPA fallback on a future static host; Vite dev/preview already provide it.
 
 ## Core fantasy
 
