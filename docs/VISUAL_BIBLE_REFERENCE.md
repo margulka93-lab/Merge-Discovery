@@ -14,7 +14,7 @@ Merge Discovery should look like a **premium illustrated discovery game** built 
 - warm amber/gold interaction accents;
 - painterly element artwork;
 - subtle celestial diagrams and constellation lines;
-- a cleaner illustrated field-guide treatment for catalog/detail surfaces;
+- a dark illustrated catalog/field-guide treatment for catalog/detail surfaces;
 - restrained violet/indigo effects for anomalies and later Arcano content.
 
 The mood is **cozy modern-magical**, not medieval.
@@ -52,8 +52,10 @@ Key anchors:
 - text: `#F7F3EA`
 - warm accent: `#D9B66F`
 - anomaly: `#A891E8`
-- field-guide paper: `#F3EBDD`
-- field-guide ink: `#26313A`
+- optional documentation/light inset: `#F3EBDD`
+- optional dark-ink counterpart: `#26313A`
+
+**Important:** these light tokens are not the default in-game Catalog palette. The original Design Bible's actual Catalogo – Elemento screen is dark navy with warm-gold framing. Light panels visible elsewhere in the poster are documentation diagrams, not gameplay-screen references.
 
 ## Laboratory — desktop
 
@@ -179,7 +181,7 @@ No punishment/error styling.
 
 ## Catalog / detail direction
 
-Later Phase 4 should preserve the poster's illustrated field-guide feeling while obeying spoiler rules.
+Catalog and Element Detail should follow the **dark** in-game Catalogo – Elemento panel shown in the original poster: navy surfaces, fine warm borders, illustrated element art, compact chips and restrained hierarchy. Preserve the illustrated-field-guide feeling through composition and artwork, not by turning the screen into a light paper page.
 
 Typical content:
 
@@ -266,3 +268,19 @@ The first playable Laboratory must already communicate:
 - desktop/mobile continuity.
 
 Final production illustrations are not required for Phase 3.
+
+## Canonical-poster interpretation
+
+When implementing or redesigning screens, use the original Design Bible poster as the strongest visual reference.
+
+In-game examples shown there are consistently:
+
+- dark navy/black-blue;
+- fine warm gold framing;
+- compact, elegant panels;
+- painterly element imagery;
+- celestial linework;
+- gold/orange discovery glow;
+- violet anomaly glow.
+
+Do **not** infer a light theme for Collection, Set or Element Detail from the pale technical diagrams at the bottom of the poster. Those are presentation panels inside the Design Bible itself, not screenshots of the game.
