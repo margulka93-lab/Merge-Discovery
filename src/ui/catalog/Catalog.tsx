@@ -1,5 +1,6 @@
 import '../../styles/catalog.css';
 import '../../styles/world.css';
+import '../../styles/knowledge.css';
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import type {
@@ -21,6 +22,7 @@ interface CatalogProps {
   thematic?: import("react").ReactNode;
   setsAvailable?: boolean;
   collectionAvailable?: boolean;
+  navigation?: import("react").ReactNode;
 }
 export function CompletionBar({ set }: { set: CatalogSet }) {
   if (!set.completion) return null;
@@ -363,12 +365,16 @@ export function CollectionHome(props: CatalogProps) {
     favorites = model.elements.filter((e) => e.favorite),
     fresh = model.elements.filter((e) => e.newPossibilities);
   return (
-    <main id="catalog-content" tabIndex={-1} className="catalog-page">
+    <main id="catalog-content" tabIndex={-1} className="catalog-page collection-home">
+      {props.navigation}
       <PageHeading
         title="Collezione"
         caption={`${model.elements.length} scoperte · ${model.sets.filter((s) => s.revealed).length} Set rivelati`}
       />
-      {props.thematic}
+      <section className="atlas-recent">
+        <h3>Recenti</h3>
+        <ElementGrid elements={model.recent.slice(0, 5)} {...props} />
+      </section>
       {props.setsAvailable !== false && (
         <section>
           <div className="section-heading">
@@ -382,17 +388,14 @@ export function CollectionHome(props: CatalogProps) {
           </div>
         </section>
       )}
-      <section>
-        <h3>Recenti</h3>
-        <ElementGrid elements={model.recent} {...props} />
-      </section>
       {!!fresh.length && (
-        <section>
+        <section className="atlas-shelf">
           <h3>Nuove possibilità</h3>
           <ElementGrid elements={fresh} {...props} />
         </section>
       )}
-      <section>
+      {props.thematic}
+      <section className="atlas-shelf">
         <h3>Preferiti</h3>
         {favorites.length ? (
           <ElementGrid elements={favorites} {...props} />
@@ -409,9 +412,10 @@ export function CollectionHome(props: CatalogProps) {
     </main>
   );
 }
-export function SetIndex({ model }: CatalogProps) {
+export function SetIndex({ model, navigation }: CatalogProps) {
   return (
     <main id="catalog-content" tabIndex={-1} className="catalog-page">
+      {navigation}
       <PageHeading
         title="Set"
         caption="Le regioni del possibile che hai incontrato."
@@ -453,6 +457,7 @@ export function SetDetail(props: CatalogProps) {
       tabIndex={-1}
       className="catalog-page set-detail"
     >
+      {props.navigation}
       <Link to="/sets">← Set</Link>
       <div className="set-detail-heading">
         <div className="set-art">
@@ -484,15 +489,16 @@ export function SetDetail(props: CatalogProps) {
 }
 function RecipeLine({ recipe }: { recipe: KnownRecipe }) {
   return (
-    <span>
+    <span className="recipe-line">
       {recipe.inputs.map((e, i) => (
-        <span key={i}>
+        <span className="recipe-token" key={i}>
           {i ? " + " : ""}
+          <ElementArt artKey={e.artKey} />
           <Link to={`/elements/${e.id}`}>{e.name}</Link>
         </span>
       ))}
       {" → "}
-      <Link to={`/elements/${recipe.result.id}`}>{recipe.result.name}</Link>
+      <span className="recipe-token"><ElementArt artKey={recipe.result.artKey} /><Link to={`/elements/${recipe.result.id}`}>{recipe.result.name}</Link></span>
     </span>
   );
 }
@@ -586,6 +592,7 @@ export function ElementDetail({
   collectionAvailable = true,
   mapAvailable,
   hint,
+  navigation,
 }: CatalogProps) {
   const { elementId } = useParams(),
     detail = model.detail(elementId ?? "");
@@ -598,6 +605,7 @@ export function ElementDetail({
       tabIndex={-1}
       className="catalog-page element-detail"
     >
+      {navigation}
       <div className="detail-navigation">
         {collectionAvailable && <Link to="/collection">← Collezione</Link>}
         <Link to="/">Torna al Laboratorio</Link>
@@ -627,7 +635,6 @@ export function ElementDetail({
           >
             {e.favorite ? "★ Rimuovi dai preferiti" : "☆ Aggiungi ai preferiti"}
           </button>
-          <p>{e.description}</p>
           <PossibilityStatus element={e} />
           {mapAvailable && (
             <Link to={`/explore/map?element=${e.id}&mode=ancestry`}>
@@ -637,6 +644,7 @@ export function ElementDetail({
           {hint?.(e.id)}
         </header>
         <div className="detail-notes">
+          <p className="detail-description">{e.description}</p>
           <section>
             <h3>Prima scoperta</h3>
             {detail.starter ? (

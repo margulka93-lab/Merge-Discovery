@@ -155,9 +155,15 @@ test("real routes, shared durable favorites, Laboratory state, known recipes and
   await page.getByRole("link", { name: "Tutti i Set visibili" }).focus();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/sets$/);
+  // The same Set links already exist on Collection Home. Wait for the new route
+  // and its focus handoff before acting on a link retained in the old DOM.
+  await expect(page.getByRole("heading", { name: "Set", exact: true })).toBeVisible();
+  await expect(page.locator("#catalog-content")).toBeFocused();
   await page.locator('a[href="/sets/world"]').focus();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/sets\/world$/);
+  await expect(page.getByRole("heading", { name: "Mondo", exact: true })).toBeVisible();
+  await expect(page.locator("#catalog-content")).toBeFocused();
   await page
     .getByRole("link", { name: "Scheda di Acqua", exact: true })
     .focus();

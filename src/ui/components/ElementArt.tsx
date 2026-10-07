@@ -18,6 +18,7 @@ const silhouettes: Record<string, string> = {
   creature: "M25 73 20 43 29 22 41 38 58 33 71 19 77 44 72 68 58 81 38 82Z",
   sphere: "M50 17a33 33 0 1 0 0 66a33 33 0 1 0 0-66Z",
   cloud: "M19 65c-13-12-2-30 12-29 4-24 32-24 39-7 20-3 30 19 17 32-8 10-55 16-68 4Z",
+  fungus: "M18 51C23 10 77 10 82 51H58l4 32H38l4-32Z",
 };
 const category = (id: string) => {
   if (silhouettes[id]) return id;
@@ -33,7 +34,9 @@ const category = (id: string) => {
 
 export function ElementArt({ artKey }: { artKey: string }) {
   const uid = `art-${useId().replace(/:/g, "")}`;
-  const kind = category(artKey.split(".").at(-1)!);
+  const setStudies: Record<string, string> = { origins: 'energy', cosmos: 'star', world: 'mineral', life: 'life', plants: 'plant', fungi: 'fungus' };
+  const id = artKey.split(".").at(-1)!;
+  const kind = artKey.startsWith('sets.') ? (setStudies[id] ?? category(id)) : category(id);
   return <svg className="element-art" viewBox="0 0 100 100" aria-hidden="true" data-art-key={artKey} data-art-study={kind}>
     <defs>
       <radialGradient id={`${uid}-halo`}>
