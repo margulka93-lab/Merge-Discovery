@@ -2,9 +2,9 @@
 
 ## Codex readiness
 
-**PHASE 0 + PHASE 1 + PHASE 2 MERGED · READY FOR PHASE 3**
+**PHASE 0 + PHASE 1 + PHASE 2 + PHASE 3 + PHASE 4 MERGED · READY FOR PHASE 5**
 
-Phase 0 + 1 were merged in PR #2. Phase 2 was merged in PR #3. Figma is not a dependency; Phase 3 is specified directly from the repository design bible and UX documents.
+Phase 0 + 1 were merged in PR #2, Phase 2 in PR #3, Phase 3 in PR #4 and Phase 4 in PR #5. Phase 5 is now scoped to progressive disclosure, Anomaly Archive and thematic Collections.
 
 Legend:
 
@@ -53,7 +53,9 @@ Legend:
 | Phase 0 + 1 implementation | ✅ | Merged via PR #2 |
 | Phase 2 implementation | ✅ | Merged via PR #3 |
 | Visual Phase 3 implementation spec | ✅ | VISUAL_BIBLE_REFERENCE.md + UX/design docs |
-| Phase 3 implementation | ✅ | CODEX_TASK.md ready |
+| Phase 3 implementation | ✅ | Merged via PR #4 |
+| Phase 4 implementation | ✅ | Merged via PR #5 |
+| Phase 5 implementation | ✅ | CODEX_TASK.md ready |
 | Agent constraints | ✅ | AGENTS.md |
 
 ## Deliberately not frozen
@@ -81,4 +83,4 @@ For the current implementation sequence:
 
 ## Next action
 
-Run `CODEX_TASK.md` for Phase 3. Review the playable Laboratory PR before Phase 4.
+Run `CODEX_TASK.md` for Phase 5. Review Anomalies/Collections/progressive disclosure before Phase 6.
