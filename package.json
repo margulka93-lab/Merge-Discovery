@@ -19,7 +19,10 @@
     "check": "npm run typecheck && npm run lint && npm test && npm run build",
     "test:e2e": "playwright test",
     "profile:catalog": "tsx scripts/profile-catalog.ts",
-    "profile:map": "tsx scripts/profile-map.ts"
+    "profile:map": "tsx scripts/profile-map.ts",
+    "validate:pwa": "tsx scripts/validate-pwa.ts",
+    "measure:bundle": "tsx scripts/measure-bundle.ts",
+    "test:production": "playwright test --config playwright.production.config.ts"
   },
   "dependencies": {
     "dexie": "^4.4.6",

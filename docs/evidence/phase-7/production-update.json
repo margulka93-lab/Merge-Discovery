@@ -1,0 +1,13 @@
+{
+  "production": true,
+  "realWaitingWorker": true,
+  "blockedDuringMajorReveal": true,
+  "acknowledged": true,
+  "deferredWithoutReload": true,
+  "deferralFocus": "laboratory",
+  "manualReopenWaiting": true,
+  "reloads": 1,
+  "saveUnchanged": true,
+  "xp": 100,
+  "discoveries": 5
+}

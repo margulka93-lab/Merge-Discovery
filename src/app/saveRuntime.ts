@@ -11,3 +11,8 @@ export function saveRuntime() {
   }
   return runtime;
 }
+/** A boundary retry reads the latest committed progress instead of reusing the first boot snapshot. */
+export function refreshRuntimeBootForRetry() {
+  if (runtime) runtime.boot = runtime.application.load();
+  return runtime?.boot;
+}

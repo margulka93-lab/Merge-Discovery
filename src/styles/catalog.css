@@ -8,7 +8,7 @@
   overflow-wrap: anywhere;
   --color-text: var(--color-ink);
   --color-text-muted: var(--color-ink-muted);
-  --color-border: #b6afa2;
+  --color-border: var(--color-paper-border);
 }
 .catalog-page h2 {
   font:
@@ -37,11 +37,11 @@
 .catalog-page button:focus-visible,
 .catalog-page input:focus-visible,
 .catalog-page select:focus-visible {
-  outline: 3px solid #304e77;
+  outline: 3px solid var(--color-paper-focus);
   outline-offset: 3px;
 }
 .catalog-page .eyebrow {
-  color: #665332;
+  color: var(--color-paper-accent-text);
 }
 .catalog-heading {
   margin-bottom: 1.75rem;
@@ -70,8 +70,8 @@
   gap: 1rem;
 }
 .set-card {
-  border: 1px solid #b6afa2;
-  border-radius: 1rem;
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-card);
   background: var(--color-paper-raised);
   overflow: hidden;
   min-width: 0;
@@ -99,9 +99,9 @@
 .set-art {
   width: 4rem;
   flex: 0 0 4rem;
-  background: #192637;
+  background: var(--color-art-surface);
   border-radius: 50%;
-  color: #ddc487;
+  color: var(--color-art-line);
 }
 .set-art .element-art {
   width: 100%;
@@ -116,7 +116,7 @@
   height: 0.3rem;
   background: #d2c8b7;
   margin: 0.55rem 0;
-  border-radius: 1rem;
+  border-radius: var(--radius-card);
   overflow: hidden;
 }
 .completion-track i {
@@ -147,8 +147,8 @@
 }
 .catalog-card {
   min-width: 0;
-  border: 1px solid #b6afa2;
-  border-radius: 1rem;
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-card);
   background: var(--color-paper-raised);
   overflow: hidden;
 }
@@ -168,8 +168,8 @@
   aspect-ratio: 1;
   margin: 0.25rem auto 0.75rem;
   border-radius: 50%;
-  background: #192637;
-  color: #ddc487;
+  background: var(--color-art-surface);
+  color: var(--color-art-line);
 }
 .catalog-page .element-select strong {
   font:
@@ -177,7 +177,7 @@
     serif;
 }
 .catalog-page .favorite-button {
-  color: #665332;
+  color: var(--color-paper-accent-text);
 }
 .catalog-page .set-cue,
 .catalog-page .context-cue {
@@ -198,7 +198,7 @@
   z-index: 2;
   background: var(--color-paper);
   padding: 0.75rem 0;
-  border-block: 1px solid #b6afa2;
+  border-block: 1px solid var(--color-paper-border);
 }
 .catalog-search label {
   display: block;
@@ -269,7 +269,7 @@
 .portrait-art {
   width: min(100%, 17rem);
   margin: 0 auto 2rem;
-  color: #ddc487;
+  color: var(--color-art-line);
   background: radial-gradient(circle, #30465d, #101b2a);
   border-radius: 50%;
   border: 1px solid #a59677;
@@ -281,7 +281,7 @@
 }
 .detail-notes {
   min-width: 0;
-  border-left: 1px solid #b6afa2;
+  border-left: 1px solid var(--color-paper-border);
   padding-left: 2rem;
 }
 .detail-notes section:first-child {
@@ -363,8 +363,8 @@
     display: grid;
     grid-template-columns: 1fr;
     padding: 1rem;
-    border: 1px solid #b6afa2;
-    border-radius: 0.75rem;
+    border: 1px solid var(--color-paper-border);
+    border-radius: var(--radius-inset);
   }
   .detail-layout {
     display: block;
@@ -376,7 +376,7 @@
   .detail-notes {
     border-left: 0;
     padding-left: 0;
-    border-top: 1px solid #b6afa2;
+    border-top: 1px solid var(--color-paper-border);
     margin-top: 2rem;
     padding-top: 1.5rem;
   }

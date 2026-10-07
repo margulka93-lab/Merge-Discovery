@@ -1,3 +1,5 @@
+import '../../styles/catalog.css';
+import '../../styles/world.css';
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import type {

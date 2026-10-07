@@ -1,3 +1,5 @@
+import '../../styles/catalog.css';
+import '../../styles/world.css';
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import type { ObservedAnomaly, WorldModel } from "../../application/world";

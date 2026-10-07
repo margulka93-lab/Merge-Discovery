@@ -1,3 +1,5 @@
+import '../../styles/catalog.css';
+import '../../styles/world.css';
 import { useId, useMemo, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import type { ThematicCollection, WorldModel } from "../../application/world";

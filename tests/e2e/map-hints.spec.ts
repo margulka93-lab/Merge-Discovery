@@ -1,3 +1,4 @@
+import { regressionScreenshotPath } from './evidence';
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFileSync, mkdirSync } from "node:fs";
@@ -55,7 +56,7 @@ async function accessible(page: Page) {
 }
 async function shot(page: Page, name: string) {
   mkdirSync("docs/screenshots/phase-6", { recursive: true });
-  await page.screenshot({ path: `docs/screenshots/phase-6/${name}.png` });
+  await page.screenshot({ path: regressionScreenshotPath(`docs/screenshots/phase-6/${name}.png`) });
 }
 test("map gate and unknown-query safety, element/Set links and keyboard focus", async ({
   page,

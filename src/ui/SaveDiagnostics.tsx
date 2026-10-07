@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { ApplicationSnapshot, ImportPreview, SaveApplication } from '../application/save/SaveApplication';
 import { saveErrorMessage } from '../application/save/errors';
 
-export function SaveDiagnostics({ application, boot, onSnapshot }: { application: SaveApplication; boot: Promise<ApplicationSnapshot>; onSnapshot?: (snapshot: ApplicationSnapshot) => void }) {
+export function SaveDiagnostics({ application, boot, onSnapshot, beginOperation }: { application: SaveApplication; boot: Promise<ApplicationSnapshot>; onSnapshot?: (snapshot: ApplicationSnapshot) => void; beginOperation?: () => (() => void) | undefined }) {
   const [snapshot, setSnapshot] = useState<ApplicationSnapshot>();
   const [error, setError] = useState('');
   const [json, setJson] = useState('');
@@ -15,9 +15,11 @@ export function SaveDiagnostics({ application, boot, onSnapshot }: { application
     return () => { active = false; };
   }, [boot]);
   const run = async (action: () => Promise<void>) => {
+    const release = beginOperation?.();
+    if (beginOperation && !release) return;
     setBusy(true); setError('');
     try { await action(); } catch (cause) { setError(saveErrorMessage(cause)); }
-    finally { setBusy(false); }
+    finally { setBusy(false); release?.(); }
   };
   return <section aria-label="Diagnostica salvataggio">
     <h2>Salvataggio locale · Phase 2</h2>

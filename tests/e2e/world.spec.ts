@@ -1,3 +1,4 @@
+import { regressionScreenshotPath } from './evidence';
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFileSync, mkdirSync } from "node:fs";
@@ -248,7 +249,7 @@ test("six required Phase 5 screenshots, responsive AA and temporary hidden Set e
     page.getByRole("heading", { name: "Collezioni tematiche", exact: true }),
   ).toBeVisible();
   await usable(page);
-  await page.screenshot({ path: "docs/evidence/phase-5-home-1440x900.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-5-home-1440x900.png") });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/collections/water_cycle");
   await expect(
@@ -256,23 +257,23 @@ test("six required Phase 5 screenshots, responsive AA and temporary hidden Set e
   ).toBeVisible();
   await usable(page);
   await page.screenshot({
-    path: "docs/evidence/phase-5-collection-390x844.png",
+    path: regressionScreenshotPath("docs/evidence/phase-5-collection-390x844.png"),
   });
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto("/collections/water_cycle");
   await usable(page);
   await page.screenshot({
-    path: "docs/evidence/phase-5-collection-320x568.png",
+    path: regressionScreenshotPath("docs/evidence/phase-5-collection-320x568.png"),
   });
   await importFixture(page, "v1-anomaly-observed");
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/explore/anomalies");
   await usable(page);
-  await page.screenshot({ path: "docs/evidence/phase-5-anomaly-1440x900.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-5-anomaly-1440x900.png") });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/explore/anomalies");
   await usable(page);
-  await page.screenshot({ path: "docs/evidence/phase-5-anomaly-390x844.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-5-anomaly-390x844.png") });
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto("/explore/anomalies");
   await usable(page);
@@ -303,7 +304,7 @@ test("six required Phase 5 screenshots, responsive AA and temporary hidden Set e
   await expect(
     page.getByRole("heading", { name: "Set: Funghi", exact: true }),
   ).toBeInViewport();
-  await page.screenshot({ path: "docs/evidence/phase-5-fungi-1440x900.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-5-fungi-1440x900.png") });
   await page
     .getByRole("button", { name: "Nuovo esperimento", exact: true })
     .click();

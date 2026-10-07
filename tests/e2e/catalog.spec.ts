@@ -1,3 +1,4 @@
+import { regressionScreenshotPath } from './evidence';
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { mkdirSync, readFileSync } from "node:fs";
@@ -154,7 +155,7 @@ test("real routes, shared durable favorites, Laboratory state, known recipes and
   await page.getByRole("link", { name: "Tutti i Set visibili" }).focus();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/sets$/);
-  await page.getByRole("link", { name: /^Mondo/ }).focus();
+  await page.locator('a[href="/sets/world"]').focus();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/sets\/world$/);
   await page
@@ -300,24 +301,24 @@ test("all six viewports, filter focus/resize retention, accessibility, text zoom
   await page.goto("/collection");
   await expect(page.locator("#catalog-content h2")).toBeVisible();
   await page.screenshot({
-    path: "docs/evidence/phase-4-collection-1440x900.png",
+    path: regressionScreenshotPath("docs/evidence/phase-4-collection-1440x900.png"),
   });
   await page.goto("/elements/water");
   await expect(
     page.getByRole("heading", { name: "Acqua", exact: true }),
   ).toBeVisible();
-  await page.screenshot({ path: "docs/evidence/phase-4-element-1440x900.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-4-element-1440x900.png") });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/sets/world");
   await expect(page.locator("#catalog-content h2")).toBeVisible();
-  await page.screenshot({ path: "docs/evidence/phase-4-set-390x844.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-4-set-390x844.png") });
   await page.goto("/elements/water");
   await expect(page.locator("#catalog-content h2")).toBeVisible();
-  await page.screenshot({ path: "docs/evidence/phase-4-element-390x844.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-4-element-390x844.png") });
   await page.setViewportSize({ width: 320, height: 568 });
   await page.goto("/collection");
   await expect(page.locator("#catalog-content h2")).toBeVisible();
   await page.screenshot({
-    path: "docs/evidence/phase-4-collection-320x568.png",
+    path: regressionScreenshotPath("docs/evidence/phase-4-collection-320x568.png"),
   });
 });

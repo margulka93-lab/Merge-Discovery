@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import {
   BrowserRouter,
   MemoryRouter,
@@ -21,25 +21,10 @@ import {
   offerHint,
   declineHint,
 } from "../application/hintSession";
-import { InformationModeControls } from "../ui/settings/InformationModeControls";
-import { DiscoveryMap } from "../ui/map/DiscoveryMap";
 import { HintPanel } from "../ui/hints/HintPanel";
 import { createCatalogProjector } from "../application/catalog";
 import { featureDisclosure, routeAvailable } from "../application/disclosure";
 import { createWorldProjector } from "../application/world";
-import {
-  ThematicCollections,
-  ThematicCollectionDetail,
-  ThematicCollectionSection,
-} from "../ui/collections/ThematicCollections";
-import { AnomalyArchive } from "../ui/anomalies/AnomalyArchive";
-import {
-  CollectionHome,
-  SetIndex,
-  SetDetail,
-  ElementDetail,
-  UnknownDetail,
-} from "../ui/catalog/Catalog";
 import { engineStatus } from "../application/diagnostics";
 import {
   laboratoryModel,
@@ -51,12 +36,34 @@ import type {
   SaveApplication,
 } from "../application/save/SaveApplication";
 import { saveErrorMessage } from "../application/save/errors";
-import { DiagnosticStatus } from "../ui/DiagnosticStatus";
-import { SaveDiagnostics } from "../ui/SaveDiagnostics";
 import { AppShell } from "../ui/shell/AppShell";
 import { Laboratory } from "../ui/lab/Laboratory";
 import { InlineNotice } from "../ui/components/LabComponents";
 import { saveRuntime } from "./saveRuntime";
+
+import { updates, registerProductionWorker } from '../platform/pwa/updates';
+import { audio } from '../platform/audio/AudioEngine';
+import { reactionPresentation } from '../application/presentation';
+import { UpdateNotice } from '../ui/platform/UpdateNotice';
+import { PlatformRecovery } from './PlatformRecovery';
+import { exportRawRecovery } from './rawRecovery';
+const DiscoveryMap = lazy(() => import('../ui/map/DiscoveryMap').then(m => ({ default: m.DiscoveryMap })));
+const AnomalyArchive = lazy(() => import('../ui/anomalies/AnomalyArchive').then(m => ({ default: m.AnomalyArchive })));
+const SaveDiagnostics = lazy(() => import('../ui/SaveDiagnostics').then(m => ({ default: m.SaveDiagnostics })));
+const SettingsPanel = lazy(() => import('../ui/settings/SettingsPanel').then(m => ({ default: m.SettingsPanel })));
+const ThematicCollections = lazy(() => import('../ui/collections/ThematicCollections').then(m => ({ default: m.ThematicCollections })));
+const ThematicCollectionDetail = lazy(() => import('../ui/collections/ThematicCollections').then(m => ({ default: m.ThematicCollectionDetail })));
+const ThematicCollectionSection = lazy(() => import('../ui/collections/ThematicCollections').then(m => ({ default: m.ThematicCollectionSection })));
+const CollectionHome = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default: m.CollectionHome })));
+const SetIndex = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default: m.SetIndex })));
+const SetDetail = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default: m.SetDetail })));
+const ElementDetail = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default: m.ElementDetail })));
+const UnknownDetail = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default: m.UnknownDetail })));
+
+function RouteReady({ path, children }: { path: string; children: React.ReactNode }) {
+  useLayoutEffect(() => { if (path !== '/') document.getElementById('catalog-content')?.focus({ preventScroll: true }); }, [path]);
+  return children;
+}
 
 function RoutedLaboratoryApplication({
   application,
@@ -67,7 +74,13 @@ function RoutedLaboratoryApplication({
 }) {
   const [snapshot, setSnapshot] = useState<ApplicationSnapshot>();
   const [slots, setSlots] = useState<[string?, string?]>([]);
-  const [reaction, setReaction] = useState<LabReaction>();
+  const [reaction, publishReaction] = useState<LabReaction>();
+  const updateState = useSyncExternalStore(updates.subscribe, updates.getSnapshot);
+  const setReaction = (value?: LabReaction) => {
+    updates.setReveal(reactionPresentation(value).acknowledgement);
+    publishReaction(value);
+  };
+  useEffect(() => { void boot.then(registerProductionWorker, registerProductionWorker); return () => updates.setReveal(false); }, [boot]);
   const location = useLocation(),
     navigate = useNavigate();
   const active =
@@ -139,7 +152,8 @@ function RoutedLaboratoryApplication({
     previousPath.current = location.pathname;
   }, [location.pathname, ready]);
   const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
+  const [operationBusy, setBusy] = useState(false);
+  const busy = operationBusy || updateState.applying;
   const [announcement, setAnnouncement] = useState("");
   const lock = useRef(false);
   useEffect(() => {
@@ -158,6 +172,9 @@ function RoutedLaboratoryApplication({
   }, [boot]);
   const run = async (action: () => Promise<void>) => {
     if (lock.current) return;
+    const release = updates.beginOperation();
+    if (!release) return;
+    audio.userGesture();
     lock.current = true;
     setBusy(true);
     setError("");
@@ -168,6 +185,7 @@ function RoutedLaboratoryApplication({
       setError(saveErrorMessage(cause));
     } finally {
       lock.current = false;
+      release();
       setBusy(false);
     }
   };
@@ -181,12 +199,13 @@ function RoutedLaboratoryApplication({
   };
   if (!snapshot)
     return (
-      <main className="boot-screen">
+      <Suspense fallback={<main className="boot-screen">Apertura…</main>}><main className="boot-screen">
         <h1>Merge Discovery</h1>
         {error ? (
           <>
             <InlineNotice message={error} error />
             <SaveDiagnostics
+              beginOperation={updates.beginOperation}
               application={application}
               boot={boot}
               onSnapshot={accept}
@@ -195,7 +214,7 @@ function RoutedLaboratoryApplication({
         ) : (
           <p role="status">Apertura dell’osservatorio…</p>
         )}
-      </main>
+      </main></Suspense>
     );
   const model = laboratoryModel(snapshot, application.index, slots[0]);
   const features = featureDisclosure(snapshot, application.index);
@@ -223,6 +242,7 @@ function RoutedLaboratoryApplication({
       >
         {announcement}
       </div>
+      <UpdateNotice state={updateState} accept={() => { updates.accept(); }} defer={() => { updates.defer(); document.getElementById(active === 'lab' ? 'laboratory' : 'catalog-content')?.focus({ preventScroll: true }); }} />
       {error && (
         <div className="save-warning">
           <InlineNotice message={error} error />
@@ -259,6 +279,8 @@ function RoutedLaboratoryApplication({
           busy={busy}
           select={(id) => {
             if (busy || (slots[0] && slots[1])) return;
+            audio.userGesture();
+            void audio.play("ui_select", snapshot.save.settings.soundEnabled);
             setReaction(undefined);
             setSlots(slots[0] ? [slots[0], id] : [id, slots[1]]);
           }}
@@ -294,6 +316,8 @@ function RoutedLaboratoryApplication({
               );
               setSnapshot(transaction.snapshot);
               setReaction(outcome);
+              const cue = reactionPresentation(outcome).audio;
+              if (cue) void audio.play(cue, transaction.snapshot.save.settings.soundEnabled);
               setAnnouncement(outcome.announcement);
             });
           }}
@@ -307,11 +331,13 @@ function RoutedLaboratoryApplication({
             setReaction(undefined);
           }}
           onViewDetail={() => {
+            updates.setReveal(false);
             if (reaction?.element) navigate(`/elements/${reaction.element.id}`);
           }}
           reset={reset}
         />
       </div>
+      <Suspense fallback={<main id="catalog-content" tabIndex={-1} className="destination-panel"><p>La schermata si sta aprendo…</p></main>}><RouteReady path={location.pathname}>
       {catalog &&
         active !== "lab" &&
         available &&
@@ -467,63 +493,7 @@ function RoutedLaboratoryApplication({
                 : model.destinations.find((d) => d.id === active)?.label}
             </h2>
             {active === "settings" ? (
-              <>
-                <InformationModeControls
-                  preferences={snapshot.save.settings}
-                  busy={busy}
-                  change={preferences}
-                />
-                <fieldset aria-busy={busy}>
-                  <legend>Accessibilità</legend>
-                  <label>
-                    <input
-                      type="checkbox"
-                      aria-disabled={busy}
-                      checked={model.reducedMotion}
-                      onChange={(e) =>
-                        preferences({ reducedMotion: e.target.checked })
-                      }
-                    />{" "}
-                    Movimento ridotto
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      aria-disabled={busy}
-                      checked={model.highContrast}
-                      onChange={(e) =>
-                        preferences({ highContrast: e.target.checked })
-                      }
-                    />{" "}
-                    Contrasto elevato
-                  </label>
-                  <label htmlFor="text-scale">Dimensione del testo</label>
-                  <select
-                    id="text-scale"
-                    aria-disabled={busy}
-                    value={model.textScale}
-                    onChange={(e) =>
-                      preferences({
-                        textScale: e.target.value as LabModelTextScale,
-                      })
-                    }
-                  >
-                    <option value="default">Normale</option>
-                    <option value="large">Grande</option>
-                    <option value="extra_large">Molto grande</option>
-                  </select>
-                </fieldset>
-                <details>
-                  <summary>
-                    Salvataggio locale · importazione e recupero
-                  </summary>
-                  <SaveDiagnostics
-                    application={application}
-                    boot={boot}
-                    onSnapshot={accept}
-                  />
-                </details>
-              </>
+              <SettingsPanel model={model} snapshot={snapshot} busy={busy} preferences={preferences} application={application} boot={boot} accept={accept} beginOperation={updates.beginOperation} />
             ) : (
               <>
                 <p>
@@ -546,6 +516,7 @@ function RoutedLaboratoryApplication({
             </button>
           </main>
         )}
+      </RouteReady></Suspense>
     </AppShell>
   );
 }
@@ -561,7 +532,6 @@ export function LaboratoryApplication(
     </MemoryRouter>
   );
 }
-type LabModelTextScale = "default" | "large" | "extra_large";
 const status = engineStatus();
 export function App() {
   return status.ready ? (
@@ -569,6 +539,6 @@ export function App() {
       <LaboratoryApplication {...saveRuntime()} />
     </BrowserRouter>
   ) : (
-    <DiagnosticStatus {...status} />
+    <PlatformRecovery fatal exportRaw={exportRawRecovery} reload={() => window.location.reload()} />
   );
 }

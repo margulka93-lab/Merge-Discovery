@@ -39,3 +39,27 @@
   --radius-reveal: 1.5rem;
   --radius-pill: 999px;
 }
+
+:root {
+  --motion-press: 100ms;
+  --motion-known: 300ms;
+  --motion-alternate: 550ms;
+  --motion-discovery: 1100ms;
+  --motion-completion: 1750ms;
+  --motion-hidden: 2200ms;
+  --motion-reduced: 160ms;
+  --ease-reveal: cubic-bezier(.2,.7,.2,1);
+  --focus-ring: 3px solid var(--color-accent-warm);
+  --shadow-notice: 0 .5rem 2rem #0006;
+}
+
+:root {
+  --color-paper-border: #b6afa2;
+  --color-paper-accent-text: #665332;
+  --color-paper-focus: #304e77;
+  --color-art-surface: #192637;
+  --color-art-line: #ddc487;
+  --radius-inset: 0.75rem;
+  --shadow-slot: 0 16px 32px #0003;
+  --motion-busy: 250ms;
+}
