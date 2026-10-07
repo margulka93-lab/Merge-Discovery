@@ -2,9 +2,9 @@
 
 ## Codex readiness
 
-**PHASE 0 + PHASE 1 + PHASE 2 + PHASE 3 + PHASE 4 MERGED · READY FOR PHASE 5**
+**PHASE 0 + PHASE 1 + PHASE 2 + PHASE 3 + PHASE 4 + PHASE 5 MERGED · READY FOR PHASE 6**
 
-Phase 0 + 1 were merged in PR #2, Phase 2 in PR #3, Phase 3 in PR #4 and Phase 4 in PR #5. Phase 5 is now scoped to progressive disclosure, Anomaly Archive and thematic Collections.
+Phase 0 + 1 were merged in PR #2, Phase 2 in PR #3, Phase 3 in PR #4, Phase 4 in PR #5 and Phase 5 in PR #6. Phase 6 is now scoped to the Discovery Map and Tier 1–3 hints.
 
 Legend:
 
@@ -55,7 +55,8 @@ Legend:
 | Visual Phase 3 implementation spec | ✅ | VISUAL_BIBLE_REFERENCE.md + UX/design docs |
 | Phase 3 implementation | ✅ | Merged via PR #4 |
 | Phase 4 implementation | ✅ | Merged via PR #5 |
-| Phase 5 implementation | ✅ | CODEX_TASK.md ready |
+| Phase 5 implementation | ✅ | Merged via PR #6 |
+| Phase 6 implementation | ✅ | CODEX_TASK.md ready |
 | Agent constraints | ✅ | AGENTS.md |
 
 ## Deliberately not frozen
@@ -83,4 +84,4 @@ For the current implementation sequence:
 
 ## Next action
 
-Run `CODEX_TASK.md` for Phase 5. Review Anomalies/Collections/progressive disclosure before Phase 6.
+Run `CODEX_TASK.md` for Phase 6. Review Map/hints/information modes before Phase 7.
