@@ -4,8 +4,8 @@ import { engineState } from "./save/projection";
 import { laboratoryModel, type LabElement } from "./laboratory";
 import { resolve } from "../domain/resolver/resolve";
 import { pairKey } from "../domain/resolver/pair";
-import { ruleMatches, selectorMatches } from "../domain/resolver/rules";
-import { requirementsMet } from "../domain/progression/requirements";
+import { ruleMatches } from "../domain/resolver/rules";
+import { createCurrentDirectionSelector } from "./directions";
 import { isFailureAuthoritative } from "./updates/reconcile";
 
 export interface CatalogElement extends LabElement {
@@ -17,6 +17,7 @@ export interface CatalogElement extends LabElement {
   exhausted: boolean;
   stale: boolean;
   newPossibilities: boolean;
+  directionCount?: number;
 }
 export interface CatalogSet {
   id: string;
@@ -60,6 +61,7 @@ export interface CatalogModel {
   elements: CatalogElement[];
   sets: CatalogSet[];
   recent: CatalogElement[];
+  knownRecipes: KnownRecipe[];
   detail: (id: string) => ElementDetailModel | undefined;
 }
 
@@ -71,73 +73,18 @@ export function createCatalogProjector(index: ContentIndex) {
   const setsById = new Map(index.content.sets.map((s) => [s.id, s]));
   const recipesById = new Map(index.content.recipes.map((r) => [r.id, r]));
   const rulesById = new Map(index.rules.map((r) => [r.id, r]));
-  const candidates = new Set([
-    ...index.recipesByPair.keys(),
-    ...index.anomaliesByPair.keys(),
-  ]);
+  const directions = createCurrentDirectionSelector(index);
   const cache = new WeakMap<ApplicationSnapshot, CatalogModel>();
   return (snapshot: ApplicationSnapshot): CatalogModel => {
     const cached = cache.get(snapshot);
     if (cached) return cached;
     const { save } = snapshot,
       state = engineState(save, index);
-    const owned = new Set(state.discoveredElementIds),
-      possible = new Set<string>();
-    const eligiblePairs = new Set(candidates),
-      safelyChangedPairs = new Set<PairKey>();
-    // Tag rules generate only matching candidates, and only when their domain is unlocked.
-    // With the canonical seed this path is empty; it does not allocate an all-pairs matrix.
-    for (const rule of index.rules) {
-      if (!requirementsMet(rule.requirements, state, index)) continue;
-      const pools = rule.inputSelectors.map((selector) =>
-        state.discoveredElementIds.filter(
-          (id) =>
-            !rule.exclusions?.includes(id) &&
-            selectorMatches(selector, index.elements.get(id)!),
-        ),
-      );
-      for (const a of pools[0]!)
-        for (const b of pools[1]!) eligiblePairs.add(pairKey(a, b));
-    }
-    const safeSuccess = (recipeId: string, resultId: string) => {
-      const target = index.elements.get(resultId)!,
-        set = setsById.get(target.setId)!;
-      return (
-        recipesById.get(recipeId)?.discovery !== "secret" &&
-        (owned.has(resultId) ||
-          (target.visibility !== "secret" && target.completion !== "secret")) &&
-        (save.revealedSetIds.includes(set.id) ||
-          !["hidden", "secret"].includes(set.visibility))
-      );
-    };
-    for (const key of eligiblePairs) {
-      const [a, b] = key.split("::") as [string, string];
-      if (!owned.has(a) || !owned.has(b)) continue;
-      const result = resolve(a, b, state, index);
-      const safeCurrentReaction =
-        result.type === "success"
-          ? safeSuccess(result.recipeId, result.resultElementId)
-          : result.type === "anomaly" &&
-            !(index.recipesByPair.get(key) ?? []).some(
-              (r) => r.discovery === "secret",
-            );
-      if (safeCurrentReaction) safelyChangedPairs.add(key);
-      const available =
-        result.type === "success"
-          ? safeSuccess(result.recipeId, result.resultElementId) &&
-            (result.isNewRecipe ||
-              result.isNewElement ||
-              result.events.some((e) => e.type === "anomaly_resolved"))
-          : result.type === "anomaly" &&
-            result.isNewAnomaly &&
-            !(index.recipesByPair.get(key) ?? []).some(
-              (r) => r.discovery === "secret",
-            );
-      if (available) {
-        possible.add(a);
-        possible.add(b);
-      }
-    }
+    const owned = new Set(state.discoveredElementIds);
+    const current = directions(snapshot);
+    const possible = new Set(current.byElement.keys());
+    const safelyChangedPairs = current.reactivePairs;
+    const safeSuccess = current.safeSuccess;
     const staleIds = new Set<string>();
     const history = new Map<
       string,
@@ -186,6 +133,10 @@ export function createCatalogProjector(index: ContentIndex) {
           firstDiscoveredAt:
             save.discoveredElements[element.id]!.firstDiscoveredAt,
           possibilities: possible.has(element.id),
+          directionCount:
+            save.settings.informationMode === "collector"
+              ? (current.byElement.get(element.id)?.length ?? 0)
+              : undefined,
           exhausted: !possible.has(element.id) && !staleIds.has(element.id),
           stale: staleIds.has(element.id),
           newPossibilities: fresh.has(element.id),
@@ -267,6 +218,7 @@ export function createCatalogProjector(index: ContentIndex) {
     const model: CatalogModel = {
       elements,
       sets,
+      knownRecipes,
       recent: [...elements]
         .sort(
           (a, b) =>

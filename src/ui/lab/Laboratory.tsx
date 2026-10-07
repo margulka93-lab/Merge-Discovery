@@ -13,6 +13,7 @@ import {
 } from "../components/LabComponents";
 export function Laboratory({
   model,
+  hint,
   slots,
   reaction,
   busy,
@@ -26,6 +27,7 @@ export function Laboratory({
   onViewDetail,
 }: {
   model: LabModel;
+  hint?: import("react").ReactNode;
   slots: [string?, string?];
   reaction?: LabReaction;
   busy: boolean;
@@ -136,6 +138,7 @@ export function Laboratory({
             reset();
           }}
         />
+        {hint}
       </main>
       <aside className="library" aria-label="Biblioteca degli elementi">
         <header>

@@ -10,6 +10,20 @@ import {
   Link,
   Navigate,
 } from "react-router-dom";
+import {
+  createCurrentDirectionSelector,
+  projectHint,
+} from "../application/directions";
+import { createMapProjector } from "../application/map";
+import {
+  initialHintSession,
+  recordHintExperiment,
+  offerHint,
+  declineHint,
+} from "../application/hintSession";
+import { InformationModeControls } from "../ui/settings/InformationModeControls";
+import { DiscoveryMap } from "../ui/map/DiscoveryMap";
+import { HintPanel } from "../ui/hints/HintPanel";
 import { createCatalogProjector } from "../application/catalog";
 import { featureDisclosure, routeAvailable } from "../application/disclosure";
 import { createWorldProjector } from "../application/world";
@@ -94,6 +108,21 @@ function RoutedLaboratoryApplication({
     () => (snapshot && catalog ? projectWorld(snapshot, catalog) : undefined),
     [snapshot, catalog, projectWorld],
   );
+  const directionSelector = useMemo(
+    () => createCurrentDirectionSelector(application.index),
+    [application],
+  );
+  const projectMap = useMemo(
+    () => createMapProjector(application.index),
+    [application],
+  );
+  const [hintSession, setHintSession] = useState(initialHintSession);
+  const [mobile, setMobile] = useState(() => window.innerWidth < 768);
+  useEffect(() => {
+    const resize = () => setMobile(window.innerWidth < 768);
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
   const ready = Boolean(snapshot);
   const previousPath = useRef(location.pathname);
   useEffect(() => {
@@ -144,6 +173,7 @@ function RoutedLaboratoryApplication({
   };
   const accept = (value: ApplicationSnapshot) => {
     setSnapshot(value);
+    setHintSession(initialHintSession);
     setSlots([]);
     setReaction(undefined);
     setActive("lab");
@@ -170,6 +200,9 @@ function RoutedLaboratoryApplication({
   const model = laboratoryModel(snapshot, application.index, slots[0]);
   const features = featureDisclosure(snapshot, application.index);
   const available = routeAvailable(location.pathname, features);
+  const currentDirections = directionSelector(snapshot);
+  const hintFor = (id?: string) =>
+    projectHint(snapshot, application.index, currentDirections, id);
   const reset = () => {
     setSlots([]);
     setReaction(undefined);
@@ -208,6 +241,19 @@ function RoutedLaboratoryApplication({
       <div className="lab-panels" hidden={active !== "lab"}>
         <Laboratory
           model={model}
+          hint={
+            features.map && (
+              <HintPanel
+                key={`${slots[0]}-${snapshot.revision}`}
+                model={hintFor(slots[0])}
+                offer={offerHint(
+                  hintSession,
+                  snapshot.save.settings.proactiveHints,
+                )}
+                decline={() => setHintSession(declineHint(hintSession))}
+              />
+            )
+          }
           slots={slots}
           reaction={reaction}
           busy={busy}
@@ -234,6 +280,18 @@ function RoutedLaboratoryApplication({
                 application.index,
                 snapshot,
               );
+              setHintSession((previous) =>
+                recordHintExperiment(
+                  previous,
+                  transaction.resolution,
+                  transaction.snapshot.derived.collections.some(
+                    (c) =>
+                      !snapshot.derived.collections.some(
+                        (old) => old.id === c.id,
+                      ),
+                  ),
+                ),
+              );
               setSnapshot(transaction.snapshot);
               setReaction(outcome);
               setAnnouncement(outcome.announcement);
@@ -257,8 +315,30 @@ function RoutedLaboratoryApplication({
       {catalog &&
         active !== "lab" &&
         available &&
-        ["collection", "sets", "anomalies"].includes(active) && (
+        ["collection", "sets", "anomalies", "map"].includes(active) && (
           <Routes>
+            <Route
+              path="/map"
+              element={
+                <Navigate replace to={`/explore/map${location.search}`} />
+              }
+            />
+            <Route
+              path="/explore/map"
+              element={
+                world && (
+                  <DiscoveryMap
+                    model={projectMap(
+                      snapshot,
+                      catalog,
+                      world,
+                      Object.fromEntries(new URLSearchParams(location.search)),
+                      mobile,
+                    )}
+                  />
+                )
+              }
+            />
             <Route
               path="/collection"
               element={
@@ -290,6 +370,7 @@ function RoutedLaboratoryApplication({
                   model={catalog}
                   favorite={(id) => preferences({ favoriteElementId: id })}
                   busy={busy}
+                  mapAvailable={features.map}
                 />
               }
             />
@@ -302,6 +383,16 @@ function RoutedLaboratoryApplication({
                   busy={busy}
                   setsAvailable={features.sets}
                   collectionAvailable={features.collection}
+                  mapAvailable={features.map}
+                  hint={(id) =>
+                    features.map && (
+                      <HintPanel
+                        key={`${id}-${snapshot.revision}`}
+                        model={hintFor(id)}
+                        label="Chiedi un indizio"
+                      />
+                    )
+                  }
                 />
               }
             />
@@ -347,7 +438,12 @@ function RoutedLaboratoryApplication({
                 )
               }
             />
-            <Route path="*" element={<UnknownDetail collectionAvailable={features.collection} />} />
+            <Route
+              path="*"
+              element={
+                <UnknownDetail collectionAvailable={features.collection} />
+              }
+            />
           </Routes>
         )}
       {active !== "lab" && !available && (
@@ -358,7 +454,7 @@ function RoutedLaboratoryApplication({
       )}
       {active !== "lab" &&
         available &&
-        !["collection", "sets", "anomalies"].includes(active) && (
+        !["collection", "sets", "anomalies", "map"].includes(active) && (
           <main
             id="catalog-content"
             tabIndex={-1}
@@ -372,6 +468,11 @@ function RoutedLaboratoryApplication({
             </h2>
             {active === "settings" ? (
               <>
+                <InformationModeControls
+                  preferences={snapshot.save.settings}
+                  busy={busy}
+                  change={preferences}
+                />
                 <fieldset aria-busy={busy}>
                   <legend>Accessibilità</legend>
                   <label>
@@ -426,8 +527,9 @@ function RoutedLaboratoryApplication({
             ) : (
               <>
                 <p>
-                  Questa destinazione è stata sbloccata. La sua schermata sarà
-                  disponibile in una fase successiva.
+                  {active === "explore"
+                    ? "Esplora le relazioni conosciute e le anomalie osservate."
+                    : "Questa destinazione è stata sbloccata. La sua schermata sarà disponibile in una fase successiva."}
                 </p>
                 {active === "explore" && (
                   <div>

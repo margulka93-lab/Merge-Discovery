@@ -4,11 +4,11 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 ## Status
 
-**Phase 0–5 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer, responsive Laboratory, field-guide catalog, guarded progressive disclosure, thematic Collections and observed Anomaly Archive.
+**Phase 0–6 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer, responsive Laboratory, field-guide catalog, guarded progressive disclosure, thematic Collections, observed Anomaly Archive, local Discovery Map and safe Tier 1–3 hints.
 
 The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, view its sheet, repeat with A or start a new experiment. The Collection and Set pages use ivory field-guide surfaces and expose owned elements, visible Sets and registered recipes only. Favorites and accessibility preferences use the same IndexedDB save. Navigating back to the Laboratory preserves its inputs and search.
 
-The current bounded implementation task is Phase 6 in `CODEX_TASK.md`. Phase 6 has not started.
+The bounded Phase 6 task in `CODEX_TASK.md` is implemented. Tier 4/5, Resonance, PWA and Phase 7 remain deferred.
 
 ## Run and verify
 
@@ -27,6 +27,7 @@ npm run preview
 npx playwright install chromium
 npm run test:e2e
 npm run profile:catalog
+npm run profile:map
 ```
 
 `npm run check` runs typecheck, lint, all domain/content/component tests and the validated production build. Build runs both validators before bundling. `npm run test:e2e` separately runs Chromium viewport, keyboard, IndexedDB reload, axe and screenshot checks; CI runs both gates. `npm run test:watch` is available during development.
@@ -62,6 +63,8 @@ See [Phase 3 implementation notes](docs/PHASE_3_NOTES.md) for UI architecture, c
 See [Phase 4 implementation notes](docs/PHASE_4_NOTES.md) for routing, safe catalog projections, current possibilities, validation and the five required screenshots.
 
 See [Phase 5 implementation notes](docs/PHASE_5_NOTES.md) for shared route/navigation guards, once-earned Collection completion and silent old-save backfill, safe Anomaly status/retry, reveal hierarchy and the six required screenshots. Collections are reached from the Collection Home; Anomalies become available only after observation. Phase 6 now replaces the Map placeholder and adds Tier 1–3 hints/information modes. Local launch remains `npm run dev`; open the URL printed by Vite. BrowserRouter deep links require an SPA fallback on a future static host; Vite dev/preview already provide it.
+
+See [Phase 6 implementation notes](docs/PHASE_6_NOTES.md) for indexed safe directions, three local Map modes, session-only stall policy, information preferences and six screenshots.
 
 ## Core fantasy
 
