@@ -11,6 +11,7 @@ import {
   ReactionStage,
   SearchBar,
 } from "../components/LabComponents";
+import { InstrumentLines } from "../components/ObservatoryMarks";
 export function Laboratory({
   model,
   hint,
@@ -96,7 +97,7 @@ export function Laboratory({
           <p>Scegli due concetti e prova a combinarli.</p>
         </header>
         <div className={`experiment ${busy ? "reacting" : ""}`}>
-          <div className="celestial-lines" aria-hidden="true" />
+          <InstrumentLines />
           <div className="slots">
             <ElementSlot
               letter="A"

@@ -1,0 +1,148 @@
+{
+  "starters": 4,
+  "totalElements": 67,
+  "reachableElements": 67,
+  "unreachableRequired": [],
+  "unrevealedSets": [],
+  "blockedUnlocks": [],
+  "maxDependencyDepth": 11,
+  "anomaliesObserved": [
+    "lunar_life_instability"
+  ],
+  "checkpoints": [
+    {
+      "depth": 0,
+      "discovered": 4,
+      "xp": 0,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 1,
+      "discovered": 9,
+      "xp": 520,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 2,
+      "discovered": 14,
+      "xp": 1250,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 3,
+      "discovered": 18,
+      "xp": 1790,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 4,
+      "discovered": 22,
+      "xp": 2260,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 5,
+      "discovered": 28,
+      "xp": 3135,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 6,
+      "discovered": 31,
+      "xp": 3535,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life"
+      ]
+    },
+    {
+      "depth": 7,
+      "discovered": 39,
+      "xp": 4405,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life"
+      ]
+    },
+    {
+      "depth": 8,
+      "discovered": 49,
+      "xp": 5680,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 9,
+      "discovered": 57,
+      "xp": 6965,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 10,
+      "discovered": 64,
+      "xp": 7930,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 11,
+      "discovered": 67,
+      "xp": 8480,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    }
+  ],
+  "completedCollectionChapterIds": [
+    "children_of_stars",
+    "water_cycle",
+    "rocky_world",
+    "green_everywhere"
+  ]
+}

@@ -61,8 +61,7 @@ export function ElementCard({
         <ElementArt artKey={element.artKey} />
         <strong>{element.name}</strong>
         <span className="set-cue">{element.setName}</span>
-        {selected && <span className="selected-cue">✓ Selezionato</span>}
-        {element.context && (
+        {selected ? <span className="selected-cue">✓ Selezionato</span> : element.context && (
           <span className="context-cue">{element.context}</span>
         )}
       </button>
@@ -109,16 +108,14 @@ export function ElementSlot({
       <span className="slot-label">Elemento {letter}</span>
       {element ? (
         <>
-          <ElementArt artKey={element.artKey} />
+          <span className="slot-specimen"><ElementArt artKey={element.artKey} /></span>
           <strong>{element.name}</strong>
           <span>{element.setName}</span>
-          <small>× Rimuovi</small>
+          <small className="slot-clear">× Rimuovi</small>
         </>
       ) : (
         <>
-          <span className="empty-orbit" aria-hidden="true">
-            +
-          </span>
+          <span className="slot-specimen"><span className="empty-orbit" aria-hidden="true">+</span></span>
           <strong>Scegli un elemento</strong>
           <span>Dalla tua biblioteca</span>
         </>
@@ -198,16 +195,18 @@ export function DiscoveryReveal({ reaction }: { reaction: LabReaction }) {
       className={`discovery-reveal ${reaction.kind}`}
       style={accentStyle(element)}
     >
-      <p className="eyebrow">{reaction.title}</p>
       <div className="result-art">
         <ElementArt artKey={element.artKey} />
       </div>
+      <div className="result-copy">
+      <p className="eyebrow">{reaction.title}</p>
       <h2>{element.name}</h2>
       <div className="result-tags">
         <span>{element.setName}</span>
         <span>{element.rarity}</span>
       </div>
       <p>{reaction.message}</p>
+      </div>
     </div>
   );
 }

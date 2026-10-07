@@ -1,8 +1,9 @@
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-const evidence = 'docs/evidence/phase-7';
-const screenshots = 'docs/screenshots/phase-7';
+// Preserve the published Phase 7 baseline during later visual regression runs.
+const evidence = 'test-results-production/phase-7-evidence';
+const screenshots = 'test-results-production/phase-7-screenshots';
 function report(name: string, value: unknown) { mkdirSync(evidence,{ recursive:true }); writeFileSync(`${evidence}/${name}.json`,JSON.stringify(value,null,2)); }
 async function shot(page: Page, name: string) { mkdirSync(screenshots,{recursive:true}); await page.screenshot({path:`${screenshots}/${name}.png`,animations:'disabled'}); }
 async function boot(page: Page) {

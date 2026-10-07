@@ -1,0 +1,65 @@
+{
+  "production": true,
+  "matrix": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "axeViolations": 0,
+      "horizontalOverflow": false,
+      "touchTargets": "44px"
+    },
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "axeViolations": 0,
+      "horizontalOverflow": false,
+      "touchTargets": "44px"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "axeViolations": 0,
+      "horizontalOverflow": false,
+      "touchTargets": "44px"
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "axeViolations": 0,
+      "horizontalOverflow": false,
+      "touchTargets": "44px"
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "axeViolations": 0,
+      "horizontalOverflow": false,
+      "touchTargets": "44px"
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "axeViolations": 0,
+      "horizontalOverflow": false,
+      "touchTargets": "44px"
+    }
+  ],
+  "legitimateFixtures": true,
+  "inputsSurviveResize": true,
+  "combineInitiallyReachable": true,
+  "newDiscovery": "authored energy + energy",
+  "anomaly": "canonical life + moon",
+  "manualVisualApproval": "PENDING"
+}
