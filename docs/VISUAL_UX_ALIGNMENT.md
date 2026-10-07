@@ -19,7 +19,7 @@ Phase 7.5 is allowed to redesign layout and presentation aggressively while pres
 
 The product should feel like:
 
-**a modern magical observatory that opens into an illustrated field guide as the player understands the world.**
+**a modern magical observatory whose catalog becomes an illustrated dark field guide as the player understands the world.**
 
 Not:
 
@@ -29,32 +29,35 @@ Not:
 - a mobile F2P game;
 - a medieval alchemist room.
 
-The visual bible remains canonical:
+The visual bible remains canonical.
 
-- midnight observatory shell;
-- warm amber/gold discovery focus;
+**Critical interpretation rule:** the actual in-game UI shown in the original Design Bible is predominantly dark across Laboratory, mobile, Catalog/Element Detail, results and Discovery Map. The pale/ivory blocks visible in the lower part of the poster belong to the documentation/diagram area of the Design Bible and are **not** a reference for the game screen palette.
+
+Canonical in-game anchors:
+
+- midnight/navy observatory shell across all primary screens;
+- thin warm amber/gold borders and active accents;
 - painterly/symbolic element imagery;
 - celestial/orbital linework;
-- ivory field-guide reading surfaces;
-- violet anomaly language;
-- calm premium spacing;
-- editorial hierarchy.
+- dark glass/panel surfaces with subtle depth;
+- warm gold discovery/reveal focus;
+- restrained violet anomaly language;
+- compact elegant information density;
+- editorial hierarchy achieved through typography, composition and spacing rather than switching the product to light paper screens.
 
-## Product-level visual transition
+## Product-level visual continuity
 
 ### Laboratory / Explore
 
-Stay predominantly dark.
+Dark observatory/cosmic environment.
 
-They represent experimentation, uncertainty and relationships.
+### Collection / Sets / Element Detail
 
-### Collection / Sets / Element detail
+Remain **dark in-game interfaces**, as in the original Catalogo – Elemento panel of the Design Bible.
 
-Use the field-guide language much more strongly.
+They may feel more archival/editorial through composition, hierarchy, framed illustrations, subtle panel differences and typography, but they must not become ivory/cream pages or a separate light application.
 
-They represent knowledge the player has already made legible.
-
-The ivory surfaces should therefore feel like pages/plates inside the same observatory shell, not like white dashboard cards.
+The whole game should look like one coherent dark magical product.
 
 ## Navigation architecture
 
@@ -253,7 +256,7 @@ Large domain plate with:
 - restrained completion;
 - accent motif.
 
-Then transition into an ivory discovery field/grid.
+Then transition into a dark illustrated discovery field/grid with restrained gold framing.
 
 ### Element grid
 
@@ -382,8 +385,8 @@ Audit/rework:
 - inline notices
 - page headers
 - section headers
-- paper/field-guide surfaces
-- dark glass surfaces
+- dark archival/catalog surfaces
+- dark glass/observatory surfaces
 
 The same concept should not be represented by three unrelated visual patterns across screens.
 
