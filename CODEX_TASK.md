@@ -1,16 +1,24 @@
-# CODEX_TASK.md — Phase 6
+# CODEX_TASK.md — Phase 7
 
-Phase 0 + 1 + 2 + 3 + 4 + 5 are merged.
+Phase 0 + 1 + 2 + 3 + 4 + 5 + 6 are merged.
 
 ## Goal
 
-Implement the first real **Discovery Map + Tier 1–3 Hint system + information-mode behavior**.
+Perform the **Product Polish / PWA hardening** pass.
 
-Phase 6 should help the player understand the graph they have already discovered and reduce blind brute force without turning the game into a solver.
+At the end of Phase 7, the current 67-element game should behave like a robust installable local-first web product:
 
-The Map and hints must obey the same hidden-content boundary as the Catalog, Anomaly Archive and resolver.
+- offline after first successful load;
+- safely updateable without destroying an active experiment/reveal;
+- meaningfully code-split and profiled;
+- accessible across the supported responsive matrix;
+- equipped with consistent motion tiers;
+- equipped with browser-safe audio infrastructure;
+- protected by production-grade error boundaries/fallbacks.
 
-Do not implement Tier 4/5 hints, Resonance, PWA or final polish in this task.
+Do not add new canonical gameplay/content in this task.
+
+Do not start Android/Capacitor.
 
 ## Required reading
 
@@ -18,521 +26,439 @@ Read before changing code:
 
 - `AGENTS.md`
 - `docs/IMPLEMENTATION_PLAN.md`
-- `docs/HINTS_AND_FAILURE.md`
-- `docs/CATALOG_AND_DISCOVERY_GRAPH.md`
-- `docs/SCREEN_SPECS.md`
-- `docs/UX_SCREEN_ARCHITECTURE.md`
-- `docs/RESPONSIVE_AND_UI_STATES.md`
-- `docs/VISUAL_BIBLE_REFERENCE.md`
-- `docs/DESIGN_SYSTEM.md`
+- `docs/TECH_SPEC.md`
 - `docs/MOTION_AUDIO.md`
 - `docs/ACCESSIBILITY.md`
-- `docs/DATA_MODEL.md`
-- `docs/RESOLUTION_ENGINE.md`
-- `docs/PHASE_5_NOTES.md`
+- `docs/RESPONSIVE_AND_UI_STATES.md`
+- `docs/DESIGN_SYSTEM.md`
+- `docs/VISUAL_DIRECTION.md`
+- `docs/VISUAL_BIBLE_REFERENCE.md`
+- `docs/COPY_AND_LOCALIZATION.md`
+- `docs/SAVE_AND_VERSIONING.md`
+- `docs/VALIDATION_AND_TESTING.md`
+- `docs/PHASE_6_NOTES.md`
 
-Inspect the existing safe Catalog/World projectors and shared disclosure helpers before adding graph/hint projection.
+Inspect the current Vite bundle/chunks before choosing lazy boundaries.
 
 ## Scope
 
-### 1. Replace Map placeholder with a real route
+### 1. PWA integration
 
-Implement:
+Add a Vite-compatible PWA/service-worker integration in the platform layer.
 
-`/explore/map`
-
-Optional compatibility redirect:
-
-`/map` → `/explore/map`
-
-The existing disclosure threshold remains canonical:
-
-- Map available when the save owns at least 15 elements.
-
-Before disclosure:
-
-- route remains blocked;
-- no graph metadata is exposed.
-
-When both Anomalies and Map are available, mobile continues to use `Esplora`.
-
-### 2. Safe graph projection
-
-Create a pure/indexed application projection for the Map.
-
-The visual graph may receive only safe player knowledge.
-
-Allowed real element nodes:
-
-- discovered elements;
-- intentionally visible/glimpsed elements only if current canonical projection explicitly allows them.
-
-Current seed should normally use discovered nodes only.
-
-Allowed special nodes:
-
-- observed anomaly markers;
-- generic anonymous possibility markers as defined below.
-
-Never create a node, edge, label, tooltip, accessible name or count from:
-
-- hidden unrevealed element identities;
-- secret elements;
-- secret recipes;
-- dormant future reactions;
-- unrevealed hidden/secret Sets;
-- unobserved anomalies.
-
-Do not render hidden content and hide it with CSS.
-
-### 3. Known recipe graph model
-
-Represent only recipes the player has actually discovered.
-
-A recipe is a two-input relationship.
-
-Do not visually imply that one ingredient alone creates the result.
-
-The graph DTO should preserve:
-
-- recipe ID;
-- input A;
-- input B;
-- result;
-- alternate/normal known route;
-- Set membership of real nodes.
-
-The renderer may use a small reaction junction/glyph or another clear grouped-edge treatment.
-
-A+A recipes must remain understandable.
-
-### 4. Observed anomaly graph model
-
-Observed anomalies may appear as unstable relationship markers between their known inputs.
-
-Before resolution:
-
-- no result node;
-- no future result edge;
-- no resolution condition.
-
-After legitimate resolution:
-
-- ordinary known recipe relationship may appear;
-- anomaly history may remain visually distinguishable if useful.
-
-### 5. Map modes
-
-Implement three modes.
-
-#### A. Ancestry — `Come ci sono arrivata?`
-
-Selected discovered element is the focus.
-
-Show known producing recipes recursively.
-
-Defaults:
-
-- mobile: depth 1;
-- desktop/compact: depth 2.
-
-Desktop may let the player choose depth 1–3.
-
-Never traverse undiscovered recipe paths.
-
-#### B. Possibilities — `Dove posso andare da qui?`
-
-Selected discovered element is the focus.
-
-Show:
-
-- known discovered outgoing relationships;
-- observed anomaly relation markers;
-- safe generic undiscovered-direction markers according to information mode.
-
-Never point an unknown marker to a real hidden node.
-
-#### C. Set Map — `Come è costruito questo dominio?`
-
-Select only from currently revealed Sets.
-
-Show:
-
-- discovered members of that Set;
-- known recipe relationships among them;
-- known cross-Set neighbors only when already discovered and directly connected by a known recipe.
-
-Do not create empty slots for missing/secret members.
-
-### 6. Map selection and URL state
-
-Support safe deep-linkable query state, for example:
-
-`/explore/map?element=water&mode=ancestry`
-
-Exact query names may differ, but:
-
-- selected element should survive reload;
-- map mode should survive reload;
-- Set filter/mode may survive reload;
-- no durable save field is required.
-
-If the query references an element the save does not own:
-
-- ignore it or show generic unavailable selection;
-- reveal no metadata;
-- fall back safely.
-
-### 7. Graph rendering
-
-Visual direction:
-
-- midnight cosmic canvas;
-- restrained constellation/orbit lines;
-- illustrated/symbolic element nodes;
-- warm known-recipe connections;
-- violet anomaly connection;
-- anonymous possibility marker is visually generic.
-
-Required interactions:
-
-- click/tap node to focus;
-- pan;
-- zoom;
-- zoom in/out controls;
-- center/reset control;
-- keyboard-accessible node selection path.
-
-Mobile:
-
-- one-hop/local neighborhood by default;
-- pinch zoom/pan when technically practical;
-- never load/render the whole mature graph at once.
-
-Desktop:
-
-- local progressive expansion;
-- depth control for Ancestry;
-- Set filter for Set Map.
-
-A lightweight graph/pan library may be added only if justified and isolated.
-
-Do not introduce heavy WebGL.
-
-### 8. Accessible relationship representation
-
-The visual graph cannot be the only Map UI.
-
-Alongside/below it provide an accessible structured relationship view for the current selection.
-
-At minimum:
-
-- `Creato da`;
-- `Produce`;
-- `Ricette alternative conosciute`;
-- `Anomalie osservate`;
-- generic undiscovered-direction information allowed by current information mode.
-
-Keyboard/screen-reader users must be able to navigate relationships without pan/zoom.
-
-### 9. Link Map into existing screens
-
-When Map is disclosed:
-
-Element Detail:
-- add `Apri nella Mappa`.
-
-Set Detail:
-- add `Apri mappa del Set`.
-
-Anomaly Archive:
-- for observed known inputs, optional `Vedi relazione nella Mappa` if it can navigate without implying a result.
-
-Before Map disclosure:
-
-- do not show dead Map links.
-
-### 10. Safe hint candidate projection
-
-Implement a pure/indexed hint projector.
-
-Hint candidates for a selected owned element may consider only a currently eligible pair where:
-
-- both inputs are already discovered;
-- resolver currently returns a new safe recipe or new observed-capable anomaly direction;
-- reaction is not secret;
-- result is not secret;
-- dormant/future mode content is excluded;
-- an unrevealed hidden/secret Set is not exposed;
-- partner Set identity used by Tier 3 is already player-visible/revealed.
-
-The projector must not return exact partner ID or result ID to Tier 1–3 presentation DTOs.
-
-Do not let React inspect raw recipe data to construct hints.
-
-### 11. Define “currently available hint direction”
-
-For one selected element, a direction is a unique canonical PairKey that would currently produce:
-
-- a recipe not yet discovered; or
-- an anomaly not yet observed; or
-- a previously stale no-reaction that is now safely reactive.
-
-Do not count:
-
-- already discovered recipe on the same pair;
-- repeated anomaly;
-- secret/dormant/future path;
-- a reaction whose existence would reveal an unrevealed hidden domain.
-
-Alternate recipes count only if that exact recipe path remains undiscovered and is safe.
-
-Counts refer to unique currently actionable pair directions, not total authored recipes.
-
-### 12. Hint Tier 1
-
-Tier 1 exposes only availability.
-
-Examples:
-
-> Ha ancora reazioni da scoprire con elementi che conosci.
-
-or:
-
-> Per ora non vedo altre piste con ciò che possiedi.
-
-No partner, Set, result or exact count in Mystery/Balanced.
-
-Available once Map/hint-scale threshold is met (15 owned elements), and from Element Detail when disclosed.
-
-### 13. Hint Tier 2
-
-Tier 2 is explicit-request only.
-
-It gives one deterministic structural direction for a safe candidate.
-
-Allowed clue:
-
-- `Una delle piste resta dentro il Set di questo elemento.`
-- or `Una delle piste porta verso un elemento di un altro Set che conosci.`
-
-It must not name the partner Set yet.
-
-Pick the candidate deterministically so the same save/context does not randomly change the clue.
-
-No randomness.
-
-### 14. Hint Tier 3
-
-Tier 3 gives the partner family/Set, not the partner.
-
-Example:
-
-> Una delle reazioni mancanti coinvolge un elemento del Set Mondo.
+Preferred:
+`vite-plugin-pwa` or an equally small Vite-compatible solution.
 
 Requirements:
 
-- the named Set is already revealed/player-visible;
-- exact partner name/ID remains absent;
-- result remains absent.
+- production build emits a valid web manifest;
+- app shell is available offline after one successful online load;
+- bundled canonical content required for gameplay is precached;
+- local UI assets required for the current product are precached;
+- IndexedDB save remains the source of durable player progress;
+- service worker must not cache imported save JSON or create a parallel save store;
+- no backend/network dependency is introduced.
 
-If no safe Tier 3 clue exists, keep the strongest lower-tier clue rather than revealing more.
+Keep service-worker concerns out of Domain/Application.
 
-### 15. No Tier 4 or Tier 5
+### 2. Web app manifest
 
-Do NOT implement:
+Provide a production manifest with at least:
 
-- conceptual near-answer clue;
-- exact partner reveal;
-- `Acqua + Calore → ?`;
-- recipe answer;
-- result silhouette derived from hidden content.
+- `name`: Merge Discovery
+- useful `short_name`
+- `start_url`
+- `display: standalone`
+- theme/background colors matching design tokens
+- language/direction where supported
+- install icons suitable for normal and maskable use
 
-Those remain future work.
+Create simple project-owned placeholder PWA icons if final brand icons do not exist.
 
-### 16. Hint UI in Laboratory
+Do not use third-party/copyrighted icon assets.
 
-Add a secondary hint control near the reaction stage.
+Placeholder icons should reflect the current Merge Discovery elemental/orbit identity and be easy to replace later.
 
-Default:
+### 3. Offline behavior
 
-- subtle;
-- never competes with `Combina`;
-- only useful when Slot A is selected.
+After a successful first production load, verify that the player can go offline and still:
 
-If no Slot A:
-- explain briefly that an element must be selected first.
+- boot the application;
+- load the current IndexedDB save;
+- navigate Lab/Catalog/Set/Element/Collections/Anomalies/Map;
+- combine known inputs;
+- persist progress locally;
+- use hints and information modes;
+- export save JSON.
 
-If selected element is currently exhausted:
-- say so using the existing safe language;
-- do not fabricate a hint.
+Do not display a scary global “offline” banner during normal local gameplay.
 
-Suggested flow:
+Connectivity messaging appears only if a future network-dependent feature needs it.
 
-1. `Indizio` opens a compact sheet/panel.
-2. Tier 1 appears.
-3. `Dammi una direzione` requests Tier 2.
-4. Tier 3 appears only when currently allowed by the stall/manual-strength rules below.
+### 4. Safe update flow
 
-No modal stack.
+Implement a platform/application update state.
 
-### 17. Hint UI in Element Detail
+When a new service worker/build is available:
 
-When Map/hints are disclosed, Element Detail may expose:
+- show a small non-blocking `Aggiornamento disponibile` notice;
+- never force reload;
+- never call update/reload in the middle of a save transaction;
+- never reload while a major result/reveal is actively being presented;
+- offer `Aggiorna ora` only at a safe point;
+- allow `Più tardi`.
 
-- Tier 1 status;
-- explicit `Chiedi un indizio` action;
-- Tier 2/3 in a compact hint section/sheet.
+A safe point means at minimum:
 
-Do not duplicate hint logic.
+- no combine transaction in flight;
+- no import/overwrite transaction in flight;
+- no active blocking recovery operation;
+- no major discovery/Set/anomaly reveal currently requiring player acknowledgement.
 
-### 18. Session-only stall detection
+If update becomes available at an unsafe point:
 
-Implement light session-only stall tracking.
+- remember it in ephemeral platform state;
+- surface actionable update once safe.
 
-Do not persist it in PlayerSave.
+Do not persist “update available” in PlayerSave.
 
-Progress resets stall counters when the player gets a meaningful new state such as:
+### 5. Update + save compatibility
 
-- new element;
-- new recipe;
-- newly observed anomaly;
-- Set reveal;
-- Collection reveal/completion.
+Before reload for an accepted update:
 
-Known repeated recipe does not count as progress.
+- current committed save must already be durable;
+- no extra save write is required merely for the service-worker update;
+- after reload, normal Phase 2 migration/reconciliation handles content/schema versions.
 
-Track at minimum:
+Add an integration test simulating an available update around a combine/reveal boundary.
 
-- consecutive no-reactions;
-- experiments since meaningful progress.
+No update may cause:
 
-Recommended thresholds:
+- duplicate XP;
+- repeated discovery event;
+- lost committed discovery;
+- half-persisted state.
 
-#### proactiveHints = off
+### 6. Installation affordance
 
-Never proactively offer.
+Installability itself is required.
 
-Manual Tier 1/2 remains available.
+An in-product install prompt is optional, but if implemented:
 
-Tier 3 may still be reached by explicit request after the player has already requested Tier 2 for that context.
+- use the browser `beforeinstallprompt` event only;
+- never nag;
+- show it in Settings or another low-pressure context;
+- no fake install button on unsupported browsers;
+- dismissal is session/platform UI state, not gameplay progress.
 
-#### proactiveHints = light
+Do not add notification permission requests.
 
-Offer `Vuoi un indizio?` after either:
+### 7. Design token hardening
 
-- 5 consecutive no-reactions; or
-- 10 experiments without meaningful progress.
+Audit Phase 3–6 styles.
 
-#### proactiveHints = normal
+Move repeated semantic values into the existing token system where practical:
 
-Offer after either:
+- backgrounds/surfaces;
+- text/muted text;
+- borders;
+- warm discovery accent;
+- anomaly accent;
+- field-guide surfaces;
+- focus ring;
+- spacing;
+- radii;
+- motion duration/easing;
+- elevation/shadow tokens where useful.
 
-- 3 consecutive no-reactions; or
-- 6 experiments without meaningful progress.
+Do not perform a visual redesign.
 
-Thresholds are UI/application tuning constants, not canonical content.
+Do not replace the custom product identity with a generic UI library.
 
-After the player declines:
+Hardcoded one-off values are still acceptable when truly local, but repeated semantic colors/durations should not drift across feature CSS files.
 
-- suppress another proactive offer until at least 3 additional experiments or meaningful progress.
+### 8. Motion tier implementation
 
-No timers.
+Map the current UI outcomes to the tiers in `MOTION_AUDIO.md`.
 
-### 19. Tier 3 availability
+At minimum:
 
-Tier 3 may become available when at least one condition is true:
+#### Tier 0
+- element/card selection;
+- button press;
+- slot fill/clear.
 
-- proactive hint stall threshold has been reached;
-- player has explicitly requested a clearer hint after seeing Tier 2 in the same selected-element context.
+#### Tier 1
+- known result.
 
-This is free.
+#### Tier 2
+- alternate recipe.
 
-No currency, ad, cooldown or reward penalty.
+#### Tier 3
+- new element.
 
-### 20. Information modes become functional
+#### Tier 4
+- Collection completion / normal Set reveal.
 
-Expose existing save setting:
+#### Tier 5
+- hidden Funghi Set reveal.
 
-`informationMode: mystery | balanced | collector`
+#### Anomaly
+- own restrained unstable grammar.
 
-in Settings.
+Implementation requirements:
 
-Also expose existing:
+- central semantic motion classes/tokens or presentation mapping;
+- avoid page-blocking waits;
+- essential actions available as soon as semantic state is committed;
+- no animation controls persistence;
+- no strobing/glitch-heavy effects.
 
-`proactiveHints: off | light | normal`
+### 9. Reduced motion
 
-No save schema change.
+Respect BOTH:
 
-#### Mystery
+- saved `reducedMotion`;
+- `prefers-reduced-motion`.
 
-- no exact missing direction counts;
-- Possibilities Map shows no anonymous unknown-direction nodes by default;
-- hints are manual unless proactiveHints itself is enabled;
-- Catalog keeps conservative wording.
+When either is active:
 
-#### Balanced
+- remove large movement/parallax;
+- reduce transitions to short opacity/static emphasis;
+- anomaly becomes static/low-motion;
+- Tier 4/5 remains semantically stronger through typography/border/layout/copy rather than duration.
 
-Default.
+Add tests proving major reveal information does not disappear when motion is removed.
 
-- no exact count;
-- Possibilities Map may show one aggregate anonymous `Possibilità non esplorate` marker when safe directions exist;
-- Tier 1 safe status available.
+### 10. Audio event infrastructure
 
-#### Collector
+Implement browser audio infrastructure in:
 
-- may show exact count of currently safe actionable PairKey directions;
-- Possibilities Map may render one anonymous marker per currently safe direction, or a clearly counted aggregate if rendering is cleaner;
-- still no partner identity before Tier 3;
-- secrets/dormant/hidden domains excluded from count.
+`src/platform/audio/`
 
-Information mode is not a difficulty flag and changes no rewards/outcomes.
+or equivalent.
 
-### 21. Possibility count/source of truth
+Stable logical event IDs must include at minimum:
 
-Map, Catalog status and hints should use one shared safe current-direction selector wherever practical.
+- `ui_select`
+- `combine_known`
+- `combine_no_reaction`
+- `discover_alternate`
+- `discover_new`
+- `collection_complete`
+- `set_reveal`
+- `hidden_set_reveal`
+- `anomaly_unstable`
 
-Do not create three subtly different definitions of “has possibilities”.
+Future-safe IDs may be documented for:
 
-If Phase 4 `CatalogElement.possibilities/exhausted` needs a minimal refactor to consume the new helper, that is allowed and preferred.
+- `anomaly_resolve`
+- `arcano_reveal`
 
-Document any such refactor in the PR.
+UI/domain code should dispatch logical event IDs, not hardcoded file paths.
 
-### 22. Proactive hint offer
+### 11. Audio placeholders / lifecycle
 
-When threshold is reached and a safe hint candidate exists, show:
+Production sound design is out of scope.
 
-> Vuoi un indizio?
+For Phase 7, use one of these acceptable strategies:
 
-Actions:
+A. tiny project-owned placeholder audio assets; or
+B. a lightweight Web Audio placeholder synthesizer behind the same event-key interface.
 
-- `Non ora`
-- `Leggero`
+Requirements:
 
-After Tier 2 is visible and Tier 3 is allowed:
+- default remains silent according to current save defaults;
+- no AudioContext/playback before user interaction;
+- if browser blocks/suspends audio, gameplay is unaffected;
+- repeated low-value interactions must not become noisy;
+- no audio cue conveys information unavailable visually;
+- sound preference persists through existing settings.
 
-- `Più chiaro`
+Do not add large audio packages.
 
-Do not interrupt with a blocking modal.
+### 12. Sound settings
 
-The player can keep combining without answering.
+Use existing durable settings:
 
-### 23. No hint telemetry/save marking
+- `soundEnabled`
+- `musicEnabled`
 
-Do not persist:
+Expose clear controls in Settings.
 
-- hint requested;
-- hint tier used;
-- “assisted” status;
-- stall counters.
+Phase 7 does not require an actual ambient music track.
 
-Do not reduce XP/rewards.
+If no music asset exists:
 
-No achievement consequence.
+- `musicEnabled` may remain disabled/noted as future or control future-ready state;
+- do not play fake continuous oscillator music.
 
-### 24. Responsive Map behavior
+### 13. Route-level code splitting
 
-Verify at minimum:
+The current build has an advisory JS chunk around ~595 kB.
+
+Phase 7 must address it with real architecture, not by increasing `chunkSizeWarningLimit`.
+
+Use route/feature lazy loading where appropriate.
+
+Strong candidates:
+
+- Map;
+- Catalog/Set/Element/Collections bundle;
+- Anomaly Archive;
+- Settings diagnostics/import-export.
+
+Laboratory core should remain quick.
+
+Requirements:
+
+- loading state follows existing quiet product language;
+- route guards/hidden-content safety remain outside or ahead of lazy UI where necessary;
+- deep links still work;
+- lazy chunks are cached by PWA after use / or precached if intentionally chosen;
+- no hidden metadata is serialized into UI purely because a lazy bundle exists.
+
+### 14. Bundle budget
+
+Do not “fix” the warning by simply raising the warning threshold.
+
+After code splitting, document:
+
+- entry chunk size;
+- largest lazy chunk;
+- total production JS;
+- gzip sizes where available.
+
+Target:
+
+- no single initial JS chunk >500 kB uncompressed;
+- preferably substantially below that;
+- no single feature chunk becomes an obvious >500 kB replacement problem.
+
+If the target cannot be met without redesigning architecture/dependencies:
+
+- document the exact blocker;
+- do not hide it with config.
+
+### 15. Performance profiling
+
+Keep existing:
+
+- catalog 1,000-definition synthetic profile;
+- map 1,000-definition synthetic profile.
+
+Add/extend a browser/product performance smoke covering:
+
+- cold production boot from cached assets;
+- warm boot;
+- Laboratory ready;
+- route switch to Map;
+- route switch to Catalog;
+- combine transaction UI publication.
+
+Do not make CI depend on fragile absolute millisecond thresholds across runners.
+
+Use budgets/assertions for structural regressions instead:
+
+- no global pair matrix;
+- no unbounded graph render;
+- bounded rendered node count in local Map;
+- code-split chunks exist;
+- no repeated full-content scan in render loops.
+
+### 16. Element/card rendering polish
+
+Without final production illustrations:
+
+- preserve current `artKey` placeholder contract;
+- add lazy/deferred behavior only where actually beneficial;
+- avoid layout shift in cards/heroes;
+- use fixed aspect-ratio containers;
+- prevent image/art fallback from collapsing layout.
+
+No asset-generation project in this phase.
+
+### 17. Production error boundary
+
+Add a top-level React error boundary/fatal UI for unexpected render/application failures.
+
+Requirements:
+
+- calm Merge Discovery styling;
+- no raw stack trace to normal user;
+- clear reload/retry action;
+- save export/recovery link/action when the application/save layer is available;
+- development mode may expose diagnostics separately.
+
+Do not silently wipe save.
+
+### 18. Fatal bundled-content failure
+
+The architecture document requires a recoverable fatal-content screen.
+
+If bundled content validation/build/startup fails at runtime:
+
+- do not enter gameplay with partial content;
+- show a clear fatal-content state;
+- offer safe reload;
+- preserve/export existing local save if possible.
+
+Build-time validation remains mandatory.
+
+Add a test fixture/path for this UI without corrupting canonical content.
+
+### 19. Accessibility hardening audit
+
+Treat WCAG 2.2 AA core-flow regressions as blockers.
+
+Run/fix:
+
+- keyboard-only full seed smoke or representative end-to-end progression;
+- Lab;
+- Collection/Catalog;
+- Element Detail;
+- Collections;
+- Anomaly Archive;
+- Map;
+- Hint UI;
+- Settings/import-export;
+- update banner;
+- error boundary/fatal screen.
+
+Requirements remain:
+
+- logical focus;
+- skip-to-main mechanism if not already present;
+- semantic landmarks;
+- live announcements not duplicated;
+- no color-only state;
+- 44×44 touch targets;
+- forced colors;
+- reduced motion;
+- 200% zoom.
+
+### 20. Screen-reader smoke documentation
+
+Automated tests are not a substitute for an actual assistive-technology smoke procedure.
+
+Add a concise manual checklist for at least:
+
+- VoiceOver or NVDA/JAWS equivalent;
+- Lab combination;
+- new discovery announcement;
+- Element Detail;
+- Map relationship explorer;
+- hint request;
+- Anomaly entry;
+- settings/update notice.
+
+Do not claim manual execution if Codex cannot actually perform it.
+
+Mark it as a release checklist item if unexecuted.
+
+### 21. Responsive hardening matrix
+
+Re-run and fix all current primary screens at:
 
 - 320×568
 - 390×844
@@ -541,144 +467,165 @@ Verify at minimum:
 - 1440×900
 - 1920×1080
 
-Mobile:
-- graph first/local;
-- mode selector compact;
-- relationship list below;
-- hint sheet/full-width panel;
-- no horizontal page overflow.
+Also test:
 
-Desktop:
-- graph canvas dominant;
-- controls around canvas;
-- relationship inspector/list side or below.
+- 200% browser zoom;
+- extra-large in-game text;
+- landscape phone;
+- soft-keyboard search interaction where Playwright can reasonably simulate viewport changes;
+- safe-area CSS variables.
 
-State survives breakpoint/orientation changes.
+No horizontal document overflow.
 
-### 25. Accessibility
+### 22. Safe areas
 
-Required:
+Add/use CSS environment insets where appropriate:
 
-- visual graph has an accessible name/description;
-- graph nodes are keyboard-focusable or have an equivalent keyboard list that changes the same selection;
-- accessible relationship view contains all gameplay-relevant known graph information;
-- zoom/pan is never required to access information;
-- controls have text/accessible names;
-- hint levels announced without leaking future content;
-- proactive offer is non-blocking and screen-reader accessible;
-- reduced motion removes large graph/reveal transitions;
-- forced colors/high contrast preserve node/edge/state distinctions;
-- 200% zoom remains usable;
-- touch controls aim for 44×44.
+- top app shell;
+- mobile bottom nav;
+- full-width sheets;
+- update/install notices.
 
-### 26. Performance
+Critical controls must not sit behind mobile browser/native gesture areas.
 
-Map architecture must remain viable at 1,000+ definitions.
+This should remain compatible with future Capacitor without Android-specific branching.
 
-Do not render the global mature graph.
+### 23. PWA update/offline UI accessibility
 
-Projection should build:
+Update/install controls must:
 
-- current local neighborhood;
-- currently selected ancestry depth;
-- selected Set subgraph.
+- be keyboard reachable;
+- have explicit labels;
+- not steal focus when appearing;
+- announce availability politely at most once per update;
+- retain focus logically after update dismissal;
+- never require a timed response.
 
-Use content/save indexes and memoization.
+### 24. Security / cache scope
 
-Add a synthetic profiling/smoke test if useful.
+Service worker must cache only intended app-origin build/static assets.
 
-## Required reusable pieces
+Do not:
+
+- cache arbitrary external origins;
+- intercept GitHub/dev URLs;
+- eval imported data;
+- inject raw HTML from content;
+- cache user save exports as runtime responses.
+
+Keep strict import validation unchanged.
+
+### 25. Production build verification
+
+Add commands/scripts as needed to verify:
+
+- manifest emitted;
+- service worker emitted;
+- PWA registration in production preview;
+- app works offline after first load;
+- update prompt flow can be exercised in a controlled test;
+- lazy chunks load successfully through production preview;
+- IndexedDB persists across offline reload.
+
+Do not rely only on Vite dev server for PWA acceptance.
+
+### 26. CI
+
+Extend CI without making it excessively flaky.
+
+Required gates:
+
+- existing check/tests/validator/reachability;
+- existing catalog/map profiles;
+- production build;
+- PWA artifact/manifest validation;
+- E2E current suite;
+- targeted production-preview PWA/offline E2E.
+
+If service-worker browser tests are inherently flaky in one CI mode, isolate them clearly and document why; do not silently skip all offline validation.
+
+## Required reusable/platform pieces
 
 At minimum:
 
-- DiscoveryMap
-- MapControls
-- MapNode
-- accessible RelationshipExplorer/List
-- map projector/selectors
-- safe current-direction selector
-- hint projector
-- HintPanel/HintSheet
-- ProactiveHintOffer
-- InformationMode controls in Settings
+- PWA registration/update controller;
+- update notice component;
+- platform online/offline capability helper if needed;
+- audio event interface/engine;
+- semantic motion token/tier mapping;
+- top-level ErrorBoundary;
+- fatal-content fallback;
+- lazy feature boundaries.
 
-Reuse existing ElementArt, AppShell, visibility and save preferences.
+Do not move gameplay truth into these layers.
 
 ## Required tests
 
-### Map disclosure/routes
+### PWA
 
-- Map blocked before threshold;
-- Map available at threshold;
-- invalid/undiscovered `element` query leaks no metadata;
-- mobile Esplora links to real Map.
+- manifest has required fields/icons;
+- service worker generated;
+- production preview registers SW;
+- second load works offline;
+- offline load opens current save;
+- offline combine persists and survives reload;
+- offline Map/Catalog routes open after cached use or deliberate precache strategy.
 
-### Graph knowledge boundary
+### Update
 
-- only discovered/legitimately visible nodes;
-- hidden/secret nodes absent from DTO, DOM, accessible labels and counts;
-- only discovered recipes create known recipe relationships;
-- unobserved anomaly absent;
-- observed anomaly present without result;
-- A+A relationship represented correctly;
-- alternate known recipe represented as a separate known route.
+- update availability is non-blocking;
+- unsafe combine/reveal prevents immediate reload;
+- accepted safe update calls the update path once;
+- `Più tardi` leaves gameplay usable;
+- no duplicate discovery/XP around simulated update boundary.
 
-### Map modes
+### Audio
 
-- Ancestry depth 1/2 behavior;
-- Possibilities known outputs;
-- Set Map only revealed Sets;
-- known cross-Set neighbor safe;
-- mobile local neighborhood does not render global graph.
+- default settings cause no playback;
+- playback cannot initialize before user interaction;
+- enabled sound dispatches expected logical event ID;
+- blocked/suspended audio does not reject gameplay actions;
+- reduced motion does not alter audio correctness;
+- sound setting persists.
 
-### Information modes
+### Motion
 
-- Mystery no unknown direction count/marker;
-- Balanced aggregate safe marker only;
-- Collector exact safe actionable-direction count;
-- all three exclude secret/dormant/unrevealed-hidden paths.
+- event → tier mapping;
+- reduced-motion mapping;
+- hidden Funghi reveal retains semantic Tier 5 text without large animation;
+- anomaly remains readable with animation disabled.
 
-### Hints
+### Bundle/lazy loading
 
-- Tier 1 exposes no partner/result;
-- Tier 2 only same/different-Set structural direction;
-- Tier 3 only revealed Set name;
-- no DTO field contains partner/result identity for Tier 1–3;
-- deterministic clue selection;
-- exhausted element produces no fake hint;
-- hidden Set candidate is excluded;
-- stale failure that became safely reactive may become a hint direction.
+- route-level lazy chunks exist;
+- initial chunk stays under target;
+- changing warning limit is not the mechanism used;
+- deep links lazy-load successfully;
+- hidden route guards still prevent data leakage.
 
-### Stall/proactive offer
+### Error handling
 
-- off never proactively offers;
-- light threshold;
-- normal threshold;
-- meaningful progress resets;
-- decline suppresses next 3 experiments;
-- no timer/save persistence;
-- manual hint remains available.
+- UI render error reaches branded error boundary;
+- retry path works where possible;
+- fatal-content fixture never boots gameplay;
+- neither path clears current IndexedDB save.
 
-### Existing screens
+### Accessibility/responsive
 
-- Element Detail Map link only after disclosure;
-- Set Detail Map link only after disclosure;
-- existing Catalog exhaustion uses the shared safe-direction logic or remains exactly equivalent;
-- settings persist informationMode/proactiveHints.
-
-### Accessibility/E2E
-
-- keyboard selects a Map element through accessible relation view;
-- relationship list mirrors known graph facts;
-- hint sheet focus/close behavior;
-- 320 px no overflow;
+- skip link/focus;
+- update notice accessible;
+- settings audio controls accessible;
+- 320 px;
+- landscape phone;
 - 200% zoom;
+- extra-large text;
+- forced colors;
 - reduced motion;
-- axe scan on Map and hint UI.
+- axe on representative primary routes.
 
 ### Regression
 
-All Phase 0–5 unit/component/E2E tests remain green.
+All Phase 0–6 tests/E2E remain green.
 
 Canonical seed remains:
 
@@ -690,38 +637,37 @@ Canonical seed remains:
 
 ## Screenshot evidence required
 
-Use legitimate save states.
+Use the production build/preview where applicable.
 
 Include:
 
-1. `1440×900` — Map Ancestry focused on a mid/late discovered element with multiple known ancestors;
-2. `1440×900` — Possibilities mode in Balanced or Collector, showing safe anonymous direction treatment;
-3. `1440×900` — Laboratory hint panel with Tier 2 or safe Tier 3 clue;
-4. `390×844` — mobile Map local neighborhood;
-5. `390×844` — accessible relationship view / Map inspector;
-6. `320×568` — Map or hint UI proving minimum-width usability.
+1. `1440×900` — polished Laboratory normal state;
+2. `1440×900` — Tier 3/new element or major reveal showing motion-tier visual hierarchy in a static frame;
+3. `1440×900` — Settings with accessibility/audio/information controls;
+4. `390×844` — installed/PWA-like standalone responsive shell or production mobile shell;
+5. `390×844` — update-available notice at a safe point;
+6. `320×568` — one core screen after responsive hardening.
 
-No screenshot may inject hidden identities into the UI.
+Also include machine-readable/documented PWA evidence; screenshots alone do not prove offline behavior.
 
 ## Explicitly out of scope
 
 Do NOT implement:
 
-- Tier 4 hint;
-- Tier 5 exact partner hint;
+- new canonical elements/recipes/Sets/Collections;
+- Tier 4/5 hints;
 - Resonance;
-- pinned Collection objectives;
+- pinned objective save field;
 - achievements;
-- global full-graph rendering;
-- PWA/service worker/update flow;
+- final illustration production;
+- production sound/music composition;
+- Arcano payoff content;
 - Android/Capacitor;
-- final art;
-- production audio;
-- new canonical recipes/elements;
-- Arcano content;
-- backend/cloud;
+- backend/cloud sync;
+- accounts;
 - monetization;
-- analytics.
+- analytics;
+- notifications.
 
 ## Delivery
 
@@ -729,19 +675,22 @@ Work on a dedicated branch and open a PR.
 
 PR description must include:
 
-- graph projection architecture;
-- recipe/anomaly representation semantics;
-- hidden-content safeguards;
-- Map modes and local-neighborhood strategy;
-- hint candidate safety rules;
-- information-mode behavior;
-- stall/proactive-hint behavior;
-- any minimal Phase 4 selector refactor;
-- responsive/accessibility behavior;
+- PWA/service-worker strategy;
+- cache scope;
+- update-safe-point behavior;
+- bundle before/after table;
+- lazy boundaries;
+- motion tier architecture;
+- audio event architecture/placeholder strategy;
+- error/fatal-content recovery behavior;
+- accessibility audit summary;
+- manual screen-reader checklist status;
+- responsive matrix results;
+- offline/PWA production-preview evidence;
 - screenshots listed above;
 - commands run;
 - unit/component/E2E results;
 - validator/reachability results;
-- explicit confirmation Phase 7 was not started.
+- explicit confirmation Phase 8 content and Phase 9 Android were not started.
 
 Do not extend scope.
