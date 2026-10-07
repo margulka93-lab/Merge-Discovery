@@ -2,6 +2,7 @@ import { lazy, Suspense, useState } from 'react';
 import { InformationModeControls } from './InformationModeControls';
 import type { LabModel } from '../../application/laboratory';
 import type { ApplicationSnapshot, SaveApplication } from '../../application/save/SaveApplication';
+import '../../styles/exploration.css';
 const SaveDiagnostics = lazy(() => import('../SaveDiagnostics').then(m => ({ default: m.SaveDiagnostics })));
 type LabModelTextScale = 'default' | 'large' | 'extra_large';
 export function SettingsPanel({ model, snapshot, busy, preferences, application, boot, accept, beginOperation }: {
@@ -12,18 +13,12 @@ export function SettingsPanel({ model, snapshot, busy, preferences, application,
 }) {
   const [diagnosticsOpen, setDiagnosticsOpen] = useState(false);
   return (
-    <>
+    <div className="settings-groups">
                 <InformationModeControls
                   preferences={snapshot.save.settings}
                   busy={busy}
                   change={preferences}
                 />
-                <fieldset aria-busy={busy}>
-                  <legend>Audio</legend>
-                  <label><input type="checkbox" disabled={busy} checked={snapshot.save.settings.soundEnabled} onChange={e => preferences({ soundEnabled: e.target.checked })} /> Suoni</label>
-                  <label><input type="checkbox" disabled checked={snapshot.save.settings.musicEnabled} readOnly /> Musica · disponibile in una fase futura</label>
-                  <p>I suoni sono facoltativi. Ogni risultato resta leggibile.</p>
-                </fieldset>
                 <fieldset aria-busy={busy}>
                   <legend>Accessibilità</legend>
                   <label>
@@ -67,6 +62,12 @@ export function SettingsPanel({ model, snapshot, busy, preferences, application,
                     <option value="extra_large">Molto grande</option>
                   </select>
                 </fieldset>
+                <fieldset aria-busy={busy}>
+                  <legend>Audio</legend>
+                  <label><input type="checkbox" disabled={busy} checked={snapshot.save.settings.soundEnabled} onChange={e => preferences({ soundEnabled: e.target.checked })} /> Suoni</label>
+                  <label><input type="checkbox" disabled checked={snapshot.save.settings.musicEnabled} readOnly /> Musica · disponibile in una fase futura</label>
+                  <p>I suoni sono facoltativi. Ogni risultato resta leggibile.</p>
+                </fieldset>
                 <details onToggle={e => setDiagnosticsOpen(e.currentTarget.open)}>
                   <summary>
                     Salvataggio locale · importazione e recupero
@@ -78,5 +79,5 @@ export function SettingsPanel({ model, snapshot, busy, preferences, application,
                     onSnapshot={accept}
                   /></Suspense>}
                 </details>
-              </>);
+              </div>);
 }

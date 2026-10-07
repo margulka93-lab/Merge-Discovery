@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import type { MapModel, MapRecipe } from "../../application/map";
 import { MapControls } from "./MapControls";
 import { MapNode } from "./MapNode";
+import { ElementArt } from "../components/ElementArt";
+import { InstrumentLines } from "../components/ObservatoryMarks";
 import "./map.css";
-export function DiscoveryMap({ model }: { model: MapModel }) {
+import "../../styles/exploration.css";
+export function DiscoveryMap({ model, navigation }: { model: MapModel; navigation?: ReactNode }) {
   const [query, setQuery] = useSearchParams();
   const [view, setView] = useState({ x: 0, y: 0, zoom: 1 });
   const canvas = useRef<HTMLDivElement>(null);
@@ -25,23 +28,26 @@ export function DiscoveryMap({ model }: { model: MapModel }) {
       setQuery(normalized, { replace: true });
   }, [query, setQuery, model.mode, model.depth, model.focus, model.setId]);
   const select = (id: string) => change("element", id);
-  const columns = Math.max(2, Math.ceil(Math.sqrt(model.nodes.length)));
-  const positions = new Map(
-    model.nodes.map((e, i) => [
-      e.id,
-      { x: 100 + (i % columns) * 185, y: 100 + Math.floor(i / columns) * 155 },
-    ]),
-  );
-  const width = Math.max(420, columns * 185 + 20),
-    height = Math.max(330, Math.ceil(model.nodes.length / columns) * 155 + 30);
-  const [fit, setFit] = useState(1);
+  // A presentation-only constellation of already disclosed nodes. No graph rules here.
+  const neighbors = model.nodes.filter(e => e.id !== model.focus?.id);
+  const rings = Math.max(1, Math.ceil(neighbors.length / 8));
+  const width = 2 * (180 + (rings - 1) * 145 + 100), height = width;
+  const positions = new Map(neighbors.map((e, i) => {
+    const ring = Math.floor(i / 8), count = Math.min(8, neighbors.length - ring * 8);
+    const angle = -Math.PI / 2 + (i % 8) * 2 * Math.PI / count + ring * .22;
+    const radius = 180 + ring * 145;
+    return [e.id, { x: width / 2 + Math.cos(angle) * radius, y: height / 2 + Math.sin(angle) * radius }];
+  }));
+  if (model.focus) positions.set(model.focus.id, { x: width / 2, y: height / 2 });
+  const [frame, setFrame] = useState({ fit: 1, x: 0, y: 0 });
+  const fit = frame.fit;
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
       const rect = entries[0]?.contentRect;
-      if (rect)
-        setFit(
-          Math.max(0.55, Math.min(1, rect.width / width, rect.height / height)),
-        );
+      if (rect) {
+        const fit = Math.max(0.55, Math.min(1, rect.width / width, rect.height / height));
+        setFrame({ fit, x: (rect.width - width * fit) / 2, y: (rect.height - height * fit) / 2 });
+      }
     });
     if (canvas.current) observer.observe(canvas.current);
     return () => observer.disconnect();
@@ -75,6 +81,7 @@ export function DiscoveryMap({ model }: { model: MapModel }) {
   };
   return (
     <main id="catalog-content" tabIndex={-1} className="discovery-map">
+      {navigation}
       <header>
         <p className="eyebrow">Il tuo osservatorio</p>
         <h2>Mappa delle scoperte</h2>
@@ -132,12 +139,13 @@ export function DiscoveryMap({ model }: { model: MapModel }) {
               pointers.current.set(e.pointerId, next);
             }}
           >
+            <InstrumentLines />
             <div
               className="map-space"
               style={{
                 width,
                 height,
-                transform: `translate(${view.x}px, ${view.y}px) scale(${view.zoom * fit})`,
+                transform: `translate(${frame.x + view.x}px, ${frame.y + view.y}px) scale(${view.zoom * fit})`,
               }}
             >
               <svg width={width} height={height} aria-hidden="true">
@@ -253,6 +261,7 @@ export function RelationshipExplorer({
       aria-label="Esploratore delle relazioni"
     >
       <p className="eyebrow">Relazioni conosciute</p>
+      {model.focus && <ElementArt artKey={model.focus.artKey} />}
       <h3 ref={heading} tabIndex={-1}>
         {model.focus?.name ?? "Le tue scoperte"}
       </h3>

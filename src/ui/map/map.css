@@ -68,23 +68,23 @@
   inset: 0;
   overflow: visible;
 }
-.map-space path {
+.map-space > svg path {
   fill: none;
   stroke: var(--color-accent-warm);
   stroke-width: 2;
 }
-.map-space circle {
+.map-space > svg circle {
   fill: #272333;
   stroke: #e1c898;
 }
-.map-space text {
+.map-space > svg text {
   fill: #f5e7c7;
   font-size: 14px;
 }
-.map-space .alternate-route path {
+.map-space > svg .alternate-route path {
   stroke-dasharray: 7 4;
 }
-.map-space .anomaly-edge {
+.map-space > svg .anomaly-edge {
   stroke: var(--color-anomaly);
   stroke-dasharray: 3 6;
   stroke-width: 3;

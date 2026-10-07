@@ -1,0 +1,134 @@
+{
+  "production": true,
+  "audits": [
+    {
+      "url": "/explore/map?element=water",
+      "width": 1440,
+      "height": 900,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/anomalies",
+      "width": 1440,
+      "height": 900,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/settings",
+      "width": 1440,
+      "height": 900,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/map?element=water",
+      "width": 390,
+      "height": 844,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/anomalies",
+      "width": 390,
+      "height": 844,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/settings",
+      "width": 390,
+      "height": 844,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/map?element=water",
+      "width": 320,
+      "height": 568,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/anomalies",
+      "width": 320,
+      "height": 568,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/settings",
+      "width": 320,
+      "height": 568,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/map?element=water",
+      "width": 768,
+      "height": 1024,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/anomalies",
+      "width": 768,
+      "height": 1024,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/settings",
+      "width": 768,
+      "height": 1024,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/map?element=water",
+      "width": 1024,
+      "height": 768,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/anomalies",
+      "width": 1024,
+      "height": 768,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/settings",
+      "width": 1024,
+      "height": 768,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/map?element=water",
+      "width": 1920,
+      "height": 1080,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/explore/anomalies",
+      "width": 1920,
+      "height": 1080,
+      "axeViolations": 0,
+      "overflow": false
+    },
+    {
+      "url": "/settings",
+      "width": 1920,
+      "height": 1080,
+      "axeViolations": 0,
+      "overflow": false
+    }
+  ],
+  "originalPosterInspected": true,
+  "visualApproval": "PENDING",
+  "manualScreenReader": "NOT RUN"
+}

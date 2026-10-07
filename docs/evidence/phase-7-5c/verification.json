@@ -1,0 +1,92 @@
+{
+  "phase": "7.5C",
+  "verifiedAtUtc": "2026-10-07T23:58:41.784Z",
+  "unitComponentTests": 199,
+  "unitFiles": 15,
+  "regressionE2e": {
+    "passed": 20,
+    "initial": "19 passed; active Explore tab forced-colors contrast failed",
+    "postFix": "complete six-viewport Map/200-percent case: 1 passed"
+  },
+  "productionChecks": {
+    "passed": 13,
+    "fullRun": "13 passed",
+    "finalPresentation": "Map art/frame/labels and screenshot readiness finalized; exploration visual audit and full preferences/forced-colors/reflow case repeated: 2 passed"
+  },
+  "contentValidation": "PASS",
+  "reachability": {
+    "reachable": 67,
+    "total": 67,
+    "maxDepth": 11,
+    "blockedUnlocks": []
+  },
+  "pwaValidation": {
+    "status": "PASS",
+    "assets": 20,
+    "jsChunks": 10
+  },
+  "productionOffline": true,
+  "updateSafe": true,
+  "explorationRouteViewportAudits": 18,
+  "profiles": "Both 1000-element profiles PASS",
+  "originalPosterInspected": true,
+  "screenshots": [
+    {
+      "file": "1440-anomalies.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-collection.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-laboratory.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-map.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-settings.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "320-map-overview.png",
+      "width": 320,
+      "height": 568
+    },
+    {
+      "file": "320-map.png",
+      "width": 320,
+      "height": 568
+    },
+    {
+      "file": "390-anomalies.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "390-map-overview.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "390-map.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "390-settings.png",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "manualVisualApproval": "PENDING",
+  "manualAssistiveTechnology": "NOT EXECUTED"
+}

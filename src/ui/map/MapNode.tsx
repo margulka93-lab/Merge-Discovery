@@ -15,7 +15,7 @@ export function MapNode({
   scale: number;
   select: (id: string) => void;
 }) {
-  const size = Math.max(84, 44 / scale);
+  const size = Math.max(selected ? 124 : 84, 44 / scale);
   return (
     <button
       className="map-node"
@@ -29,7 +29,7 @@ export function MapNode({
       onClick={() => select(element.id)}
     >
       <ElementArt artKey={element.artKey} />
-      <span>{element.name}</span>
+      <span style={{ fontSize: `${.85 / scale}rem` }}>{element.name}</span>
     </button>
   );
 }

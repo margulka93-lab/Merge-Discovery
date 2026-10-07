@@ -38,6 +38,7 @@ import type {
 import { saveErrorMessage } from "../application/save/errors";
 import { AppShell } from "../ui/shell/AppShell";
 import { KnowledgeNavigation } from "../ui/components/KnowledgeNavigation";
+import { ExploreNavigation } from "../ui/components/ExploreNavigation";
 import { Laboratory } from "../ui/lab/Laboratory";
 import { InlineNotice } from "../ui/components/LabComponents";
 import { saveRuntime } from "./saveRuntime";
@@ -355,6 +356,7 @@ function RoutedLaboratoryApplication({
               element={
                 world && (
                   <DiscoveryMap
+                    navigation={<ExploreNavigation map={features.map} anomalies={features.anomalies} />}
                     model={projectMap(
                       snapshot,
                       catalog,
@@ -453,6 +455,7 @@ function RoutedLaboratoryApplication({
               element={
                 world && (
                   <AnomalyArchive
+                    navigation={<ExploreNavigation map={features.map} anomalies={features.anomalies} />}
                     model={world}
                     busy={busy}
                     retry={(id) => {
@@ -490,7 +493,7 @@ function RoutedLaboratoryApplication({
           <main
             id="catalog-content"
             tabIndex={-1}
-            className="destination-panel"
+            className={active === "settings" ? "destination-panel settings-page" : "destination-panel"}
           >
             <p className="eyebrow">Il tuo osservatorio</p>
             <h2>
