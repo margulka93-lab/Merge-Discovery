@@ -1,21 +1,26 @@
 import '../../styles/catalog.css';
 import '../../styles/world.css';
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import type { ObservedAnomaly, WorldModel } from "../../application/world";
 import { ElementArt } from "../components/ElementArt";
+import { ObservatoryMark } from "../components/ObservatoryMarks";
+import '../../styles/exploration.css';
 
 export function AnomalyArchive({
   model,
   retry,
   busy,
+  navigation,
 }: {
   model: WorldModel;
   retry: (id: string) => void;
   busy: boolean;
+  navigation?: ReactNode;
 }) {
   return (
     <main id="catalog-content" tabIndex={-1} className="anomaly-page">
+      {navigation}
       <header className="archive-heading">
         <p className="eyebrow">L’archivio dell’osservatorio</p>
         <h2>Archivio anomalie</h2>
@@ -55,7 +60,7 @@ export function AnomalyCard({
       className={`anomaly-card status-${anomaly.status.toLocaleLowerCase("it")}`}
     >
       <span className="archive-orbit" aria-hidden="true">
-        ◇
+        <ObservatoryMark />
       </span>
       <div className="anomaly-inputs">
         {anomaly.inputs.map((element, i) => (

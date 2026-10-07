@@ -1,0 +1,94 @@
+/* Observatory family: presentation only, scoped above legacy lazy styles. */
+.app-shell {
+  :is(.discovery-map, .anomaly-page, .settings-page) {
+    min-width: 0; padding: clamp(1rem, 2.4vw, 2.5rem); color: var(--color-text);
+    background: radial-gradient(ellipse at 30% 0%, #24425b38, transparent 55%), var(--color-night-deep);
+    overflow: auto; overflow-wrap: anywhere;
+  }
+  :is(.discovery-map, .anomaly-page, .settings-page) h2 { font: 2.3em var(--font-display); color: var(--color-gold-highlight); margin: .6rem 0; }
+  :is(.discovery-map, .anomaly-page, .settings-page) h3 { font: 1.5em var(--font-display); color: var(--color-gold-highlight); }
+  :is(.discovery-map, .anomaly-page, .settings-page) p { color: var(--color-text-muted); }
+  .explore-navigation { display: flex; flex-wrap: wrap; gap: .4rem; border-bottom: 1px solid var(--color-brass-line); margin-bottom: 1.3rem; }
+  .explore-navigation a { display: inline-flex; align-items: center; min-height: 44px; padding: .45rem .85rem; border-bottom: 2px solid transparent; color: var(--color-text-muted); text-decoration: none; }
+  .explore-navigation a[aria-current=page] { color: var(--color-gold-highlight); border-color: var(--color-accent-warm); }
+  .explore-navigation a:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+  .map-controls { margin: 1.2rem 0; gap: .6rem; }
+  .map-controls select { border-color: var(--color-brass-line); background: var(--color-night-glass); }
+  .map-layout { grid-template-columns: minmax(0, 1.9fr) minmax(15rem, 1fr); gap: 1.5rem; align-items: start; }
+  .map-canvas-panel { border: 1px solid var(--color-brass-line); border-radius: .7rem; background: var(--color-night-glass); }
+  .map-viewport {
+    min-height: 460px;
+    background: radial-gradient(ellipse at center, #30426160, transparent 65%),
+      radial-gradient(circle at 12% 21%, #e6d6a9 1px, transparent 1.6px),
+      radial-gradient(circle at 82% 34%, #e6d6a9 1px, transparent 1.6px),
+      radial-gradient(circle at 63% 81%, #e6d6a9 1px, transparent 1.6px), #080f1c;
+  }
+  .map-viewport > .instrument-lines { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .45; pointer-events: none; }
+  .map-viewport > .map-space { position: absolute; }
+  .map-space > svg path { stroke-width: 1.5; stroke: #d9b66f9c; }
+  .map-space > svg circle { fill: #101b2b; stroke: var(--color-accent-warm); }
+  .map-space > svg .anomaly-edge { stroke: var(--color-anomaly); stroke-width: 2; }
+  .map-node { border: 1px solid var(--color-brass-line); background: radial-gradient(circle, #324457, #101b2b 70%); padding: 5px; }
+  .map-node svg { width: 90%; height: 90%; }
+  .map-node[aria-pressed=true] { border: 2px solid var(--color-accent-warm); box-shadow: 0 0 35px #d9b66f25; }
+  .map-node span { font: .85rem var(--font-display); color: var(--color-gold-highlight); background: #080f1ce8; }
+  .map-zoom { border-top: 1px solid var(--color-brass-line); }
+  .map-zoom button, .relationship-explorer button { border: 1px solid var(--color-brass-line); border-radius: .4rem; background: var(--color-night-glass); }
+  .map-legend { margin: 0; font-size: .8em; }
+  .relationship-explorer { background: transparent; border: 0; border-left: 1px solid var(--color-brass-line); border-radius: 0; padding: 0 0 0 1.5rem; }
+  .relationship-explorer > .element-art { width: min(8rem, 100%); height: auto; float: right; margin-left: .4rem; }
+  .relationship-explorer > h4 { clear: both; padding-top: .9rem; border-top: 1px solid var(--color-brass-line); font-family: var(--font-display); }
+  .relationship-explorer li { line-height: 2; }
+  .relationship-explorer button { padding: .3rem .4rem; }
+  .anomaly-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .anomaly-card { max-width: 45rem; border: 1px solid #a891e855; border-radius: .7rem; background: radial-gradient(ellipse at 50% 30%, #42365845, transparent 65%), var(--color-night-glass); padding: 1.4rem; }
+  .archive-orbit { width: 4rem; height: 4rem; border: 0; line-height: normal; margin: 0 auto; }
+  .archive-orbit > svg { width: 100%; height: 100%; color: var(--color-anomaly); stroke-dasharray: 3 2; }
+  .anomaly-inputs { gap: .7rem; flex-wrap: nowrap; padding: 1rem 0; border-bottom: 1px solid #a891e83a; }
+  .anomaly-inputs > div { min-width: 0; flex: 1 1 0; }
+  .anomaly-inputs a { display: flex; width: 100%; min-width: 44px; padding: .3rem; }
+  .anomaly-inputs .element-art { width: min(10rem, 100%); height: auto; }
+  .anomaly-inputs strong { font: 1.4em var(--font-display); color: var(--color-gold-highlight); padding-top: .3rem; }
+  .anomaly-plus { color: var(--color-anomaly); }
+  .anomaly-card .anomaly-status { color: #c8b7f5; border-left: 2px solid var(--color-anomaly); padding-left: .6rem; }
+  .anomaly-card .observed-date { font-size: .85em; }
+  .anomaly-card button { background: #272036; border-color: #a891e870; border-radius: .4rem; }
+  .settings-page { max-width: none; }
+  .settings-page > .eyebrow { margin-top: 0; }
+  .settings-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2.5rem; max-width: 65rem; margin-top: 2rem; }
+  .settings-groups fieldset { min-width: 0; border: 0; border-top: 1px solid var(--color-brass-line); border-radius: 0; padding: 1rem 0; margin: 0; background: transparent; }
+  .settings-groups legend { color: var(--color-gold-highlight); font: 1.4em var(--font-display); padding: 0 .6rem 0 0; }
+  .settings-groups label { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; min-height: 44px; margin: .6rem 0; }
+  .settings-groups label:has(select) { display: grid; }
+  .settings-groups select { width: 100%; min-width: 0; background: var(--color-night-glass); border: 1px solid var(--color-brass-line); }
+  .settings-groups > details { grid-column: 1 / -1; border-top: 1px solid var(--color-brass-line); border-radius: 0; padding: 1rem 0; background: transparent; }
+  .settings-groups summary { min-height: 44px; color: var(--color-accent-warm); }
+  .settings-page > button { margin-top: 1rem; }
+  &.high-contrast :is(.map-canvas-panel, .map-node, .anomaly-card, .settings-groups fieldset, .relationship-explorer) { border-color: currentColor; }
+  &.high-contrast :is(.discovery-map, .anomaly-page, .settings-page) { --color-text-muted: #dce4f1; --color-brass-line: #d9b66f; }
+  @media (max-width: 1023px) { .map-layout { grid-template-columns: 1fr; } .relationship-explorer { border-left: 0; border-top: 1px solid var(--color-brass-line); padding: 1.2rem 0 0; } }
+  @media (max-width: 767px) {
+    :is(.discovery-map, .anomaly-page, .settings-page) { padding: 1rem 1rem 6rem; }
+    :is(.discovery-map, .anomaly-page, .settings-page) h2 { font-size: 1.8em; }
+    .explore-navigation { margin-bottom: 1rem; }
+    .map-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .map-controls label { flex: auto; }
+    .map-controls label:first-child { grid-column: 1 / -1; }
+    .map-viewport { min-height: 340px; }
+    .map-zoom { gap: .4rem; }
+    .map-zoom button { flex: 1 1 35%; font-size: .8em; }
+    .anomaly-card { padding: 1rem; }
+    .anomaly-inputs strong { font-size: 1.2em; }
+    .settings-groups { grid-template-columns: 1fr; gap: 1.2rem; margin-top: 1.5rem; }
+  }
+  &.text-extra_large .map-controls { display: grid; grid-template-columns: 1fr; }
+  @media (forced-colors: active) {
+    :is(.discovery-map, .anomaly-page, .settings-page) { --color-text: CanvasText; --color-text-muted: CanvasText; --color-accent-warm: LinkText; --color-night-glass: Canvas; --color-night-deep: Canvas; background: Canvas; color: CanvasText; }
+    :is(.discovery-map, .anomaly-page, .settings-page) :is(h2, h3, h4, p, strong, label, span, legend, summary) { color: CanvasText; }
+    .explore-navigation a { color: LinkText; }
+    .explore-navigation a[aria-current=page] { color: LinkText; border-color: Highlight; }
+    :is(.map-node, .map-viewport, .map-node span, .anomaly-card, .map-controls select, .map-zoom button, .relationship-explorer button, .settings-groups select) { color: CanvasText; background: Canvas; border-color: CanvasText; }
+    .map-node[aria-pressed=true] { border-color: Highlight; }
+    .map-space > svg path { stroke: LinkText; }
+  }
+}
