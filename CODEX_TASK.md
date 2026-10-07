@@ -1,464 +1,408 @@
-# CODEX_TASK.md — Phase 7
+# CODEX_TASK.md — Phase 7.5
 
-Phase 0 + 1 + 2 + 3 + 4 + 5 + 6 are merged.
+Phase 0–7 are merged.
 
 ## Goal
 
-Perform the **Product Polish / PWA hardening** pass.
+Perform a deliberate **Visual & UX Alignment** pass before Phase 8 content expansion.
 
-At the end of Phase 7, the current 67-element game should behave like a robust installable local-first web product:
+Unlike Phase 7, this task **IS allowed and expected to redesign screen composition**.
 
-- offline after first successful load;
-- safely updateable without destroying an active experiment/reveal;
-- meaningfully code-split and profiled;
-- accessible across the supported responsive matrix;
-- equipped with consistent motion tiers;
-- equipped with browser-safe audio infrastructure;
-- protected by production-grade error boundaries/fallbacks.
+The current screens are functionally correct but are not considered visually final.
 
-Do not add new canonical gameplay/content in this task.
+The target is the canonical Merge Discovery concept:
 
-Do not start Android/Capacitor.
+- modern magical observatory;
+- illustrated field guide;
+- midnight blue + warm gold;
+- ivory knowledge surfaces;
+- painterly/symbolic element presentation;
+- editorial rather than dashboard hierarchy.
+
+Gameplay/data semantics must remain unchanged.
 
 ## Required reading
 
 Read before changing code:
 
 - `AGENTS.md`
-- `docs/IMPLEMENTATION_PLAN.md`
-- `docs/TECH_SPEC.md`
+- `docs/VISUAL_UX_ALIGNMENT.md`
+- `docs/VISUAL_BIBLE_REFERENCE.md`
+- `docs/VISUAL_DIRECTION.md`
+- `docs/DESIGN_SYSTEM.md`
+- `docs/SCREEN_SPECS.md`
+- `docs/UX_SCREEN_ARCHITECTURE.md`
+- `docs/RESPONSIVE_AND_UI_STATES.md`
 - `docs/MOTION_AUDIO.md`
 - `docs/ACCESSIBILITY.md`
-- `docs/RESPONSIVE_AND_UI_STATES.md`
-- `docs/DESIGN_SYSTEM.md`
-- `docs/VISUAL_DIRECTION.md`
-- `docs/VISUAL_BIBLE_REFERENCE.md`
-- `docs/COPY_AND_LOCALIZATION.md`
-- `docs/SAVE_AND_VERSIONING.md`
-- `docs/VALIDATION_AND_TESTING.md`
-- `docs/PHASE_6_NOTES.md`
+- `docs/PHASE_7_NOTES.md`
 
-Inspect the current Vite bundle/chunks before choosing lazy boundaries.
+Also inspect current Phase 7 production screenshots before changing the UI.
+
+## Core instruction
+
+**Do not preserve an existing layout merely because it is already implemented.**
+
+If a current page reads like a generic dashboard and the visual brief calls for an illustrated field-guide/observatory composition, restructure it.
+
+At the same time, do not alter gameplay truth or safe projections.
 
 ## Scope
 
-### 1. PWA integration
+### 1. Establish two coherent visual environments
 
-Add a Vite-compatible PWA/service-worker integration in the platform layer.
+#### Observatory
 
-Preferred:
-`vite-plugin-pwa` or an equally small Vite-compatible solution.
+Used by:
 
-Requirements:
-
-- production build emits a valid web manifest;
-- app shell is available offline after one successful online load;
-- bundled canonical content required for gameplay is precached;
-- local UI assets required for the current product are precached;
-- IndexedDB save remains the source of durable player progress;
-- service worker must not cache imported save JSON or create a parallel save store;
-- no backend/network dependency is introduced.
-
-Keep service-worker concerns out of Domain/Application.
-
-### 2. Web app manifest
-
-Provide a production manifest with at least:
-
-- `name`: Merge Discovery
-- useful `short_name`
-- `start_url`
-- `display: standalone`
-- theme/background colors matching design tokens
-- language/direction where supported
-- install icons suitable for normal and maskable use
-
-Create simple project-owned placeholder PWA icons if final brand icons do not exist.
-
-Do not use third-party/copyrighted icon assets.
-
-Placeholder icons should reflect the current Merge Discovery elemental/orbit identity and be easy to replace later.
-
-### 3. Offline behavior
-
-After a successful first production load, verify that the player can go offline and still:
-
-- boot the application;
-- load the current IndexedDB save;
-- navigate Lab/Catalog/Set/Element/Collections/Anomalies/Map;
-- combine known inputs;
-- persist progress locally;
-- use hints and information modes;
-- export save JSON.
-
-Do not display a scary global “offline” banner during normal local gameplay.
-
-Connectivity messaging appears only if a future network-dependent feature needs it.
-
-### 4. Safe update flow
-
-Implement a platform/application update state.
-
-When a new service worker/build is available:
-
-- show a small non-blocking `Aggiornamento disponibile` notice;
-- never force reload;
-- never call update/reload in the middle of a save transaction;
-- never reload while a major result/reveal is actively being presented;
-- offer `Aggiorna ora` only at a safe point;
-- allow `Più tardi`.
-
-A safe point means at minimum:
-
-- no combine transaction in flight;
-- no import/overwrite transaction in flight;
-- no active blocking recovery operation;
-- no major discovery/Set/anomaly reveal currently requiring player acknowledgement.
-
-If update becomes available at an unsafe point:
-
-- remember it in ephemeral platform state;
-- surface actionable update once safe.
-
-Do not persist “update available” in PlayerSave.
-
-### 5. Update + save compatibility
-
-Before reload for an accepted update:
-
-- current committed save must already be durable;
-- no extra save write is required merely for the service-worker update;
-- after reload, normal Phase 2 migration/reconciliation handles content/schema versions.
-
-Add an integration test simulating an available update around a combine/reveal boundary.
-
-No update may cause:
-
-- duplicate XP;
-- repeated discovery event;
-- lost committed discovery;
-- half-persisted state.
-
-### 6. Installation affordance
-
-Installability itself is required.
-
-An in-product install prompt is optional, but if implemented:
-
-- use the browser `beforeinstallprompt` event only;
-- never nag;
-- show it in Settings or another low-pressure context;
-- no fake install button on unsupported browsers;
-- dismissal is session/platform UI state, not gameplay progress.
-
-Do not add notification permission requests.
-
-### 7. Design token hardening
-
-Audit Phase 3–6 styles.
-
-Move repeated semantic values into the existing token system where practical:
-
-- backgrounds/surfaces;
-- text/muted text;
-- borders;
-- warm discovery accent;
-- anomaly accent;
-- field-guide surfaces;
-- focus ring;
-- spacing;
-- radii;
-- motion duration/easing;
-- elevation/shadow tokens where useful.
-
-Do not perform a visual redesign.
-
-Do not replace the custom product identity with a generic UI library.
-
-Hardcoded one-off values are still acceptable when truly local, but repeated semantic colors/durations should not drift across feature CSS files.
-
-### 8. Motion tier implementation
-
-Map the current UI outcomes to the tiers in `MOTION_AUDIO.md`.
-
-At minimum:
-
-#### Tier 0
-- element/card selection;
-- button press;
-- slot fill/clear.
-
-#### Tier 1
-- known result.
-
-#### Tier 2
-- alternate recipe.
-
-#### Tier 3
-- new element.
-
-#### Tier 4
-- Collection completion / normal Set reveal.
-
-#### Tier 5
-- hidden Funghi Set reveal.
-
-#### Anomaly
-- own restrained unstable grammar.
-
-Implementation requirements:
-
-- central semantic motion classes/tokens or presentation mapping;
-- avoid page-blocking waits;
-- essential actions available as soon as semantic state is committed;
-- no animation controls persistence;
-- no strobing/glitch-heavy effects.
-
-### 9. Reduced motion
-
-Respect BOTH:
-
-- saved `reducedMotion`;
-- `prefers-reduced-motion`.
-
-When either is active:
-
-- remove large movement/parallax;
-- reduce transitions to short opacity/static emphasis;
-- anomaly becomes static/low-motion;
-- Tier 4/5 remains semantically stronger through typography/border/layout/copy rather than duration.
-
-Add tests proving major reveal information does not disappear when motion is removed.
-
-### 10. Audio event infrastructure
-
-Implement browser audio infrastructure in:
-
-`src/platform/audio/`
-
-or equivalent.
-
-Stable logical event IDs must include at minimum:
-
-- `ui_select`
-- `combine_known`
-- `combine_no_reaction`
-- `discover_alternate`
-- `discover_new`
-- `collection_complete`
-- `set_reveal`
-- `hidden_set_reveal`
-- `anomaly_unstable`
-
-Future-safe IDs may be documented for:
-
-- `anomaly_resolve`
-- `arcano_reveal`
-
-UI/domain code should dispatch logical event IDs, not hardcoded file paths.
-
-### 11. Audio placeholders / lifecycle
-
-Production sound design is out of scope.
-
-For Phase 7, use one of these acceptable strategies:
-
-A. tiny project-owned placeholder audio assets; or
-B. a lightweight Web Audio placeholder synthesizer behind the same event-key interface.
-
-Requirements:
-
-- default remains silent according to current save defaults;
-- no AudioContext/playback before user interaction;
-- if browser blocks/suspends audio, gameplay is unaffected;
-- repeated low-value interactions must not become noisy;
-- no audio cue conveys information unavailable visually;
-- sound preference persists through existing settings.
-
-Do not add large audio packages.
-
-### 12. Sound settings
-
-Use existing durable settings:
-
-- `soundEnabled`
-- `musicEnabled`
-
-Expose clear controls in Settings.
-
-Phase 7 does not require an actual ambient music track.
-
-If no music asset exists:
-
-- `musicEnabled` may remain disabled/noted as future or control future-ready state;
-- do not play fake continuous oscillator music.
-
-### 13. Route-level code splitting
-
-The current build has an advisory JS chunk around ~595 kB.
-
-Phase 7 must address it with real architecture, not by increasing `chunkSizeWarningLimit`.
-
-Use route/feature lazy loading where appropriate.
-
-Strong candidates:
-
-- Map;
-- Catalog/Set/Element/Collections bundle;
+- Laboratory;
+- Discovery Map;
 - Anomaly Archive;
-- Settings diagnostics/import-export.
+- Explore context.
 
-Laboratory core should remain quick.
+Characteristics:
 
-Requirements:
+- midnight surfaces;
+- celestial/orbital structure;
+- glass/depth used sparingly;
+- gold discovery focus;
+- violet anomalies.
 
-- loading state follows existing quiet product language;
-- route guards/hidden-content safety remain outside or ahead of lazy UI where necessary;
-- deep links still work;
-- lazy chunks are cached by PWA after use / or precached if intentionally chosen;
-- no hidden metadata is serialized into UI purely because a lazy bundle exists.
+#### Field Guide
 
-### 14. Bundle budget
+Used by:
 
-Do not “fix” the warning by simply raising the warning threshold.
+- Collection Home;
+- Sets;
+- Set Detail;
+- Thematic Collections;
+- Element Detail.
 
-After code splitting, document:
+Characteristics:
 
-- entry chunk size;
-- largest lazy chunk;
-- total production JS;
-- gzip sizes where available.
+- ivory/paper reading surfaces inside the same dark shell;
+- ink-like typography;
+- illustrated plates/specimens;
+- editorial whitespace;
+- restrained Set accents.
 
-Target:
+Do not create two unrelated applications.
 
-- no single initial JS chunk >500 kB uncompressed;
-- preferably substantially below that;
-- no single feature chunk becomes an obvious >500 kB replacement problem.
+### 2. AppShell/navigation redesign
 
-If the target cannot be met without redesigning architecture/dependencies:
+Refine desktop rail and mobile bottom navigation.
 
-- document the exact blocker;
-- do not hide it with config.
+Desktop goals:
 
-### 15. Performance profiling
+- quieter/less boxed;
+- stronger brand identity;
+- compact Discovery Level;
+- active state clear without giant navigation cards;
+- screen content gets the visual focus.
 
-Keep existing:
+Mobile:
 
-- catalog 1,000-definition synthetic profile;
-- map 1,000-definition synthetic profile.
+- preserve max five destinations;
+- safe-area compatible;
+- visually lighter;
+- icon/text hierarchy where appropriate;
+- no reduced accessibility labels.
 
-Add/extend a browser/product performance smoke covering:
+Do not change disclosure logic.
 
-- cold production boot from cached assets;
-- warm boot;
-- Laboratory ready;
-- route switch to Map;
-- route switch to Catalog;
-- combine transaction UI publication.
+### 3. Knowledge-family shell
 
-Do not make CI depend on fragile absolute millisecond thresholds across runners.
+Create a coherent shared visual shell for:
 
-Use budgets/assertions for structural regressions instead:
+- `/collection`
+- `/sets`
+- `/collections`
 
-- no global pair matrix;
-- no unbounded graph render;
-- bounded rendered node count in local Map;
-- code-split chunks exist;
-- no repeated full-content scan in render loops.
+Use secondary navigation such as:
 
-### 16. Element/card rendering polish
+- Panoramica
+- Set
+- Collezioni
 
-Without final production illustrations:
+Only show sections whose feature is currently disclosed.
 
-- preserve current `artKey` placeholder contract;
-- add lazy/deferred behavior only where actually beneficial;
-- avoid layout shift in cards/heroes;
-- use fixed aspect-ratio containers;
-- prevent image/art fallback from collapsing layout.
+Routes remain unchanged and deep links remain valid.
 
-No asset-generation project in this phase.
+This is a visual/IA grouping, not a new gameplay feature.
 
-### 17. Production error boundary
+### 4. Collection Home full redesign
 
-Add a top-level React error boundary/fatal UI for unexpected render/application failures.
+This is a priority screen.
 
-Requirements:
+Rebuild it as the **field-guide landing page**, not a dashboard.
 
-- calm Merge Discovery styling;
-- no raw stack trace to normal user;
-- clear reload/retry action;
-- save export/recovery link/action when the application/save layer is available;
-- development mode may expose diagnostics separately.
+Required hierarchy:
 
-Do not silently wipe save.
+1. recent discoveries as a visually strong editorial shelf/hero;
+2. active/revealed Sets as the primary knowledge structure;
+3. new possibilities as a contextual revisit shelf;
+4. thematic Collections as curated goals;
+5. favorites as a compact personal shelf.
 
-### 18. Fatal bundled-content failure
+Rules:
 
-The architecture document requires a recoverable fatal-content screen.
+- no KPI dashboard grid;
+- no repeated equal-weight white cards;
+- no global hidden denominator;
+- preserve all existing spoiler safety;
+- preserve search/filter utility, but demote controls visually below content identity.
 
-If bundled content validation/build/startup fails at runtime:
+Desktop and mobile may use different composition while keeping the same information architecture.
 
-- do not enter gameplay with partial content;
-- show a clear fatal-content state;
-- offer safe reload;
-- preserve/export existing local save if possible.
+### 5. Sets index redesign
 
-Build-time validation remains mandatory.
+Make Sets feel like illustrated chapters/domains.
 
-Add a test fixture/path for this UI without corrupting canonical content.
+Cards/plates should prioritize:
 
-### 19. Accessibility hardening audit
+1. identity/art/motif;
+2. name;
+3. quiet progress/completion;
+4. safe new-possibility state.
 
-Treat WCAG 2.2 AA core-flow regressions as blockers.
+Announced locked Set remains restrained.
 
-Run/fix:
+Hidden Set absent.
 
-- keyboard-only full seed smoke or representative end-to-end progression;
-- Lab;
-- Collection/Catalog;
-- Element Detail;
-- Collections;
-- Anomaly Archive;
-- Map;
-- Hint UI;
-- Settings/import-export;
-- update banner;
-- error boundary/fatal screen.
+### 6. Set Detail full redesign
 
-Requirements remain:
+Create a strong chapter-opening header.
 
-- logical focus;
-- skip-to-main mechanism if not already present;
-- semantic landmarks;
-- live announcements not duplicated;
-- no color-only state;
-- 44×44 touch targets;
-- forced colors;
-- reduced motion;
-- 200% zoom.
+Required:
 
-### 20. Screen-reader smoke documentation
+- thematic Set motif/art placeholder;
+- Set name;
+- concise thematic description;
+- completion integrated into header;
+- field-guide element grid below.
 
-Automated tests are not a substitute for an actual assistive-technology smoke procedure.
+Filters/search remain useful but visually secondary.
 
-Add a concise manual checklist for at least:
+Do not expose hidden elements.
 
-- VoiceOver or NVDA/JAWS equivalent;
-- Lab combination;
-- new discovery announcement;
-- Element Detail;
-- Map relationship explorer;
-- hint request;
-- Anomaly entry;
-- settings/update notice.
+### 7. Element Detail full redesign
 
-Do not claim manual execution if Codex cannot actually perform it.
+Priority screen.
 
-Mark it as a release checklist item if unexecuted.
+Desktop:
 
-### 21. Responsive hardening matrix
+- editorial two-column layout;
+- large hero art;
+- name/Set/rarity/favorite integrated;
+- readable prose/relationship sections.
 
-Re-run and fix all current primary screens at:
+Reduce equal-weight panel stacking.
+
+Use visual hierarchy for:
+
+- first discovery;
+- known recipes;
+- possibilities;
+- relationships;
+- experiments/history.
+
+Mobile:
+
+- one natural reading flow;
+- large hero first;
+- no cramped cards-within-cards.
+
+### 8. Recipe/relationship visual language
+
+Introduce/reuse a visual recipe component:
+
+`A + B → Result`
+
+Use ElementToken/mini art when suitable.
+
+It must support:
+
+- A+A;
+- alternate recipe;
+- known production;
+- anomaly relationship where safe.
+
+No tables.
+
+No undiscovered recipe spoilers.
+
+### 9. Laboratory visual alignment
+
+Do not alter interaction behavior.
+
+Refine the current Lab to match the concept more strongly.
+
+Priorities:
+
+- central experiment visually dominant;
+- right library visually subordinate;
+- slots look like elements placed into an observatory instrument;
+- reaction surface feels integrated with orbit/sigil language;
+- card metadata reduced;
+- stronger art-to-text ratio;
+- less panel-on-panel chrome.
+
+Preserve:
+
+- explicit Combine;
+- all result actions;
+- hints;
+- save semantics;
+- accessibility.
+
+### 10. Element cards
+
+Redesign ElementCard variants as one coherent collectible system.
+
+Default priority:
+
+1. art;
+2. name;
+3. one state cue only when needed.
+
+Required variants remain safely distinguishable:
+
+- default;
+- selected;
+- favorite;
+- new;
+- tested no-reaction;
+- known success;
+- anomaly;
+- new possibilities;
+- exhausted.
+
+Do not solve state overload by stacking many badges.
+
+No color-only state.
+
+### 11. Thematic Collections redesign
+
+Collections must not look like copied Set screens.
+
+Index/detail should feel curated:
+
+- title/description;
+- progress;
+- member specimens;
+- anonymous missing positions only when already permitted;
+- lighter/objective-oriented visual language.
+
+Preserve completion persistence and route guards.
+
+### 12. Anomaly Archive visual redesign
+
+Retain all Phase 5 semantics.
+
+Make each anomaly feel like a recorded unstable phenomenon:
+
+- input pair as primary visual;
+- incomplete orbit/sigil;
+- status;
+- observation metadata;
+- Retry action.
+
+Avoid settings/history-row aesthetics.
+
+No future result leakage.
+
+### 13. Discovery Map visual polish
+
+Do not rewrite graph logic.
+
+Improve:
+
+- canvas atmosphere;
+- focus hierarchy;
+- recipe junction readability;
+- anomaly edge grammar;
+- node art framing;
+- controls;
+- relationship inspector integration.
+
+The accessible relationship list remains first-class.
+
+### 14. Settings visual cleanup
+
+Do not redesign behavior.
+
+Separate:
+
+- gameplay/information preferences;
+- accessibility;
+- audio;
+- install/update;
+- advanced local save/import/recovery.
+
+Normal settings should not look like diagnostics.
+
+Advanced save tools may remain more technical.
+
+### 15. Page headers and section hierarchy
+
+Create a shared editorial language for:
+
+- eyebrow/context;
+- page title;
+- short explanatory line;
+- optional action;
+- section heading;
+- supporting count/progress.
+
+Avoid every page inventing its own header style.
+
+### 16. Progress components
+
+Reduce progress-bar repetition.
+
+Use the best component per context:
+
+- Set card: quiet fraction/ring/bar;
+- Set header: integrated completion;
+- Collection objective: compact progress;
+- Discovery Level: distinct but consistent.
+
+No fake precision or hidden totals.
+
+### 17. Placeholder art system polish
+
+Keep `artKey` stable.
+
+Improve the generic SVG/art renderer so current seed elements feel more illustrative and concept-consistent.
+
+Allowed:
+
+- Set-based backplates;
+- elemental silhouettes;
+- orbit/ring motifs;
+- subtle texture/pattern;
+- variation by semantic artKey category.
+
+Do not manually create final 67 production illustrations.
+
+No external copyrighted assets.
+
+### 18. Typography
+
+Introduce a local/system editorial display stack for:
+
+- brand;
+- page titles;
+- discovery names;
+- Set chapter headings.
+
+Keep body/control text in the readable sans-serif stack.
+
+No remote font/CDN dependency.
+
+### 19. Responsive redesign
+
+Verify and intentionally compose at:
 
 - 320×568
 - 390×844
@@ -467,207 +411,168 @@ Re-run and fix all current primary screens at:
 - 1440×900
 - 1920×1080
 
-Also test:
+Do not merely let desktop CSS wrap.
 
-- 200% browser zoom;
-- extra-large in-game text;
-- landscape phone;
-- soft-keyboard search interaction where Playwright can reasonably simulate viewport changes;
-- safe-area CSS variables.
+Specific checks:
 
-No horizontal document overflow.
+- Collection Home editorial hierarchy survives mobile;
+- Set header does not consume the whole phone;
+- Element hero remains useful;
+- Lab Combine remains immediately reachable;
+- field-guide surfaces do not cause horizontal overflow;
+- 200% zoom still works.
 
-### 22. Safe areas
+### 20. Motion integration
 
-Add/use CSS environment insets where appropriate:
+Use existing Phase 7 semantic tiers.
 
-- top app shell;
-- mobile bottom nav;
-- full-width sheets;
-- update/install notices.
+The redesigned visuals may reinterpret the animation style but must preserve:
 
-Critical controls must not sit behind mobile browser/native gesture areas.
+- tier hierarchy;
+- update/reveal safe-point semantics;
+- reduced-motion behavior;
+- no persistence dependency on animation.
 
-This should remain compatible with future Capacitor without Android-specific branching.
+### 21. PWA/offline compatibility
 
-### 23. PWA update/offline UI accessibility
+All new UI CSS/assets must be compatible with current precache strategy.
 
-Update/install controls must:
+Production offline tests remain green.
 
-- be keyboard reachable;
-- have explicit labels;
-- not steal focus when appearing;
-- announce availability politely at most once per update;
-- retain focus logically after update dismissal;
-- never require a timed response.
+Do not modify service-worker/update behavior unless required by new static asset paths.
 
-### 24. Security / cache scope
+### 22. Accessibility
 
-Service worker must cache only intended app-origin build/static assets.
+No visual improvement may regress Phase 7 accessibility.
 
-Do not:
+Required:
 
-- cache arbitrary external origins;
-- intercept GitHub/dev URLs;
-- eval imported data;
-- inject raw HTML from content;
-- cache user save exports as runtime responses.
+- 44×44 touch targets;
+- keyboard routes;
+- visible focus;
+- semantic headings/landmarks;
+- no color-only state;
+- forced colors;
+- high contrast;
+- reduced motion;
+- extra-large text;
+- 200% zoom;
+- accessible progress labels.
 
-Keep strict import validation unchanged.
+The manual NVDA/JAWS/VoiceOver release checklist remains explicitly pending unless a human executes it.
 
-### 25. Production build verification
+### 23. Visual regression evidence
 
-Add commands/scripts as needed to verify:
+Tests are necessary but screenshots are the primary acceptance evidence for this phase.
 
-- manifest emitted;
-- service worker emitted;
-- PWA registration in production preview;
-- app works offline after first load;
-- update prompt flow can be exercised in a controlled test;
-- lazy chunks load successfully through production preview;
-- IndexedDB persists across offline reload.
+Provide BEFORE and AFTER comparison references where practical.
 
-Do not rely only on Vite dev server for PWA acceptance.
+Required AFTER screenshots:
 
-### 26. CI
+1. `1440×900` — Laboratory;
+2. `1440×900` — Collection Home;
+3. `1440×900` — Set index;
+4. `1440×900` — Set Detail;
+5. `1440×900` — Element Detail;
+6. `1440×900` — Anomaly Archive or Discovery Map;
+7. `390×844` — Laboratory;
+8. `390×844` — Collection Home;
+9. `390×844` — Element Detail;
+10. `320×568` — one field-guide screen.
 
-Extend CI without making it excessively flaky.
+Use legitimate save fixtures and existing safe projection paths.
 
-Required gates:
+### 24. Visual acceptance criteria
 
-- existing check/tests/validator/reachability;
-- existing catalog/map profiles;
-- production build;
-- PWA artifact/manifest validation;
-- E2E current suite;
-- targeted production-preview PWA/offline E2E.
+The PR is not complete merely because screenshots render.
 
-If service-worker browser tests are inherently flaky in one CI mode, isolate them clearly and document why; do not silently skip all offline validation.
+Reject the result if:
 
-## Required reusable/platform pieces
+- Collection still looks primarily like a dashboard;
+- all knowledge screens remain stacks of similar bordered cards;
+- Lab experiment does not dominate;
+- field-guide and observatory identities are not visibly distinct but related;
+- mobile is just compressed desktop;
+- placeholder art is visually incidental compared with metadata;
+- navigation remains visually heavier than content.
 
-At minimum:
+### 25. Architecture constraints
 
-- PWA registration/update controller;
-- update notice component;
-- platform online/offline capability helper if needed;
-- audio event interface/engine;
-- semantic motion token/tier mapping;
-- top-level ErrorBoundary;
-- fatal-content fallback;
-- lazy feature boundaries.
+Allowed:
 
-Do not move gameplay truth into these layers.
+- significant React composition/CSS refactor;
+- shared visual shells;
+- new presentational components;
+- splitting existing giant visual modules when helpful.
+
+Not allowed:
+
+- moving gameplay logic into UI;
+- changing safe projection semantics;
+- persisting derived visual state;
+- changing save schema;
+- changing resolver/content.
 
 ## Required tests
 
-### PWA
+### Functional regression
 
-- manifest has required fields/icons;
-- service worker generated;
-- production preview registers SW;
-- second load works offline;
-- offline load opens current save;
-- offline combine persists and survives reload;
-- offline Map/Catalog routes open after cached use or deliberate precache strategy.
+All Phase 0–7 unit/component/E2E/production PWA tests remain green.
 
-### Update
+### Navigation/IA
 
-- update availability is non-blocking;
-- unsafe combine/reveal prevents immediate reload;
-- accepted safe update calls the update path once;
-- `Più tardi` leaves gameplay usable;
-- no duplicate discovery/XP around simulated update boundary.
+- knowledge-family tabs honor disclosure;
+- deep links unchanged;
+- mobile navigation max five destinations;
+- route guards unchanged.
 
-### Audio
+### Visual component behavior
 
-- default settings cause no playback;
-- playback cannot initialize before user interaction;
-- enabled sound dispatches expected logical event ID;
-- blocked/suspended audio does not reject gameplay actions;
-- reduced motion does not alter audio correctness;
-- sound setting persists.
+- ElementCard states preserve accessible labels;
+- recipe visual handles A+A/alternate;
+- progress labels expose correct values;
+- responsive shells do not drop actions.
 
-### Motion
+### Accessibility
 
-- event → tier mapping;
-- reduced-motion mapping;
-- hidden Funghi reveal retains semantic Tier 5 text without large animation;
-- anomaly remains readable with animation disabled.
-
-### Bundle/lazy loading
-
-- route-level lazy chunks exist;
-- initial chunk stays under target;
-- changing warning limit is not the mechanism used;
-- deep links lazy-load successfully;
-- hidden route guards still prevent data leakage.
-
-### Error handling
-
-- UI render error reaches branded error boundary;
-- retry path works where possible;
-- fatal-content fixture never boots gameplay;
-- neither path clears current IndexedDB save.
-
-### Accessibility/responsive
-
-- skip link/focus;
-- update notice accessible;
-- settings audio controls accessible;
-- 320 px;
-- landscape phone;
-- 200% zoom;
-- extra-large text;
+- axe on redesigned Lab, Collection, Set Detail, Element Detail, Anomalies/Map;
+- keyboard interaction;
 - forced colors;
 - reduced motion;
-- axe on representative primary routes.
+- 200% zoom;
+- 320 px no horizontal overflow.
 
-### Regression
+### PWA
 
-All Phase 0–6 tests/E2E remain green.
+- production build;
+- manifest/SW validation;
+- offline reload;
+- lazy redesigned routes load offline.
 
-Canonical seed remains:
+### Canonical regression
+
+Seed remains:
 
 - 67/67 reachable;
-- max depth 11;
-- no blocked required unlocks;
+- depth 11;
+- no blocked unlocks;
 - 4 Collections;
 - 1 unresolved anomaly.
 
-## Screenshot evidence required
-
-Use the production build/preview where applicable.
-
-Include:
-
-1. `1440×900` — polished Laboratory normal state;
-2. `1440×900` — Tier 3/new element or major reveal showing motion-tier visual hierarchy in a static frame;
-3. `1440×900` — Settings with accessibility/audio/information controls;
-4. `390×844` — installed/PWA-like standalone responsive shell or production mobile shell;
-5. `390×844` — update-available notice at a safe point;
-6. `320×568` — one core screen after responsive hardening.
-
-Also include machine-readable/documented PWA evidence; screenshots alone do not prove offline behavior.
-
 ## Explicitly out of scope
 
-Do NOT implement:
+Do NOT:
 
-- new canonical elements/recipes/Sets/Collections;
-- Tier 4/5 hints;
-- Resonance;
-- pinned objective save field;
-- achievements;
-- final illustration production;
-- production sound/music composition;
-- Arcano payoff content;
-- Android/Capacitor;
-- backend/cloud sync;
-- accounts;
-- monetization;
-- analytics;
-- notifications.
+- add Phase 8 content;
+- add new elements/recipes/Sets/Collections;
+- add Tier 4/5 hints;
+- add Resonance;
+- change XP/progression;
+- add achievements;
+- add final 67-element production art;
+- compose final production music;
+- start Android/Capacitor;
+- add backend/cloud/analytics/monetization.
 
 ## Delivery
 
@@ -675,22 +580,18 @@ Work on a dedicated branch and open a PR.
 
 PR description must include:
 
-- PWA/service-worker strategy;
-- cache scope;
-- update-safe-point behavior;
-- bundle before/after table;
-- lazy boundaries;
-- motion tier architecture;
-- audio event architecture/placeholder strategy;
-- error/fatal-content recovery behavior;
-- accessibility audit summary;
-- manual screen-reader checklist status;
-- responsive matrix results;
-- offline/PWA production-preview evidence;
-- screenshots listed above;
-- commands run;
-- unit/component/E2E results;
-- validator/reachability results;
-- explicit confirmation Phase 8 content and Phase 9 Android were not started.
+- visual/UX architecture changes;
+- screen structure changes;
+- component system changes;
+- what was deliberately replaced rather than preserved;
+- accessibility preservation;
+- responsive matrix;
+- production PWA/offline regression status;
+- all required screenshots;
+- commands/tests;
+- validator/reachability;
+- explicit confirmation Phase 8 was not started.
 
-Do not extend scope.
+**Do not extend scope.**
+
+**Do not treat tests alone as visual approval. The PR will be visually reviewed before merge.**
