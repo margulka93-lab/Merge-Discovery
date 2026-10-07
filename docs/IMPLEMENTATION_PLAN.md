@@ -138,6 +138,23 @@ Deliver:
 - responsive matrix fixes;
 - performance profiling.
 
+## Phase 7.5 — Visual & UX alignment
+
+Deliver:
+
+- full visual alignment to the approved observatory + illustrated-field-guide concept;
+- redesigned Collection Home;
+- redesigned Set index/detail;
+- redesigned Element Detail;
+- Laboratory hierarchy refinement;
+- coherent Element/Set/Collection component language;
+- Anomaly/Map visual alignment;
+- responsive composition review.
+
+This phase may significantly change screen composition and CSS but must not change gameplay/data semantics.
+
+Passing tests is necessary but visual screenshot approval is also required.
+
 ## Phase 8 — Expanded content
 
 Only after engine/UI validation.
