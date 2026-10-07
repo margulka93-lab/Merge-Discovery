@@ -94,7 +94,7 @@ export class SaveApplication {
     });
   }
   /** Durable favorites/settings use the same validated, revision-checked commit path. */
-  updatePreferences(change: { favoriteElementId?: string; reducedMotion?: boolean; highContrast?: boolean; textScale?: PlayerSave['settings']['textScale'] }): Promise<ApplicationSnapshot> {
+  updatePreferences(change: { favoriteElementId?: string; reducedMotion?: boolean; highContrast?: boolean; textScale?: PlayerSave['settings']['textScale']; informationMode?: PlayerSave['settings']['informationMode']; proactiveHints?: PlayerSave['settings']['proactiveHints'] }): Promise<ApplicationSnapshot> {
     return this.serial(async () => {
       const slots = await this.repository.load();
       if (slots.current === null) throw new SaveError('not_found', 'No current save');
@@ -108,6 +108,8 @@ export class SaveApplication {
       if (change.reducedMotion !== undefined) save.settings.reducedMotion = change.reducedMotion;
       if (change.highContrast !== undefined) save.settings.highContrast = change.highContrast;
       if (change.textScale !== undefined) save.settings.textScale = change.textScale;
+      if (change.informationMode !== undefined) save.settings.informationMode = change.informationMode;
+      if (change.proactiveHints !== undefined) save.settings.proactiveHints = change.proactiveHints;
       save.updatedAt = this.clock();
       const valid = parseSave(save);
       validateActiveReferences(valid, this.index);

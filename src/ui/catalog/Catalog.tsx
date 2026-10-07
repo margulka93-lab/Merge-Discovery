@@ -14,6 +14,8 @@ interface CatalogProps {
   model: CatalogModel;
   favorite: (id: string) => void;
   busy: boolean;
+  mapAvailable?: boolean;
+  hint?: (id: string) => import("react").ReactNode;
   thematic?: import("react").ReactNode;
   setsAvailable?: boolean;
   collectionAvailable?: boolean;
@@ -108,11 +110,13 @@ function CatalogCard({
 export function PossibilityStatus({ element }: { element: CatalogElement }) {
   return (
     <p className="possibility-status">
-      {element.stale
-        ? "Una vecchia reazione potrebbe essere cambiata."
-        : element.possibilities
-          ? "Ha ancora reazioni da scoprire."
-          : "Hai esplorato tutte le reazioni attualmente note con ciò che possiedi."}
+      {element.directionCount !== undefined
+        ? `${element.directionCount} direzioni disponibili con ciò che possiedi.`
+        : element.stale
+          ? "Una vecchia reazione potrebbe essere cambiata."
+          : element.possibilities
+            ? "Ha ancora reazioni da scoprire."
+            : "Hai esplorato tutte le reazioni attualmente note con ciò che possiedi."}
     </p>
   );
 }
@@ -460,6 +464,11 @@ export function SetDetail(props: CatalogProps) {
           <CompletionBar set={set} />
         </div>
       </div>
+      {set.revealed && props.mapAvailable && (
+        <Link to={`/explore/map?mode=set&set=${set.id}`}>
+          Apri mappa del Set
+        </Link>
+      )}
       {set.revealed && (
         <CatalogList
           key={set.id}
@@ -573,6 +582,8 @@ export function ElementDetail({
   busy,
   setsAvailable = true,
   collectionAvailable = true,
+  mapAvailable,
+  hint,
 }: CatalogProps) {
   const { elementId } = useParams(),
     detail = model.detail(elementId ?? "");
@@ -616,6 +627,12 @@ export function ElementDetail({
           </button>
           <p>{e.description}</p>
           <PossibilityStatus element={e} />
+          {mapAvailable && (
+            <Link to={`/explore/map?element=${e.id}&mode=ancestry`}>
+              Apri nella Mappa
+            </Link>
+          )}
+          {hint?.(e.id)}
         </header>
         <div className="detail-notes">
           <section>

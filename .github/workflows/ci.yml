@@ -1,4 +1,4 @@
-name: Phase 0–5 checks
+name: Phase 0–6 checks
 on: [push, pull_request]
 jobs:
   check:
@@ -12,5 +12,6 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run profile:catalog
+      - run: npm run profile:map
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e

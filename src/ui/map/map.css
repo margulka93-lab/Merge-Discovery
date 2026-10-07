@@ -1,0 +1,235 @@
+.discovery-map {
+  height: 100%;
+  overflow: auto;
+  min-width: 0;
+  padding: clamp(1rem, 2vw, 2rem);
+  color: var(--color-text);
+  background: radial-gradient(
+    ellipse at 40% 20%,
+    var(--color-surface-elevated),
+    var(--color-bg) 70%
+  );
+}
+.discovery-map h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  margin: 0.4rem 0;
+}
+.discovery-map p {
+  color: var(--color-text-muted);
+}
+.map-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-block: 1.5rem;
+}
+.map-controls label {
+  display: grid;
+  gap: 0.35rem;
+  flex: 1 1 150px;
+  min-width: 0;
+}
+.map-controls select {
+  width: 100%;
+  min-height: 44px;
+  color: var(--color-text);
+  background: var(--color-surface-elevated);
+  border: 1px solid #a89671;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 1.2rem;
+}
+.map-canvas-panel {
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+.map-viewport {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  touch-action: none;
+  background: radial-gradient(circle, #aaa17b30 1px, transparent 1px) 0 0 / 25px
+    25px;
+}
+.map-space {
+  position: relative;
+  transform-origin: 0 0;
+}
+.map-space svg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+.map-space path {
+  fill: none;
+  stroke: var(--color-accent-warm);
+  stroke-width: 2;
+}
+.map-space circle {
+  fill: #272333;
+  stroke: #e1c898;
+}
+.map-space text {
+  fill: #f5e7c7;
+  font-size: 14px;
+}
+.map-space .alternate-route path {
+  stroke-dasharray: 7 4;
+}
+.map-space .anomaly-edge {
+  stroke: var(--color-anomaly);
+  stroke-dasharray: 3 6;
+  stroke-width: 3;
+}
+.map-node {
+  position: absolute;
+  width: 84px;
+  min-height: 84px;
+  background: var(--color-surface);
+  border: 2px solid #b2a280;
+  border-radius: 50%;
+  color: #faf4e8;
+  padding: 10px;
+  overflow: visible;
+}
+.map-node[aria-pressed="true"] {
+  border: 3px solid #ffe2a0;
+  box-shadow: 0 0 24px #ddbf7b33;
+}
+.map-node svg {
+  position: static;
+  width: 54px;
+  height: 54px;
+}
+.map-node span {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: -30px;
+  right: -30px;
+  padding: 0.3rem;
+  background: var(--color-bg);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+}
+.map-zoom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+.map-zoom button,
+.relationship-explorer button {
+  color: #f2e4c5;
+  background: var(--color-surface-elevated);
+  border: 1px solid #b5a17a;
+  border-radius: 0.6rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 0.7rem;
+  overflow-wrap: anywhere;
+}
+.map-legend,
+.possibility-marker {
+  padding: 0.6rem 1rem;
+}
+.possibility-marker {
+  border-top: 1px dashed #9b89ad;
+  color: #e4d5f5;
+}
+.relationship-explorer {
+  min-width: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 1.2rem;
+  border-radius: 1rem;
+  overflow-wrap: anywhere;
+}
+.relationship-explorer a {
+  color: #f0d99e;
+}
+.relationship-explorer ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.relationship-explorer h4 {
+  color: #eed9a7;
+  margin-bottom: 0.6rem;
+}
+@media (max-width: 1000px) {
+  .map-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .map-controls {
+    flex-direction: column;
+  }
+  .map-controls label {
+    flex: auto;
+  }
+  .map-viewport {
+    min-height: 330px;
+  }
+}
+@media (forced-colors: active) {
+  .discovery-map,
+  .relationship-explorer,
+  .map-canvas-panel,
+  .map-node,
+  .map-controls select,
+  .relationship-explorer button,
+  .map-zoom button,
+  .map-node span {
+    color: CanvasText;
+    background: Canvas;
+    border-color: CanvasText;
+  }
+  .map-space path {
+    stroke: LinkText;
+  }
+  .map-node[aria-pressed="true"] {
+    outline: 3px solid Highlight;
+  }
+}
+
+.discovery-map .map-space marker path {
+  fill: var(--color-accent-warm);
+  stroke: none;
+}
+.discovery-map .map-node:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+.high-contrast .map-canvas-panel,
+.high-contrast .relationship-explorer,
+.high-contrast .map-node {
+  border-color: currentColor;
+  border-width: 2px;
+}
+.high-contrast .discovery-map p {
+  color: var(--color-text);
+}
+
+@media (forced-colors: active) {
+  .discovery-map p,
+  .relationship-explorer h4,
+  .discovery-map .possibility-marker,
+  .discovery-map .map-legend {
+    color: CanvasText;
+  }
+  .relationship-explorer a {
+    color: LinkText;
+  }
+}

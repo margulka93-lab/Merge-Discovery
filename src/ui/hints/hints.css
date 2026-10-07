@@ -1,0 +1,45 @@
+.hint-control {
+  margin-block: 1rem;
+  min-width: 0;
+}
+.hint-sheet {
+  padding: 1.1rem;
+  margin-block: 0.75rem;
+  border: 1px solid var(--color-accent-warm);
+  border-radius: 1rem;
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+.hint-sheet button,
+.hint-offer button {
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0.3rem;
+  border: 1px solid currentColor;
+  border-radius: 0.6rem;
+  color: inherit;
+  background: transparent;
+  padding: 0.5rem 0.8rem;
+}
+.hint-offer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.catalog-page .hint-sheet {
+  background: #211e30;
+  color: #f4eddf;
+}
+
+@media (forced-colors: active) {
+  .hint-control .hint-sheet,
+  .hint-control .hint-sheet p,
+  .hint-control .hint-sheet h3,
+  .hint-control .hint-sheet button {
+    color: CanvasText;
+    background: Canvas;
+    border-color: CanvasText;
+  }
+}
