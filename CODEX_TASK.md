@@ -13,11 +13,11 @@ The current screens are functionally correct but are not considered visually fin
 The target is the canonical Merge Discovery concept:
 
 - modern magical observatory;
-- illustrated field guide;
+- dark illustrated field guide/catalog;
 - midnight blue + warm gold;
-- ivory knowledge surfaces;
+- fine warm-gold framing and celestial detail;
 - painterly/symbolic element presentation;
-- editorial rather than dashboard hierarchy.
+- compact editorial rather than dashboard hierarchy.
 
 Gameplay/data semantics must remain unchanged.
 
@@ -49,9 +49,13 @@ At the same time, do not alter gameplay truth or safe projections.
 
 ## Scope
 
-### 1. Establish two coherent visual environments
+### 1. Establish one coherent dark visual world
 
-#### Observatory
+The original Design Bible is the primary visual target.
+
+All in-game screens remain part of the same dark midnight/navy product.
+
+#### Observatory emphasis
 
 Used by:
 
@@ -62,13 +66,12 @@ Used by:
 
 Characteristics:
 
-- midnight surfaces;
-- celestial/orbital structure;
-- glass/depth used sparingly;
+- cosmic/orbital depth;
+- stronger celestial linework;
 - gold discovery focus;
 - violet anomalies.
 
-#### Field Guide
+#### Catalog / illustrated field-guide emphasis
 
 Used by:
 
@@ -80,11 +83,15 @@ Used by:
 
 Characteristics:
 
-- ivory/paper reading surfaces inside the same dark shell;
-- ink-like typography;
-- illustrated plates/specimens;
-- editorial whitespace;
+- still dark navy/blue, as in the original `Catalogo – Elemento` concept;
+- thin warm-gold borders and dividers;
+- larger illustrated specimens;
+- compact chips/metadata;
+- editorial hierarchy through composition and typography;
 - restrained Set accents.
+
+**Do not introduce ivory/cream page backgrounds as the default knowledge-screen treatment.**
+The pale panels at the bottom of the Design Bible are documentation diagrams, not game UI examples.
 
 Do not create two unrelated applications.
 
@@ -179,7 +186,7 @@ Required:
 - Set name;
 - concise thematic description;
 - completion integrated into header;
-- field-guide element grid below.
+- dark illustrated element grid below.
 
 Filters/search remain useful but visually secondary.
 
@@ -419,7 +426,7 @@ Specific checks:
 - Set header does not consume the whole phone;
 - Element hero remains useful;
 - Lab Combine remains immediately reachable;
-- field-guide surfaces do not cause horizontal overflow;
+- catalog/archive surfaces do not cause horizontal overflow;
 - 200% zoom still works.
 
 ### 20. Motion integration
@@ -478,7 +485,7 @@ Required AFTER screenshots:
 7. `390×844` — Laboratory;
 8. `390×844` — Collection Home;
 9. `390×844` — Element Detail;
-10. `320×568` — one field-guide screen.
+10. `320×568` — one Catalog/Set/Element screen.
 
 Use legitimate save fixtures and existing safe projection paths.
 
@@ -491,7 +498,7 @@ Reject the result if:
 - Collection still looks primarily like a dashboard;
 - all knowledge screens remain stacks of similar bordered cards;
 - Lab experiment does not dominate;
-- field-guide and observatory identities are not visibly distinct but related;
+- catalog and observatory emphases are not visibly distinct but related;
 - mobile is just compressed desktop;
 - placeholder art is visually incidental compared with metadata;
 - navigation remains visually heavier than content.
