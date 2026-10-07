@@ -155,7 +155,7 @@ test("real routes, shared durable favorites, Laboratory state, known recipes and
   await page.getByRole("link", { name: "Tutti i Set visibili" }).focus();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/sets$/);
-  await page.getByRole("link", { name: /^Mondo/ }).focus();
+  await page.locator('a[href="/sets/world"]').focus();
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/sets\/world$/);
   await page

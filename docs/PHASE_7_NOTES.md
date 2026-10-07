@@ -89,4 +89,6 @@ npm run preview -- --host 127.0.0.1
 
 The production E2E command uses real `dist` files at isolated port 5179 and must follow a successful build. `npm run preview` is the standard Vite production preview for manual verification. CI runs all gates, including both browser suites and the PWA artifact validator.
 
+The first Linux CI run exposed a legacy route-test selector matching both the Mondo Set and Mondo roccioso Collection during navigation. The test now focuses the exact `/sets/world` destination, which also waits for the intended route content; its focused local rerun passed. No application behavior or canonical content changed for this correction.
+
 Final gates passed: **186 unit/component tests in 12 files, 20 regression E2E, 10 production E2E plus two expanded offline/deferral reruns**, content/PWA validators, production build and both 1,000-element profiles. Final results are recorded in `docs/evidence/phase-7/verification.json` after completion. Canonical acceptance remains **67/67 reachable, depth 11, no blocked unlocks, four completed Collection chapters and one observed unresolved anomaly**. No specification contradiction was found; unexecuted manual assistive-technology and physical-device checks are explicitly listed above.
