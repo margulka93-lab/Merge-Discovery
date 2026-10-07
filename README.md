@@ -8,11 +8,11 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, view its sheet, repeat with A or start a new experiment. The Collection and Set pages use ivory field-guide surfaces and expose owned elements, visible Sets and registered recipes only. Favorites and accessibility preferences use the same IndexedDB save. Navigating back to the Laboratory preserves its inputs and search.
 
-Phase 7 technical hardening is merged. The current bounded task is Phase 7.5: visual/UX alignment to the approved observatory + illustrated field-guide concept before Phase 8 content expansion. See [Phase 7 notes](docs/PHASE_7_NOTES.md) for cache/update policy, bundle before/after, audits and production evidence.
+Phase 7 technical hardening is merged. Phase 7.5A is in open PR #9 awaiting visual review. The current execution plan is a staged, review-gated queue: 7.5B/C visual alignment, 8A/B/C content expansion and 9 Android packaging. See [Codex long-run queue](CODEX_LONG_RUN.md). See [Phase 7 notes](docs/PHASE_7_NOTES.md) for cache/update policy, bundle before/after, audits and production evidence.
 
-This PR implements only **Phase 7.5A — Shell + Laboratory + shared visual language**. See [Phase 7.5A notes](docs/PHASE_7_5A_NOTES.md) for scope, production screenshots and checks. The remaining screen redesigns are deferred to Phase 7.5B. Visual approval against the Design Bible is required before merge.
+Phase 7.5A implements **Shell + Laboratory + shared visual language**. See [Phase 7.5A notes](docs/PHASE_7_5A_NOTES.md) for scope, production screenshots and checks. The remaining screen redesigns are queued as Phase 7.5B/C. Visual approval against the Design Bible is required before merge.
 
-See [Visual & UX Alignment](docs/VISUAL_UX_ALIGNMENT.md) for the current redesign target. Functional correctness from Phases 0–7 remains authoritative; the present screen composition is not considered final until Phase 7.5 is visually approved.
+See [Visual & UX Alignment](docs/VISUAL_UX_ALIGNMENT.md) for the current redesign target. Functional correctness from Phases 0–7 remains authoritative; the present screen composition is not considered final until Phase 7.5 is visually approved. New Phase 8 content also requires canon review before merge.
 
 ## Run and verify
 

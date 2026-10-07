@@ -2,9 +2,9 @@
 
 ## Codex readiness
 
-**PHASE 0–7 MERGED · READY FOR PHASE 7.5 VISUAL & UX ALIGNMENT**
+**PHASE 0–7 MERGED · PR #9 (7.5A) OPEN · STAGED 7.5B–9 QUEUED**
 
-Phase 0–7 are merged through PR #8. Before expanding canonical content, Phase 7.5 now realigns all primary screens with the approved observatory + illustrated field-guide concept.
+Phase 0–7 are merged through PR #8. Phase 7.5A is in PR #9, pending visual approval. The extended Codex queue stages 7.5B/C, 8A/B/C and 9 as separate draft PRs with human visual/canon approval before merge.
 
 Legend:
 
@@ -86,4 +86,4 @@ For the current implementation sequence:
 
 ## Next action
 
-Run `CODEX_TASK.md` for Phase 7.5. Visually review the resulting UI before Phase 8 content expansion.
+Run `CODEX_TASK.md` / `CODEX_LONG_RUN.md` for the staged queue. Do not automatically merge unapproved visual or new-canon PRs.
