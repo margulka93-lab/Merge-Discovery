@@ -23,6 +23,7 @@ export function Laboratory({
   onUseResult,
   repeat,
   reset,
+  onViewDetail,
 }: {
   model: LabModel;
   slots: [string?, string?];
@@ -35,6 +36,7 @@ export function Laboratory({
   onUseResult: () => void;
   repeat: () => void;
   reset: () => void;
+  onViewDetail: () => void;
 }) {
   const [query, setQuery] = useState("");
   const [onlyFavorites, setOnlyFavorites] = useState(false);
@@ -101,6 +103,7 @@ export function Laboratory({
         </div>
         <ReactionStage
           reaction={reaction}
+          onViewDetail={onViewDetail}
           busy={busy}
           onUse={() => { pendingFocus.current = 'a'; onUseResult(); }}
           onRepeat={() => { pendingFocus.current = 'a'; repeat(); }}
