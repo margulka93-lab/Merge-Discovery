@@ -1,3 +1,4 @@
+import { regressionScreenshotPath } from './evidence';
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import type {
@@ -121,7 +122,7 @@ test("all six viewports, state preservation, target sizes, keyboard and reduced-
   await expect(
     page.getByRole("button", { name: "Combina", exact: true }),
   ).toBeFocused();
-  await expect(page.locator("[aria-live=polite]")).toHaveText(
+  await expect(page.locator(".live-announcement[aria-live=polite]")).toHaveText(
     "Nuova scoperta: Luce.",
   );
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
@@ -242,7 +243,7 @@ test("required screenshot evidence: desktop reaction and mobile playable states"
   await page.getByRole("button", { name: "Combina", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Fango" })).toBeVisible();
   await page.getByRole("searchbox").scrollIntoViewIfNeeded();
-  await page.screenshot({ path: "docs/evidence/phase-3-1440x900.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-3-1440x900.png") });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Nuovo esperimento" }).click();
   await select(page, "Luna").click();
@@ -254,7 +255,7 @@ test("required screenshot evidence: desktop reaction and mobile playable states"
   await page
     .getByRole("heading", { name: "Laboratorio", exact: true })
     .scrollIntoViewIfNeeded();
-  await page.screenshot({ path: "docs/evidence/phase-3-390x844.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-3-390x844.png") });
   await page.getByRole("button", { name: "Nuovo esperimento" }).click();
   await page.setViewportSize({ width: 320, height: 568 });
   await select(page, "Energia").click();
@@ -262,5 +263,5 @@ test("required screenshot evidence: desktop reaction and mobile playable states"
   await page
     .getByRole("heading", { name: "Laboratorio", exact: true })
     .scrollIntoViewIfNeeded();
-  await page.screenshot({ path: "docs/evidence/phase-3-320x568.png" });
+  await page.screenshot({ path: regressionScreenshotPath("docs/evidence/phase-3-320x568.png") });
 });

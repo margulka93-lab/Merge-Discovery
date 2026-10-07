@@ -1,0 +1,21 @@
+{
+  "entry": {
+    "file": "index-BZdNranM.js",
+    "bytes": 594846,
+    "gzipBytes": 180551
+  },
+  "largestChunk": {
+    "file": "index-BZdNranM.js",
+    "bytes": 594846,
+    "gzipBytes": 180551
+  },
+  "totalJsBytes": 594846,
+  "totalGzipBytes": 180551,
+  "chunks": [
+    {
+      "file": "index-BZdNranM.js",
+      "bytes": 594846,
+      "gzipBytes": 180551
+    }
+  ]
+}

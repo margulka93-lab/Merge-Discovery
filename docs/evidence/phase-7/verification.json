@@ -1,0 +1,140 @@
+{
+  "phase": 7,
+  "baseCommit": "7b96c55",
+  "checkedAtUtc": "2026-10-07T10:19:49Z",
+  "environment": "Windows; Node 26.7.0; Playwright Chromium; production build",
+  "check": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "unitComponentTests": 186,
+    "testFiles": 12,
+    "productionBuild": "PASS"
+  },
+  "regressionE2E": {
+    "passed": 20,
+    "failed": 0,
+    "includesFullSeedKeyboardProgression": true,
+    "screenshots": "isolated Playwright output directories"
+  },
+  "productionE2E": {
+    "passed": 10,
+    "failed": 0,
+    "additionalExpandedOfflineAndDeferralTests": 2,
+    "additionalTestsResult": "PASS",
+    "manifestInstallabilityErrors": [],
+    "offline": "PASS",
+    "safeUpdate": "PASS"
+  },
+  "pwaArtifactValidator": {
+    "result": "PASS",
+    "precacheAssets": 18,
+    "jsChunks": 10,
+    "build": "c63a7691ae92fd6b",
+    "runtimeCache": false
+  },
+  "contentValidator": {
+    "result": "PASS",
+    "elements": 67,
+    "recipes": 64,
+    "sets": 6,
+    "collections": 4,
+    "unresolvedAnomalies": 1
+  },
+  "reachability": {
+    "reachable": 67,
+    "total": 67,
+    "maxDependencyDepth": 11,
+    "blockedUnlocks": [],
+    "completedCollectionChapters": 4,
+    "observedUnresolvedAnomalies": 1
+  },
+  "profiles": {
+    "elements": 1000,
+    "authoredRecipes": 64,
+    "fullPairMatrix": false,
+    "catalog": "PASS",
+    "map": "PASS"
+  },
+  "accessibility": {
+    "automatedAA": "PASS",
+    "responsiveViewports": [
+      [
+        320,
+        568
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1024,
+        768
+      ],
+      [
+        1440,
+        900
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "reducedMotionSavedAndOS": "PASS",
+    "forcedColors": "PASS",
+    "extraLargeText": "PASS",
+    "zoom200": "automated CSS viewport reflow equivalent; also 200% text regression",
+    "manualScreenReader": "NOT RUN - release checklist",
+    "physicalNotchAndVirtualKeyboard": "NOT RUN - CSS/viewport simulation only"
+  },
+  "screenshots": [
+    {
+      "file": "docs/screenshots/phase-7/1440-laboratory.png",
+      "width": 1440,
+      "height": 900,
+      "source": "production"
+    },
+    {
+      "file": "docs/screenshots/phase-7/1440-new-discovery.png",
+      "width": 1440,
+      "height": 900,
+      "source": "production"
+    },
+    {
+      "file": "docs/screenshots/phase-7/1440-settings.png",
+      "width": 1440,
+      "height": 900,
+      "source": "production"
+    },
+    {
+      "file": "docs/screenshots/phase-7/390-production-shell.png",
+      "width": 390,
+      "height": 844,
+      "source": "production"
+    },
+    {
+      "file": "docs/screenshots/phase-7/390-safe-update.png",
+      "width": 390,
+      "height": 844,
+      "source": "production"
+    },
+    {
+      "file": "docs/screenshots/phase-7/320-catalog.png",
+      "width": 320,
+      "height": 568,
+      "source": "production"
+    }
+  ],
+  "scope": {
+    "canonicalDataChanged": false,
+    "domainChanged": false,
+    "phase8Started": false,
+    "androidCapacitorStarted": false,
+    "tier4or5Hints": false,
+    "resonance": false,
+    "arcano": false
+  }
+}

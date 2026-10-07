@@ -38,7 +38,7 @@ textarea:focus-visible,
 summary:focus-visible,
 a:focus-visible,
 main:focus-visible {
-  outline: 3px solid var(--color-accent-warm);
+  outline: var(--focus-ring);
   outline-offset: 4px;
 }
 button:hover:not(:disabled) {
@@ -309,7 +309,7 @@ nav button[aria-current="page"] {
   border-radius: var(--radius-reveal);
   border-color: #d9b66f40;
   background: linear-gradient(155deg, #233147, #111b2a);
-  box-shadow: 0 16px 32px #0003;
+  box-shadow: var(--shadow-slot);
   padding: var(--space-4);
 }
 .element-slot:not(.filled) {
@@ -727,21 +727,11 @@ nav button[aria-current="page"] {
 .element-card,
 .element-slot {
   transition:
-    border-color 150ms,
-    box-shadow 150ms;
-}
-.discovery-reveal.new {
-  animation: reveal 1100ms ease-out;
-}
-.discovery-reveal.alternate {
-  animation: reveal 550ms ease-out;
-}
-.discovery-reveal.known,
-.quiet-reaction {
-  animation: reveal 300ms ease-out;
+    border-color var(--motion-press),
+    box-shadow var(--motion-press);
 }
 .reacting .slots {
-  animation: combine 250ms ease-out;
+  animation: combine var(--motion-busy) ease-out;
 }
 [data-reduced-motion="true"] *,
 [data-reduced-motion="true"] *::before,

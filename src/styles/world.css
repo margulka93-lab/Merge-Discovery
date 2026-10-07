@@ -5,7 +5,7 @@
 }
 .thematic-card {
   border: 1px solid var(--color-ink-muted);
-  border-radius: 1rem;
+  border-radius: var(--radius-card);
   background: var(--color-paper-raised);
 }
 .thematic-card > a {
@@ -32,7 +32,7 @@
 .anonymous-member {
   min-height: 12rem;
   border: 1px dashed var(--color-ink-muted);
-  border-radius: 1rem;
+  border-radius: var(--radius-card);
   display: grid;
   place-content: center;
   text-align: center;
@@ -127,14 +127,14 @@
 .collection-callouts {
   background: #29322d;
   border: 1px solid #a9bc79;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-inset);
   padding: 0.5rem 1rem;
   margin: 1rem 0;
   text-align: left;
 }
 .set-reveal-callout {
   border: 1px solid var(--color-accent-warm);
-  border-radius: 1rem;
+  border-radius: var(--radius-card);
   margin: 1rem 0;
   padding: 1.25rem;
 }
@@ -191,7 +191,7 @@
 }
 .anomaly-page :focus-visible,
 .thematic-card > a:focus-visible {
-  outline: 3px solid var(--color-accent-warm);
+  outline: var(--focus-ring);
   outline-offset: 4px;
 }
 .high-contrast .anomaly-card,

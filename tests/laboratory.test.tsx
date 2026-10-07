@@ -208,7 +208,7 @@ it("has semantic keyboard activation, stable focus, concise live outcome and per
     document.querySelector(".app-shell")?.getAttribute("data-reduced-motion"),
   ).toBe("true");
   await user.click(screen.getAllByRole("button", { name: /Impostazioni/ })[0]!);
-  await user.click(screen.getByRole("checkbox", { name: "Movimento ridotto" }));
+  await user.click(await screen.findByRole("checkbox", { name: "Movimento ridotto" }));
   await waitFor(() =>
     expect(
       document.querySelector(".app-shell")?.getAttribute("data-reduced-motion"),
@@ -222,7 +222,7 @@ it("preserves experiment and search while switching eligible destinations", asyn
   await user.type(screen.getByRole("searchbox"), "Ener");
   await user.click(screen.getAllByRole("button", { name: /Impostazioni/ })[0]!);
   await user.click(
-    screen.getByRole("button", { name: "Torna al laboratorio" }),
+    await screen.findByRole("button", { name: "Torna al laboratorio" }),
   );
   expect(screen.getByRole("searchbox").getAttribute("value")).toBe("Ener");
   expect(

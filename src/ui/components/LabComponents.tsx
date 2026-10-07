@@ -1,3 +1,4 @@
+import { reactionPresentation } from '../../application/presentation';
 import type { CSSProperties, Ref } from "react";
 import type {
   LabElement,
@@ -229,6 +230,7 @@ export function ReactionStage({
     <section
       className={`reaction-stage ${reaction?.kind ?? "idle"}`}
       data-emphasis={reaction?.emphasis}
+      data-motion-tier={reactionPresentation(reaction).tier}
       aria-label="Risultato dell’esperimento"
     >
       {reaction ? (

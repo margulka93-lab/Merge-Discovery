@@ -4,11 +4,11 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 ## Status
 
-**Phase 0–6 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer, responsive Laboratory, field-guide catalog, guarded progressive disclosure, thematic Collections, observed Anomaly Archive, local Discovery Map and safe Tier 1–3 hints.
+**Phase 0–7 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer, responsive Laboratory, field-guide catalog, guarded progressive disclosure, thematic Collections, observed Anomaly Archive, local Discovery Map and safe Tier 1–3 hints, production PWA/offline, safe updates, optional audio and recovery hardening.
 
 The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, view its sheet, repeat with A or start a new experiment. The Collection and Set pages use ivory field-guide surfaces and expose owned elements, visible Sets and registered recipes only. Favorites and accessibility preferences use the same IndexedDB save. Navigating back to the Laboratory preserves its inputs and search.
 
-The bounded Phase 6 task in `CODEX_TASK.md` is implemented. Tier 4/5, Resonance, PWA and Phase 7 remain deferred.
+The bounded Phase 7 task in `CODEX_TASK.md` is implemented. Tier 4/5 hints, Resonance, Arcano, Phase 8 content and Phase 9 Android/Capacitor remain deferred. See [Phase 7 notes](docs/PHASE_7_NOTES.md) for cache/update policy, bundle before/after, audits and production evidence.
 
 ## Run and verify
 
@@ -24,13 +24,16 @@ npm run validate:content
 npm run simulate:content
 npm run build
 npm run preview
+npm run validate:pwa
+npm run measure:bundle
 npx playwright install chromium
 npm run test:e2e
+npm run test:production
 npm run profile:catalog
 npm run profile:map
 ```
 
-`npm run check` runs typecheck, lint, all domain/content/component tests and the validated production build. Build runs both validators before bundling. `npm run test:e2e` separately runs Chromium viewport, keyboard, IndexedDB reload, axe and screenshot checks; CI runs both gates. `npm run test:watch` is available during development.
+`npm run check` runs typecheck, lint, all domain/content/component tests and the validated production build. Build runs both validators before bundling. `npm run test:e2e` separately runs Chromium viewport, keyboard, IndexedDB reload, axe and screenshot checks; `npm run test:production` uses the built `dist` files at isolated port 5179 for real SW/offline/update checks and the full responsive AA matrix. CI runs all gates. `npm run test:watch` is available during development.
 
 ## Phase 0 + 1 architecture
 

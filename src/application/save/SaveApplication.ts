@@ -94,7 +94,7 @@ export class SaveApplication {
     });
   }
   /** Durable favorites/settings use the same validated, revision-checked commit path. */
-  updatePreferences(change: { favoriteElementId?: string; reducedMotion?: boolean; highContrast?: boolean; textScale?: PlayerSave['settings']['textScale']; informationMode?: PlayerSave['settings']['informationMode']; proactiveHints?: PlayerSave['settings']['proactiveHints'] }): Promise<ApplicationSnapshot> {
+  updatePreferences(change: { favoriteElementId?: string; soundEnabled?: boolean; musicEnabled?: boolean; reducedMotion?: boolean; highContrast?: boolean; textScale?: PlayerSave['settings']['textScale']; informationMode?: PlayerSave['settings']['informationMode']; proactiveHints?: PlayerSave['settings']['proactiveHints'] }): Promise<ApplicationSnapshot> {
     return this.serial(async () => {
       const slots = await this.repository.load();
       if (slots.current === null) throw new SaveError('not_found', 'No current save');
@@ -105,6 +105,8 @@ export class SaveApplication {
         if (!save.discoveredElements[id]) throw new SaveError('invalid_save', 'Favorite must be discovered');
         save.favoriteElementIds = save.favoriteElementIds.includes(id) ? save.favoriteElementIds.filter(value => value !== id) : [...save.favoriteElementIds, id];
       }
+      if (change.soundEnabled !== undefined) save.settings.soundEnabled = change.soundEnabled;
+      if (change.musicEnabled !== undefined) save.settings.musicEnabled = change.musicEnabled;
       if (change.reducedMotion !== undefined) save.settings.reducedMotion = change.reducedMotion;
       if (change.highContrast !== undefined) save.settings.highContrast = change.highContrast;
       if (change.textScale !== undefined) save.settings.textScale = change.textScale;
