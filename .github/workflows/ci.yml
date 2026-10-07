@@ -1,4 +1,4 @@
-name: Phase 0–4 checks
+name: Phase 0–5 checks
 on: [push, pull_request]
 jobs:
   check:

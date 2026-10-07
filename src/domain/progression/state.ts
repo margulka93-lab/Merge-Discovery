@@ -1,4 +1,5 @@
 import type { ContentIndex, DomainEvent, PlayerState } from '../model/types';
+import { newCollectionCompletions } from '../completion/collections';
 import { setCompletion } from '../completion/sets';
 import { requirementsMet } from './requirements';
 
@@ -6,7 +7,7 @@ export function initialState(index: ContentIndex): PlayerState {
   return {
     xp: 0, discoveredElementIds: index.content.elements.filter(e => e.starter).map(e => e.id),
     discoveredRecipeIds: [], observedAnomalyIds: [], resolvedAnomalyIds: [],
-    revealedSetIds: [...index.content.visibility.initialRevealedSetIds], completedSetIds: [],
+    revealedSetIds: [...index.content.visibility.initialRevealedSetIds], completedSetIds: [], completedCollectionChapterIds: [],
     unlockedFeatureIds: [], eligibleEraIds: [], testedPairs: {},
   };
 }
@@ -24,6 +25,7 @@ export function projectEvents(state: PlayerState, events: readonly DomainEvent[]
       case 'anomaly_resolved': next.resolvedAnomalyIds = add(next.resolvedAnomalyIds, event.anomalyId); break;
       case 'set_revealed': next.revealedSetIds = add(next.revealedSetIds, event.setId); break;
       case 'set_completed': next.completedSetIds = add(next.completedSetIds, event.setId); break;
+      case 'collection_completed': next.completedCollectionChapterIds = add(next.completedCollectionChapterIds, event.completionId); break;
       case 'feature_unlocked': next.unlockedFeatureIds = add(next.unlockedFeatureIds, event.featureId); break;
       case 'era_eligible': next.eligibleEraIds = add(next.eligibleEraIds, event.eraId); break;
     }
@@ -63,5 +65,6 @@ export function progressionEvents(state: PlayerState, index: ContentIndex): Doma
       }
     }
   }
+  for (const event of newCollectionCompletions(next, index)) emit(event);
   return events;
 }

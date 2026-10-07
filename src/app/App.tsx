@@ -7,8 +7,18 @@ import {
   useInRouterContext,
   useLocation,
   useNavigate,
+  Link,
+  Navigate,
 } from "react-router-dom";
 import { createCatalogProjector } from "../application/catalog";
+import { featureDisclosure, routeAvailable } from "../application/disclosure";
+import { createWorldProjector } from "../application/world";
+import {
+  ThematicCollections,
+  ThematicCollectionDetail,
+  ThematicCollectionSection,
+} from "../ui/collections/ThematicCollections";
+import { AnomalyArchive } from "../ui/anomalies/AnomalyArchive";
 import {
   CollectionHome,
   SetIndex,
@@ -49,10 +59,25 @@ function RoutedLaboratoryApplication({
   const active =
     location.pathname === "/"
       ? "lab"
-      : location.pathname.startsWith("/elements/")
-        ? "collection"
-        : location.pathname.split("/")[1] || "lab";
-  const setActive = (id: string) => navigate(id === "lab" ? "/" : `/${id}`);
+      : location.pathname.startsWith("/explore/anomalies") ||
+          location.pathname === "/anomalies"
+        ? "anomalies"
+        : location.pathname.startsWith("/explore/map")
+          ? "map"
+          : location.pathname.startsWith("/elements/") ||
+              location.pathname.startsWith("/collections")
+            ? "collection"
+            : location.pathname.split("/")[1] || "lab";
+  const setActive = (id: string) =>
+    navigate(
+      id === "lab"
+        ? "/"
+        : id === "anomalies"
+          ? "/explore/anomalies"
+          : id === "map"
+            ? "/explore/map"
+            : `/${id}`,
+    );
   const projectCatalog = useMemo(
     () => createCatalogProjector(application.index),
     [application],
@@ -61,7 +86,16 @@ function RoutedLaboratoryApplication({
     () => (snapshot && active !== "lab" ? projectCatalog(snapshot) : undefined),
     [snapshot, active, projectCatalog],
   );
+  const projectWorld = useMemo(
+    () => createWorldProjector(application.index),
+    [application],
+  );
+  const world = useMemo(
+    () => (snapshot && catalog ? projectWorld(snapshot, catalog) : undefined),
+    [snapshot, catalog, projectWorld],
+  );
   const ready = Boolean(snapshot);
+  const previousPath = useRef(location.pathname);
   useEffect(() => {
     if (location.pathname !== "/") {
       const main = document.getElementById("catalog-content");
@@ -71,7 +105,9 @@ function RoutedLaboratoryApplication({
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
       }
-    }
+    } else if (previousPath.current !== "/")
+      document.getElementById("laboratory")?.focus({ preventScroll: true });
+    previousPath.current = location.pathname;
   }, [location.pathname, ready]);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -132,6 +168,8 @@ function RoutedLaboratoryApplication({
       </main>
     );
   const model = laboratoryModel(snapshot, application.index, slots[0]);
+  const features = featureDisclosure(snapshot, application.index);
+  const available = routeAvailable(location.pathname, features);
   const reset = () => {
     setSlots([]);
     setReaction(undefined);
@@ -194,6 +232,7 @@ function RoutedLaboratoryApplication({
                 transaction.resolution,
                 transaction.snapshot,
                 application.index,
+                snapshot,
               );
               setSnapshot(transaction.snapshot);
               setReaction(outcome);
@@ -217,7 +256,8 @@ function RoutedLaboratoryApplication({
       </div>
       {catalog &&
         active !== "lab" &&
-        ["collection", "sets"].includes(active) && (
+        available &&
+        ["collection", "sets", "anomalies"].includes(active) && (
           <Routes>
             <Route
               path="/collection"
@@ -226,6 +266,10 @@ function RoutedLaboratoryApplication({
                   model={catalog}
                   favorite={(id) => preferences({ favoriteElementId: id })}
                   busy={busy}
+                  thematic={
+                    world && <ThematicCollectionSection model={world} />
+                  }
+                  setsAvailable={features.sets}
                 />
               }
             />
@@ -256,92 +300,150 @@ function RoutedLaboratoryApplication({
                   model={catalog}
                   favorite={(id) => preferences({ favoriteElementId: id })}
                   busy={busy}
+                  setsAvailable={features.sets}
+                  collectionAvailable={features.collection}
                 />
               }
             />
-            <Route path="*" element={<UnknownDetail />} />
+            <Route
+              path="/collections"
+              element={world && <ThematicCollections model={world} />}
+            />
+            <Route
+              path="/collections/:collectionId"
+              element={
+                world && (
+                  <ThematicCollectionDetail
+                    model={world}
+                    favorite={(id) => preferences({ favoriteElementId: id })}
+                    busy={busy}
+                  />
+                )
+              }
+            />
+            <Route
+              path="/anomalies"
+              element={<Navigate replace to="/explore/anomalies" />}
+            />
+            <Route
+              path="/explore/anomalies"
+              element={
+                world && (
+                  <AnomalyArchive
+                    model={world}
+                    busy={busy}
+                    retry={(id) => {
+                      if (busy) return;
+                      const anomaly = world.anomalies.find((a) => a.id === id);
+                      if (!anomaly) return;
+                      setSlots([anomaly.inputs[0].id, anomaly.inputs[1].id]);
+                      setReaction(undefined);
+                      setAnnouncement(
+                        `${anomaly.inputs[0].name} e ${anomaly.inputs[1].name} pronti nel Laboratorio. Premi Combina per riprovare.`,
+                      );
+                      navigate("/");
+                    }}
+                  />
+                )
+              }
+            />
+            <Route path="*" element={<UnknownDetail collectionAvailable={features.collection} />} />
           </Routes>
         )}
-      {active !== "lab" && !["collection", "sets"].includes(active) && (
+      {active !== "lab" && !available && (
         <main id="catalog-content" tabIndex={-1} className="destination-panel">
-          <p className="eyebrow">Il tuo osservatorio</p>
-          <h2>
-            {active === "explore"
-              ? "Esplora"
-              : model.destinations.find((d) => d.id === active)?.label}
-          </h2>
-          {active === "settings" ? (
-            <>
-              <fieldset aria-busy={busy}>
-                <legend>Accessibilità</legend>
-                <label>
-                  <input
-                    type="checkbox"
-                    aria-disabled={busy}
-                    checked={model.reducedMotion}
-                    onChange={(e) =>
-                      preferences({ reducedMotion: e.target.checked })
-                    }
-                  />{" "}
-                  Movimento ridotto
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    aria-disabled={busy}
-                    checked={model.highContrast}
-                    onChange={(e) =>
-                      preferences({ highContrast: e.target.checked })
-                    }
-                  />{" "}
-                  Contrasto elevato
-                </label>
-                <label htmlFor="text-scale">Dimensione del testo</label>
-                <select
-                  id="text-scale"
-                  aria-disabled={busy}
-                  value={model.textScale}
-                  onChange={(e) =>
-                    preferences({
-                      textScale: e.target.value as LabModelTextScale,
-                    })
-                  }
-                >
-                  <option value="default">Normale</option>
-                  <option value="large">Grande</option>
-                  <option value="extra_large">Molto grande</option>
-                </select>
-              </fieldset>
-              <details>
-                <summary>Salvataggio locale · importazione e recupero</summary>
-                <SaveDiagnostics
-                  application={application}
-                  boot={boot}
-                  onSnapshot={accept}
-                />
-              </details>
-            </>
-          ) : (
-            <>
-              <p>
-                Questa destinazione è stata sbloccata. La sua schermata sarà
-                disponibile in una fase successiva.
-              </p>
-              {active === "explore" && (
-                <div>
-                  <button onClick={() => setActive("anomalies")}>
-                    Anomalie
-                  </button>
-                  <button onClick={() => setActive("map")}>Mappa</button>
-                </div>
-              )}
-            </>
-          )}
-          <button className="secondary warm" onClick={() => setActive("lab")}>
-            Torna al laboratorio
-          </button>
+          <h2>Non ancora disponibile</h2>
+          <Link to="/">Torna al Laboratorio</Link>
         </main>
       )}
+      {active !== "lab" &&
+        available &&
+        !["collection", "sets", "anomalies"].includes(active) && (
+          <main
+            id="catalog-content"
+            tabIndex={-1}
+            className="destination-panel"
+          >
+            <p className="eyebrow">Il tuo osservatorio</p>
+            <h2>
+              {active === "explore"
+                ? "Esplora"
+                : model.destinations.find((d) => d.id === active)?.label}
+            </h2>
+            {active === "settings" ? (
+              <>
+                <fieldset aria-busy={busy}>
+                  <legend>Accessibilità</legend>
+                  <label>
+                    <input
+                      type="checkbox"
+                      aria-disabled={busy}
+                      checked={model.reducedMotion}
+                      onChange={(e) =>
+                        preferences({ reducedMotion: e.target.checked })
+                      }
+                    />{" "}
+                    Movimento ridotto
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      aria-disabled={busy}
+                      checked={model.highContrast}
+                      onChange={(e) =>
+                        preferences({ highContrast: e.target.checked })
+                      }
+                    />{" "}
+                    Contrasto elevato
+                  </label>
+                  <label htmlFor="text-scale">Dimensione del testo</label>
+                  <select
+                    id="text-scale"
+                    aria-disabled={busy}
+                    value={model.textScale}
+                    onChange={(e) =>
+                      preferences({
+                        textScale: e.target.value as LabModelTextScale,
+                      })
+                    }
+                  >
+                    <option value="default">Normale</option>
+                    <option value="large">Grande</option>
+                    <option value="extra_large">Molto grande</option>
+                  </select>
+                </fieldset>
+                <details>
+                  <summary>
+                    Salvataggio locale · importazione e recupero
+                  </summary>
+                  <SaveDiagnostics
+                    application={application}
+                    boot={boot}
+                    onSnapshot={accept}
+                  />
+                </details>
+              </>
+            ) : (
+              <>
+                <p>
+                  Questa destinazione è stata sbloccata. La sua schermata sarà
+                  disponibile in una fase successiva.
+                </p>
+                {active === "explore" && (
+                  <div>
+                    {features.anomalies && (
+                      <Link to="/explore/anomalies">Archivio anomalie</Link>
+                    )}
+                    {features.map && <Link to="/explore/map">Mappa</Link>}
+                  </div>
+                )}
+              </>
+            )}
+            <button className="secondary warm" onClick={() => setActive("lab")}>
+              Torna al laboratorio
+            </button>
+          </main>
+        )}
     </AppShell>
   );
 }

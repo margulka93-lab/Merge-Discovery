@@ -1,6 +1,7 @@
 import type { ContentIndex, ResolutionResult } from "../domain/model/types";
 import type { ApplicationSnapshot } from "./save/SaveApplication";
 import { isFailureAuthoritative } from "./updates/reconcile";
+import { featureDisclosure } from "./disclosure";
 import { pairKey } from "../domain/resolver/pair";
 
 export interface LabElement {
@@ -38,6 +39,28 @@ export interface LabReaction {
   element?: LabElement;
   setReveals: string[];
   announcement: string;
+  emphasis?:
+    | "known"
+    | "alternate"
+    | "new"
+    | "collection"
+    | "set"
+    | "hidden-set"
+    | "secret-set"
+    | "anomaly";
+  setRevealDetails?: {
+    id: string;
+    name: string;
+    kind: "normal" | "hidden" | "secret";
+    accent: string;
+    motifKey: string;
+    line: string;
+  }[];
+  collectionCallouts?: {
+    id: string;
+    kind: "revealed" | "completed";
+    name: string;
+  }[];
 }
 const rarityNames = {
   common: "Comune",
@@ -90,18 +113,14 @@ export function laboratoryModel(
   const destinations: Destination[] = [
     { id: "lab", label: "Laboratorio", symbol: "✧" },
   ];
-  // First-session disclosure counts discoveries made by the player, not the four supplied concepts.
-  if (elements.filter((e) => !index.elements.get(e.id)?.starter).length >= 3)
+  const features = featureDisclosure(snapshot, index);
+  if (features.collection)
     destinations.push({ id: "collection", label: "Collezione", symbol: "▦" });
-  if (
-    save.revealedSetIds.some(
-      (id) => !index.content.visibility.initialRevealedSetIds.includes(id),
-    )
-  )
+  if (features.sets)
     destinations.push({ id: "sets", label: "Set", symbol: "◈" });
-  if (Object.keys(save.anomalies).length)
+  if (features.anomalies)
     destinations.push({ id: "anomalies", label: "Anomalie", symbol: "◇" });
-  if (elements.length >= 15)
+  if (features.map)
     destinations.push({ id: "map", label: "Mappa", symbol: "⌘" });
   destinations.push({ id: "settings", label: "Impostazioni", symbol: "⚙" });
   const both =
@@ -133,7 +152,7 @@ export function laboratoryModel(
     ...save.settings,
   };
 }
-export function laboratoryReaction(
+function basicLaboratoryReaction(
   result: ResolutionResult,
   snapshot: ApplicationSnapshot,
   index: ContentIndex,
@@ -183,5 +202,113 @@ export function laboratoryReaction(
     message: "Puoi continuare a sperimentare.",
     setReveals,
     announcement: "Nessuna reazione.",
+  };
+}
+
+/** One presentation state: highest event controls emphasis, all lower events stay readable. */
+export function laboratoryReaction(
+  result: ResolutionResult,
+  snapshot: ApplicationSnapshot,
+  index: ContentIndex,
+  previous?: ApplicationSnapshot,
+): LabReaction {
+  const base = basicLaboratoryReaction(result, snapshot, index);
+  const setRevealDetails = result.events.flatMap((event) => {
+    if (
+      event.type !== "set_revealed" ||
+      !snapshot.save.revealedSetIds.includes(event.setId)
+    )
+      return [];
+    const set = index.content.sets.find((s) => s.id === event.setId)!;
+    const kind: "secret" | "hidden" | "normal" =
+      set.visibility === "secret"
+        ? "secret"
+        : set.visibility === "hidden"
+          ? "hidden"
+          : "normal";
+    return [
+      {
+        id: set.id,
+        name: index.content.locales.it[set.nameKey] ?? "",
+        kind,
+        accent: set.accentToken,
+        motifKey: set.iconKey,
+        line:
+          kind === "hidden"
+            ? "Sotto la superficie, la vita trova nuove trame."
+            : kind === "secret"
+              ? "Il possibile si allarga ancora."
+              : "Un nuovo dominio prende forma.",
+      },
+    ];
+  });
+  const collectionCallouts: NonNullable<LabReaction["collectionCallouts"]> = [];
+  if (previous)
+    for (const collection of snapshot.derived.collections) {
+      if (!previous.derived.collections.some((c) => c.id === collection.id))
+        collectionCallouts.push({
+          id: collection.id,
+          kind: "revealed",
+          name: index.content.locales.it[collection.nameKey] ?? "",
+        });
+    }
+  for (const event of result.events) {
+    if (
+      event.type !== "collection_completed" ||
+      !snapshot.derived.collections.some((c) => c.id === event.collectionId)
+    )
+      continue;
+    const definition = index.content.collections.find(
+      (c) => c.id === event.collectionId,
+    )!;
+    const chapter = definition.chapters?.find(
+      (c) => c.id === event.completionId,
+    );
+    const name =
+      (index.content.locales.it[definition.nameKey] ?? "") +
+      (chapter ? ` · ${index.content.locales.it[chapter.nameKey] ?? ""}` : "");
+    collectionCallouts.push({
+      id: event.completionId,
+      kind: "completed",
+      name,
+    });
+  }
+  const emphasis =
+    result.type === "anomaly" ||
+    result.events.some((e) => e.type === "anomaly_resolved")
+      ? "anomaly"
+      : setRevealDetails.some((s) => s.kind === "secret")
+        ? "secret-set"
+        : setRevealDetails.some((s) => s.kind === "hidden")
+          ? "hidden-set"
+          : setRevealDetails.length
+            ? "set"
+            : collectionCallouts.length
+              ? "collection"
+              : base.kind === "new"
+                ? "new"
+                : base.kind === "alternate"
+                  ? "alternate"
+                  : "known";
+  const announcement =
+    base.announcement.replace(/ Nuovo set: [^.]+\./g, "") +
+    setRevealDetails
+      .map(
+        (s) =>
+          ` Nuovo set${s.kind === "hidden" ? " nascosto" : s.kind === "secret" ? " segreto" : ""}: ${s.name}.`,
+      )
+      .join("") +
+    collectionCallouts
+      .map(
+        (c) =>
+          ` ${c.kind === "completed" ? "Collezione completata" : "Nuova collezione"}: ${c.name}.`,
+      )
+      .join("");
+  return {
+    ...base,
+    emphasis,
+    setRevealDetails,
+    collectionCallouts,
+    announcement,
   };
 }

@@ -1,5 +1,6 @@
 import type { PlayerSave, QuarantinedReferences } from '../../domain/model/save';
 import type { ContentIndex, PairKey } from '../../domain/model/types';
+import { collectionUnits, newCollectionCompletions } from '../../domain/completion/collections';
 import { pairKey } from '../../domain/resolver/pair';
 import { resolve } from '../../domain/resolver/resolve';
 import { parseSave } from '../../domain/model/saveSchema';
@@ -39,7 +40,7 @@ function reconcileReferences(save: PlayerSave, index: ContentIndex): PlayerSave 
   const setIds = new Set(index.content.sets.map(s => s.id));
   [next.revealedSetIds, q.revealedSetIds] = filterIds(next.revealedSetIds, q.revealedSetIds, id => setIds.has(id));
   [next.completedSetIds, q.completedSetIds] = filterIds(next.completedSetIds, q.completedSetIds, id => setIds.has(id));
-  const chapters = new Set(index.content.collections.flatMap(c => (c.chapters ?? []).map(ch => ch.id)));
+  const chapters = new Set(index.content.collections.flatMap(c => collectionUnits(c).map(ch => ch.id)));
   [next.completedCollectionChapterIds, q.completedCollectionChapterIds] = filterIds(next.completedCollectionChapterIds, q.completedCollectionChapterIds, id => chapters.has(id));
   [next.favoriteElementIds, q.favoriteElementIds] = filterIds(next.favoriteElementIds, q.favoriteElementIds, id => !!next.discoveredElements[id], mapped);
   const observed = { ...q.anomalies, ...next.anomalies }; next.anomalies = {}; q.anomalies = {};
@@ -84,6 +85,10 @@ export function reconcileContent(input: PlayerSave, index: ContentIndex): Reconc
   if (input.contentVersionSeen !== index.content.manifest.contentVersion) notices.push('content_version_updated');
   if (save.quarantine && JSON.stringify(input.quarantine) !== JSON.stringify(save.quarantine)) notices.push('optional_references_quarantined');
   const state = engineState(save, index);
+  // Compatibility backfill only. No XP, presentation event or derived reveal is persisted.
+  const completed = newCollectionCompletions(state, index).map(event => event.completionId);
+  save.completedCollectionChapterIds.push(...completed);
+  state.completedCollectionChapterIds = [...save.completedCollectionChapterIds];
   const affected = new Set<string>();
   for (const [key, history] of Object.entries(save.testedPairs)) {
     if (history.lastOutcome !== 'no_reaction' || history.testedAgainstContentVersion === index.content.manifest.contentVersion) continue;

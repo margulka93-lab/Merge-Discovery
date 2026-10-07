@@ -1,4 +1,5 @@
 import type { ContentIndex, PlayerState } from '../model/types';
+import { collectionVisible, collectionProgress } from '../completion/collections';
 import { setCompletion } from '../completion/sets';
 import { requirementsMet } from '../progression/requirements';
 
@@ -17,13 +18,7 @@ export function visibleElements(state: PlayerState, index: ContentIndex) {
     (state.revealedSetIds.includes(e.setId) && e.visibility === 'announced' && e.completion !== 'secret'));
 }
 export function visibleCollections(state: PlayerState, index: ContentIndex) {
-  return index.content.collections.filter(c => index.content.visibility.collectionReveals.some(p =>
-    p.collectionId === c.id && p.paths.some(path => requirementsMet(path, state, index)),
-  )).map(c => {
-    const members = c.memberElementIds.filter(id => {
-      const e = index.elements.get(id)!;
-      return (e.visibility !== 'secret' && e.completion !== 'secret' && state.revealedSetIds.includes(e.setId)) || state.discoveredElementIds.includes(id);
-    });
-    return { id: c.id, nameKey: c.nameKey, total: members.length, discovered: members.filter(id => state.discoveredElementIds.includes(id)).length };
-  });
+  return index.content.collections.filter(c => collectionVisible(c.id, state, index)).map(c => ({
+    id: c.id, nameKey: c.nameKey, ...collectionProgress(c.memberElementIds, state, index),
+  }));
 }

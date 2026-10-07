@@ -207,11 +207,6 @@ export function DiscoveryReveal({ reaction }: { reaction: LabReaction }) {
         <span>{element.rarity}</span>
       </div>
       <p>{reaction.message}</p>
-      {reaction.setReveals.map((name) => (
-        <p className="new-set" key={name}>
-          ✧ Nuovo set: {name}
-        </p>
-      ))}
     </div>
   );
 }
@@ -233,6 +228,7 @@ export function ReactionStage({
   return (
     <section
       className={`reaction-stage ${reaction?.kind ?? "idle"}`}
+      data-emphasis={reaction?.emphasis}
       aria-label="Risultato dell’esperimento"
     >
       {reaction ? (
@@ -253,8 +249,51 @@ export function ReactionStage({
               </small>
             </div>
           )}
+          {!!reaction.setRevealDetails?.length && (
+            <div className="set-reveal-callouts">
+              {reaction.setRevealDetails.map((set) => (
+                <div key={set.id} className={`set-reveal-callout ${set.kind}`}>
+                  <ElementArt artKey={set.motifKey} />
+                  <p className="eyebrow">
+                    {set.kind === "hidden"
+                      ? "Set nascosto scoperto"
+                      : set.kind === "secret"
+                        ? "Set segreto scoperto"
+                        : "Nuovo set"}
+                  </p>
+                  <h3>Set: {set.name}</h3>
+                  <p>{set.line}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          {!!reaction.collectionCallouts?.length && (
+            <div
+              className="collection-callouts"
+              aria-label="Novità delle collezioni"
+            >
+              {reaction.collectionCallouts.map((c) => (
+                <p key={`${c.id}-${c.kind}`}>
+                  <strong>
+                    {c.kind === "completed"
+                      ? "✓ Collezione completata"
+                      : "✧ Nuova collezione tematica"}
+                  </strong>{" "}
+                  · {c.name}
+                </p>
+              ))}
+            </div>
+          )}
           <div className="result-actions">
-            {reaction.element && <button className="secondary" disabled={busy} onClick={onViewDetail}>Vedi scheda</button>}
+            {reaction.element && (
+              <button
+                className="secondary"
+                disabled={busy}
+                onClick={onViewDetail}
+              >
+                Vedi scheda
+              </button>
+            )}
             {reaction.element && (
               <button
                 className="secondary warm"

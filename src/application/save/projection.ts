@@ -25,7 +25,7 @@ export function engineState(save: PlayerSave, index: ContentIndex): PlayerState 
     ...initialState(index), xp: save.xp, discoveredElementIds: Object.keys(save.discoveredElements),
     discoveredRecipeIds: [...save.discoveredRecipeIds],
     observedAnomalyIds: Object.keys(save.anomalies), resolvedAnomalyIds: Object.entries(save.anomalies).filter(([, a]) => a.resolvedAt).map(([id]) => id),
-    revealedSetIds: [...save.revealedSetIds], completedSetIds: [...save.completedSetIds],
+    revealedSetIds: [...save.revealedSetIds], completedSetIds: [...save.completedSetIds], completedCollectionChapterIds: [...save.completedCollectionChapterIds],
     testedPairs: Object.fromEntries(Object.entries(save.testedPairs).map(([key, value]) => [key, { lastOutcome: value.lastOutcome, testedAgainstContentVersion: value.testedAgainstContentVersion }])),
   };
   // Feature/Era eligibility is derived from current content, never a second durable truth.
@@ -48,6 +48,7 @@ export function projectResolution(save: PlayerSave, result: ResolutionResult, ti
   const state = projectEvents(engineState(save, index), result.events);
   next.xp = state.xp; next.discoveredRecipeIds = state.discoveredRecipeIds;
   next.revealedSetIds = state.revealedSetIds; next.completedSetIds = state.completedSetIds;
+  next.completedCollectionChapterIds = state.completedCollectionChapterIds;
   next.updatedAt = timestamp;
   for (const event of result.events) {
     if (event.type === 'pair_tested') next.testedPairs[event.pairKey] = { lastOutcome: event.outcome, testedAgainstContentVersion: event.contentVersion, lastTestedAt: timestamp };

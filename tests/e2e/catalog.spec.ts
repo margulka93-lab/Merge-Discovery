@@ -88,6 +88,27 @@ test("successful result opens its owned sheet explicitly and returns without los
 test("fresh knowledge boundary, search and identical unknown deep-link guards", async ({
   page,
 }) => {
+  await page.goto("/");
+  // Phase 5 enforces the existing navigation thresholds on direct routes too.
+  for (const [a, b] of [
+    ["Vuoto", "Energia"],
+    ["Energia", "Energia"],
+    ["Energia", "Materia"],
+    ["Vuoto", "Tempo"],
+    ["Materia", "Spazio"],
+    ["Plasma", "Gravità"],
+  ]) {
+    for (const name of [a!, b!]) {
+      await page.getByRole("searchbox").fill(name);
+      await page
+        .getByRole("button", { name: new RegExp(`^${name}, elemento del set`) })
+        .click();
+    }
+    await page.getByRole("button", { name: "Combina", exact: true }).click();
+    await page
+      .getByRole("button", { name: "Nuovo esperimento", exact: true })
+      .click();
+  }
   await page.goto("/collection");
   await expect(
     page.getByRole("heading", { name: "Collezione", exact: true }),

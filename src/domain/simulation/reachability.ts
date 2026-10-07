@@ -31,7 +31,7 @@ export function simulateReachability(index: ContentIndex, options: { excludeSecr
       state = projectEvents(state, outcome.events);
     }
     rounds++;
-    const signature = (s: PlayerState) => JSON.stringify([s.xp, s.discoveredElementIds, s.discoveredRecipeIds, s.observedAnomalyIds, s.revealedSetIds, s.completedSetIds, s.unlockedFeatureIds, s.eligibleEraIds]);
+    const signature = (s: PlayerState) => JSON.stringify([s.xp, s.discoveredElementIds, s.discoveredRecipeIds, s.observedAnomalyIds, s.revealedSetIds, s.completedSetIds, s.completedCollectionChapterIds, s.unlockedFeatureIds, s.eligibleEraIds]);
     if (signature(before) === signature(state)) break;
     checkpoints.push({ depth: rounds, discovered: state.discoveredElementIds.length, xp: state.xp, revealedSetIds: [...state.revealedSetIds] });
   }
