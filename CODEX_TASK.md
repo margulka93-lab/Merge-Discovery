@@ -1,550 +1,525 @@
-# CODEX_TASK.md — Phase 4
+# CODEX_TASK.md — Phase 5
 
-Phase 0 + 1 + 2 + 3 are merged.
+Phase 0 + 1 + 2 + 3 + 4 are merged.
 
 ## Goal
 
-Implement the first complete **Collection/Catalog + Sets + Element Detail** experience on top of the playable Laboratory.
+Implement the first complete **Progressive Disclosure + Anomaly Archive + Thematic Collections** layer on top of the playable Laboratory and field-guide catalog.
 
-Phase 4 turns discovered content into a useful illustrated field guide without leaking hidden or secret content.
+Phase 5 should make the world feel reactive:
 
-Do not implement the full Anomaly Archive, Discovery Map, hint system or thematic Collections flow in this task.
+- newly revealed features become truly available only when earned;
+- observed anomalies become a real revisitable archive;
+- starter Collections become visible goals;
+- Collection completion is persisted and celebrated;
+- hidden Set reveals, especially Funghi, receive the correct presentation weight.
+
+Do not implement the Discovery Map or the full hint system in this task.
 
 ## Required reading
 
 Read before changing code:
 
 - `AGENTS.md`
+- `docs/IMPLEMENTATION_PLAN.md`
+- `docs/COLLECTIONS_AND_OBJECTIVES.md`
 - `docs/CATALOG_AND_DISCOVERY_GRAPH.md`
 - `docs/SCREEN_SPECS.md`
 - `docs/UX_SCREEN_ARCHITECTURE.md`
-- `docs/RESPONSIVE_AND_UI_STATES.md`
+- `docs/FIRST_SESSION_EXPERIENCE.md`
 - `docs/VISUAL_BIBLE_REFERENCE.md`
-- `docs/VISUAL_DIRECTION.md`
 - `docs/DESIGN_SYSTEM.md`
+- `docs/MOTION_AUDIO.md`
 - `docs/ACCESSIBILITY.md`
-- `docs/COPY_AND_LOCALIZATION.md`
 - `docs/DATA_MODEL.md`
-- `docs/SETS_AND_PROGRESSION.md`
-- `docs/COLLECTIONS_AND_OBJECTIVES.md`
-- `docs/HINTS_AND_FAILURE.md`
-- `docs/PHASE_3_NOTES.md`
+- `docs/RESOLUTION_ENGINE.md`
+- `docs/SAVE_AND_VERSIONING.md`
+- `docs/IMPLEMENTATION_SEED_CONTENT.md`
+- `docs/PHASE_4_NOTES.md`
 
-Inspect the merged Phase 3 UI before introducing new components.
+Inspect the merged Phase 3/4 routing and catalog projections before adding new state.
 
 ## Scope
 
-### 1. Introduce real application routing
+### 1. Finish progressive disclosure with real route guards
 
-Phase 4 is the point where deep content pages become real routes.
+The UI currently hides destinations progressively; Phase 5 must make direct routing obey the same feature boundary.
 
-Use React Router as specified in `TECH_SPEC.md` unless a concrete repository constraint makes that impossible.
+Required behavior:
 
-Required routes:
+- `/` Laboratory: always available.
+- `/elements/:elementId`: available for discovered elements even before Collection unlock, because `Vedi scheda` may legitimately link there.
+- `/collection`: only after the Collection feature has been disclosed by the existing first-session rule.
+- `/sets` and `/sets/:setId`: only after the Sets feature is disclosed.
+- `/collections` and `/collections/:collectionId`: only after Collection is disclosed and the specific thematic Collection is visible.
+- `/explore/anomalies`: only after at least one anomaly has been observed.
+- future Map route may remain a placeholder when its existing threshold is met.
 
-- `/` → Laboratory
-- `/collection` → Collection home
-- `/sets` → Sets index
-- `/sets/:setId` → Set detail
-- `/elements/:elementId` → Element detail
-- `/settings` → existing minimal settings/save tools
+Blocked feature routes should:
 
-Existing progressive navigation must map to actual routes where Phase 4 now provides a screen.
+- redirect to Laboratory or a generic unavailable page;
+- reveal no feature/content metadata beyond what the player already knows;
+- never expose hidden Set/Collection/anomaly identities.
 
-Future routes such as anomalies/map may remain explicit placeholders only if already visible from Phase 3 disclosure.
+Element Detail must not link into a Set browser that is not yet disclosed; show the Set label as plain text until the route is legitimate.
 
-#### Deep-link safety
+### 2. Real Anomaly Archive route
 
-Opening a URL to an element the player has not discovered must NOT expose:
+Implement:
+
+`/explore/anomalies`
+
+Optional backward-compatible redirect:
+
+`/anomalies` → `/explore/anomalies`
+
+The archive is absent from navigation before the first observed anomaly.
+
+### 3. Safe anomaly projection
+
+Create an application/domain-safe projection for observed anomalies only.
+
+Each archive entry may expose:
+
+- known input A;
+- known input B;
+- first observed date/time in a compact local format;
+- current safe status;
+- resolved result only if already legitimately resolved/discovered.
+
+Never expose:
+
+- future result name;
+- future recipe;
+- hidden Set;
+- internal resolution condition;
+- category if it would function as a spoiler.
+
+### 4. Anomaly states
+
+Support the future-safe state model:
+
+#### Instabile
+Observed and the current resolver still yields the anomaly.
+
+#### Inerte
+Observed, unresolved, and current content no longer produces an active anomaly/revisitable result.
+
+Use only when this state genuinely occurs; do not force it for the current seed.
+
+#### Riesaminabile
+Observed unresolved anomaly whose authored non-secret resolution is now currently eligible.
+
+Display:
+
+> Qualcosa è cambiato.
+
+Do not show the result.
+
+#### Risolta
+`resolvedAt` exists.
+
+Only then may the archive show the already-discovered result and link to its Element Detail.
+
+Current seed remains unresolved.
+
+### 5. “Riprova nel Laboratorio”
+
+Archive entries may offer:
+
+`Riprova nel Laboratorio`
+
+Behavior:
+
+1. explicit player action;
+2. navigate to Laboratory;
+3. replace current Slot A/B with the anomaly inputs;
+4. do NOT auto-combine;
+5. preserve the normal explicit Combine action.
+
+This must reuse the same Lab state and resolver pipeline.
+
+### 6. Thematic Collections routes
+
+Implement:
+
+- `/collections`
+- `/collections/:collectionId`
+
+No permanent top-level navigation item is required; surface Collections primarily from `/collection`.
+
+### 7. Collection visibility
+
+Use the existing authored `visibility.collectionReveals`.
+
+Seed Collection reveal rules are canonical and unchanged:
+
+- Ciclo dell’acqua
+- Figli delle stelle
+- Mondo roccioso
+- Verde ovunque
+
+Before reveal:
+
+- no card;
+- no search hit;
+- no direct-route identity;
+- no reserved blank slot.
+
+After reveal:
+
+- name/description/progress are visible;
+- only safe member knowledge is shown.
+
+### 8. Collection projection and completion
+
+Create a pure completion helper.
+
+For a Collection without authored chapters:
+
+- treat the Collection itself as its base completion unit;
+- durable completion ID = `collection.id`.
+
+For a Collection with chapters:
+
+- durable completion IDs = authored chapter IDs.
+
+Do not invent synthetic random IDs.
+
+Completion counts only currently active/eligible non-secret members according to the existing visibility rules.
+
+Persist completion in:
+
+`completedCollectionChapterIds`
+
+Do not add a new save schema field.
+
+### 9. Collection completion event
+
+Add a proper domain/application event:
+
+`collection_completed`
+
+It must:
+
+- be deterministic;
+- fire once per completion unit;
+- project into PlayerState;
+- persist through `projectResolution`;
+- never farm on repeat combinations.
+
+No XP, currency, cosmetic or gameplay reward is added in Phase 5 unless already authored in canonical data.
+
+Do not extend progression reward schema merely to invent a Collection reward.
+
+### 10. Backfill old saves safely
+
+Existing saves may already satisfy a Collection before Phase 5.
+
+During load/reconciliation:
+
+- detect already-complete visible Collection units;
+- add missing durable completion IDs;
+- preserve all prior progress;
+- do not award XP;
+- do not replay a fake “just completed” celebration on load;
+- do not reveal hidden Collections merely because their members happen to exist if the authored reveal path has not been met.
+
+Add explicit tests for this compatibility behavior.
+
+### 11. Collections index
+
+`/collections` should show only visible thematic Collections.
+
+Recommended ordering:
+
+1. incomplete, closest to completion;
+2. other active;
+3. completed.
+
+Collection card:
 
 - name;
+- description excerpt;
+- discovered / visible total;
+- progress;
+- completed/earned state;
+- optional “new possibilities” wording only if safely derivable without revealing a solution.
+
+No global hidden total.
+
+### 12. Collection detail
+
+Show:
+
+- Collection name;
 - description;
-- Set;
-- rarity;
-- recipes;
-- hidden existence metadata.
+- visible progress;
+- discovered members as normal cards/links;
+- missing active members only as generic undiscovered slots/counts, without names, artKeys, Sets or metadata;
+- completed/earned state.
 
-Redirect safely to Collection or show a generic `Non ancora scoperto` state with no metadata.
+Do not turn Collection Detail into a hint screen.
 
-Opening a hidden/unrevealed Set URL must likewise not expose its identity.
+Do not show exact missing identities.
 
-### 2. Collection home
+### 13. Collection section on Collection Home
 
-Implement the primary discovery/catalog home.
+Add a clearly separate **Collezioni tematiche** section to `/collection`.
 
-Its job is to answer:
+Keep Sets and Collections conceptually distinct.
 
-- cosa ho appena scoperto?
-- dove sto facendo progressi?
-- quali elementi meritano di essere rivisti?
+Show a small useful subset such as:
 
-#### Header
+- near completion;
+- recently revealed;
+- completed.
 
-Show:
+Provide a link to all visible thematic Collections.
 
-- total discovered count only;
-- number of currently visible/revealed Sets;
-- completed visible Set count if useful.
+### 14. Collection completion presentation
 
-Do NOT show a global `X / total game` denominator.
+Collection completion is lighter than Set reveal.
 
-#### Sections
+When a combination completes a Collection:
 
-At minimum:
+- show a compact persistent banner/card inside the result experience;
+- do not interrupt with a full-screen modal;
+- do not override a stronger Set reveal.
 
-1. **Recenti**
-   - most recently discovered owned elements, ordered by `firstDiscoveredAt`;
-   - use a bounded list/grid such as latest 8–12;
-   - this is a sort/view, not a new unread-state system.
+Suggested copy:
 
-2. **Nuove possibilità**
-   - owned elements from current safe `newPossibilityElementIds` / equivalent derived logic;
-   - absent when none;
-   - never reveal why or what future result exists.
+> Collezione completata: Ciclo dell’acqua
 
-3. **Set attivi**
-   - visible/revealed Set cards;
-   - announced locked Sets only if current visibility policy already permits them;
-   - hidden/secret Sets absent.
+If multiple Collection completions occur together, compose them into one presentation block.
 
-4. **Preferiti**
-   - discovered favorite elements;
-   - absent/empty state handled cleanly.
+### 15. Collection reveal presentation
 
-Thematic Collections may be previewed only if the existing visibility projection makes them already visible and doing so does not create the full Phase 5 Collections flow. Do not build Collection Detail in this task.
+When a discovery makes a thematic Collection newly visible:
 
-### 3. Catalog search and filters
+- use a small “nuovo obiettivo/nuova collezione” callout;
+- lighter than new element and Set reveal;
+- no forced navigation.
 
-Search across player-visible knowledge only.
+Derived reveal presentation should compare previous vs next safe visibility in the application layer rather than persisting another duplicate truth.
 
-Search may match:
+### 16. Event celebration hierarchy
 
-- discovered element name;
-- visible Set name.
+Implement the locked relative hierarchy:
 
-Do not index hidden element names, hidden Set names or secret content.
+1. known result
+2. alternate recipe
+3. new element
+4. Collection reveal/completion
+5. normal Set reveal
+6. hidden Set reveal
+7. Era-defining discovery
+8. supernatural/anomaly culmination
 
-Required filters for Phase 4:
+For Phase 5, the implemented levels are:
 
-- Set;
-- rarity;
-- favorite;
-- new possibilities;
-- currently exhausted.
+- known/alternate/new element;
+- Collection reveal/completion;
+- normal Set reveal;
+- hidden Set reveal;
+- anomaly.
 
-Sorting:
+If several happen in one combine:
 
-- recent discovery;
-- alphabetical;
-- Set order;
-- rarity.
+- compose one coherent result state;
+- strongest event controls visual emphasis;
+- weaker events remain readable inside the same result surface;
+- never stack modal after modal.
 
-Do not create persistent `unread/new` flags in the save.
+### 17. Hidden Funghi reveal
 
-Responsive behavior:
+The canonical seed reveal remains:
 
-- desktop sticky search/filter controls;
-- mobile filter sheet/panel;
-- no tiny controls;
-- filter state survives viewport changes during the session.
+`Vita + Umidità → Muffa`
 
-### 4. Set index
+which reveals hidden Set `Funghi`.
 
-Implement `/sets`.
+Do not change the recipe or unlock.
 
-Show only Sets allowed by the current player-facing visibility projection.
+Presentation requirement:
 
-#### Revealed Set card
+- treat Funghi as a **hidden Set reveal**, stronger than a normal Set reveal;
+- temporarily shift the Laboratory reveal environment toward its Set accent/motif;
+- show a concise thematic line;
+- return to the normal Laboratory shell after the reveal state ends.
 
-Show:
+Do not permanently recolor the Lab.
 
-- name;
-- icon/placeholder art;
-- visible required discovered count;
-- visible required total;
-- completion progress;
-- complete state;
-- safe `Nuove possibilità` indicator if at least one owned member has new possibilities.
+Reduced-motion mode must preserve hierarchy without animation.
 
-#### Announced locked Set
+### 18. Set reveal distinction
 
-Only when policy allows:
+Application presentation data should distinguish:
 
-- name;
-- lock state;
-- broad non-spoiler clue if authored.
+- normal Set reveal;
+- hidden Set reveal;
+- secret Set reveal future-safe.
 
-Do not reserve empty positions for hidden/secret Sets.
+Do not infer hierarchy from localized names.
 
-### 5. Set detail
+Use canonical Set visibility/reveal metadata.
 
-Implement `/sets/:setId`.
-
-Header:
-
-- Set art/icon placeholder;
-- name;
-- short description;
-- visible completion;
-- completion state.
-
-Grid may contain only player-legitimate states:
-
-- discovered element;
-- intentionally visible/glimpsed element if current content actually authors that state;
-- no placeholder at all for hidden/secret elements.
-
-For the current seed, do not invent silhouettes/unknown slots merely to make the page look fuller.
-
-Controls:
-
-- search within Set;
-- rarity filter;
-- favorite;
-- new possibilities;
-- currently exhausted;
-- sort.
-
-Footer/secondary information may mention visible completion reward/status if already represented by current data.
-
-Do not implement graph shortcut if it would lead to a fake Phase 6 screen.
-
-### 6. Element detail
-
-Implement `/elements/:elementId` for discovered elements.
-
-#### Hero
-
-Show:
-
-- existing placeholder art via `artKey`;
-- localized name;
-- Set;
-- rarity;
-- favorite toggle;
-- concise description.
-
-Use the lighter **field-guide** surface inside the existing dark observatory shell.
-
-#### First discovery
-
-Show the player's actual first discovery recipe when available:
-
-> Scoperto con  
-> Pianeta + Cometa
-
-Use `firstRecipeId` from durable save facts.
-
-Starters should have an appropriate non-recipe state such as:
-
-> Concetto iniziale
-
-Do not fabricate a recipe.
-
-#### Known recipes
-
-Show only recipes the player has actually discovered.
-
-For an element with multiple known recipe paths, list them all.
-
-Unknown recipes:
-
-- do not show exact partners/results;
-- do not show secret recipe placeholders;
-- Balanced mode may show only a vague possibilities message.
-
-### 7. Possibilities / currently exhausted
-
-Implement the safe per-element state defined by catalog/hint specs.
-
-Possible messages:
-
-- `Ha ancora reazioni da scoprire.`
-- `Hai esplorato tutte le reazioni attualmente note con ciò che possiedi.`
-- `Una vecchia reazione potrebbe essere cambiata.`
-
-The computation must consider only:
-
-- known player elements;
-- current unlocked rules/domains;
-- currently eligible non-secret reactions/anomalies.
-
-Ignore:
-
-- unrevealed secrets;
-- dormant future content;
-- inaccessible future modes.
-
-This must be a deterministic derived calculation, not a persisted fact.
-
-Prefer a pure domain/application helper with tests rather than UI scanning recipe data ad hoc.
-
-Do not turn this into the Phase 6 hint system.
-
-### 8. Element relationships
-
-Element Detail should show known safe relationships.
-
-At minimum:
-
-- **Creato da** / known recipes producing this element;
-- **Usato per** results already discovered through known recipes involving this element;
-- observed anomaly involvement, but only the known pair/status and never a hidden result.
-
-Do not build the visual Discovery Map yet.
-
-A compact textual/card relationship section is sufficient.
-
-### 9. Experiment history
-
-Element Detail gets an `Esperimenti` section.
-
-Group tested partners into:
-
-- Successi;
-- Anomalie;
-- Nessuna reazione.
-
-Rules:
-
-- show only partner elements the player currently knows;
-- stale `no_reaction` records must respect content-version authority/reconciliation;
-- never render a global A×B matrix;
-- untested partners are not listed as missing.
-
-This section is memory, not a solver.
-
-### 10. Favorites integration
-
-Favorite toggling must work consistently from:
-
-- Laboratory cards;
-- Collection home;
-- Set detail;
-- Element detail.
-
-Use the existing durable Phase 3/SaveApplication preference path.
-
-No duplicate favorite state.
-
-### 11. `Vedi scheda` from Laboratory
-
-Now that Element Detail exists, add the previously deferred action for successful result states:
-
-`Vedi scheda`
-
-It opens the discovered result's element route.
-
-Do not force navigation there automatically.
-
-Returning to Laboratory should preserve sensible current experiment state where possible.
-
-### 12. Visual direction
-
-Collection/Set/Element surfaces use the field-guide side of the Visual Bible:
-
-- warm ivory/paper content surfaces;
-- dark observatory shell retained;
-- painterly/symbolic art placeholders;
-- ink-like dark text inside light reading surfaces;
-- Set accent used sparingly;
-- no generic admin-dashboard tables.
-
-The switch from dark Lab to lighter catalog surface should feel intentional, not like a second unrelated app.
-
-### 13. Responsive behavior
-
-Verify at minimum:
-
-- 320×568
-- 390×844
-- 768×1024
-- 1024×768
-- 1440×900
-- 1920×1080
-
-#### Collection home
+### 19. Anomaly navigation integration
 
 Desktop:
-- search/filter header;
-- multi-column Set/element sections;
-- optional element preview only if it does not complicate route semantics.
+
+- Anomalie becomes a real destination after first observation.
 
 Mobile:
-- one primary page scroll;
-- stacked sections;
-- 2–3 cards/row depending text scale.
 
-#### Set detail
+- maintain max five destinations;
+- when both Map and Anomalies are available, `Esplora` groups them;
+- Esplora page lists real Anomalie plus Map placeholder until Phase 6.
 
-Desktop:
-4–6 cards/row depending container.
+Do not expose Anomalies early merely because the route exists.
 
-Mobile:
-2–3.
+### 20. Collection/Anomaly visual direction
 
-#### Element detail
+Collections:
 
-Mobile:
-full route/page.
+- field-guide paper surfaces;
+- illustrated/symbolic member cards;
+- restrained progress treatment;
+- optional warm accent.
 
-Desktop:
-comfortable two-column editorial layout where useful.
+Anomalies:
 
-At 200% text zoom, content remains reachable without horizontal page overflow.
+- dark glass / midnight background;
+- restrained violet/indigo refraction;
+- incomplete orbital geometry;
+- same global shell;
+- no heavy glitch/strobe.
 
-### 14. Accessibility
+### 21. Accessibility
 
 Required:
 
-- semantic landmarks/headings;
-- keyboard-operable filters/cards/routes;
-- visible focus;
-- accessible progress labels;
-- favorite buttons labeled;
-- no color-only completion/exhaustion/new-possibility state;
+- route guards do not create keyboard traps;
+- archive and Collection cards have semantic links/buttons;
+- progress has accessible labels;
+- generic missing Collection slots do not expose hidden names through accessible text;
+- `Riprova nel Laboratorio` has clear accessible purpose;
+- completion/reveal callouts are announced once through an appropriate live region;
+- no color-only anomaly/completion state;
 - 44×44 touch targets;
-- filter sheet/panel has correct focus behavior;
-- high-contrast/reduced-motion/text-size preferences from Phase 3 remain honored.
+- reduced-motion/high-contrast/text-size preferences remain honored.
 
-### 15. Performance
+### 22. Performance / architecture
 
-The architecture must remain viable for 1,000+ future definitions.
+Do not:
 
-Phase 4 must not:
+- scan the full content package repeatedly inside React render;
+- create a full pair matrix;
+- persist derived visibility;
+- duplicate resolver logic in UI.
 
-- scan every recipe repeatedly during every render;
-- build a full pair matrix;
-- render hidden content then CSS-hide it.
+Prefer indexed application projections similar to Phase 4.
 
-Derived catalog indexes/selectors should be memoizable/index-based.
-
-Virtualization is not mandatory for 67 elements if profiling does not justify it, but component/data architecture must allow it later.
-
-## Required reusable components
-
-Implement/reuse at minimum:
-
-- CollectionHome
-- SetCard
-- SetIndex
-- SetDetail
-- ElementDetail
-- CatalogSearch
-- FilterPanel / FilterSheet
-- CompletionBar or ProgressRing
-- PossibilityStatus
-- ExperimentHistory
-- RelationshipList
-
-Reuse Phase 3:
-
-- AppShell
-- navigation
-- ElementCard/ElementArt
-- favorite action
-- accessibility tokens/preferences.
-
-Do not create AnomalyCard/GraphCanvas/HintCard yet unless a tiny internal primitive is strictly required.
-
-## Required tests
-
-### Visibility / spoilers
-
-- hidden Set never appears in Collection home, Set index, search or direct route;
-- secret element absent from search/filter/denominators;
-- undiscovered element deep link exposes no metadata;
-- visible completion denominator excludes unrevealed secret content.
-
-### Collection home
-
-- recent items ordered by first discovery;
-- new possibilities only show safe known elements;
-- favorites reflect durable state;
-- no global hidden total.
-
-### Set
-
-- visible/revealed Set completion correct;
-- completed Set remains complete under current content rules;
-- hidden members do not create empty slots;
-- new-possibility badge derives from known members only.
-
-### Element detail
-
-- starter shows `Concetto iniziale`;
-- discovered first recipe shown correctly;
-- alternate discovered recipe shown only after discovery;
-- unknown recipes not exposed;
-- favorite toggle persists;
-- deep-link reload works for owned element.
-
-### Possibilities / exhaustion
-
-Test at least:
-
-- element with eligible undiscovered known reaction → not exhausted;
-- element with no current eligible non-secret reactions → currently exhausted;
-- secret/dormant future recipe does not make visible status misleading;
-- stale no-reaction after content update is not treated as permanently exhausted;
-- observed/revisitable anomaly state is represented without result spoiler.
-
-### Experiment history
-
-- success/anomaly/no-reaction grouped correctly;
-- unknown partners excluded;
-- stale failure handling correct;
-- no global matrix generated.
-
-### Routing / accessibility
-
-- keyboard navigation into Collection, Set and Element Detail;
-- undiscovered direct route safely handled;
-- mobile filter panel focus behavior;
-- axe scan on Collection home + Element Detail;
-- 200% text zoom no horizontal overflow for core pages.
-
-### Regression
-
-All Phase 0–3 tests and browser tests remain green.
-
-Seed remains:
-
-- 67/67 reachable;
-- max depth 11;
-- no blocked required unlocks.
-
-## Screenshot evidence required
-
-Include direct viewport screenshots from the implemented product:
-
-1. `1440×900` — Collection home with Set cards and recent discoveries;
-2. `1440×900` — Element Detail for an element with at least two discovered recipes, preferably Acqua;
-3. `390×844` — Set detail;
-4. `390×844` — Element Detail;
-5. `320×568` — Collection or Set page proving minimum-width usability.
-
-Use a legitimate save fixture/import path; do not expose content the save does not own/reveal.
-
-## Out of scope
+## Explicitly out of scope
 
 Do NOT implement:
 
-- full thematic Collections browser/detail;
-- Collection objectives/pinning;
-- full Anomaly Archive;
-- anomaly revisit flow UI;
-- Discovery Map/graph canvas;
-- hints/resonance;
+- Discovery Map / graph canvas;
+- graph neighborhood exploration;
+- Tier 1–5 hint UI;
+- Resonance;
+- player information-mode behavior beyond already-existing safe defaults;
+- pinned Collection objective in the Laboratory;
+- new save field solely for objective pinning;
+- achievements;
 - PWA/service worker;
 - Android/Capacitor;
 - final production art;
 - production audio;
-- new canonical elements/recipes;
-- Arcano content;
+- new canonical elements/recipes/Collections;
+- Arcano resolution content;
 - backend/cloud;
 - monetization;
 - analytics.
+
+The designed “pin one Collection objective to Lab” feature remains deferred because no durable canonical field exists yet and it is not required by Phase 5.
+
+## Required tests
+
+### Progressive disclosure
+
+- Collection route blocked before disclosure;
+- Set browser/detail blocked before disclosure;
+- discovered Element Detail still works before Collection unlock;
+- hidden feature direct routes leak no metadata;
+- anomaly route unavailable before observation;
+- navigation and route guards agree.
+
+### Collections visibility
+
+- each seed Collection appears only after its authored reveal path;
+- unrevealed Collection absent from search/index/direct route;
+- hidden/secret member metadata not leaked through missing slots or counts.
+
+### Collection completion
+
+- incomplete progress correct;
+- first completion emits/persists exactly one `collection_completed`;
+- repeat recipes do not re-complete/reward;
+- base Collection completion ID uses `collection.id`;
+- current completion may later expand without revoking durable earned state;
+- older complete save is backfilled on load without XP or celebration.
+
+### Collection UI
+
+- near-complete ordering;
+- completed state;
+- discovered members link safely;
+- missing members remain anonymous;
+- Collection Home section uses only visible Collections.
+
+### Anomalies
+
+- seed anomaly appears only after observation;
+- Instabile state for current seed;
+- synthetic eligible resolution fixture becomes Riesaminabile without result spoiler;
+- synthetic inactive fixture can become Inerte;
+- resolved fixture shows result only when legitimately resolved/discovered;
+- direct anomaly route before observation reveals nothing;
+- Riprova pre-fills slots but does not combine.
+
+### Celebrations
+
+- Collection completion lighter than Set reveal;
+- normal Set reveal presentation;
+- hidden Funghi reveal uses hidden-Set emphasis;
+- multiple events compose one result surface;
+- reduced motion preserves all textual information.
+
+### Regression
+
+All Phase 0–4 unit/component/E2E tests remain green.
+
+Canonical seed remains:
+
+- 67/67 reachable;
+- max depth 11;
+- no blocked required unlocks;
+- 4 seed Collections;
+- 1 unresolved anomaly.
+
+## Screenshot evidence required
+
+Include direct product screenshots from legitimate save states:
+
+1. `1440×900` — Collection Home with thematic Collections section;
+2. `1440×900` — Anomaly Archive with `Luna + Vita`;
+3. `1440×900` — hidden Funghi Set reveal result state;
+4. `390×844` — thematic Collection detail;
+5. `390×844` — Anomaly Archive;
+6. `320×568` — Collection/Anomaly page proving minimum-width usability.
+
+If a screenshot requires a fixture, use import preview + confirmation or another legitimate application path; do not inject hidden UI knowledge.
 
 ## Delivery
 
@@ -552,17 +527,17 @@ Work on a dedicated branch and open a PR.
 
 PR description must include:
 
-- routing architecture;
-- catalog/application selector architecture;
-- visibility/spoiler safeguards;
-- completion/exhaustion computation;
-- component inventory;
-- accessibility behavior;
-- responsive behavior;
+- progressive disclosure/route-guard architecture;
+- Collection completion model and persistence convention;
+- old-save backfill behavior;
+- anomaly projection/status logic;
+- celebration hierarchy;
+- hidden Funghi reveal behavior;
+- responsive/accessibility behavior;
 - screenshots listed above;
 - commands run;
 - unit/component/E2E results;
 - validator/reachability results;
-- explicit confirmation that Phase 5 was not started.
+- explicit confirmation that Phase 6 was not started.
 
 Do not extend scope.
