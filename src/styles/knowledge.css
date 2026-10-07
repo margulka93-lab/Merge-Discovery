@@ -1,0 +1,129 @@
+/* Dark in-game Catalogo — Elemento, not the poster's pale documentation panels. */
+.app-shell {
+.catalog-page {
+  --color-paper: var(--color-night-deep);
+  --color-paper-raised: var(--color-surface);
+  --color-paper-border: var(--color-brass-line);
+  --color-paper-accent-text: var(--color-accent-warm);
+  --color-paper-focus: var(--color-accent-warm);
+  --color-ink: #f7f3ea;
+  --color-ink-muted: #a9b4c6;
+  --color-text: #f7f3ea;
+  --color-text-muted: #a9b4c6;
+  --color-border: var(--color-brass-line);
+  color: var(--color-text);
+  background: radial-gradient(ellipse at 25% 0%, #24425b38, transparent 55%), var(--color-night-deep);
+  padding: clamp(1rem, 2.4vw, 2.5rem);
+}
+.catalog-page h2, .catalog-page h3 { font-family: var(--font-display); color: var(--color-gold-highlight); }
+.catalog-page h2 { font-size: clamp(1.8em, 3vw, 2.6em); margin-bottom: .65rem; }
+.catalog-heading { margin-bottom: 1.2rem; }
+.catalog-heading > p:last-child { color: var(--color-text-muted); margin-bottom: 0; }
+.catalog-page a { color: var(--color-accent-warm); }
+.catalog-page section { margin: 1.6rem 0; }
+.catalog-page section > h3, .section-heading { margin-bottom: .8rem; }
+.knowledge-navigation { display: flex; gap: .4rem; flex-wrap: wrap; border-bottom: 1px solid var(--color-brass-line); margin-bottom: 1.3rem; }
+.knowledge-navigation a { display: inline-flex; align-items: center; min-height: 44px; padding: .45rem .85rem; color: var(--color-text-muted); text-decoration: none; border-bottom: 2px solid transparent; }
+.knowledge-navigation a[aria-current=page] { color: var(--color-gold-highlight); border-color: var(--color-accent-warm); }
+.knowledge-navigation a:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+.atlas-recent { border-bottom: 1px solid var(--color-brass-line); padding-bottom: 1.25rem; }
+.atlas-recent .catalog-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.atlas-recent .element-select .element-art { width: min(8rem, 100%); }
+.atlas-shelf .catalog-grid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(9rem, 12rem); grid-template-columns: none; overflow-x: auto; padding: .25rem .25rem .6rem; scroll-snap-type: x proximity; }
+.atlas-shelf .catalog-card { scroll-snap-align: start; }
+.set-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.set-card { border-radius: .7rem; background: radial-gradient(ellipse at 50% 20%, #35577533, transparent 72%), var(--color-night-glass); box-shadow: var(--shadow-specimen); }
+.set-card > a, .set-card.locked { display: flex; flex-direction: column; align-items: stretch; gap: .5rem; padding: 1rem 1.1rem; }
+.set-card .set-art { width: min(9rem, 100%); flex: auto; align-self: center; border-radius: 0; background: transparent; }
+.set-card .set-art::after { content: ''; display: block; height: 1px; width: 70%; margin: -.6rem auto .7rem; background: var(--color-brass-line); }
+.set-card h3 { font-size: 1.4em; color: var(--color-gold-highlight); }
+.set-art svg[data-art-key="sets.cosmos"] { color: var(--accent-cosmos); }
+.set-art svg[data-art-key="sets.world"] { color: var(--accent-world); }
+.set-art svg[data-art-key="sets.life"] { color: var(--accent-life); }
+.set-art svg[data-art-key="sets.plants"] { color: var(--accent-plants); }
+.set-art svg[data-art-key="sets.fungi"] { color: var(--accent-fungi); }
+.set-card.locked { opacity: .85; background: var(--color-night-deep); }
+.set-card.locked .set-art { filter: saturate(.3); }
+.completion { color: var(--color-text-muted); }
+.completion-track { background: var(--color-border); height: 3px; }
+.completion-track i { background: var(--color-accent-warm); }
+.completion strong { color: var(--color-accent-warm); font-weight: 500; }
+.catalog-grid { gap: .85rem; }
+.catalog-card { background: radial-gradient(ellipse at top, #29445d4d, transparent 80%), var(--color-night-glass); border-radius: .65rem; box-shadow: inset 0 1px #ffffff08; }
+.catalog-page .element-select { color: var(--color-text); padding: 1rem .7rem .4rem; }
+.catalog-page .element-select .element-art { width: min(6.5rem, 100%); background: transparent; border-radius: .5rem; }
+.catalog-page .element-select strong { font-family: var(--font-display); font-size: 1.15em; }
+.catalog-page .set-cue, .catalog-page .context-cue { color: var(--color-text-muted); font-size: .75em; }
+.card-detail-link { color: var(--color-text-muted) !important; font-size: .75em; text-decoration: none; border-top: 1px solid var(--color-brass-faint); }
+.card-detail-link:hover { color: var(--color-accent-warm) !important; text-decoration: underline; }
+.catalog-controls { background: var(--color-night-deep); border-color: var(--color-brass-line); }
+.catalog-page input, .catalog-page select, .catalog-page button:not(.element-select):not(.favorite-button) { background: var(--color-night-glass); border-color: var(--color-brass-line); color: var(--color-text); }
+.catalog-search label, .filter-panel label, .catalog-result-count { color: var(--color-text-muted); }
+.catalog-page .filter-toggle, .catalog-page .filter-close { display: inline-flex; align-items: center; justify-content: center; }
+.catalog-page .filter-toggle { margin-top: .65rem; }
+.filter-panel { display: none; }
+.filter-panel.open { display: flex; background: var(--color-night-glass); padding: .85rem; border: 1px solid var(--color-brass-line); border-radius: .6rem; }
+.set-detail-heading { position: relative; border-block: 1px solid var(--color-brass-line); padding: 1.25rem 0; background: radial-gradient(ellipse at 15% 50%, #385d7733, transparent 65%); }
+.set-detail-heading .set-art { width: clamp(6rem, 16vw, 11rem); flex-basis: clamp(6rem, 16vw, 11rem); background: transparent; border-radius: 0; }
+.set-detail-heading .catalog-heading { margin-bottom: .6rem; }
+.detail-layout { grid-template-columns: minmax(12rem, .85fr) minmax(0, 1.4fr); gap: 2.25rem; margin-top: 1.4rem; }
+.element-portrait { align-self: start; position: sticky; top: 0; }
+.portrait-art { width: min(100%, 19rem); border-radius: .8rem; background: radial-gradient(ellipse, #35536b55, #101b2b 75%); border-color: var(--color-brass-line); box-shadow: var(--shadow-specimen); margin-bottom: 1.4rem; }
+.element-portrait > p:not(.eyebrow) { color: var(--color-text-muted); }
+.element-portrait > p > :is(a, span) { display: inline-flex; padding: .25rem .6rem; border: 1px solid var(--color-brass-line); border-radius: var(--radius-pill); font-size: .85em; }
+.detail-notes { padding-left: 1.6rem; border-color: var(--color-brass-line); }
+.detail-description { font-size: 1.1em; line-height: 1.7; color: var(--color-text-muted); margin-top: 0; }
+.detail-notes section { padding-bottom: 1.1rem; border-bottom: 1px solid var(--color-brass-line); }
+.recipe-list li { border-color: var(--color-brass-faint); padding: .45rem 0; line-height: 1.4; }
+.recipe-line { display: flex; align-items: center; gap: .3rem; flex-wrap: wrap; }
+.recipe-token { display: inline-flex; align-items: center; gap: .3rem; }
+.recipe-token .element-art { width: 2rem; height: 2rem; }
+.recipe-token a { text-decoration: none; }
+.recipe-token a:hover { text-decoration: underline; }
+.possibility-status { border-left: 2px solid var(--color-accent-warm); }
+.thematic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .85rem; }
+.catalog-page .thematic-card { border: 1px solid var(--color-brass-line); border-radius: .6rem; background: linear-gradient(130deg, #233e3b44, transparent), var(--color-night-glass); border-left: 3px solid var(--accent-plants); }
+.catalog-page .thematic-card > a { padding: 1rem; color: var(--color-text); }
+.catalog-page .thematic-card h3 { font-size: 1.25em; }
+.catalog-page .thematic-card p { color: var(--color-text-muted); font-size: .9em; }
+.collection-specimens { display: flex; align-items: center; gap: .25rem; min-height: 4rem; min-width: 0; }
+.collection-specimens svg { width: 3.6rem; height: auto; max-width: 30%; flex-shrink: 1; }
+.thematic-card { min-width: 0; }
+.collection-symbol { color: var(--color-accent-warm); }
+.thematic-detail .catalog-heading { padding: 1rem 0; border-bottom: 1px solid var(--color-brass-line); }
+.anonymous-member { color: var(--color-text-muted); border-color: var(--color-brass-line); min-height: 11rem; background: var(--color-night-glass); }
+&.high-contrast .catalog-page { --color-ink-muted: #dce4f1; --color-text-muted: #dce4f1; --color-brass-line: #d9b66f; }
+&.high-contrast .catalog-page :is(.catalog-card, .set-card, .thematic-card) { border-color: var(--color-accent-warm); }
+@media (max-width: 1199px) { .set-grid, .thematic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .atlas-recent .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767px) {
+  .catalog-page { padding: 1rem 1rem 6rem; }
+  .knowledge-navigation { margin-bottom: 1rem; gap: 0; }
+  .knowledge-navigation a { padding-inline: .65rem; font-size: .9em; }
+  .atlas-recent .catalog-grid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(9rem, 45%); grid-template-columns: none; overflow-x: auto; padding: .25rem .25rem .65rem; }
+  .set-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+  .set-card > a, .set-card.locked { padding: .75rem; }
+  .set-card h3 { font-size: 1.2em; }
+  .set-card .set-art { width: min(6.5rem, 100%); }
+  .thematic-grid { grid-template-columns: 1fr; }
+  .filter-panel.open { display: grid; grid-template-columns: 1fr; }
+  .filter-panel label { min-width: 0; }
+  .catalog-controls { position: static; }
+  .set-detail-heading { gap: .8rem; }
+  .set-detail-heading .set-art { width: 5rem; flex-basis: 5rem; }
+  .detail-layout { display: block; }
+  .element-portrait { position: static; }
+  .portrait-art { width: min(13rem, 100%); margin: 0 auto 1rem; }
+  .detail-notes { border-left: 0; border-top: 1px solid var(--color-brass-line); padding: 1.2rem 0 0; margin-top: 1.3rem; }
+}
+@media (max-width: 360px) { .set-grid { grid-template-columns: 1fr; } .set-card > a, .set-card.locked { flex-direction: row; align-items: center; } .set-card .set-art { width: 5rem; flex: 0 0 5rem; } }
+&.text-extra_large .set-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+@media (forced-colors: active) {
+  .catalog-page { --color-paper: Canvas; --color-ink: CanvasText; --color-ink-muted: CanvasText; --color-text: CanvasText; --color-text-muted: CanvasText; --color-night-deep: Canvas; --color-night-glass: Canvas; }
+  .catalog-controls, .catalog-page :is(input, select, button, label) { background: Canvas !important; color: CanvasText !important; border-color: CanvasText !important; }
+  .catalog-page { background: Canvas; color: CanvasText; }
+  .catalog-page :is(h2, h3, p, a, .completion, .completion strong, .set-cue, .context-cue) { color: CanvasText !important; }
+  .catalog-page :is(.catalog-card, .set-card, .thematic-card, .portrait-art) { border: 1px solid CanvasText; }
+  .knowledge-navigation a[aria-current=page] { border-color: Highlight; }
+  .completion-track i { background: Highlight; }
+}
+}

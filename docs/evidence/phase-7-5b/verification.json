@@ -1,0 +1,89 @@
+{
+  "phase": "7.5B",
+  "verifiedAtUtc": "2026-10-07T23:44:59.160Z",
+  "unitComponentTests": 197,
+  "unitFiles": 14,
+  "regressionE2e": 20,
+  "productionChecks": {
+    "passed": 12,
+    "fullRun": "11 passed; forced-colors contrast failed",
+    "postFix": "failed preferences/OS motion/forced-colors/200-percent reflow case rerun: 1 passed; normal presentation unchanged"
+  },
+  "contentValidation": "PASS",
+  "reachability": {
+    "reachable": 67,
+    "total": 67,
+    "maxDepth": 11,
+    "blockedUnlocks": []
+  },
+  "pwaValidation": {
+    "status": "PASS",
+    "assets": 19,
+    "jsChunks": 10
+  },
+  "productionOffline": true,
+  "updateSafe": true,
+  "knowledgeRouteViewportAudits": 36,
+  "profiles": {
+    "catalog": "PASS,1000 elements",
+    "map": "PASS,1000 elements"
+  },
+  "originalPoster": {
+    "inspected": true,
+    "sha256": "8ccfafba5e54a1458007374d37c783157bd85829373e6b27792dd918c29a07a0"
+  },
+  "screenshots": [
+    {
+      "file": "1440-collection.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-collections.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-element-detail.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-set-detail.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-sets.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "1440-thematic.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "320-collection.png",
+      "width": 320,
+      "height": 568
+    },
+    {
+      "file": "390-collection.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "390-element-detail.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "390-set-detail.png",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "manualVisualApproval": "PENDING",
+  "manualAssistiveTechnology": "NOT EXECUTED"
+}

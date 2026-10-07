@@ -37,6 +37,7 @@ import type {
 } from "../application/save/SaveApplication";
 import { saveErrorMessage } from "../application/save/errors";
 import { AppShell } from "../ui/shell/AppShell";
+import { KnowledgeNavigation } from "../ui/components/KnowledgeNavigation";
 import { Laboratory } from "../ui/lab/Laboratory";
 import { InlineNotice } from "../ui/components/LabComponents";
 import { saveRuntime } from "./saveRuntime";
@@ -369,6 +370,7 @@ function RoutedLaboratoryApplication({
               path="/collection"
               element={
                 <CollectionHome
+                  navigation={<KnowledgeNavigation overview={features.collection} sets={features.sets} collections={!!world?.collections.length} />}
                   model={catalog}
                   favorite={(id) => preferences({ favoriteElementId: id })}
                   busy={busy}
@@ -383,6 +385,7 @@ function RoutedLaboratoryApplication({
               path="/sets"
               element={
                 <SetIndex
+                  navigation={<KnowledgeNavigation overview={features.collection} sets={features.sets} collections={!!world?.collections.length} />}
                   model={catalog}
                   favorite={(id) => preferences({ favoriteElementId: id })}
                   busy={busy}
@@ -393,6 +396,7 @@ function RoutedLaboratoryApplication({
               path="/sets/:setId"
               element={
                 <SetDetail
+                  navigation={<KnowledgeNavigation overview={features.collection} sets={features.sets} collections={!!world?.collections.length} />}
                   model={catalog}
                   favorite={(id) => preferences({ favoriteElementId: id })}
                   busy={busy}
@@ -404,6 +408,7 @@ function RoutedLaboratoryApplication({
               path="/elements/:elementId"
               element={
                 <ElementDetail
+                  navigation={<KnowledgeNavigation overview={features.collection} sets={features.sets} collections={!!world?.collections.length} />}
                   model={catalog}
                   favorite={(id) => preferences({ favoriteElementId: id })}
                   busy={busy}
@@ -424,13 +429,14 @@ function RoutedLaboratoryApplication({
             />
             <Route
               path="/collections"
-              element={world && <ThematicCollections model={world} />}
+              element={world && <ThematicCollections model={world} navigation={<KnowledgeNavigation overview={features.collection} sets={features.sets} collections={!!world.collections.length} />} />}
             />
             <Route
               path="/collections/:collectionId"
               element={
                 world && (
                   <ThematicCollectionDetail
+                    navigation={<KnowledgeNavigation overview={features.collection} sets={features.sets} collections={!!world.collections.length} />}
                     model={world}
                     favorite={(id) => preferences({ favoriteElementId: id })}
                     busy={busy}

@@ -1,10 +1,12 @@
 import '../../styles/catalog.css';
 import '../../styles/world.css';
+import '../../styles/knowledge.css';
 import { useId, useMemo, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import type { ThematicCollection, WorldModel } from "../../application/world";
 import type { CatalogElement } from "../../application/catalog";
 import { ElementCard } from "../components/LabComponents";
+import { ElementArt } from "../components/ElementArt";
 import { UnknownDetail } from "../catalog/Catalog";
 
 export function CollectionProgress({
@@ -42,9 +44,10 @@ export function ThematicCollectionCard({
   return (
     <article className="thematic-card">
       <Link to={`/collections/${collection.id}`}>
-        <span aria-hidden="true" className="collection-symbol">
-          ✧
-        </span>
+        <div className="collection-specimens" aria-hidden="true">
+          {collection.members.slice(0, 3).map(e => <ElementArt key={e.id} artKey={e.artKey} />)}
+          {!collection.members.length && <span className="collection-symbol">✧</span>}
+        </div>
         <h3>{collection.name}</h3>
         <p>{collection.description}</p>
         <CollectionProgress collection={collection} />
@@ -69,7 +72,7 @@ export function ThematicCollectionSection({ model }: { model: WorldModel }) {
     </section>
   );
 }
-export function ThematicCollections({ model }: { model: WorldModel }) {
+export function ThematicCollections({ model, navigation }: { model: WorldModel; navigation?: import("react").ReactNode }) {
   const [query, setQuery] = useState(""),
     id = useId();
   const filtered = useMemo(
@@ -83,6 +86,7 @@ export function ThematicCollections({ model }: { model: WorldModel }) {
   );
   return (
     <main id="catalog-content" tabIndex={-1} className="catalog-page">
+      {navigation}
       <Link to="/collection">← Collezione</Link>
       <header className="catalog-heading">
         <p className="eyebrow">Percorsi facoltativi</p>
@@ -111,10 +115,12 @@ export function ThematicCollectionDetail({
   model,
   favorite,
   busy,
+  navigation,
 }: {
   model: WorldModel;
   favorite: (id: string) => void;
   busy: boolean;
+  navigation?: import("react").ReactNode;
 }) {
   const { collectionId } = useParams(),
     collection = model.collections.find((c) => c.id === collectionId);
@@ -125,6 +131,7 @@ export function ThematicCollectionDetail({
       tabIndex={-1}
       className="catalog-page thematic-detail"
     >
+      {navigation}
       <Link to="/collections">← Collezioni tematiche</Link>
       <header className="catalog-heading">
         <p className="eyebrow">Un percorso tra le scoperte</p>
