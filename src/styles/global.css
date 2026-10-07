@@ -846,9 +846,12 @@ nav button[aria-current="page"] {
   }
   .mobile-header .level-badge {
     flex: 1;
+    min-width: 0;
   }
   .mobile-header .level-badge > div {
     width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .lab-panels {
     display: block;
@@ -1025,6 +1028,14 @@ nav button[aria-current="page"] {
   }
 }
 @media (forced-colors: active) {
+  :root,
+  .app-shell {
+    --color-text: CanvasText;
+    --color-text-muted: CanvasText;
+    --color-bg: Canvas;
+    --color-accent-warm: LinkText;
+    --color-anomaly: LinkText;
+  }
   .element-card,
   .element-slot,
   .reaction-orbit {

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type {
   LabElement,
   LabModel,
@@ -42,10 +42,13 @@ export function Laboratory({
   const [onlyFavorites, setOnlyFavorites] = useState(false);
   const slotARef = useRef<HTMLButtonElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
-  const pendingFocus = useRef<'a' | 'search' | null>(null);
+  const pendingFocus = useRef<"a" | "search" | null>(null);
   useEffect(() => {
     if (!reaction && pendingFocus.current) {
-      (pendingFocus.current === 'a' ? slotARef.current : searchRef.current)?.focus();
+      (pendingFocus.current === "a"
+        ? slotARef.current
+        : searchRef.current
+      )?.focus();
       pendingFocus.current = null;
     }
   }, [reaction]);
@@ -69,7 +72,22 @@ export function Laboratory({
   );
   return (
     <>
-      <main id="laboratory" className="lab-workspace" tabIndex={-1}>
+      <main
+        id="laboratory"
+        className="lab-workspace"
+        style={
+          {
+            "--reveal-accent": `var(${reaction?.setRevealDetails?.find((s) => s.kind !== "normal")?.accent ?? "--color-accent-warm"})`,
+          } as CSSProperties
+        }
+        data-reveal-environment={
+          reaction?.emphasis === "hidden-set" ||
+          reaction?.emphasis === "secret-set"
+            ? reaction.emphasis
+            : undefined
+        }
+        tabIndex={-1}
+      >
         <header className="workspace-heading">
           <p className="eyebrow">Il tuo osservatorio</p>
           <h2>Laboratorio</h2>
@@ -105,9 +123,18 @@ export function Laboratory({
           reaction={reaction}
           onViewDetail={onViewDetail}
           busy={busy}
-          onUse={() => { pendingFocus.current = 'a'; onUseResult(); }}
-          onRepeat={() => { pendingFocus.current = 'a'; repeat(); }}
-          onReset={() => { pendingFocus.current = 'search'; reset(); }}
+          onUse={() => {
+            pendingFocus.current = "a";
+            onUseResult();
+          }}
+          onRepeat={() => {
+            pendingFocus.current = "a";
+            repeat();
+          }}
+          onReset={() => {
+            pendingFocus.current = "search";
+            reset();
+          }}
         />
       </main>
       <aside className="library" aria-label="Biblioteca degli elementi">

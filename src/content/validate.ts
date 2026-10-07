@@ -1,4 +1,5 @@
 import type { ContentPackage, Requirement } from '../domain/model/types';
+import { collectionUnits } from '../domain/completion/collections';
 import { pairKey } from '../domain/resolver/pair';
 import { ruleMatches, specificity } from '../domain/resolver/rules';
 import { buildIndex } from './indexes/build';
@@ -18,6 +19,7 @@ export function validateContent(raw: unknown): ContentPackage {
     if (new Set(values).size !== values.length) issues.push(`Duplicate ${context}`);
   };
   for (const section of ['elements', 'sets', 'collections', 'recipes', 'rules', 'anomalies', 'unlocks'] as const) unique(c[section].map(x => x.id), `${section} IDs`);
+  unique(c.collections.flatMap(collection => collectionUnits(collection).map(unit => unit.id)), 'Collection completion IDs');
   unique([...c.recipes, ...c.rules].map(x => x.id), 'recipe/rule IDs');
   unique(c.sets.map(s => s.sortOrder), 'Set sort positions');
   for (const [registry, ids] of Object.entries(c.registries)) unique(ids, registry);

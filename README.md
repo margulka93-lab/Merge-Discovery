@@ -4,11 +4,11 @@ Discovery-driven combination game, designed web-first/mobile-first with a later 
 
 ## Status
 
-**Phase 0–4 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer, responsive Laboratory and field-guide Collection/Set/Element pages.
+**Phase 0–5 implemented:** technical scaffold, validated canonical seed, pure discovery engine, local application/save layer, responsive Laboratory, field-guide catalog, guarded progressive disclosure, thematic Collections and observed Anomaly Archive.
 
 The Laboratory follows the canonical midnight-observatory visual reference using local symbolic SVG placeholders. Select two reusable discoveries, press Combina, then explicitly use the result, view its sheet, repeat with A or start a new experiment. The Collection and Set pages use ivory field-guide surfaces and expose owned elements, visible Sets and registered recipes only. Favorites and accessibility preferences use the same IndexedDB save. Navigating back to the Laboratory preserves its inputs and search.
 
-The current bounded implementation task is Phase 5 in `CODEX_TASK.md`.
+The current bounded implementation task is Phase 5 in `CODEX_TASK.md`. Phase 6 has not started.
 
 ## Run and verify
 
@@ -59,7 +59,9 @@ See [Phase 2 implementation notes](docs/PHASE_2_NOTES.md) for migration, quarant
 
 See [Phase 3 implementation notes](docs/PHASE_3_NOTES.md) for UI architecture, component inventory, responsive/accessibility evidence and the three required screenshots.
 
-See [Phase 4 implementation notes](docs/PHASE_4_NOTES.md) for routing, safe catalog projections, current possibilities, validation and the five required screenshots. Phase 5 is now scoped to progressive disclosure, Anomaly Archive and thematic Collections. Local launch remains `npm run dev`; open the URL printed by Vite. BrowserRouter deep links require an SPA fallback on a future static host; Vite dev/preview already provide it.
+See [Phase 4 implementation notes](docs/PHASE_4_NOTES.md) for routing, safe catalog projections, current possibilities, validation and the five required screenshots.
+
+See [Phase 5 implementation notes](docs/PHASE_5_NOTES.md) for shared route/navigation guards, once-earned Collection completion and silent old-save backfill, safe Anomaly status/retry, reveal hierarchy and the six required screenshots. Collections are reached from the Collection Home; Anomalies become available only after observation. Map remains a disclosed placeholder. Local launch remains `npm run dev`; open the URL printed by Vite. BrowserRouter deep links require an SPA fallback on a future static host; Vite dev/preview already provide it.
 
 ## Core fantasy
 

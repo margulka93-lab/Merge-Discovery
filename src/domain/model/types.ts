@@ -89,7 +89,7 @@ export interface ContentIndex {
 export interface PlayerState {
   xp: number; discoveredElementIds: ElementId[]; discoveredRecipeIds: RecipeId[];
   observedAnomalyIds: string[]; resolvedAnomalyIds: string[];
-  revealedSetIds: SetId[]; completedSetIds: SetId[];
+  revealedSetIds: SetId[]; completedSetIds: SetId[]; completedCollectionChapterIds: string[];
   unlockedFeatureIds: string[]; eligibleEraIds: string[];
   testedPairs: Record<PairKey, { lastOutcome: 'success' | 'no_reaction' | 'anomaly'; testedAgainstContentVersion: string }>;
 }
@@ -100,6 +100,7 @@ export type DomainEvent =
   | { type: 'xp_granted'; amount: number }
   | { type: 'anomaly_registered' | 'anomaly_resolved'; anomalyId: string }
   | { type: 'set_revealed' | 'set_completed'; setId: SetId }
+  | { type: 'collection_completed'; collectionId: string; completionId: string }
   | { type: 'feature_unlocked'; featureId: string }
   | { type: 'era_eligible'; eraId: string }
   | { type: 'level_up'; level: number }

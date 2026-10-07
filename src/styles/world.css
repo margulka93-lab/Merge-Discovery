@@ -1,0 +1,237 @@
+.thematic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.thematic-card {
+  border: 1px solid var(--color-ink-muted);
+  border-radius: 1rem;
+  background: var(--color-paper-raised);
+}
+.thematic-card > a {
+  display: block;
+  padding: 1.25rem;
+  height: 100%;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.thematic-card h3 {
+  margin: 0.5rem 0;
+}
+.thematic-card p {
+  color: var(--color-ink-muted);
+  overflow-wrap: anywhere;
+}
+.collection-symbol {
+  font-size: 2rem;
+  color: #78632e;
+}
+.thematic-card .completion {
+  margin-top: 1rem;
+}
+.anonymous-member {
+  min-height: 12rem;
+  border: 1px dashed var(--color-ink-muted);
+  border-radius: 1rem;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: var(--color-ink-muted);
+  padding: 1rem;
+}
+.anonymous-member > span {
+  font-size: 2rem;
+}
+.thematic-detail .completion {
+  max-width: 32rem;
+}
+.anomaly-page {
+  width: 100%;
+  padding: 2rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  background: radial-gradient(ellipse at top, #29203d, var(--color-bg) 70%);
+}
+.anomaly-page header {
+  max-width: 42rem;
+}
+.anomaly-page h2 {
+  font-size: var(--text-2xl);
+  margin: 0.5rem 0;
+}
+.anomaly-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.anomaly-card {
+  position: relative;
+  background: #161b2be6;
+  border: 1px solid var(--color-anomaly);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 42rem;
+}
+.anomaly-card a {
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.25rem;
+}
+.archive-orbit {
+  display: block;
+  width: 6rem;
+  max-width: 100%;
+  height: 6rem;
+  margin: 0 auto 1rem;
+  border: 1px dashed var(--color-anomaly);
+  border-right-color: transparent;
+  border-radius: 50%;
+  color: var(--color-anomaly);
+  text-align: center;
+  font-size: 3rem;
+  line-height: 6rem;
+}
+.anomaly-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.anomaly-inputs svg {
+  width: 5rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.anomaly-inputs > div {
+  text-align: center;
+}
+.anomaly-inputs a {
+  flex-direction: column;
+}
+.anomaly-status {
+  color: var(--color-anomaly);
+  font-weight: 700;
+}
+.anomaly-card button {
+  display: block;
+  margin-top: 1.5rem;
+  width: 100%;
+  min-height: 44px;
+  white-space: normal;
+}
+.collection-callouts {
+  background: #29322d;
+  border: 1px solid #a9bc79;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  text-align: left;
+}
+.set-reveal-callout {
+  border: 1px solid var(--color-accent-warm);
+  border-radius: 1rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+}
+.set-reveal-callout > svg {
+  width: 3rem;
+  height: 3rem;
+  float: right;
+}
+.set-reveal-callout h3 {
+  font-size: var(--text-lg);
+  margin: 0.25rem 0;
+}
+.set-reveal-callout.hidden,
+.set-reveal-callout.secret {
+  border: 2px solid var(--reveal-accent);
+  background: linear-gradient(120deg, #382c3e, #151f2e);
+  padding: 1.75rem;
+}
+.set-reveal-callout.hidden h3,
+.set-reveal-callout.secret h3 {
+  font-size: var(--text-xl);
+}
+.lab-workspace[data-reveal-environment] {
+  background: radial-gradient(
+    ellipse at top,
+    color-mix(in srgb, var(--reveal-accent) 20%, transparent),
+    transparent 70%
+  );
+  box-shadow: inset 0 2px var(--reveal-accent);
+}
+.reaction-stage[data-emphasis="anomaly"] {
+  border-color: var(--color-anomaly);
+}
+.reaction-stage[data-emphasis="set"] {
+  border-color: var(--color-accent-warm);
+}
+.reaction-stage[data-emphasis="hidden-set"],
+.reaction-stage[data-emphasis="secret-set"] {
+  border: 2px solid var(--reveal-accent);
+}
+.reaction-stage[data-emphasis="known"] .result-art {
+  max-width: 7rem;
+  margin: auto;
+}
+.reaction-stage[data-emphasis="alternate"] .result-art {
+  max-width: 9rem;
+  margin: auto;
+}
+.thematic-card > a > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.anomaly-page :focus-visible,
+.thematic-card > a:focus-visible {
+  outline: 3px solid var(--color-accent-warm);
+  outline-offset: 4px;
+}
+.high-contrast .anomaly-card,
+.high-contrast .set-reveal-callout,
+.high-contrast .collection-callouts {
+  background: var(--color-bg);
+}
+@media (max-width: 800px) {
+  .thematic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .anomaly-page {
+    padding: 1.25rem;
+  }
+}
+@media (max-width: 500px) {
+  .thematic-grid {
+    grid-template-columns: 1fr;
+  }
+  .anomaly-card {
+    padding: 1.25rem;
+  }
+  .anomaly-page {
+    padding: 1rem;
+  }
+  .anomaly-inputs {
+    gap: 0.5rem;
+  }
+  .anomaly-page h2 {
+    font-size: 1.75em;
+  }
+}
+@media (forced-colors: active) {
+  .thematic-card,
+  .anomaly-card,
+  .collection-callouts,
+  .set-reveal-callout {
+    border-color: CanvasText;
+  }
+  .anomaly-status {
+    color: CanvasText;
+  }
+}

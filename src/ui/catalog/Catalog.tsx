@@ -14,6 +14,9 @@ interface CatalogProps {
   model: CatalogModel;
   favorite: (id: string) => void;
   busy: boolean;
+  thematic?: import("react").ReactNode;
+  setsAvailable?: boolean;
+  collectionAvailable?: boolean;
 }
 export function CompletionBar({ set }: { set: CatalogSet }) {
   if (!set.completion) return null;
@@ -96,10 +99,7 @@ function CatalogCard({
         onSelect={() => navigate(`/elements/${element.id}`)}
         onFavorite={() => favorite(element.id)}
       />
-      <Link
-        className="card-detail-link"
-        to={`/elements/${element.id}`}
-      >
+      <Link className="card-detail-link" to={`/elements/${element.id}`}>
         Scheda di {element.name}
       </Link>
     </div>
@@ -362,17 +362,20 @@ export function CollectionHome(props: CatalogProps) {
         title="Collezione"
         caption={`${model.elements.length} scoperte · ${model.sets.filter((s) => s.revealed).length} Set rivelati`}
       />
-      <section>
-        <div className="section-heading">
-          <h3>Set attivi</h3>
-          <Link to="/sets">Tutti i Set visibili →</Link>
-        </div>
-        <div className="set-grid">
-          {model.sets.map((s) => (
-            <SetCard key={s.id} set={s} />
-          ))}
-        </div>
-      </section>
+      {props.thematic}
+      {props.setsAvailable !== false && (
+        <section>
+          <div className="section-heading">
+            <h3>Set attivi</h3>
+            <Link to="/sets">Tutti i Set visibili →</Link>
+          </div>
+          <div className="set-grid">
+            {model.sets.map((s) => (
+              <SetCard key={s.id} set={s} />
+            ))}
+          </div>
+        </section>
+      )}
       <section>
         <h3>Recenti</h3>
         <ElementGrid elements={model.recent} {...props} />
@@ -415,14 +418,22 @@ export function SetIndex({ model }: CatalogProps) {
     </main>
   );
 }
-export function UnknownDetail() {
+export function UnknownDetail({
+  collectionAvailable = true,
+}: {
+  collectionAvailable?: boolean;
+}) {
   return (
     <main id="catalog-content" tabIndex={-1} className="catalog-page">
       <PageHeading
         title="Non ancora scoperto"
         caption="Continua a sperimentare nel Laboratorio."
       />
-      <Link to="/collection">Torna alla Collezione</Link>
+      {collectionAvailable ? (
+        <Link to="/collection">Torna alla Collezione</Link>
+      ) : (
+        <Link to="/">Torna al Laboratorio</Link>
+      )}
     </main>
   );
 }
@@ -556,10 +567,17 @@ export function ExperimentHistory({ detail }: { detail: ElementDetailModel }) {
     </section>
   );
 }
-export function ElementDetail({ model, favorite, busy }: CatalogProps) {
+export function ElementDetail({
+  model,
+  favorite,
+  busy,
+  setsAvailable = true,
+  collectionAvailable = true,
+}: CatalogProps) {
   const { elementId } = useParams(),
     detail = model.detail(elementId ?? "");
-  if (!detail) return <UnknownDetail />;
+  if (!detail)
+    return <UnknownDetail collectionAvailable={collectionAvailable} />;
   const e = detail.element;
   return (
     <main
@@ -568,7 +586,7 @@ export function ElementDetail({ model, favorite, busy }: CatalogProps) {
       className="catalog-page element-detail"
     >
       <div className="detail-navigation">
-        <Link to="/collection">← Collezione</Link>
+        {collectionAvailable && <Link to="/collection">← Collezione</Link>}
         <Link to="/">Torna al Laboratorio</Link>
       </div>
       <div className="detail-layout">
@@ -579,7 +597,12 @@ export function ElementDetail({ model, favorite, busy }: CatalogProps) {
           <p className="eyebrow">Scheda elemento</p>
           <h2>{e.name}</h2>
           <p>
-            <Link to={`/sets/${e.setId}`}>{e.setName}</Link> · {e.rarity}
+            {setsAvailable ? (
+              <Link to={`/sets/${e.setId}`}>{e.setName}</Link>
+            ) : (
+              <span>{e.setName}</span>
+            )}{" "}
+            · {e.rarity}
           </p>
           <button
             className="detail-favorite"
