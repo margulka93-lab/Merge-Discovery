@@ -2,9 +2,9 @@
 
 ## Codex readiness
 
-**PHASE 0 + PHASE 1 + PHASE 2 + PHASE 3 + PHASE 4 + PHASE 5 + PHASE 6 MERGED · READY FOR PHASE 7**
+**PHASE 0–7 MERGED · READY FOR PHASE 7.5 VISUAL & UX ALIGNMENT**
 
-Phase 0 + 1 were merged in PR #2, Phase 2 in PR #3, Phase 3 in PR #4, Phase 4 in PR #5, Phase 5 in PR #6 and Phase 6 in PR #7. Phase 7 is now scoped to PWA/offline, performance, motion/audio infrastructure and accessibility hardening.
+Phase 0–7 are merged through PR #8. Before expanding canonical content, Phase 7.5 now realigns all primary screens with the approved observatory + illustrated field-guide concept.
 
 Legend:
 
@@ -57,7 +57,8 @@ Legend:
 | Phase 4 implementation | ✅ | Merged via PR #5 |
 | Phase 5 implementation | ✅ | Merged via PR #6 |
 | Phase 6 implementation | ✅ | Merged via PR #7 |
-| Phase 7 implementation | ✅ | CODEX_TASK.md ready |
+| Phase 7 implementation | ✅ | Merged via PR #8 |
+| Phase 7.5 visual/UX alignment | ✅ | CODEX_TASK.md ready |
 | Agent constraints | ✅ | AGENTS.md |
 
 ## Deliberately not frozen
@@ -85,4 +86,4 @@ For the current implementation sequence:
 
 ## Next action
 
-Run `CODEX_TASK.md` for Phase 7. Review PWA/offline/performance/accessibility hardening before Phase 8 content expansion.
+Run `CODEX_TASK.md` for Phase 7.5. Visually review the resulting UI before Phase 8 content expansion.
