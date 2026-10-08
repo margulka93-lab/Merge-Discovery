@@ -1,0 +1,96 @@
+{
+  "entry": {
+    "file": "index-CB3aSkh_.js",
+    "bytes": 156233,
+    "gzipBytes": 44275
+  },
+  "largestChunk": {
+    "file": "react-runtime-DAM2JiQI.js",
+    "bytes": 275874,
+    "gzipBytes": 90012
+  },
+  "totalJsBytes": 833805,
+  "totalGzipBytes": 259688,
+  "chunks": [
+    {
+      "file": "AnomalyArchive-hjZwvD1Q.js",
+      "bytes": 2212,
+      "gzipBytes": 993
+    },
+    {
+      "file": "authoring-CzvFoZPr.js",
+      "bytes": 3382,
+      "gzipBytes": 1427
+    },
+    {
+      "file": "Catalog-BgU48IWf.js",
+      "bytes": 12609,
+      "gzipBytes": 3988
+    },
+    {
+      "file": "ContentImportPanel-BQFt-7et.js",
+      "bytes": 4912,
+      "gzipBytes": 2127
+    },
+    {
+      "file": "ContentStudio-CLrXCQxg.js",
+      "bytes": 28657,
+      "gzipBytes": 8486
+    },
+    {
+      "file": "ContentStudioApplication-DhoRNIu_.js",
+      "bytes": 2448,
+      "gzipBytes": 1098
+    },
+    {
+      "file": "DiscoveryMap-Dya7X3CP.js",
+      "bytes": 7861,
+      "gzipBytes": 2953
+    },
+    {
+      "file": "index-CB3aSkh_.js",
+      "bytes": 156233,
+      "gzipBytes": 44275
+    },
+    {
+      "file": "preview.worker-CjIql7_E.js",
+      "bytes": 130883,
+      "gzipBytes": 37837
+    },
+    {
+      "file": "react-runtime-DAM2JiQI.js",
+      "bytes": 275874,
+      "gzipBytes": 90012
+    },
+    {
+      "file": "sample-DPahbEBY.js",
+      "bytes": 4156,
+      "gzipBytes": 2339
+    },
+    {
+      "file": "SaveDiagnostics-BUaAwOq9.js",
+      "bytes": 2459,
+      "gzipBytes": 1131
+    },
+    {
+      "file": "SettingsPanel-DX224xbX.js",
+      "bytes": 4717,
+      "gzipBytes": 1627
+    },
+    {
+      "file": "storage-Cp7Zb6P2.js",
+      "bytes": 96411,
+      "gzipBytes": 32430
+    },
+    {
+      "file": "ThematicCollections-CNF-jp_Z.js",
+      "bytes": 4351,
+      "gzipBytes": 1579
+    },
+    {
+      "file": "validation-DRBpZDWE.js",
+      "bytes": 96640,
+      "gzipBytes": 27386
+    }
+  ]
+}

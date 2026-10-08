@@ -1,0 +1,44 @@
+{
+  "scope": "CONTENT-1B stacked on CONTENT-1A and UX-1, with Phase 8A sandbox demonstration",
+  "checks": {
+    "npm run check": { "passed": true, "unitTests": 232, "testFiles": 19, "typecheck": true, "lint": true, "build": true },
+    "npm run test:e2e": { "passed": true, "tests": 27 },
+    "npm run test:production": { "passed": true, "tests": 21, "note": "Complete run preceded only the final one-line forced-colors correction; the production preferences/forced-colors test passed again after that correction. Full E2E and check ran on the final source." },
+    "final focused production accessibility test": { "passed": true, "tests": 1 },
+    "npm run validate:pwa": { "passed": true, "precacheAssets": 27, "jsChunks": 16 },
+    "npm run profile:catalog": { "passed": true },
+    "npm run profile:map": { "passed": true },
+    "npm run profile:packs": { "passed": true, "elements": 1000, "reachable": 1000 }
+  },
+  "reachability": {
+    "canonicalSeed": { "reachable": 67, "total": 67, "depth": 11, "changed": false },
+    "syntheticSample": { "reachable": 68, "total": 68 },
+    "phase8aProposal": { "newElements": 51, "newRecipes": 51, "reachable": 118, "total": 118, "depth": 12, "canonicalApproval": "PENDING", "installedOnlyInTestBrowser": true },
+    "syntheticPerformancePack": { "reachable": 1000, "total": 1000 }
+  },
+  "browserEvidence": {
+    "productionOffline": "production-offline.json",
+    "realWaitingServiceWorker": "update-safe.json",
+    "phase8aOfflineDiscoverySetCollectionRaster": "phase-8a-sandbox.json",
+    "screenshots": 23,
+    "axeViolations": 0,
+    "viewports": [1920, 1440, 1024, 768, 390, 320],
+    "touchEmulation": true,
+    "physicalDevice": false,
+    "manualScreenReader": false
+  },
+  "bundle": {
+    "baseline": "Published CONTENT-1A artifact at 1bf0a3b; not a remeasurement of the later 85d7a21 compatibility guard",
+    "entryBeforeBytes": 154579,
+    "entryAfterBytes": 156233,
+    "entryDeltaBytes": 1654,
+    "totalJsBeforeBytes": 796273,
+    "totalJsAfterBytes": 833805,
+    "totalJsDeltaBytes": 37532,
+    "studioLazyChunkBytes": 28657,
+    "studioLazyChunkGzipBytes": 8486,
+    "largestChunkBytes": 275874
+  },
+  "excluded": ["Phase 8B", "Phase 8C", "Android", "canonical content approval", "automatic merge"],
+  "visualApproval": "PENDING"
+}

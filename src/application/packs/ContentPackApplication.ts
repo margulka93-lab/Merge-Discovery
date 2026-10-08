@@ -8,16 +8,19 @@ import { PackError } from '../../content/packs/model';
 import { reconcileContent } from '../updates/reconcile';
 import { previewPack } from './preview';
 import { directLease, type CommandLease } from '../save/SaveApplication';
+import type { AuthorDraftRepository } from '../../persistence/AuthorDraftRepository';
 export type PackPreview = ReturnType<typeof previewPack>;
 export interface PreparedPack { report: PackPreview['report'] }
 export type { PackSnapshot } from '../../persistence/ContentPackRepository';
 export { PACK_LIMITS } from '../../content/packs/model';
 export class ContentPackApplication {
   private previews = new WeakMap<PreparedPack, { preview: PackPreview; contentRevision: number; saveRevision: number }>();
+  private studioApplication?: Promise<import('./ContentStudioApplication').ContentStudioApplication>;
   constructor(private seed: ContentPackage, private repository: ContentPackRepository, private saveRepository: SaveRepository,
     private verifyImage: (bytes: Uint8Array, mime: string) => Promise<void> = async () => {},
     private lease: CommandLease = directLease,
-    private simulate: (...args: Parameters<typeof previewPack>) => Promise<PackPreview> = async (...args) => previewPack(...args)) {}
+    private simulate: (...args: Parameters<typeof previewPack>) => Promise<PackPreview> = async (...args) => previewPack(...args),
+    private drafts?:AuthorDraftRepository) {}
   async preview(bytes: Uint8Array): Promise<PreparedPack> {
     const candidate = await readPack(bytes), installed = await this.repository.load(), save = await this.saveRepository.load();
     for (const [key, data] of Object.entries(candidate.assets)) await this.verifyImage(data, candidate.manifest.assets[key]!.mime);
@@ -39,6 +42,10 @@ export class ContentPackApplication {
   }
   async load() { return this.repository.load(); }
   async sample() { const { samplePack } = await import('../../content/packs/sample'); return writePack(await samplePack()); }
+  studio() {
+    this.studioApplication ??= import('./ContentStudioApplication').then(({ContentStudioApplication}) => new ContentStudioApplication(this,this.seed,this.repository,this.drafts,this.verifyImage));
+    return this.studioApplication;
+  }
   async export(packId: string) {
     const pack = (await this.repository.load()).packs.find(p => p.manifest.packId === packId);
     if (!pack) throw new PackError(['Pacchetto non installato.']); return writePack(pack);

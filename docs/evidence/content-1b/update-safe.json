@@ -1,0 +1,9 @@
+{
+  "production": true,
+  "realWaitingWorker": true,
+  "blockedDuringSimulation": true,
+  "reachable": 1000,
+  "draftPreserved": true,
+  "playerSaveUnchanged": true,
+  "explicitSafeUpdate": true
+}

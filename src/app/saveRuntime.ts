@@ -11,6 +11,7 @@ import { verifyImage } from '../platform/content/images';
 import { browserContentLease, epochLease } from '../platform/content/lease';
 import { PackError } from '../content/packs/model';
 import { workerPreview } from '../platform/content/preview';
+import { IndexedDbAuthorDraftRepository } from '../persistence/indexeddb/IndexedDbAuthorDraftRepository';
 
 async function createRuntime() {
   const seed = validateContent(rawSeed), repository = new IndexedDbSaveRepository(), packsRepository = new IndexedDbContentPackRepository();
@@ -21,7 +22,7 @@ async function createRuntime() {
     const packs = await Promise.all(stored.packs.map(async pack => readPack(await writePack(pack))));
     const { index } = composePacks(seed, packs);
     const application = new SaveApplication(repository, index, undefined, undefined, epochLease(packsRepository, stored.revision));
-    const contentApplication = new ContentPackApplication(seed, packsRepository, repository, verifyImage, browserContentLease, workerPreview);
+    const contentApplication = new ContentPackApplication(seed, packsRepository, repository, verifyImage, browserContentLease, workerPreview,new IndexedDbAuthorDraftRepository());
     return { application, contentApplication, artwork: artworkSources(packs) };
   }).then(value => ({ ...value, boot: value.application.start() }));
 }
