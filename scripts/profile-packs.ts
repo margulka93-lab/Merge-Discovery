@@ -1,0 +1,14 @@
+import { performancePack } from '../tests/fixtures/performance-pack';
+import { rawSeed } from '../src/content/load';
+import { validateContent } from '../src/content/validate';
+import { writePack, readPack } from '../src/content/packs/archive';
+import { previewPack } from '../src/application/packs/preview';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import assert from 'node:assert/strict';
+const start = performance.now(), zip = await writePack(await performancePack()), decoded = await readPack(zip), loaded = performance.now();
+const { report } = previewPack(validateContent(rawSeed),[],decoded), finished = performance.now();
+assert.equal(report.total,1000); assert.equal(report.reachable,1000);
+mkdirSync('docs/evidence/content-1a',{recursive:true});
+const result = {synthetic:true,elements:1000,reachable:1000,zipBytes:zip.length,decodeMs:loaded-start,previewMs:finished-loaded,totalMs:finished-start};
+writeFileSync('docs/evidence/content-1a/performance-1000.json',JSON.stringify(result,null,2));
+console.log(JSON.stringify(result,null,2));

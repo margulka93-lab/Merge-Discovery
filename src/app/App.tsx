@@ -51,6 +51,8 @@ import { reactionPresentation } from '../application/presentation';
 import { UpdateNotice } from '../ui/platform/UpdateNotice';
 import { PlatformRecovery } from './PlatformRecovery';
 import { exportRawRecovery } from './rawRecovery';
+import type { ContentPackApplication } from '../application/packs/ContentPackApplication';
+import { ContentArtProvider } from '../ui/components/ContentArt';
 const DiscoveryMap = lazy(() => import('../ui/map/DiscoveryMap').then(m => ({ default: m.DiscoveryMap })));
 const AnomalyArchive = lazy(() => import('../ui/anomalies/AnomalyArchive').then(m => ({ default: m.AnomalyArchive })));
 const SaveDiagnostics = lazy(() => import('../ui/SaveDiagnostics').then(m => ({ default: m.SaveDiagnostics })));
@@ -72,9 +74,11 @@ function RouteReady({ path, children }: { path: string; children: React.ReactNod
 function RoutedLaboratoryApplication({
   application,
   boot,
+  contentApplication,
 }: {
   application: SaveApplication;
   boot: Promise<ApplicationSnapshot>;
+  contentApplication?: ContentPackApplication;
 }) {
   const [snapshot, setSnapshot] = useState<ApplicationSnapshot>();
   const [slots, setSlots] = useState<[string?, string?]>([]);
@@ -297,6 +301,7 @@ function RoutedLaboratoryApplication({
           >
             Ricarica il progresso salvato
           </button>
+          <button disabled={busy || !updateState.safe} onClick={() => { if (updates.getSnapshot().safe) window.location.reload(); }}>Ricarica l’osservatorio</button>
         </div>
       )}
       <div className="lab-panels" hidden={active !== "lab"}>
@@ -513,7 +518,7 @@ function RoutedLaboratoryApplication({
                 : model.destinations.find((d) => d.id === active)?.label}
             </h2>
             {active === "settings" ? (
-              <SettingsPanel model={model} snapshot={snapshot} busy={busy} preferences={preferences} application={application} boot={boot} accept={accept} beginOperation={updates.beginOperation} />
+              <SettingsPanel model={model} snapshot={snapshot} busy={busy} preferences={preferences} application={application} boot={boot} accept={accept} beginOperation={updates.beginOperation} contentApplication={contentApplication} />
             ) : (
               <>
                 <p>
@@ -554,11 +559,14 @@ export function LaboratoryApplication(
 }
 const status = engineStatus();
 export function App() {
-  return status.ready ? (
+  const [runtime, setRuntime] = useState<Awaited<ReturnType<typeof saveRuntime>>>();
+  const [failed, setFailed] = useState(false);
+  useEffect(() => { let alive = true; if (status.ready) void saveRuntime().then(value => { if (alive) setRuntime(value); }, () => { if (alive) setFailed(true); }); return () => { alive = false; }; }, []);
+  if (!status.ready || failed) return <PlatformRecovery fatal exportRaw={exportRawRecovery} reload={() => window.location.reload()} />;
+  if (!runtime) return <main className="boot-screen" role="status">Apertura dell’osservatorio…</main>;
+  return (
     <BrowserRouter>
-      <LaboratoryApplication {...saveRuntime()} />
+      <ContentArtProvider artwork={runtime.artwork}><LaboratoryApplication {...runtime} /></ContentArtProvider>
     </BrowserRouter>
-  ) : (
-    <PlatformRecovery fatal exportRaw={exportRawRecovery} reload={() => window.location.reload()} />
   );
 }

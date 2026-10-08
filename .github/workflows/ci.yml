@@ -14,6 +14,9 @@ jobs:
       - run: npm run validate:pwa
       - run: npm run profile:catalog
       - run: npm run profile:map
+      - run: npm run validate:pack -- tests/fixtures/studio-sample.zip
+      - run: npm run validate:pack -- tests/fixtures/phase-8a-proposed.zip
+      - run: npm run profile:packs
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - run: npm run test:production

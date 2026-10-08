@@ -1,4 +1,5 @@
-import { useId } from "react";
+import { useId, useState } from "react";
+import { useContentArt } from './ContentArt';
 
 // Local, replaceable SVG studies. Categories describe art only, never recipe validity.
 const silhouettes: Record<string, string> = {
@@ -34,9 +35,11 @@ const category = (id: string) => {
 
 export function ElementArt({ artKey }: { artKey: string }) {
   const uid = `art-${useId().replace(/:/g, "")}`;
+  const source = useContentArt(artKey), [broken, setBroken] = useState<string>();
   const setStudies: Record<string, string> = { origins: 'energy', cosmos: 'star', world: 'mineral', life: 'life', plants: 'plant', fungi: 'fungus' };
   const id = artKey.split(".").at(-1)!;
   const kind = artKey.startsWith('sets.') ? (setStudies[id] ?? category(id)) : category(id);
+  if (source && broken !== source) return <img className="element-art" src={source} alt="" aria-hidden="true" data-art-key={artKey} onError={() => setBroken(source)} style={{ objectFit: 'contain' }} />;
   return <svg className="element-art" viewBox="0 0 100 100" aria-hidden="true" data-art-key={artKey} data-art-study={kind}>
     <defs>
       <radialGradient id={`${uid}-halo`}>

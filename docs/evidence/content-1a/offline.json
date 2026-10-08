@@ -1,0 +1,13 @@
+{
+  "production": true,
+  "offlinePreviewWorker": true,
+  "atomicInstall": true,
+  "reload": true,
+  "imageDecoded192": true,
+  "newSet": true,
+  "newCollection": true,
+  "export": true,
+  "unsafeRollbackBlocked": true,
+  "noAutomaticDiscovery": true,
+  "seed": 67
+}
