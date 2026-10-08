@@ -14,10 +14,12 @@ import {
   createCurrentDirectionSelector,
   projectHint,
 } from "../application/directions";
+import { rememberedAttempt } from "../application/attempt";
 import { createMapProjector } from "../application/map";
 import {
   initialHintSession,
   recordHintExperiment,
+  recordQuietExperiment,
   offerHint,
   declineHint,
 } from "../application/hintSession";
@@ -112,8 +114,8 @@ function RoutedLaboratoryApplication({
     [application],
   );
   const catalog = useMemo(
-    () => (snapshot && active !== "lab" ? projectCatalog(snapshot) : undefined),
-    [snapshot, active, projectCatalog],
+    () => (snapshot ? projectCatalog(snapshot) : undefined),
+    [snapshot, projectCatalog],
   );
   const projectWorld = useMemo(
     () => createWorldProjector(application.index),
@@ -218,7 +220,9 @@ function RoutedLaboratoryApplication({
         )}
       </main></Suspense>
     );
-  const model = laboratoryModel(snapshot, application.index, slots[0]);
+  const baseModel = laboratoryModel(snapshot, application.index, slots[0]);
+  const libraryKnowledge = new Map(catalog?.elements.map(e => [e.id, e]));
+  const model = { ...baseModel, elements: baseModel.elements.map(e => { const knowledge = libraryKnowledge.get(e.id); return { ...e, possibilities: knowledge?.possibilities, exhausted: knowledge?.exhausted, context: e.context || (snapshot.save.settings.informationMode !== "mystery" ? knowledge?.possibilities ? "Nuove possibilità" : knowledge?.exhausted ? "Esaurito per ora" : "" : "") }; }) };
   const features = featureDisclosure(snapshot, application.index);
   const available = routeAvailable(location.pathname, features);
   const currentDirections = directionSelector(snapshot);
@@ -234,6 +238,41 @@ function RoutedLaboratoryApplication({
     void run(async () =>
       setSnapshot(await application.updatePreferences(change)),
     );
+  const performExperiment = async (a: string, b: string, force = false): Promise<LabReaction | undefined> => {
+    if (busy || lock.current) return undefined;
+    const memory = force ? undefined : rememberedAttempt(a, b, snapshot, application.index);
+    if (memory) { setReaction(memory); setAnnouncement(memory.announcement); setHintSession(previous => recordQuietExperiment(previous, memory.kind === 'no_reaction')); return memory; }
+            setReaction(undefined);
+            let completed: LabReaction | undefined;
+            await run(async () => {
+              const transaction = await application.combine(a, b);
+              const outcome = laboratoryReaction(
+                transaction.resolution,
+                transaction.snapshot,
+                application.index,
+                snapshot,
+              );
+              setHintSession((previous) =>
+                recordHintExperiment(
+                  previous,
+                  transaction.resolution,
+                  transaction.snapshot.derived.collections.some(
+                    (c) =>
+                      !snapshot.derived.collections.some(
+                        (old) => old.id === c.id,
+                      ),
+                  ),
+                ),
+              );
+              setSnapshot(transaction.snapshot);
+              setReaction(outcome);
+              completed = outcome;
+              const cue = reactionPresentation(outcome).audio;
+              if (cue) void audio.play(cue, transaction.snapshot.save.settings.soundEnabled);
+              setAnnouncement(outcome.announcement);
+            });
+    return completed;
+  };
   return (
     <AppShell model={model} active={active} navigate={setActive}>
       <div
@@ -292,37 +331,9 @@ function RoutedLaboratoryApplication({
             );
             setReaction(undefined);
           }}
-          combine={() => {
-            if (!slots[0] || !slots[1]) return;
-            const [a, b] = slots as [string, string];
-            setReaction(undefined);
-            void run(async () => {
-              const transaction = await application.combine(a, b);
-              const outcome = laboratoryReaction(
-                transaction.resolution,
-                transaction.snapshot,
-                application.index,
-                snapshot,
-              );
-              setHintSession((previous) =>
-                recordHintExperiment(
-                  previous,
-                  transaction.resolution,
-                  transaction.snapshot.derived.collections.some(
-                    (c) =>
-                      !snapshot.derived.collections.some(
-                        (old) => old.id === c.id,
-                      ),
-                  ),
-                ),
-              );
-              setSnapshot(transaction.snapshot);
-              setReaction(outcome);
-              const cue = reactionPresentation(outcome).audio;
-              if (cue) void audio.play(cue, transaction.snapshot.save.settings.soundEnabled);
-              setAnnouncement(outcome.announcement);
-            });
-          }}
+          experiment={performExperiment}
+          combine={() => { if (slots[0] && slots[1]) void performExperiment(slots[0], slots[1]); }}
+          forceCombine={() => { if (slots[0] && slots[1]) void performExperiment(slots[0], slots[1], true); }}
           favorite={(id) => preferences({ favoriteElementId: id })}
           onUseResult={() => {
             if (reaction?.element) setSlots([reaction.element.id]);

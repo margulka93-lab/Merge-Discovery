@@ -1,0 +1,33 @@
+{
+  "scope": "UX-1; stacked on unapproved PR #11",
+  "unit": {
+    "passed": 202,
+    "files": 16
+  },
+  "e2e": {
+    "fullPassed": 23,
+    "finalFocusedPassed": 4,
+    "additionalTouchLibraryCase": true
+  },
+  "production": {
+    "passed": 14,
+    "offlineFreeTable": true,
+    "updateSafe": true
+  },
+  "seed": {
+    "reachable": 67,
+    "total": 67,
+    "depth": 11
+  },
+  "pwa": {
+    "assets": 20,
+    "jsChunks": 10
+  },
+  "profiles": {
+    "catalogElements": 1000,
+    "mapElements": 1000,
+    "fullPairMatrix": false
+  },
+  "visualApproval": "PENDING",
+  "physicalDeviceAndScreenReader": "NOT RUN"
+}

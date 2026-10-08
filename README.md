@@ -14,6 +14,8 @@ Phase 7.5A implements **Shell + Laboratory + shared visual language**. See [Phas
 
 See [Visual & UX Alignment](docs/VISUAL_UX_ALIGNMENT.md) for the current redesign target. Functional correctness from Phases 0–7 remains authoritative; the present screen composition is not considered final until Phase 7.5 is visually approved. New Phase 8 content also requires canon review before merge.
 
+UX-1 adds a session-only free table alongside the classic Laboratory, with shared save/resolver, owned-only search and explicit alternatives to drag. See [UX-1 notes](docs/UX_1_NOTES.md). This remains draft work awaiting visual/playtest review.
+
 ## Run and verify
 
 Use Node.js 22.12+ (22, 24 or 26+) and npm. CI uses Node 22.
