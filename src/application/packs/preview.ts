@@ -12,6 +12,10 @@ export function previewPack(seed: ContentPackage, installed: ContentPack[], cand
     for (const section of ['elements','recipes','sets','collections','rules','anomalies','unlocks'] as const) {
       for (const item of old.patch[section] ?? []) if (!(candidate.patch[section] ?? []).some(e => e.id === item.id)) throw new PackError([`Rimozione non consentita: ${item.id}`]);
     }
+    for (const collection of old.patch.collections ?? []) {
+      const updated = candidate.patch.collections!.find(c => c.id === collection.id)!;
+      for (const unit of collectionUnits(collection)) if (!collectionUnits(updated).some(c => c.id === unit.id)) throw new PackError([`Rimozione di completamento non consentita: ${unit.id}`]);
+    }
   }
   const previous = composePacks(seed, installed);
   if (compareVersion(candidate.manifest.contentVersion, previous.index.content.manifest.contentVersion) <= 0) throw new PackError(['Una nuova composizione richiede contentVersion successiva a quella attiva.']);
@@ -36,6 +40,15 @@ export function previewPack(seed: ContentPackage, installed: ContentPack[], cand
   const updated = old ? Object.keys(candidate.patch).flatMap(section => ['elements','recipes','sets','collections'].includes(section) ? (candidate.patch[section as 'elements'] ?? []).filter(e => (old.patch[section as 'elements'] ?? []).some(p => p.id === e.id)).map(e => e.id) : []) : [];
   const compatibility = oldSave ? reconcileContent(oldSave, composed.index) : undefined;
   if (compatibility && (compatibility.save.xp !== oldSave!.xp || JSON.stringify(compatibility.save.discoveredElements) !== JSON.stringify(oldSave!.discoveredElements) || JSON.stringify(compatibility.save.discoveredRecipeIds) !== JSON.stringify(oldSave!.discoveredRecipeIds))) throw new PackError(['Compatibilità save non sicura: progresso precedente non preservato.']);
+  if (compatibility && oldSave) {
+    for (const field of ['revealedSetIds','completedSetIds','completedCollectionChapterIds','favoriteElementIds'] as const) {
+      if (oldSave[field].some(id => !compatibility.save[field].includes(id))) throw new PackError([`Compatibilità save non sicura: ${field} non preservato.`]);
+    }
+    for (const field of ['anomalies','testedPairs'] as const) {
+      for (const [id, value] of Object.entries(oldSave[field])) if (JSON.stringify(value) !== JSON.stringify((compatibility.save[field] as Record<string, unknown>)[id])) throw new PackError([`Compatibilità save non sicura: ${field} non preservato.`]);
+    }
+    if (compatibility.notices.includes('optional_references_quarantined')) throw new PackError(['Compatibilità save non sicura: riferimenti precedenti spostati in quarantena.']);
+  }
   return { ...composed, candidate, report: {
     packId: candidate.manifest.packId, version: candidate.manifest.version, reviewStatus: candidate.manifest.reviewStatus,
     contentVersion: content.manifest.contentVersion, addedElements: content.elements.length - previous.index.elements.size,

@@ -109,6 +109,15 @@ describe('runtime content packs', () => {
     const index = composePacks(seed,[pack]).index;
     expect(simulateReachability(index)).toEqual(simulateReachability(index,{revisitSettled:true}));
   });
+  it('rejects collection chapter retirement and changing a collection into chapters that discard its durable completion', async () => {
+    const pack = await samplePack(), changed = structuredClone(pack);
+    changed.manifest.version = '1.1.0'; changed.manifest.contentVersion = '0.4.0';
+    const collection = changed.patch.collections![0]!;
+    collection.chapters = [{id:'studio_sample_new_chapter',nameKey:collection.nameKey,memberElementIds:collection.memberElementIds}];
+    expect(() => previewPack(seed,[pack],changed)).toThrow(/Rimozione di completamento/);
+    pack.patch.collections![0]!.chapters = [{id:'studio_sample_old_chapter',nameKey:collection.nameKey,memberElementIds:collection.memberElementIds}];
+    expect(() => previewPack(seed,[pack],changed)).toThrow(/studio_sample_old_chapter/);
+  });
   it('discovers an imported alternative for an owned result, while repetition never farms XP', async () => {
     const { importer,packs,saves,game } = await setup(); await game.combine('void','energy');
     const pack = await edited(p => { p.patch.recipes!.push({ id:'studio_sample_light_alternate',inputs:['void','matter'],resultElementId:'light',kind:'explicit',discovery:'alternate' }); });
