@@ -182,8 +182,12 @@ Codex must reproduce this result using the automated validator.
 Codex implements the specifications.
 
 If implementation discovers a genuine design contradiction, it should surface the conflict rather than invent new gameplay.
-# Runtime content packs · CONTENT-1A
+## Runtime content packs · CONTENT-1A
 
 In **Impostazioni → Modalità autore**, enable the local author option, choose a ZIP, read its validation/reachability preview, then explicitly install and restart. Installation adds definitions, not player discoveries. Keep proposals separate from canon. Packages and images remain available offline on that browser; exported ZIPs transfer them to another device.
 
 Use `npm run sample:pack -- example.zip` for a synthetic starter package, and `npm run validate:pack -- example.zip`, `npm run simulate:pack -- example.zip` or `npm run report:pack -- example.zip` for the shared CLI pipeline. See [CONTENT_1A_NOTES](docs/CONTENT_1A_NOTES.md) for format, bounds, locked seed policy, safe rollback, test evidence and the unapproved Phase 8A sandbox fixture.
+
+## Visual Content Studio · CONTENT-1B
+
+In **Impostazioni → Modalità autore → Apri Studio contenuti**, create elements, raster images, recipes, Sets, Collections and requirements with visual forms. Preview and simulate before explicitly installing; export/import ZIPs to archive or transfer proposals. Drafts remain separate from gameplay progress. See [CONTENT_1B_NOTES](docs/CONTENT_1B_NOTES.md) for a practical guide, architecture, evidence and limitations. Local installation never grants canonical approval.

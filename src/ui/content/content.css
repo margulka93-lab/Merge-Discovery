@@ -9,3 +9,28 @@
 .content-author ul, .pack-report ol { padding-inline-start: 1.2rem; }
 .content-author button.combine-button { width: auto; min-height: 48px; padding: .6rem 1.1rem; }
 @media (forced-colors: active) { .content-author, .pack-report, .author-error { color: CanvasText; background: Canvas; border-color: ButtonText; } }
+.app-shell .settings-groups .author-fieldset { grid-column: 1 / -1; }
+.content-studio header h3 { font: 2rem var(--font-display); color: var(--color-gold-highlight); }
+.app-shell .content-studio .studio-workspace { border: 0; padding: 0; }
+.studio-nav { display: flex; flex-wrap: wrap; gap: .25rem; padding-block: .8rem; border-block: 1px solid #746448; }
+.studio-nav button { background: #0a1423; color: #ddd1b6; border: 1px solid #746448; border-radius: .4rem; padding: .6rem .8rem; }
+.studio-nav button[aria-pressed=true] { color: #fae6b5; background: #253149; border-color: #d8b76b; }
+.studio-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+.studio-grid > * { min-width: 0; }
+.studio-art { width: min(14rem,100%); margin-inline: auto; text-align: center; }
+.studio-art .element-art { width: min(9rem,100%); height: auto; }
+.studio-list { margin-block: .6rem; padding: .6rem; border: 1px solid #746448; border-radius: .7rem; background: #101b2b; }
+.app-shell .content-studio .studio-list :is(p,ul,label) { margin-block: .4rem; }
+.studio-list ul { max-height: 14rem; overflow-y: auto; }
+.studio-list li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem; padding-block: .4rem; border-bottom: 1px solid #746448; }
+.studio-list strong { overflow-wrap: anywhere; }
+.app-shell .content-studio label { display: grid; align-items: start; }
+.app-shell .content-studio label:has(input[type=checkbox]) { display: flex; flex-wrap: nowrap; align-items: center; min-height: 44px; }
+.content-studio input[type=checkbox] { width: 24px; height: 24px; flex-shrink: 0; accent-color: #d8b76b; }
+.content-studio :is(input,select,button,textarea) { min-height: 44px; }
+.content-studio input[type=checkbox] { min-height: 24px; }
+.author-member-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .3rem; }
+.author-path small { display: block; color: #cdbd9d; }
+.content-studio button { max-width: 100%; overflow-wrap: anywhere; white-space: normal; }
+@media(max-width:767px) { .studio-grid,.author-member-grid { grid-template-columns: minmax(0,1fr); } .studio-list { padding: .6rem; } .studio-nav button { flex: 1 1 6rem; } }
+@media(forced-colors:active) { .content-studio :is(header h3,button,input,select,textarea,.studio-list,.author-path small) { color: CanvasText; background: Canvas; border-color: ButtonText; } }

@@ -1,0 +1,13 @@
+{
+  "production": true,
+  "proposedRecipes": 51,
+  "reachable": 118,
+  "offline": true,
+  "discovery": "fish",
+  "set": "animals",
+  "testCollection": "phase_8a_taccuino_vita_di_prova",
+  "art": "phase_8a.elements.fish",
+  "artIsSyntheticPlaceholder": true,
+  "canonicalApproval": "PENDING",
+  "originalDossierRecipesChanged": false
+}

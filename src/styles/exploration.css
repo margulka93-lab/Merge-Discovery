@@ -88,6 +88,7 @@
     .explore-navigation a { color: LinkText; }
     .explore-navigation a[aria-current=page] { color: LinkText; border-color: Highlight; }
     :is(.map-node, .map-viewport, .map-node span, .anomaly-card, .map-controls select, .map-zoom button, .relationship-explorer button, .settings-groups select) { color: CanvasText; background: Canvas; border-color: CanvasText; }
+    .anomaly-card .anomaly-status { color: CanvasText; }
     .map-node[aria-pressed=true] { border-color: Highlight; }
     .map-space > svg path { stroke: LinkText; }
   }

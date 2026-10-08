@@ -20,7 +20,7 @@ export function PackReport({ prepared }: { prepared: PreparedPack }) {
       <p>Catene lunghe: {r.longChains.map(c => `${c.id} (${c.depth})`).join(', ') || 'nessuna'}</p>
       <p>Ingredienti più usati: {r.ingredientUse.map(c => `${c.id} (${c.uses})`).join(', ')}</p>
       <p>Risultati con alternative: {r.alternateResults.join(', ') || 'nessuno'}</p>
-      <ol>{r.checkpoints.map((c,i) => <li key={i}>{JSON.stringify(c)}</li>)}</ol>
+      <ol>{r.checkpoints.map((c,i) => <li key={i}>Passaggio {c.depth}: {c.discovered} scoperte · {c.xp} XP · Set rivelati: {c.revealedSetIds.join(', ')}</li>)}</ol>
     </details>
     <button onClick={() => downloadBytes(new TextEncoder().encode(JSON.stringify(r,null,2)),`${r.packId}-report.json`,'application/json')}>Esporta report</button>
   </section>;

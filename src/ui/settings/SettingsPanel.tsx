@@ -6,6 +6,7 @@ import '../../styles/exploration.css';
 import type { ContentPackApplication } from '../../application/packs/ContentPackApplication';
 import { updates } from '../../platform/pwa/updates';
 const ContentImportPanel = lazy(() => import('../content/ContentImportPanel').then(m => ({ default: m.ContentImportPanel })));
+const ContentStudio = lazy(() => import('../content/ContentStudio').then(m => ({ default: m.ContentStudio })));
 const SaveDiagnostics = lazy(() => import('../SaveDiagnostics').then(m => ({ default: m.SaveDiagnostics })));
 type LabModelTextScale = 'default' | 'large' | 'extra_large';
 export function SettingsPanel({ model, snapshot, busy, preferences, application, boot, accept, beginOperation, contentApplication }: {
@@ -17,8 +18,10 @@ export function SettingsPanel({ model, snapshot, busy, preferences, application,
 }) {
   const [diagnosticsOpen, setDiagnosticsOpen] = useState(false);
   const [author, setAuthor] = useState(false);
+  const [editing, setEditing] = useState(false);
   return (
     <div className="settings-groups">
+                {!(author && editing) && <>
                 <InformationModeControls
                   preferences={snapshot.save.settings}
                   busy={busy}
@@ -84,10 +87,11 @@ export function SettingsPanel({ model, snapshot, busy, preferences, application,
                     onSnapshot={accept}
                   /></Suspense>}
                 </details>
-                {contentApplication && <fieldset><legend>Modalità autore · avanzate</legend>
+                </>}
+                {contentApplication && <fieldset className="author-fieldset"><legend>Modalità autore · avanzate</legend>
                   <label><input type="checkbox" checked={author} disabled={busy} onChange={e => setAuthor(e.target.checked)} /> Attiva modalità autore locale</label>
                   <p>Anteprime complete, compresi contenuti nascosti. Riservate all’autrice; nessuna approvazione canonica automatica.</p>
-                  {author && <Suspense fallback={<p>Apertura importer…</p>}><ContentImportPanel application={contentApplication} busy={busy} beginOperation={beginOperation} safe={() => updates.getSnapshot().safe} /></Suspense>}
+                  {author && <><button disabled={busy} onClick={()=>setEditing(!editing)}>{editing?'Torna ai pacchetti':'Apri Studio contenuti'}</button><Suspense fallback={<p>Apertura authoring…</p>}>{editing?<ContentStudio application={contentApplication} busy={busy} beginOperation={beginOperation} safe={()=>updates.getSnapshot().safe}/>:<ContentImportPanel application={contentApplication} busy={busy} beginOperation={beginOperation} safe={() => updates.getSnapshot().safe} />}</Suspense></>}
                 </fieldset>}
               </div>);
 }

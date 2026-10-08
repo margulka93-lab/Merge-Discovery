@@ -1,0 +1,22 @@
+{
+  "production": true,
+  "offlineStudio": true,
+  "offlineWorker": true,
+  "draftReopened": true,
+  "imageDecoded": true,
+  "viewports": [
+    1920,
+    1440,
+    1024,
+    768,
+    390,
+    320
+  ],
+  "axeViolations": 0,
+  "target44": true,
+  "saveUnchangedBeforeInstall": true,
+  "reachable": 68,
+  "newDiscoveryThroughResolver": true,
+  "reload": true,
+  "canonicalApproval": "PENDING"
+}
