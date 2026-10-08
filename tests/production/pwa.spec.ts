@@ -66,6 +66,8 @@ test('production precache opens every eligible route offline, commits and preser
   await page.goto('/');
   const select=page.getByRole('button',{name:/^Energia, elemento del set/}); await select.click(); await select.click();
   await page.getByRole('button',{name:'Combina',exact:true}).click(); await expect(page.getByRole('heading',{name:'Calore',exact:true})).toBeVisible();
+  expect((await slots(page)).revision).toBe(before.revision);
+  await page.getByRole('button',{name:'Ripeti comunque',exact:true}).click();
   const committed = await slots(page); expect(committed.current.xp).toBe(before.current.xp); expect(committed.revision).toBe(before.revision+1);
   await page.reload(); expect(await slots(page)).toEqual(committed);
   await page.goto('/elements/water'); await page.getByRole('button',{name:'Chiedi un indizio',exact:true}).click();
@@ -168,6 +170,8 @@ test('production structural performance smoke records cold/warm and secondary ro
   const before=await slots(page); start=performance.now();
   await page.getByRole('button',{name:'Combina',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Calore',exact:true})).toBeVisible();
+  expect((await slots(page)).revision).toBe(before.revision);
+  await page.getByRole('button',{name:'Ripeti comunque',exact:true}).click();
   const publicationMs=performance.now()-start, committed=await slots(page);
   expect(committed.revision).toBe(before.revision+1);
   await expect(page.getByRole('button',{name:'Nuovo esperimento'})).toBeEnabled();

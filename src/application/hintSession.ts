@@ -31,11 +31,15 @@ export function recordHintExperiment(
         "collection_completed",
       ].includes(e.type),
     );
+  return recordQuietExperiment(session, result.type === 'no_reaction', progress);
+}
+/** A deliberate remembered attempt still reflects a player stall, without a save transaction. */
+export function recordQuietExperiment(session: HintSession, noReaction: boolean, progress = false): HintSession {
   return {
     experiments: session.experiments + 1,
     consecutiveNoReaction: progress
       ? 0
-      : result.type === "no_reaction"
+      : noReaction
         ? session.consecutiveNoReaction + 1
         : 0,
     experimentsSinceProgress: progress

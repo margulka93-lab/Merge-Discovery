@@ -285,6 +285,7 @@ export function ReactionStage({
               ))}
             </div>
           )}
+          {reaction.remembered && <p className="remembered-reaction">{reaction.kind === "known" ? "Già scoperta" : reaction.kind === "no_reaction" ? "Già provata — nessuna reazione" : "Reazione instabile già osservata"} · Nessuna nuova transazione.</p>}
           <div className="result-actions">
             {reaction.element && (
               <button

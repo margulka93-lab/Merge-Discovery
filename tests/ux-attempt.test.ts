@@ -1,0 +1,45 @@
+import { expect, it } from 'vitest';
+import { rememberedAttempt } from '../src/application/attempt';
+import { loadSeed, rawSeed } from '../src/content/load';
+import { buildIndex } from '../src/content/indexes/build';
+import { validateContent } from '../src/content/validate';
+import { SaveApplication } from '../src/application/save/SaveApplication';
+import { MemorySaveRepository } from '../src/persistence/memory/MemorySaveRepository';
+import { createSave } from '../src/application/save/projection';
+import { simulateReachability } from '../src/domain/simulation/reachability';
+import { searchLibrary } from '../src/application/librarySearch';
+import { laboratoryModel } from '../src/application/laboratory';
+const index = loadSeed(), now = '2026-10-08T12:00:00.000Z';
+it('suppresses only the exact current known recipe, not a new alternate result path', async () => {
+  const repo = new MemorySaveRepository(), app = new SaveApplication(repo, index, () => now);
+  const save = createSave(index, now), full = simulateReachability(index).state;
+  save.discoveredElements = Object.fromEntries(full.discoveredElementIds.map(id => [id, { firstDiscoveredAt: now }]));
+  save.revealedSetIds = full.revealedSetIds; save.xp = full.xp;
+  await repo.createNew(save, 0); await app.start();
+  const first = await app.combine('planet', 'comet');
+  expect(rememberedAttempt('comet', 'planet', first.snapshot, index)?.remembered).toBe(true);
+  expect(rememberedAttempt('heat', 'comet', first.snapshot, index)).toBeUndefined();
+  const alternate = await app.combine('heat', 'comet');
+  expect(alternate.resolution.type === 'success' && alternate.resolution.isNewRecipe).toBe(true);
+  expect(rememberedAttempt('heat', 'comet', alternate.snapshot, index)?.element?.id).toBe('water');
+});
+it('does not suppress stale failures or changed eligibility in the same version', async () => {
+  const app = new SaveApplication(new MemorySaveRepository(), index, () => now); await app.start();
+  const attempt = await app.combine('matter', 'matter');
+  expect(rememberedAttempt('matter', 'matter', attempt.snapshot, index)?.remembered).toBe(true);
+  const raw = structuredClone(rawSeed); raw.manifest.contentVersion = '0.2.0';
+  raw.recipes.push({ id: 'test_matter_light', inputs: ['matter', 'matter'], resultElementId: 'light', kind: 'explicit', discovery: 'alternate' });
+  const changed = buildIndex(validateContent(raw));
+  expect(rememberedAttempt('matter', 'matter', attempt.snapshot, changed)).toBeUndefined();
+  raw.manifest.contentVersion = index.content.manifest.contentVersion;
+  expect(rememberedAttempt('matter', 'matter', attempt.snapshot, buildIndex(validateContent(raw)))).toBeUndefined();
+});
+it('searches owned DTOs accent-insensitively and by visible aliases/Set without adding secret entries', async () => {
+  const app = new SaveApplication(new MemorySaveRepository(), index, () => now);
+  const snapshot = await app.start();
+  const elements = laboratoryModel(snapshot, index).elements;
+  elements[0]!.searchAliases = ['Oscurità'];
+  expect(searchLibrary(elements, 'oscurita', 'all', 'relevance', false)).toHaveLength(1);
+  expect(searchLibrary(elements, 'Origini', 'all', 'set', false)).toHaveLength(4);
+  expect(searchLibrary(elements, 'Funghi', 'all', 'recent', false)).toHaveLength(0);
+});

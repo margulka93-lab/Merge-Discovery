@@ -14,6 +14,10 @@ export interface LabElement {
   rarity: string;
   favorite: boolean;
   context: string;
+  searchAliases?: string[];
+  discoveredAt?: string;
+  possibilities?: boolean;
+  exhausted?: boolean;
 }
 export interface Destination {
   id: string;
@@ -33,6 +37,7 @@ export interface LabModel {
   textScale: "default" | "large" | "extra_large";
 }
 export interface LabReaction {
+  remembered?: boolean;
   kind: "new" | "alternate" | "known" | "no_reaction" | "anomaly";
   title: string;
   message: string;
@@ -108,6 +113,8 @@ export function laboratoryModel(
         rarity: rarityNames[e.rarity],
         favorite: save.favoriteElementIds.includes(e.id),
         context,
+        discoveredAt: save.discoveredElements[e.id]!.firstDiscoveredAt,
+        searchAliases: [text(`element.${e.id}.aliases`)].filter(Boolean),
       };
     });
   const destinations: Destination[] = [
