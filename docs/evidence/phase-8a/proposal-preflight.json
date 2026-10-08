@@ -1,0 +1,321 @@
+{
+  "status": "DRY_RUN_ONLY_GAME_REMAINS_67",
+  "approval": "PENDING",
+  "blockedBy": "CODEX_LONG_RUN stop condition: candidate pair collision; human direction required",
+  "proposedContentVersion": "0.2.0",
+  "proposalElements": 51,
+  "proposalRecipes": 51,
+  "proposedReachability": {
+    "reachable": 118,
+    "total": 118,
+    "maxDepth": 12,
+    "blockedUnlocks": [],
+    "checkpoints": [
+      {
+        "depth": 0,
+        "discovered": 4,
+        "xp": 0,
+        "revealedSetIds": [
+          "origins"
+        ]
+      },
+      {
+        "depth": 1,
+        "discovered": 9,
+        "xp": 520,
+        "revealedSetIds": [
+          "origins"
+        ]
+      },
+      {
+        "depth": 2,
+        "discovered": 14,
+        "xp": 1250,
+        "revealedSetIds": [
+          "origins"
+        ]
+      },
+      {
+        "depth": 3,
+        "discovered": 18,
+        "xp": 1790,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos"
+        ]
+      },
+      {
+        "depth": 4,
+        "discovered": 22,
+        "xp": 2260,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos"
+        ]
+      },
+      {
+        "depth": 5,
+        "discovered": 28,
+        "xp": 3135,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos"
+        ]
+      },
+      {
+        "depth": 6,
+        "discovered": 33,
+        "xp": 3735,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos",
+          "life"
+        ]
+      },
+      {
+        "depth": 7,
+        "discovered": 44,
+        "xp": 4905,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos",
+          "life"
+        ]
+      },
+      {
+        "depth": 8,
+        "discovered": 57,
+        "xp": 6480,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos",
+          "life",
+          "plants",
+          "fungi"
+        ]
+      },
+      {
+        "depth": 9,
+        "discovered": 71,
+        "xp": 8415,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos",
+          "life",
+          "plants",
+          "fungi",
+          "animals"
+        ]
+      },
+      {
+        "depth": 10,
+        "discovered": 97,
+        "xp": 11430,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos",
+          "life",
+          "plants",
+          "fungi",
+          "animals"
+        ]
+      },
+      {
+        "depth": 11,
+        "discovered": 111,
+        "xp": 13160,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos",
+          "life",
+          "plants",
+          "fungi",
+          "animals"
+        ]
+      },
+      {
+        "depth": 12,
+        "discovered": 118,
+        "xp": 14165,
+        "revealedSetIds": [
+          "origins",
+          "world",
+          "cosmos",
+          "life",
+          "plants",
+          "fungi",
+          "animals"
+        ]
+      }
+    ],
+    "depths": {
+      "void": 0,
+      "energy": 0,
+      "matter": 0,
+      "time": 0,
+      "heat": 1,
+      "plasma": 1,
+      "light": 1,
+      "cosmic_dust": 1,
+      "space": 1,
+      "nebula": 2,
+      "comet": 2,
+      "gas": 2,
+      "shadow": 2,
+      "gravity": 2,
+      "water": 3,
+      "asteroid": 3,
+      "atmosphere": 3,
+      "star": 3,
+      "wind": 4,
+      "planet": 4,
+      "steam": 4,
+      "galaxy": 4,
+      "cloud": 5,
+      "moon": 5,
+      "lava": 5,
+      "star_system": 5,
+      "night": 5,
+      "ocean": 5,
+      "rain": 6,
+      "lightning": 6,
+      "life": 6,
+      "salt": 6,
+      "rock": 6,
+      "movement": 7,
+      "humidity": 7,
+      "metal": 7,
+      "algae": 7,
+      "plankton": 7,
+      "cell": 7,
+      "rainbow": 7,
+      "mountain": 7,
+      "soil": 7,
+      "cave": 7,
+      "sand": 7,
+      "moss": 8,
+      "bacterium": 8,
+      "desert": 8,
+      "mold": 8,
+      "fog": 8,
+      "volcano": 8,
+      "creature": 8,
+      "seed": 8,
+      "valley": 8,
+      "river": 8,
+      "beach": 8,
+      "island": 8,
+      "mud": 8,
+      "egg": 9,
+      "fish": 9,
+      "reptile": 9,
+      "spider": 9,
+      "mammal": 9,
+      "evolution": 9,
+      "bird": 9,
+      "fungus": 9,
+      "fern": 9,
+      "waterfall": 9,
+      "swamp": 9,
+      "lake": 9,
+      "cactus": 9,
+      "sprout": 9,
+      "lichen": 10,
+      "spore": 10,
+      "owl": 10,
+      "seagull": 10,
+      "crow": 10,
+      "duck": 10,
+      "thorn": 10,
+      "snail": 10,
+      "goat": 10,
+      "crab": 10,
+      "frog": 10,
+      "shark": 10,
+      "glowing_fungus": 10,
+      "mycelium": 10,
+      "flower": 10,
+      "bear": 10,
+      "horse": 10,
+      "wolf": 10,
+      "mouse": 10,
+      "fox": 10,
+      "bat": 10,
+      "lizard": 10,
+      "turtle": 10,
+      "grass": 10,
+      "reed": 10,
+      "tree": 10,
+      "butterfly": 11,
+      "insect": 11,
+      "fruit": 11,
+      "water_lily": 11,
+      "pollen": 11,
+      "rabbit": 11,
+      "snake": 11,
+      "shrub": 11,
+      "aquatic_plant": 11,
+      "squirrel": 11,
+      "truffle": 11,
+      "root": 11,
+      "climber": 11,
+      "forest": 11,
+      "bee": 12,
+      "deer": 12,
+      "berry": 12,
+      "yeast": 12,
+      "firefly": 12,
+      "ant": 12,
+      "mycorrhiza": 12
+    }
+  },
+  "proposedSetSizes": {
+    "origins": 10,
+    "cosmos": 9,
+    "world": 31,
+    "life": 9,
+    "plants": 19,
+    "fungi": 9,
+    "animals": 31
+  },
+  "seedElementsUnchanged": 67,
+  "seedRecipesUnchanged": 64,
+  "seededAnomalyUnchanged": true,
+  "oldSaveDryRun": "PASS, no discovery/XP/completion auto-award",
+  "oldCompletionDenominators": "6/6 unchanged",
+  "staleFailedPair": "reactivates without auto-discovery",
+  "safeKnowledge": "fresh/announced Animal Set/unknown detail/Map/Archive PASS",
+  "unauthoredSelfPair": "no reaction",
+  "unorderedPairs": "51/51 PASS",
+  "rejected": [
+    {
+      "id": "crystal",
+      "inputs": [
+        "rock",
+        "time"
+      ],
+      "pairKey": "rock::time",
+      "reason": "Existing locked seed outcome is soil. No override, condition or replacement pair authored.",
+      "existingOutcome": "soil"
+    },
+    {
+      "id": "carnivorous_plant",
+      "inputs": [
+        "flower",
+        "insect"
+      ],
+      "pairKey": "flower::insect",
+      "reason": "Collides within the proposal with insect + flower -> bee. No priority trick or replacement pair authored.",
+      "existingOutcome": "bee"
+    }
+  ]
+}

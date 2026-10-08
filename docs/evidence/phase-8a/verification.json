@@ -1,0 +1,37 @@
+{
+  "phase": "8A",
+  "status": "AUTHORING_PREFLIGHT_ONLY_RUNTIME_INTEGRATION_BLOCKED",
+  "verifiedAtUtc": "2026-10-08T00:11:01.818Z",
+  "unitComponentTests": 199,
+  "unitFiles": 15,
+  "e2e": 20,
+  "productionE2e": 13,
+  "pwa": {
+    "status": "PASS",
+    "assets": 20,
+    "jsChunks": 10,
+    "offline": true,
+    "updateSafe": true
+  },
+  "actualRuntimeContent": {
+    "version": "0.1.0",
+    "reachable": 67,
+    "total": 67,
+    "maxDepth": 11
+  },
+  "proposedContent": {
+    "version": "0.2.0",
+    "reachable": 118,
+    "total": 118,
+    "maxDepth": 12,
+    "additions": 51,
+    "loadedByGame": false,
+    "approval": "PENDING"
+  },
+  "profiles": "Both 1000-element actual-content profiles PASS",
+  "animalScreenshots": "NOT CAPTURED - proposal not activated",
+  "blocker": "CODEX_LONG_RUN candidate collision stop condition; human direction requested",
+  "phase8B": "NOT IMPLEMENTED, source collision analysis only",
+  "phase8C": "NOT IMPLEMENTED, eligibility analysis only",
+  "phase9": "NOT IMPLEMENTED, read-only toolchain inventory only"
+}

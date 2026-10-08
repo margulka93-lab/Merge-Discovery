@@ -5,4 +5,5 @@ coverage/
 test-results/
 test-results-production/
 phase7-*.log
+phase8*.log
 playwright-report/
