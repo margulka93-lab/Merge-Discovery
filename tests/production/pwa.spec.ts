@@ -7,7 +7,8 @@ const screenshots = 'test-results-production/phase-7-screenshots';
 function report(name: string, value: unknown) { mkdirSync(evidence,{ recursive:true }); writeFileSync(`${evidence}/${name}.json`,JSON.stringify(value,null,2)); }
 async function shot(page: Page, name: string) { mkdirSync(screenshots,{recursive:true}); await page.screenshot({path:`${screenshots}/${name}.png`,animations:'disabled'}); }
 async function boot(page: Page) {
-  await page.goto('/'); await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible();
+  await page.goto('/'); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
+  await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible();
   await page.evaluate(async () => { await navigator.serviceWorker.ready; if (!navigator.serviceWorker.controller) await new Promise<void>(resolve => navigator.serviceWorker.addEventListener('controllerchange',() => resolve(),{once:true})); });
 }
 async function importFixture(page: Page, file = 'v1-anomaly-observed') {
@@ -16,6 +17,7 @@ async function importFixture(page: Page, file = 'v1-anomaly-observed') {
   await page.getByLabel('JSON del salvataggio (diagnostica)').fill(JSON.stringify({product:'merge_discovery',saveSchemaVersion:payload.saveSchemaVersion,contentVersionSeen:payload.contentVersionSeen,payload}));
   await page.getByRole('button',{name:'Verifica import',exact:true}).click();
   await page.getByRole('button',{name:'Conferma sostituzione del progresso'}).click();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible();
 }
 async function slots(page: Page) {
@@ -63,7 +65,7 @@ test('production precache opens every eligible route offline, commits and preser
   await page.getByRole('button',{name:'Esporta JSON / verifica round-trip'}).click();
   await expect(page.getByText('Export/import validato; nessuna sovrascrittura eseguita.')).toBeVisible();
   expect(await slots(page)).toEqual(before);
-  await page.goto('/');
+  await page.goto('/'); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   const select=page.getByRole('button',{name:/^Energia, elemento del set/}); await select.click(); await select.click();
   await page.getByRole('button',{name:'Combina',exact:true}).click(); await expect(page.getByRole('heading',{name:'Calore',exact:true})).toBeVisible();
   expect((await slots(page)).revision).toBe(before.revision);
@@ -109,6 +111,7 @@ test('real waiting worker around a discovery waits for acknowledgement, reloads 
   navigations=0;
   await page.getByRole('button',{name:'Aggiorna ora'}).click();
   await expect(page.getByRole('complementary',{name:'Aggiornamento disponibile'})).toHaveCount(0);
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible();
   expect(await slots(page)).toEqual(committed); expect(navigations).toBe(1);
   report('production-update',{production:true,realWaitingWorker:true,blockedDuringMajorReveal:true,acknowledged:true,deferredWithoutReload:true,deferralFocus:'laboratory',manualReopenWaiting:true,reloads:navigations,saveUnchanged:true,xp:committed.current.xp,discoveries:Object.keys(committed.current.discoveredElements).length});
@@ -144,7 +147,7 @@ test('production preferences/OS motion, forced colors, extra-large text, zoom re
   await page.getByLabel('Dimensione del testo').selectOption('extra_large'); await expect(page.getByLabel('Dimensione del testo')).toHaveValue('extra_large');
   await page.setViewportSize({width:320,height:568});
   for (const route of routes) { await page.goto(route); await expect(page.getByText('La schermata si sta aprendo…')).toHaveCount(0); await audit(page); }
-  await page.emulateMedia({reducedMotion:'reduce',forcedColors:'active'}); await page.goto('/');
+  await page.emulateMedia({reducedMotion:'reduce',forcedColors:'active'}); await page.goto('/'); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   const select=page.getByRole('button',{name:/^Energia, elemento del set/}); await select.click(); await select.click(); await page.getByRole('button',{name:'Combina',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Calore',exact:true})).toBeVisible();
   const duration=await page.locator('.reaction-stage').evaluate(node=>getComputedStyle(node).animationDuration); expect(parseFloat(duration)).toBeLessThan(.3);
@@ -159,13 +162,14 @@ test('production preferences/OS motion, forced colors, extra-large text, zoom re
 
 test('production structural performance smoke records cold/warm and secondary routes', async ({page}) => {
   const started=performance.now(); await boot(page); const cold=performance.now()-started;
-  let start=performance.now(); await page.reload(); await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible(); const warm=performance.now()-start;
+  let start=performance.now(); await page.reload(); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
+  await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible(); const warm=performance.now()-start;
   await importFixture(page); const switches=[];
   for (const route of ['/collection','/explore/map?element=water','/']) { start=performance.now(); await page.goto(route); await expect(page.locator(route==='/'?'#laboratory':'#catalog-content')).toBeVisible(); await expect(page.getByText('La schermata si sta aprendo…')).toHaveCount(0); switches.push({route,readyMs:performance.now()-start}); }
   await page.goto('/explore/map?element=water');
   await expect(page.locator('.map-node').first()).toBeVisible();
   const mapNodes = await page.locator('.map-node').count(); expect(mapNodes).toBeGreaterThan(0); expect(mapNodes).toBeLessThanOrEqual(25);
-  await page.goto('/');
+  await page.goto('/'); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   const select=page.getByRole('button',{name:/^Energia, elemento del set/}); await select.click(); await select.click();
   const before=await slots(page); start=performance.now();
   await page.getByRole('button',{name:'Combina',exact:true}).click();

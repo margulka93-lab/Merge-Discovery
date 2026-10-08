@@ -16,6 +16,7 @@ test('Phase 7.5B knowledge-family production visual evidence and safe navigation
   await page.getByLabel('JSON del salvataggio (diagnostica)').fill(JSON.stringify({ product: 'merge_discovery', saveSchemaVersion: payload.saveSchemaVersion, contentVersionSeen: payload.contentVersionSeen, payload }));
   await page.getByRole('button', { name: 'Verifica import', exact: true }).click();
   await page.getByRole('button', { name: 'Conferma sostituzione del progresso' }).click();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Combina', exact: true })).toBeVisible();
   mkdirSync(shots, { recursive: true });
   const audits = [];

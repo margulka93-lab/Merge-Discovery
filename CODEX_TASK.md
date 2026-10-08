@@ -1,35 +1,39 @@
-# CODEX_TASK.md — Extended execution queue
+# CODEX_TASK.md — PLAYFEEL-V2 (priority change)
 
-## Current instruction
+## Current priority
 
-Read **`CODEX_LONG_RUN.md`** and execute its ordered stages with stage-specific scopes and separate reviewable PRs.
+**Prototype real gameplay feel before content growth.**
 
-1. Phase 7.5B — dark Collection/Set/Element/Collections screens: `docs/tasks/PHASE_7_5_B.md`
-2. Phase 7.5C — Map/Anomalies/Settings and visual cohesion: `docs/tasks/PHASE_7_5_C.md`
-3. Phase 8A — Life/Animals: `docs/tasks/PHASE_8_A.md`
-4. Phase 8B — Humanity/Culture/Technology: `docs/tasks/PHASE_8_B.md`
-5. Phase 8C — first Arcano bridge/payoff: `docs/tasks/PHASE_8_C.md`
-6. Phase 9 — Android/Capacitor: `docs/tasks/PHASE_9.md`
+The user has chosen **Tavolo libero as the primary Merge Discovery gameplay mode**, keeping the two-slot Laboratory as a secondary accessible option.
 
-## Starting state
+Start by reading:
 
-- Phases 0–7 are merged into `main`.
-- PR #9 / branch `codex/phase-7-5a` is open. Treat it as **visually unapproved** and do not merge it.
-- Begin Phase 7.5B from the latest PR #9 branch head.
-- Queue/task files live on current `main`; bring those specifications to the work branch before implementation.
-- The **original Merge Discovery Design Bible image attached to the Codex invocation** must be visually inspected before redesign. If available, commit a copy under `docs/references/`.
-- Do not replace the predominantly dark navy/gold in-game aesthetic with light/ivory catalog screens.
+1. `AGENTS.md`
+2. **`docs/tasks/PLAYFEEL_V2.md`** — current detailed task and acceptance criteria.
+3. `docs/proposals/UX_1_TWO_MODES.md`
+4. `docs/VISUAL_BIBLE_REFERENCE.md`
+5. `docs/VISUAL_UX_ALIGNMENT.md`
+6. Relevant domain, save, search, hint-safety, PWA, responsiveness and accessibility specs.
 
-## Autonomy and gates
+## Branch/pr relationship
 
-Work through successive **draft stacked PRs** as far as possible during the session. Never merge unapproved PRs automatically.
+Existing PRs #9–15 remain **draft/unmerged**.
 
-Green CI is not visual approval of 7.5A/B/C. New recipes and Arcano choices from Phase 8 are **proposals until canon review**. Phase 9 may be scaffolded and debug-built but is not Play Store authorization.
+- PR #13 `codex/ux-1` is the existing implementation baseline.
+- Create a **separate stacked draft PR** `codex/playfeel-v2` against `codex/ux-1`, without changing #14 and #15.
+- Do not treat #13 as visually/gameplay approved.
+- If prototype is later approved, reconcile/rebase the CONTENT-1A/B branches #14/#15 onto the approved UI baseline as a separate integration task.
 
-Do not claim unattended/background operation beyond the current Codex execution session.
+## What not to work on yet
 
-## Non-negotiables
+Pause `CODEX_LONG_RUN.md` execution beyond the already-created drafts.
 
-Read `AGENTS.md`; preserve gameplay/save/visibility/PWA semantics; no spoiler leaks; no unreviewed rewrite of the 67-element seed; tests, validator, reachability and appropriate production/browser checks per stage.
+Do not add Phase 8B/8C content, change proposed Phase 8A canon, start Android or expand Content Studio here.
 
-Read `CODEX_LONG_RUN.md` fully before starting any stage. The older combined Phase 7.5 brief is archived in `docs/tasks/PHASE_7_5.md`.
+Do not merge any PR automatically.
+
+## Acceptance
+
+A **genuinely fluid 30-combination human playtest** on PC and smartphone is required before approval, in addition to all automated checks and recorded interactions. Animated drag-overlap and result reuse are central, not optional polish.
+
+Follow `docs/tasks/PLAYFEEL_V2.md` strictly and deliver only the prototype as a separate draft PR.

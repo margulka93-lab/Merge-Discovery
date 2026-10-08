@@ -27,6 +27,7 @@ async function importFixture(
   await page
     .getByRole("button", { name: "Conferma sostituzione del progresso" })
     .click();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Combina", exact: true }),
   ).toBeVisible();
@@ -233,6 +234,7 @@ test("session proactive hints are nonblocking, respect decline and reset on prog
     .getByRole("button", { name: "Torna al laboratorio", exact: true })
     .click();
   async function combine(a: string, b: string) {
+    await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
     const aSlot = page.getByRole("button", {
       name: /^Rimuovi .* dallo slot A/,
     });

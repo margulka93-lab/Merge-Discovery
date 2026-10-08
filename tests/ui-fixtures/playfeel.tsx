@@ -1,0 +1,30 @@
+import { createRoot } from 'react-dom/client';
+import { LaboratoryApplication } from '../../src/app/App';
+import { SaveApplication } from '../../src/application/save/SaveApplication';
+import { createSave } from '../../src/application/save/projection';
+import { MemorySaveRepository } from '../../src/persistence/memory/MemorySaveRepository';
+import { rawSeed } from '../../src/content/load';
+import { buildIndex } from '../../src/content/indexes/build';
+import { validateContent } from '../../src/content/validate';
+import { simulateReachability } from '../../src/domain/simulation/reachability';
+import '../../src/styles/tokens.css';
+import '../../src/styles/global.css';
+import '../../src/styles/world.css';
+import '../../src/styles/observatory.css';
+import '../../src/styles/knowledge.css';
+import '../../src/styles/exploration.css';
+import '../../src/styles/platform.css';
+
+// Dev-only authored fixture: a second alternate, never bundled into the production game/seed.
+const raw = structuredClone(rawSeed);
+raw.recipes.push({ id: 'fixture_energy_time_water', inputs: ['energy','time'], resultElementId: 'water', kind: 'explicit', discovery: 'alternate' });
+const index = buildIndex(validateContent(raw));
+const now = '2026-10-08T15:00:00.000Z';
+const save = createSave(index, now), full = simulateReachability(index).state;
+save.discoveredElements = Object.fromEntries(full.discoveredElementIds.map(id => [id,{firstDiscoveredAt:now}]));
+save.revealedSetIds = full.revealedSetIds; save.completedSetIds = full.completedSetIds; save.xp = full.xp;
+const repo = new MemorySaveRepository(), app = new SaveApplication(repo,index,()=>now);
+await repo.createNew(save,0); await app.start();
+for (const [a,b] of [['energy','energy'],['void','energy'],['plasma','gravity'],['planet','heat'],['void','time']]) await app.combine(a!,b!);
+Object.assign(window,{playfeelFixture:{snapshot:()=>app.load(),storage:()=>repo.load()}});
+createRoot(document.getElementById('root')!).render(<LaboratoryApplication application={app} boot={app.load()}/>);

@@ -24,6 +24,7 @@ async function importFixture(page: Page, file = "v1-completed-sets") {
   await page
     .getByRole("button", { name: "Conferma sostituzione del progresso" })
     .click();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Combina", exact: true }),
   ).toBeVisible();
@@ -60,7 +61,7 @@ async function noOverflow(page: Page) {
 test("successful result opens its owned sheet explicitly and returns without losing inputs", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/"); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   const energy = page.getByRole("button", {
     name: /^Energia, elemento del set/,
   });
@@ -89,7 +90,7 @@ test("successful result opens its owned sheet explicitly and returns without los
 test("fresh knowledge boundary, search and identical unknown deep-link guards", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/"); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   // Phase 5 enforces the existing navigation thresholds on direct routes too.
   for (const [a, b] of [
     ["Vuoto", "Energia"],

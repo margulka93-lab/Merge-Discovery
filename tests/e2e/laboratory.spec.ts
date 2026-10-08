@@ -25,6 +25,7 @@ const name = (id: string) =>
   index.content.locales.it[index.elements.get(id)!.nameKey]!;
 async function boot(page: Page) {
   await page.goto("/");
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Combina", exact: true }),
   ).toBeVisible();
@@ -53,6 +54,7 @@ async function importFixture(page: Page, file: string) {
   await page
     .getByRole("button", { name: "Conferma sostituzione del progresso" })
     .click();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Combina", exact: true }),
   ).toBeVisible();
@@ -96,7 +98,8 @@ test("all six viewports, state preservation, target sizes, keyboard and reduced-
     await expect(
       page.getByRole("button", { name: "Rimuovi Vuoto dallo slot A" }),
     ).toBeVisible();
-    await expect(
+    await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
+  await expect(
       page.getByRole("button", { name: "Combina", exact: true }),
     ).toBeVisible();
     const undersized = await page
@@ -172,6 +175,7 @@ test("IndexedDB reload retains discovery, favorite, tested pair and XP; repeat r
     page.getByRole("button", { name: "Rimuovi Calore dai preferiti" }),
   ).toBeVisible();
   await page.reload();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(select(page, "Calore")).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Rimuovi Calore dai preferiti" }),

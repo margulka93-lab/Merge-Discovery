@@ -36,8 +36,9 @@ async function setup(full = false) {
   const rendered = render(
     <LaboratoryApplication application={app} boot={app.start()} />,
   );
-  await screen.findByRole("button", { name: "Combina" });
   const user = userEvent.setup();
+  await user.click(await screen.findByRole('button', { name: 'Laboratorio classico' }));
+  await screen.findByRole("button", { name: "Combina" });
   const select = (name: string) =>
     user.click(
       screen.getByRole("button", {

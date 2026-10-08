@@ -1,0 +1,32 @@
+{
+  "scope": "PLAYFEEL V2 prototype, stacked on PR 13",
+  "base": "codex/ux-1",
+  "parentHead": "2267a444c9a41741040642fdf89c2530eda2941c",
+  "head": "codex/playfeel-v2",
+  "check": { "typecheck": "PASS", "lint": "PASS", "build": "PASS", "unitPassed": 205, "unitFiles": 17 },
+  "e2e": { "fullFinalPassed": 27, "focusedPlayfeelPassed": 4, "all67ThroughKeyboard": true },
+  "production": { "fullFinalPassed": 15, "offline": true, "reloadSave": true, "knownReplaySaveUnchanged": true, "realWaitingWorker": true, "gestureSafeUpdate": true },
+  "cycles": [
+    { "viewport": [1440, 900], "experiments": 30, "chains": 18, "knownNoWriteReplays": 5, "alternatives": 2, "input": "mouse" },
+    { "viewport": [390, 844], "experiments": 30, "chains": 18, "knownNoWriteReplays": 5, "alternatives": 2, "input": "CDP touch" },
+    { "viewport": [320, 568], "experiments": 30, "chains": 18, "knownNoWriteReplays": 5, "alternatives": 2, "input": "CDP touch" }
+  ],
+  "cycleFixtures": { "allElementsOwned": true, "secondAlternate": "fixture_energy_time_water", "productionContentChanged": false },
+  "seed": { "reachable": 67, "total": 67, "depth": 11, "recipes": 64, "sets": 6, "collections": 4, "anomalies": 1, "changed": false },
+  "pwa": { "validation": "PASS", "precacheAssets": 20, "jsChunks": 10, "sourceChanged": false },
+  "profiles": {
+    "catalog": { "elements": 1000, "projectionMs": 109, "cachedMs": 1.52 },
+    "map": { "elements": 1000, "projectionMs": 474.34, "cachedMs": 418.17 },
+    "fullPairMatrix": false,
+    "timing": "informational during concurrent browser load"
+  },
+  "accessibility": { "axeAA": "PASS", "keyboard": "PASS", "focusDockSearch": "PASS", "landscape": "PASS", "text200Percent": "PASS", "forcedColors": "PASS", "reducedMotion": "PASS", "documentScrollRequired": false },
+  "artifacts": { "screenshots": 14, "realChromiumVideos": 3, "cycleReports": 3 },
+  "saveSchemaChanged": false,
+  "resolverChanged": false,
+  "otherPRsModified": false,
+  "mergePerformed": false,
+  "humanDesktopAndSmartphonePlaytest": "PENDING",
+  "visualGameFeelApproval": "PENDING",
+  "physicalDeviceVirtualKeyboardPenManualScreenReader": "NOT RUN"
+}

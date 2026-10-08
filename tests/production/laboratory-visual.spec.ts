@@ -5,6 +5,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 const directory = 'docs/screenshots/phase-7-5a';
 async function boot(page: Page) {
   await page.goto('/');
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Combina', exact: true })).toBeVisible();
   await page.evaluate(async () => { await navigator.serviceWorker.ready; });
 }
@@ -15,6 +16,7 @@ async function fullFixture(page: Page) {
   await page.getByLabel('JSON del salvataggio (diagnostica)').fill(JSON.stringify({ product: 'merge_discovery', saveSchemaVersion: payload.saveSchemaVersion, contentVersionSeen: payload.contentVersionSeen, payload }));
   await page.getByRole('button', { name: 'Verifica import', exact: true }).click();
   await page.getByRole('button', { name: 'Conferma sostituzione del progresso' }).click();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Combina', exact: true })).toBeVisible();
 }
 async function select(page: Page, name: string) {
