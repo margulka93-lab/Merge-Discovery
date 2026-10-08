@@ -17,13 +17,13 @@ it('fatal raw export uses exactly the existing Phase 2 recovery envelope without
   expect(await repository.load()).toEqual(before); repository.database.close();
 });
 it('a boundary retry refreshes the cached boot snapshot from the committed save without rewarding again', async () => {
-  const runtime = saveRuntime(), initialBoot = runtime.boot;
+  const runtime = await saveRuntime(), initialBoot = runtime.boot;
   const initial = await initialBoot;
   await runtime.application.combine('energy','energy');
   const committed = await runtime.application.repository.load();
   const refreshed = await refreshRuntimeBootForRetry();
   expect(refreshed!.save.xp).toBeGreaterThan(initial.save.xp);
-  expect((await saveRuntime().boot).save).toEqual(refreshed!.save);
+  expect((await (await saveRuntime()).boot).save).toEqual(refreshed!.save);
   expect(await runtime.application.repository.load()).toEqual(committed);
 });
 it('fatal recovery exports read-only data before accepting a healthy waiting build through reload', async () => {

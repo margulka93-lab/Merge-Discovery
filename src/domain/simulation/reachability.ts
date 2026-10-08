@@ -6,12 +6,13 @@ import { pairKey } from '../resolver/pair';
 export interface SimulationCheckpoint {
   depth: number; discovered: number; xp: number; revealedSetIds: string[];
 }
-export function simulateReachability(index: ContentIndex, options: { excludeSecrets?: boolean } = {}) {
+export function simulateReachability(index: ContentIndex, options: { excludeSecrets?: boolean; revisitSettled?: boolean } = {}) {
   let state: PlayerState = initialState(index);
   state = projectEvents(state, progressionEvents(state, index));
   const depths: Record<string, number> = Object.fromEntries(state.discoveredElementIds.map(id => [id, 0]));
   const checkpoints: SimulationCheckpoint[] = [{ depth: 0, discovered: state.discoveredElementIds.length, xp: state.xp, revealedSetIds: [...state.revealedSetIds] }];
   let rounds = 0;
+  const settled = new Set<string>();
   while (true) {
     const before = state;
     // Inputs are frozen per round: reported depth measures recipe layers, not file order.
@@ -19,6 +20,7 @@ export function simulateReachability(index: ContentIndex, options: { excludeSecr
     const keys = new Set([...index.recipesByPair.keys(), ...index.anomaliesByPair.keys()]);
     if (index.rules.length) for (const a of known) for (const b of known) keys.add(pairKey(a, b));
     for (const key of [...keys].sort()) {
+      if (!options.revisitSettled && settled.has(key)) continue;
       const [a, b] = key.split('::') as [string, string];
       if (!known.has(a) || !known.has(b)) continue;
       const outcome = resolve(a, b, state, index);
@@ -29,6 +31,11 @@ export function simulateReachability(index: ContentIndex, options: { excludeSecr
       }
       if (outcome.type === 'success' && outcome.isNewElement) depths[outcome.resultElementId] = rounds + 1;
       state = projectEvents(state, outcome.events);
+      // Positive requirements are monotone. With no tag rules, a pair whose every authored
+      // recipe is already discovered cannot change XP, unlocks or reachability in later rounds.
+      // Gated alternatives and unresolved anomaly payoffs stay live until actually resolved.
+      const authored = index.recipesByPair.get(key) ?? [];
+      if (!index.rules.length && authored.length && authored.every(r => state.discoveredRecipeIds.includes(r.id))) settled.add(key);
     }
     rounds++;
     const signature = (s: PlayerState) => JSON.stringify([s.xp, s.discoveredElementIds, s.discoveredRecipeIds, s.observedAnomalyIds, s.revealedSetIds, s.completedSetIds, s.completedCollectionChapterIds, s.unlockedFeatureIds, s.eligibleEraIds]);

@@ -38,6 +38,9 @@ async function combine(page: Page, a: string, b: string) {
   await page.getByRole("button", { name: "Combina", exact: true }).click();
 }
 async function usable(page: Page) {
+  // Route/style loading and font scaling may settle across frames after asynchronous boot.
+  // The same viewport bound remains mandatory; wait for layout rather than sampling a stale frame.
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width);
   const layout = await page.evaluate(() => ({
     width: document.documentElement.scrollWidth,
     offenders: [...document.querySelectorAll("*")]

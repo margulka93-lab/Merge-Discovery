@@ -19,15 +19,19 @@ export interface ImportPreview {
   readonly schemaVersion: number; readonly contentVersion: string;
   readonly discoveries: number; readonly xp: number; readonly notices: readonly SaveNotice[];
 }
+/** Platform-injected command lease; domain rules and the save schema remain platform independent. */
+export type CommandLease = <T>(action: () => Promise<T>) => Promise<T>;
+export const directLease: CommandLease = action => action();
 export class SaveApplication {
   private tail: Promise<unknown> = Promise.resolve();
   private previews = new WeakMap<ImportPreview, { save: PlayerSave; revision: number; previousValid: PlayerSave | null; notices: SaveNotice[]; newPossibilityElementIds: string[] }>();
   constructor(readonly repository: SaveRepository, readonly index: ContentIndex,
     private readonly clock: () => string = () => new Date().toISOString(),
-    private readonly migrations: readonly SaveMigration[] = []) {}
+    private readonly migrations: readonly SaveMigration[] = [],
+    private readonly lease: CommandLease = directLease) {}
 
   private serial<T>(action: () => Promise<T>): Promise<T> {
-    const result = this.tail.then(action); this.tail = result.catch(() => undefined); return result;
+    const result = this.tail.then(() => this.lease(action)); this.tail = result.catch(() => undefined); return result;
   }
   private normalized(raw: unknown) {
     if (this.index.content.manifest.minimumSaveSchemaVersion > SAVE_SCHEMA_VERSION) throw new SaveError('unsupported_schema', 'Content requires a newer save schema');

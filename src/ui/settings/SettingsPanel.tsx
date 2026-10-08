@@ -3,15 +3,20 @@ import { InformationModeControls } from './InformationModeControls';
 import type { LabModel } from '../../application/laboratory';
 import type { ApplicationSnapshot, SaveApplication } from '../../application/save/SaveApplication';
 import '../../styles/exploration.css';
+import type { ContentPackApplication } from '../../application/packs/ContentPackApplication';
+import { updates } from '../../platform/pwa/updates';
+const ContentImportPanel = lazy(() => import('../content/ContentImportPanel').then(m => ({ default: m.ContentImportPanel })));
 const SaveDiagnostics = lazy(() => import('../SaveDiagnostics').then(m => ({ default: m.SaveDiagnostics })));
 type LabModelTextScale = 'default' | 'large' | 'extra_large';
-export function SettingsPanel({ model, snapshot, busy, preferences, application, boot, accept, beginOperation }: {
+export function SettingsPanel({ model, snapshot, busy, preferences, application, boot, accept, beginOperation, contentApplication }: {
   model: LabModel; snapshot: ApplicationSnapshot; busy: boolean;
   preferences: (change: Parameters<SaveApplication['updatePreferences']>[0]) => void;
   application: SaveApplication; boot: Promise<ApplicationSnapshot>; accept: (snapshot: ApplicationSnapshot) => void;
   beginOperation: () => (() => void) | undefined;
+  contentApplication?: ContentPackApplication;
 }) {
   const [diagnosticsOpen, setDiagnosticsOpen] = useState(false);
+  const [author, setAuthor] = useState(false);
   return (
     <div className="settings-groups">
                 <InformationModeControls
@@ -79,5 +84,10 @@ export function SettingsPanel({ model, snapshot, busy, preferences, application,
                     onSnapshot={accept}
                   /></Suspense>}
                 </details>
+                {contentApplication && <fieldset><legend>Modalità autore · avanzate</legend>
+                  <label><input type="checkbox" checked={author} disabled={busy} onChange={e => setAuthor(e.target.checked)} /> Attiva modalità autore locale</label>
+                  <p>Anteprime complete, compresi contenuti nascosti. Riservate all’autrice; nessuna approvazione canonica automatica.</p>
+                  {author && <Suspense fallback={<p>Apertura importer…</p>}><ContentImportPanel application={contentApplication} busy={busy} beginOperation={beginOperation} safe={() => updates.getSnapshot().safe} /></Suspense>}
+                </fieldset>}
               </div>);
 }

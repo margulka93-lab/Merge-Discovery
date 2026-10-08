@@ -1,0 +1,614 @@
+{
+  "mode": "report",
+  "packId": "phase_8a_proposed",
+  "version": "0.1.0",
+  "reviewStatus": "proposed",
+  "contentVersion": "0.2.0",
+  "addedElements": 51,
+  "addedRecipes": 51,
+  "updated": [],
+  "removed": [],
+  "total": 118,
+  "reachable": 118,
+  "depth": 12,
+  "checkpoints": [
+    {
+      "depth": 0,
+      "discovered": 4,
+      "xp": 0,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 1,
+      "discovered": 9,
+      "xp": 520,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 2,
+      "discovered": 14,
+      "xp": 1250,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 3,
+      "discovered": 18,
+      "xp": 1790,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 4,
+      "discovered": 22,
+      "xp": 2260,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 5,
+      "discovered": 28,
+      "xp": 3135,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 6,
+      "discovered": 33,
+      "xp": 3735,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life"
+      ]
+    },
+    {
+      "depth": 7,
+      "discovered": 44,
+      "xp": 4905,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life"
+      ]
+    },
+    {
+      "depth": 8,
+      "discovered": 57,
+      "xp": 6480,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 9,
+      "discovered": 71,
+      "xp": 8415,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi",
+        "animals"
+      ]
+    },
+    {
+      "depth": 10,
+      "discovered": 97,
+      "xp": 11430,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi",
+        "animals"
+      ]
+    },
+    {
+      "depth": 11,
+      "discovered": 111,
+      "xp": 13160,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi",
+        "animals"
+      ]
+    },
+    {
+      "depth": 12,
+      "discovered": 118,
+      "xp": 14165,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi",
+        "animals"
+      ]
+    }
+  ],
+  "terminal": [
+    "nebula",
+    "asteroid",
+    "moon",
+    "star_system",
+    "galaxy",
+    "volcano",
+    "lake",
+    "desert",
+    "island",
+    "bacterium",
+    "evolution",
+    "egg",
+    "plankton",
+    "reed",
+    "water_lily",
+    "fern",
+    "lichen",
+    "frog",
+    "snail",
+    "butterfly",
+    "spider",
+    "shark",
+    "crab",
+    "owl",
+    "seagull",
+    "duck",
+    "crow",
+    "mouse",
+    "rabbit",
+    "squirrel",
+    "deer",
+    "fox",
+    "wolf",
+    "bear",
+    "goat",
+    "bat",
+    "horse",
+    "turtle",
+    "lizard",
+    "snake",
+    "bee",
+    "ant",
+    "firefly",
+    "metal",
+    "salt",
+    "beach",
+    "cave",
+    "valley",
+    "waterfall",
+    "fog",
+    "rainbow",
+    "lightning",
+    "climber",
+    "berry",
+    "aquatic_plant",
+    "thorn",
+    "pollen",
+    "truffle",
+    "glowing_fungus",
+    "mycorrhiza",
+    "yeast"
+  ],
+  "longChains": [
+    {
+      "id": "lichen",
+      "depth": 10
+    },
+    {
+      "id": "spore",
+      "depth": 10
+    },
+    {
+      "id": "owl",
+      "depth": 10
+    },
+    {
+      "id": "seagull",
+      "depth": 10
+    },
+    {
+      "id": "crow",
+      "depth": 10
+    },
+    {
+      "id": "duck",
+      "depth": 10
+    },
+    {
+      "id": "thorn",
+      "depth": 10
+    },
+    {
+      "id": "snail",
+      "depth": 10
+    },
+    {
+      "id": "goat",
+      "depth": 10
+    },
+    {
+      "id": "crab",
+      "depth": 10
+    },
+    {
+      "id": "frog",
+      "depth": 10
+    },
+    {
+      "id": "shark",
+      "depth": 10
+    },
+    {
+      "id": "glowing_fungus",
+      "depth": 10
+    },
+    {
+      "id": "mycelium",
+      "depth": 10
+    },
+    {
+      "id": "flower",
+      "depth": 10
+    },
+    {
+      "id": "bear",
+      "depth": 10
+    },
+    {
+      "id": "horse",
+      "depth": 10
+    },
+    {
+      "id": "wolf",
+      "depth": 10
+    },
+    {
+      "id": "mouse",
+      "depth": 10
+    },
+    {
+      "id": "fox",
+      "depth": 10
+    },
+    {
+      "id": "bat",
+      "depth": 10
+    },
+    {
+      "id": "lizard",
+      "depth": 10
+    },
+    {
+      "id": "turtle",
+      "depth": 10
+    },
+    {
+      "id": "grass",
+      "depth": 10
+    },
+    {
+      "id": "reed",
+      "depth": 10
+    },
+    {
+      "id": "tree",
+      "depth": 10
+    },
+    {
+      "id": "butterfly",
+      "depth": 11
+    },
+    {
+      "id": "insect",
+      "depth": 11
+    },
+    {
+      "id": "fruit",
+      "depth": 11
+    },
+    {
+      "id": "water_lily",
+      "depth": 11
+    },
+    {
+      "id": "pollen",
+      "depth": 11
+    },
+    {
+      "id": "rabbit",
+      "depth": 11
+    },
+    {
+      "id": "snake",
+      "depth": 11
+    },
+    {
+      "id": "shrub",
+      "depth": 11
+    },
+    {
+      "id": "aquatic_plant",
+      "depth": 11
+    },
+    {
+      "id": "squirrel",
+      "depth": 11
+    },
+    {
+      "id": "truffle",
+      "depth": 11
+    },
+    {
+      "id": "root",
+      "depth": 11
+    },
+    {
+      "id": "climber",
+      "depth": 11
+    },
+    {
+      "id": "forest",
+      "depth": 11
+    },
+    {
+      "id": "bee",
+      "depth": 12
+    },
+    {
+      "id": "deer",
+      "depth": 12
+    },
+    {
+      "id": "berry",
+      "depth": 12
+    },
+    {
+      "id": "yeast",
+      "depth": 12
+    },
+    {
+      "id": "firefly",
+      "depth": 12
+    },
+    {
+      "id": "ant",
+      "depth": 12
+    },
+    {
+      "id": "mycorrhiza",
+      "depth": 12
+    }
+  ],
+  "ingredientUse": [
+    {
+      "id": "soil",
+      "uses": 13
+    },
+    {
+      "id": "creature",
+      "uses": 13
+    },
+    {
+      "id": "water",
+      "uses": 12
+    },
+    {
+      "id": "mammal",
+      "uses": 9
+    },
+    {
+      "id": "time",
+      "uses": 8
+    },
+    {
+      "id": "heat",
+      "uses": 8
+    },
+    {
+      "id": "life",
+      "uses": 8
+    },
+    {
+      "id": "energy",
+      "uses": 7
+    },
+    {
+      "id": "planet",
+      "uses": 7
+    },
+    {
+      "id": "rock",
+      "uses": 7
+    }
+  ],
+  "alternateResults": [
+    "water"
+  ],
+  "unlockPaths": [
+    {
+      "id": "reveal_cosmos_via_star",
+      "target": {
+        "type": "set",
+        "setId": "cosmos"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "star"
+        }
+      ]
+    },
+    {
+      "id": "reveal_world_via_lava",
+      "target": {
+        "type": "set",
+        "setId": "world"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "lava"
+        }
+      ]
+    },
+    {
+      "id": "reveal_world_via_water",
+      "target": {
+        "type": "set",
+        "setId": "world"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "water"
+        }
+      ]
+    },
+    {
+      "id": "reveal_life_via_life",
+      "target": {
+        "type": "set",
+        "setId": "life"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "life"
+        }
+      ]
+    },
+    {
+      "id": "reveal_plants_via_seed",
+      "target": {
+        "type": "set",
+        "setId": "plants"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "seed"
+        }
+      ]
+    },
+    {
+      "id": "reveal_plants_via_moss",
+      "target": {
+        "type": "set",
+        "setId": "plants"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "moss"
+        }
+      ]
+    },
+    {
+      "id": "reveal_fungi_via_mold",
+      "target": {
+        "type": "set",
+        "setId": "fungi"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "mold"
+        }
+      ]
+    },
+    {
+      "id": "reveal_animals_via_fish",
+      "target": {
+        "type": "set",
+        "setId": "animals"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "fish"
+        }
+      ]
+    }
+  ],
+  "unreachableBonus": [],
+  "unreachableSecret": [],
+  "setConnections": [
+    {
+      "id": "origins",
+      "inbound": 0
+    },
+    {
+      "id": "cosmos",
+      "inbound": 5
+    },
+    {
+      "id": "world",
+      "inbound": 19
+    },
+    {
+      "id": "life",
+      "inbound": 7
+    },
+    {
+      "id": "plants",
+      "inbound": 14
+    },
+    {
+      "id": "fungi",
+      "inbound": 9
+    },
+    {
+      "id": "animals",
+      "inbound": 31
+    }
+  ],
+  "completedCollections": [
+    "children_of_stars",
+    "water_cycle",
+    "rocky_world",
+    "green_everywhere"
+  ],
+  "warnings": [
+    "Catene di almeno 10 passaggi: la difficoltà richiede revisione umana.",
+    "Elementi terminali: verificare il valore collezionabile.",
+    "Artwork incompleto: fallback simbolico esplicito."
+  ],
+  "compatibility": {
+    "unchangedXpAndDiscoveries": true,
+    "notices": []
+  },
+  "assetBytes": 0,
+  "canonicalApproval": "PENDING / installazione locale non approva il canone"
+}
