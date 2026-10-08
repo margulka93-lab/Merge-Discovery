@@ -1,0 +1,976 @@
+{
+  "status": "PROPOSED_ONLY_NOT_LOADED_BY_GAME",
+  "approval": "PENDING",
+  "contentVersion": "0.2.0",
+  "seedPolicy": "67 original definitions and 64 recipes remain unchanged",
+  "rejected": [
+    {
+      "id": "crystal",
+      "inputs": [
+        "rock",
+        "time"
+      ],
+      "pairKey": "rock::time",
+      "reason": "Existing locked seed outcome is soil. No override, condition or replacement pair authored."
+    },
+    {
+      "id": "carnivorous_plant",
+      "inputs": [
+        "flower",
+        "insect"
+      ],
+      "pairKey": "flower::insect",
+      "reason": "Collides within the proposal with insect + flower -> bee. No priority trick or replacement pair authored."
+    }
+  ],
+  "candidates": [
+    {
+      "elementId": "fish",
+      "name": "Pesce",
+      "recipeId": "phase8a_fish",
+      "inputs": [
+        "creature",
+        "ocean"
+      ],
+      "pairKey": "creature::ocean",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": [
+        "shark"
+      ]
+    },
+    {
+      "elementId": "mammal",
+      "name": "Mammifero",
+      "recipeId": "phase8a_mammal",
+      "inputs": [
+        "creature",
+        "soil"
+      ],
+      "pairKey": "creature::soil",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": [
+        "mouse",
+        "rabbit",
+        "squirrel",
+        "deer",
+        "fox",
+        "wolf",
+        "bear",
+        "bat",
+        "horse"
+      ]
+    },
+    {
+      "elementId": "bird",
+      "name": "Uccello",
+      "recipeId": "phase8a_bird",
+      "inputs": [
+        "creature",
+        "wind"
+      ],
+      "pairKey": "creature::wind",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": [
+        "owl",
+        "seagull",
+        "duck",
+        "crow"
+      ]
+    },
+    {
+      "elementId": "reptile",
+      "name": "Rettile",
+      "recipeId": "phase8a_reptile",
+      "inputs": [
+        "creature",
+        "rock"
+      ],
+      "pairKey": "creature::rock",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": [
+        "turtle",
+        "lizard",
+        "snake"
+      ]
+    },
+    {
+      "elementId": "insect",
+      "name": "Insetto",
+      "recipeId": "phase8a_insect",
+      "inputs": [
+        "creature",
+        "grass"
+      ],
+      "pairKey": "creature::grass",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": [
+        "bee",
+        "ant",
+        "firefly",
+        "carnivorous_plant"
+      ]
+    },
+    {
+      "elementId": "frog",
+      "name": "Rana",
+      "recipeId": "phase8a_frog",
+      "inputs": [
+        "creature",
+        "swamp"
+      ],
+      "pairKey": "creature::swamp",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "snail",
+      "name": "Lumaca",
+      "recipeId": "phase8a_snail",
+      "inputs": [
+        "creature",
+        "humidity"
+      ],
+      "pairKey": "creature::humidity",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "butterfly",
+      "name": "Farfalla",
+      "recipeId": "phase8a_butterfly",
+      "inputs": [
+        "creature",
+        "flower"
+      ],
+      "pairKey": "creature::flower",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "spider",
+      "name": "Ragno",
+      "recipeId": "phase8a_spider",
+      "inputs": [
+        "creature",
+        "shadow"
+      ],
+      "pairKey": "creature::shadow",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "shark",
+      "name": "Squalo",
+      "recipeId": "phase8a_shark",
+      "inputs": [
+        "fish",
+        "shadow"
+      ],
+      "pairKey": "fish::shadow",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "crab",
+      "name": "Granchio",
+      "recipeId": "phase8a_crab",
+      "inputs": [
+        "creature",
+        "mud"
+      ],
+      "pairKey": "creature::mud",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "owl",
+      "name": "Gufo",
+      "recipeId": "phase8a_owl",
+      "inputs": [
+        "bird",
+        "night"
+      ],
+      "pairKey": "bird::night",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "seagull",
+      "name": "Gabbiano",
+      "recipeId": "phase8a_seagull",
+      "inputs": [
+        "bird",
+        "ocean"
+      ],
+      "pairKey": "bird::ocean",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "duck",
+      "name": "Anatra",
+      "recipeId": "phase8a_duck",
+      "inputs": [
+        "bird",
+        "water"
+      ],
+      "pairKey": "bird::water",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "crow",
+      "name": "Corvo",
+      "recipeId": "phase8a_crow",
+      "inputs": [
+        "bird",
+        "shadow"
+      ],
+      "pairKey": "bird::shadow",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "mouse",
+      "name": "Topo",
+      "recipeId": "phase8a_mouse",
+      "inputs": [
+        "mammal",
+        "seed"
+      ],
+      "pairKey": "mammal::seed",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "rabbit",
+      "name": "Coniglio",
+      "recipeId": "phase8a_rabbit",
+      "inputs": [
+        "mammal",
+        "grass"
+      ],
+      "pairKey": "grass::mammal",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "squirrel",
+      "name": "Scoiattolo",
+      "recipeId": "phase8a_squirrel",
+      "inputs": [
+        "mammal",
+        "tree"
+      ],
+      "pairKey": "mammal::tree",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "deer",
+      "name": "Cervo",
+      "recipeId": "phase8a_deer",
+      "inputs": [
+        "mammal",
+        "forest"
+      ],
+      "pairKey": "forest::mammal",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "fox",
+      "name": "Volpe",
+      "recipeId": "phase8a_fox",
+      "inputs": [
+        "mammal",
+        "shadow"
+      ],
+      "pairKey": "mammal::shadow",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "wolf",
+      "name": "Lupo",
+      "recipeId": "phase8a_wolf",
+      "inputs": [
+        "mammal",
+        "night"
+      ],
+      "pairKey": "mammal::night",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "rare",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "bear",
+      "name": "Orso",
+      "recipeId": "phase8a_bear",
+      "inputs": [
+        "mammal",
+        "mountain"
+      ],
+      "pairKey": "mammal::mountain",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "rare",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "goat",
+      "name": "Capra",
+      "recipeId": "phase8a_goat",
+      "inputs": [
+        "creature",
+        "mountain"
+      ],
+      "pairKey": "creature::mountain",
+      "set": "animals",
+      "classification": "preferred-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "docs/LIFE_PLANTS_FUNGI_ANIMALS.md or newer Humanity mammal bridge",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "bat",
+      "name": "Pipistrello",
+      "recipeId": "phase8a_bat",
+      "inputs": [
+        "mammal",
+        "wind"
+      ],
+      "pairKey": "mammal::wind",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "horse",
+      "name": "Cavallo",
+      "recipeId": "phase8a_horse",
+      "inputs": [
+        "mammal",
+        "movement"
+      ],
+      "pairKey": "mammal::movement",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "turtle",
+      "name": "Tartaruga",
+      "recipeId": "phase8a_turtle",
+      "inputs": [
+        "reptile",
+        "water"
+      ],
+      "pairKey": "reptile::water",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "lizard",
+      "name": "Lucertola",
+      "recipeId": "phase8a_lizard",
+      "inputs": [
+        "reptile",
+        "soil"
+      ],
+      "pairKey": "reptile::soil",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "snake",
+      "name": "Serpente",
+      "recipeId": "phase8a_snake",
+      "inputs": [
+        "reptile",
+        "grass"
+      ],
+      "pairKey": "grass::reptile",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "bee",
+      "name": "Ape",
+      "recipeId": "phase8a_bee",
+      "inputs": [
+        "insect",
+        "flower"
+      ],
+      "pairKey": "flower::insect",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "ant",
+      "name": "Formica",
+      "recipeId": "phase8a_ant",
+      "inputs": [
+        "insect",
+        "soil"
+      ],
+      "pairKey": "insect::soil",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "firefly",
+      "name": "Lucciola",
+      "recipeId": "phase8a_firefly",
+      "inputs": [
+        "insect",
+        "light"
+      ],
+      "pairKey": "insect::light",
+      "set": "animals",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "required",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "metal",
+      "name": "Metallo",
+      "recipeId": "phase8a_metal",
+      "inputs": [
+        "heat",
+        "rock"
+      ],
+      "pairKey": "heat::rock",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "salt",
+      "name": "Sale",
+      "recipeId": "phase8a_salt",
+      "inputs": [
+        "ocean",
+        "heat"
+      ],
+      "pairKey": "heat::ocean",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "beach",
+      "name": "Spiaggia",
+      "recipeId": "phase8a_beach",
+      "inputs": [
+        "sand",
+        "ocean"
+      ],
+      "pairKey": "ocean::sand",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "cave",
+      "name": "Grotta",
+      "recipeId": "phase8a_cave",
+      "inputs": [
+        "rock",
+        "void"
+      ],
+      "pairKey": "rock::void",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "valley",
+      "name": "Valle",
+      "recipeId": "phase8a_valley",
+      "inputs": [
+        "mountain",
+        "soil"
+      ],
+      "pairKey": "mountain::soil",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "waterfall",
+      "name": "Cascata",
+      "recipeId": "phase8a_waterfall",
+      "inputs": [
+        "mountain",
+        "river"
+      ],
+      "pairKey": "mountain::river",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "fog",
+      "name": "Nebbia",
+      "recipeId": "phase8a_fog",
+      "inputs": [
+        "humidity",
+        "night"
+      ],
+      "pairKey": "humidity::night",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "rainbow",
+      "name": "Arcobaleno",
+      "recipeId": "phase8a_rainbow",
+      "inputs": [
+        "rain",
+        "light"
+      ],
+      "pairKey": "light::rain",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "lightning",
+      "name": "Fulmine",
+      "recipeId": "phase8a_lightning",
+      "inputs": [
+        "cloud",
+        "energy"
+      ],
+      "pairKey": "cloud::energy",
+      "set": "world",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "shrub",
+      "name": "Cespuglio",
+      "recipeId": "phase8a_shrub",
+      "inputs": [
+        "grass",
+        "tree"
+      ],
+      "pairKey": "grass::tree",
+      "set": "plants",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": [
+        "berry"
+      ]
+    },
+    {
+      "elementId": "climber",
+      "name": "Rampicante",
+      "recipeId": "phase8a_climber",
+      "inputs": [
+        "sprout",
+        "tree"
+      ],
+      "pairKey": "sprout::tree",
+      "set": "plants",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "berry",
+      "name": "Bacca",
+      "recipeId": "phase8a_berry",
+      "inputs": [
+        "shrub",
+        "fruit"
+      ],
+      "pairKey": "fruit::shrub",
+      "set": "plants",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "root",
+      "name": "Radice",
+      "recipeId": "phase8a_root",
+      "inputs": [
+        "tree",
+        "soil"
+      ],
+      "pairKey": "soil::tree",
+      "set": "plants",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": [
+        "mycorrhiza"
+      ]
+    },
+    {
+      "elementId": "aquatic_plant",
+      "name": "Pianta acquatica",
+      "recipeId": "phase8a_aquatic_plant",
+      "inputs": [
+        "grass",
+        "water"
+      ],
+      "pairKey": "grass::water",
+      "set": "plants",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "thorn",
+      "name": "Spina",
+      "recipeId": "phase8a_thorn",
+      "inputs": [
+        "cactus",
+        "rock"
+      ],
+      "pairKey": "cactus::rock",
+      "set": "plants",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "pollen",
+      "name": "Polline",
+      "recipeId": "phase8a_pollen",
+      "inputs": [
+        "flower",
+        "wind"
+      ],
+      "pairKey": "flower::wind",
+      "set": "plants",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "truffle",
+      "name": "Tartufo",
+      "recipeId": "phase8a_truffle",
+      "inputs": [
+        "mycelium",
+        "tree"
+      ],
+      "pairKey": "mycelium::tree",
+      "set": "fungi",
+      "classification": "new-proposal",
+      "rarity": "rare",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "glowing_fungus",
+      "name": "Fungo bioluminescente",
+      "recipeId": "phase8a_glowing_fungus",
+      "inputs": [
+        "fungus",
+        "shadow"
+      ],
+      "pairKey": "fungus::shadow",
+      "set": "fungi",
+      "classification": "new-proposal",
+      "rarity": "rare",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "mycorrhiza",
+      "name": "Micorriza",
+      "recipeId": "phase8a_mycorrhiza",
+      "inputs": [
+        "mycelium",
+        "root"
+      ],
+      "pairKey": "mycelium::root",
+      "set": "fungi",
+      "classification": "new-proposal",
+      "rarity": "rare",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    },
+    {
+      "elementId": "yeast",
+      "name": "Lievito",
+      "recipeId": "phase8a_yeast",
+      "inputs": [
+        "fruit",
+        "spore"
+      ],
+      "pairKey": "fruit::spore",
+      "set": "fungi",
+      "classification": "new-proposal",
+      "rarity": "common",
+      "visibility": "announced",
+      "completion": "bonus",
+      "approval": "PENDING",
+      "source": "New association-based draft; must be reviewed",
+      "downstreamReuse": []
+    }
+  ]
+}

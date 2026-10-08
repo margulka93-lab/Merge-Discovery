@@ -1,0 +1,1623 @@
+{
+  "manifest": {
+    "contentVersion": "0.2.0"
+  },
+  "elements": [
+    {
+      "id": "fish",
+      "nameKey": "elements.fish.name",
+      "descriptionKey": "elements.fish.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "aquatic"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 100,
+      "artKey": "elements.aquatic"
+    },
+    {
+      "id": "mammal",
+      "nameKey": "elements.mammal.name",
+      "descriptionKey": "elements.mammal.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 101,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "bird",
+      "nameKey": "elements.bird.name",
+      "descriptionKey": "elements.bird.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "bird"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 102,
+      "artKey": "elements.bird"
+    },
+    {
+      "id": "reptile",
+      "nameKey": "elements.reptile.name",
+      "descriptionKey": "elements.reptile.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "reptile"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 103,
+      "artKey": "elements.reptile"
+    },
+    {
+      "id": "insect",
+      "nameKey": "elements.insect.name",
+      "descriptionKey": "elements.insect.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "insect"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 104,
+      "artKey": "elements.insect"
+    },
+    {
+      "id": "frog",
+      "nameKey": "elements.frog.name",
+      "descriptionKey": "elements.frog.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "wetland"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 105,
+      "artKey": "elements.wetland"
+    },
+    {
+      "id": "snail",
+      "nameKey": "elements.snail.name",
+      "descriptionKey": "elements.snail.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "small_creature"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 106,
+      "artKey": "elements.small_creature"
+    },
+    {
+      "id": "butterfly",
+      "nameKey": "elements.butterfly.name",
+      "descriptionKey": "elements.butterfly.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "insect"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 107,
+      "artKey": "elements.insect"
+    },
+    {
+      "id": "spider",
+      "nameKey": "elements.spider.name",
+      "descriptionKey": "elements.spider.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "small_creature"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 108,
+      "artKey": "elements.small_creature"
+    },
+    {
+      "id": "shark",
+      "nameKey": "elements.shark.name",
+      "descriptionKey": "elements.shark.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "aquatic"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 109,
+      "artKey": "elements.aquatic"
+    },
+    {
+      "id": "crab",
+      "nameKey": "elements.crab.name",
+      "descriptionKey": "elements.crab.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "wetland"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 110,
+      "artKey": "elements.wetland"
+    },
+    {
+      "id": "owl",
+      "nameKey": "elements.owl.name",
+      "descriptionKey": "elements.owl.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "bird"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 111,
+      "artKey": "elements.bird"
+    },
+    {
+      "id": "seagull",
+      "nameKey": "elements.seagull.name",
+      "descriptionKey": "elements.seagull.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "bird"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 112,
+      "artKey": "elements.bird"
+    },
+    {
+      "id": "duck",
+      "nameKey": "elements.duck.name",
+      "descriptionKey": "elements.duck.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "bird"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 113,
+      "artKey": "elements.bird"
+    },
+    {
+      "id": "crow",
+      "nameKey": "elements.crow.name",
+      "descriptionKey": "elements.crow.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "bird"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 114,
+      "artKey": "elements.bird"
+    },
+    {
+      "id": "mouse",
+      "nameKey": "elements.mouse.name",
+      "descriptionKey": "elements.mouse.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 115,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "rabbit",
+      "nameKey": "elements.rabbit.name",
+      "descriptionKey": "elements.rabbit.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 116,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "squirrel",
+      "nameKey": "elements.squirrel.name",
+      "descriptionKey": "elements.squirrel.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 117,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "deer",
+      "nameKey": "elements.deer.name",
+      "descriptionKey": "elements.deer.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 118,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "fox",
+      "nameKey": "elements.fox.name",
+      "descriptionKey": "elements.fox.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 119,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "wolf",
+      "nameKey": "elements.wolf.name",
+      "descriptionKey": "elements.wolf.description",
+      "setId": "animals",
+      "rarity": "rare",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 120,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "bear",
+      "nameKey": "elements.bear.name",
+      "descriptionKey": "elements.bear.description",
+      "setId": "animals",
+      "rarity": "rare",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 121,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "goat",
+      "nameKey": "elements.goat.name",
+      "descriptionKey": "elements.goat.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 122,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "bat",
+      "nameKey": "elements.bat.name",
+      "descriptionKey": "elements.bat.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 123,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "horse",
+      "nameKey": "elements.horse.name",
+      "descriptionKey": "elements.horse.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "mammal"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 124,
+      "artKey": "elements.mammal"
+    },
+    {
+      "id": "turtle",
+      "nameKey": "elements.turtle.name",
+      "descriptionKey": "elements.turtle.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "reptile"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 125,
+      "artKey": "elements.reptile"
+    },
+    {
+      "id": "lizard",
+      "nameKey": "elements.lizard.name",
+      "descriptionKey": "elements.lizard.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "reptile"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 126,
+      "artKey": "elements.reptile"
+    },
+    {
+      "id": "snake",
+      "nameKey": "elements.snake.name",
+      "descriptionKey": "elements.snake.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "reptile"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 127,
+      "artKey": "elements.reptile"
+    },
+    {
+      "id": "bee",
+      "nameKey": "elements.bee.name",
+      "descriptionKey": "elements.bee.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "insect"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 128,
+      "artKey": "elements.insect"
+    },
+    {
+      "id": "ant",
+      "nameKey": "elements.ant.name",
+      "descriptionKey": "elements.ant.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "insect"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 129,
+      "artKey": "elements.insect"
+    },
+    {
+      "id": "firefly",
+      "nameKey": "elements.firefly.name",
+      "descriptionKey": "elements.firefly.description",
+      "setId": "animals",
+      "rarity": "common",
+      "tags": [
+        "insect"
+      ],
+      "completion": "required",
+      "visibility": "announced",
+      "sortOrder": 130,
+      "artKey": "elements.insect"
+    },
+    {
+      "id": "metal",
+      "nameKey": "elements.metal.name",
+      "descriptionKey": "elements.metal.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 131,
+      "artKey": "elements.mineral"
+    },
+    {
+      "id": "salt",
+      "nameKey": "elements.salt.name",
+      "descriptionKey": "elements.salt.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 133,
+      "artKey": "elements.mineral"
+    },
+    {
+      "id": "beach",
+      "nameKey": "elements.beach.name",
+      "descriptionKey": "elements.beach.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 134,
+      "artKey": "elements.water"
+    },
+    {
+      "id": "cave",
+      "nameKey": "elements.cave.name",
+      "descriptionKey": "elements.cave.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 135,
+      "artKey": "elements.mineral"
+    },
+    {
+      "id": "valley",
+      "nameKey": "elements.valley.name",
+      "descriptionKey": "elements.valley.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 136,
+      "artKey": "elements.mineral"
+    },
+    {
+      "id": "waterfall",
+      "nameKey": "elements.waterfall.name",
+      "descriptionKey": "elements.waterfall.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 137,
+      "artKey": "elements.water"
+    },
+    {
+      "id": "fog",
+      "nameKey": "elements.fog.name",
+      "descriptionKey": "elements.fog.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 138,
+      "artKey": "elements.cloud"
+    },
+    {
+      "id": "rainbow",
+      "nameKey": "elements.rainbow.name",
+      "descriptionKey": "elements.rainbow.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 139,
+      "artKey": "elements.light"
+    },
+    {
+      "id": "lightning",
+      "nameKey": "elements.lightning.name",
+      "descriptionKey": "elements.lightning.description",
+      "setId": "world",
+      "rarity": "common",
+      "tags": [
+        "world"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 140,
+      "artKey": "elements.energy"
+    },
+    {
+      "id": "shrub",
+      "nameKey": "elements.shrub.name",
+      "descriptionKey": "elements.shrub.description",
+      "setId": "plants",
+      "rarity": "common",
+      "tags": [
+        "plants"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 141,
+      "artKey": "elements.plant"
+    },
+    {
+      "id": "climber",
+      "nameKey": "elements.climber.name",
+      "descriptionKey": "elements.climber.description",
+      "setId": "plants",
+      "rarity": "common",
+      "tags": [
+        "plants"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 142,
+      "artKey": "elements.plant"
+    },
+    {
+      "id": "berry",
+      "nameKey": "elements.berry.name",
+      "descriptionKey": "elements.berry.description",
+      "setId": "plants",
+      "rarity": "common",
+      "tags": [
+        "plants"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 143,
+      "artKey": "elements.plant"
+    },
+    {
+      "id": "root",
+      "nameKey": "elements.root.name",
+      "descriptionKey": "elements.root.description",
+      "setId": "plants",
+      "rarity": "common",
+      "tags": [
+        "plants"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 144,
+      "artKey": "elements.plant"
+    },
+    {
+      "id": "aquatic_plant",
+      "nameKey": "elements.aquatic_plant.name",
+      "descriptionKey": "elements.aquatic_plant.description",
+      "setId": "plants",
+      "rarity": "common",
+      "tags": [
+        "plants"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 146,
+      "artKey": "elements.plant"
+    },
+    {
+      "id": "thorn",
+      "nameKey": "elements.thorn.name",
+      "descriptionKey": "elements.thorn.description",
+      "setId": "plants",
+      "rarity": "common",
+      "tags": [
+        "plants"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 147,
+      "artKey": "elements.plant"
+    },
+    {
+      "id": "pollen",
+      "nameKey": "elements.pollen.name",
+      "descriptionKey": "elements.pollen.description",
+      "setId": "plants",
+      "rarity": "common",
+      "tags": [
+        "plants"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 148,
+      "artKey": "elements.plant"
+    },
+    {
+      "id": "truffle",
+      "nameKey": "elements.truffle.name",
+      "descriptionKey": "elements.truffle.description",
+      "setId": "fungi",
+      "rarity": "rare",
+      "tags": [
+        "fungi"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 149,
+      "artKey": "elements.fungus"
+    },
+    {
+      "id": "glowing_fungus",
+      "nameKey": "elements.glowing_fungus.name",
+      "descriptionKey": "elements.glowing_fungus.description",
+      "setId": "fungi",
+      "rarity": "rare",
+      "tags": [
+        "fungi"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 150,
+      "artKey": "elements.fungus"
+    },
+    {
+      "id": "mycorrhiza",
+      "nameKey": "elements.mycorrhiza.name",
+      "descriptionKey": "elements.mycorrhiza.description",
+      "setId": "fungi",
+      "rarity": "rare",
+      "tags": [
+        "fungi"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 151,
+      "artKey": "elements.fungus"
+    },
+    {
+      "id": "yeast",
+      "nameKey": "elements.yeast.name",
+      "descriptionKey": "elements.yeast.description",
+      "setId": "fungi",
+      "rarity": "common",
+      "tags": [
+        "fungi"
+      ],
+      "completion": "bonus",
+      "visibility": "announced",
+      "sortOrder": 152,
+      "artKey": "elements.fungus"
+    }
+  ],
+  "sets": [
+    {
+      "id": "animals",
+      "nameKey": "sets.animals.name",
+      "descriptionKey": "sets.animals.description",
+      "eraId": "life",
+      "visibility": "announced",
+      "completionMode": "required_elements",
+      "accentToken": "--accent-animals",
+      "iconKey": "sets.animals",
+      "sortOrder": 6
+    }
+  ],
+  "recipes": [
+    {
+      "id": "phase8a_fish",
+      "inputs": [
+        "creature",
+        "ocean"
+      ],
+      "resultElementId": "fish",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_mammal",
+      "inputs": [
+        "creature",
+        "soil"
+      ],
+      "resultElementId": "mammal",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_bird",
+      "inputs": [
+        "creature",
+        "wind"
+      ],
+      "resultElementId": "bird",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_reptile",
+      "inputs": [
+        "creature",
+        "rock"
+      ],
+      "resultElementId": "reptile",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_insect",
+      "inputs": [
+        "creature",
+        "grass"
+      ],
+      "resultElementId": "insect",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_frog",
+      "inputs": [
+        "creature",
+        "swamp"
+      ],
+      "resultElementId": "frog",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_snail",
+      "inputs": [
+        "creature",
+        "humidity"
+      ],
+      "resultElementId": "snail",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_butterfly",
+      "inputs": [
+        "creature",
+        "flower"
+      ],
+      "resultElementId": "butterfly",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_spider",
+      "inputs": [
+        "creature",
+        "shadow"
+      ],
+      "resultElementId": "spider",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_shark",
+      "inputs": [
+        "fish",
+        "shadow"
+      ],
+      "resultElementId": "shark",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_crab",
+      "inputs": [
+        "creature",
+        "mud"
+      ],
+      "resultElementId": "crab",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_owl",
+      "inputs": [
+        "bird",
+        "night"
+      ],
+      "resultElementId": "owl",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_seagull",
+      "inputs": [
+        "bird",
+        "ocean"
+      ],
+      "resultElementId": "seagull",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_duck",
+      "inputs": [
+        "bird",
+        "water"
+      ],
+      "resultElementId": "duck",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_crow",
+      "inputs": [
+        "bird",
+        "shadow"
+      ],
+      "resultElementId": "crow",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_mouse",
+      "inputs": [
+        "mammal",
+        "seed"
+      ],
+      "resultElementId": "mouse",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_rabbit",
+      "inputs": [
+        "mammal",
+        "grass"
+      ],
+      "resultElementId": "rabbit",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_squirrel",
+      "inputs": [
+        "mammal",
+        "tree"
+      ],
+      "resultElementId": "squirrel",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_deer",
+      "inputs": [
+        "mammal",
+        "forest"
+      ],
+      "resultElementId": "deer",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_fox",
+      "inputs": [
+        "mammal",
+        "shadow"
+      ],
+      "resultElementId": "fox",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_wolf",
+      "inputs": [
+        "mammal",
+        "night"
+      ],
+      "resultElementId": "wolf",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_bear",
+      "inputs": [
+        "mammal",
+        "mountain"
+      ],
+      "resultElementId": "bear",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_goat",
+      "inputs": [
+        "creature",
+        "mountain"
+      ],
+      "resultElementId": "goat",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_bat",
+      "inputs": [
+        "mammal",
+        "wind"
+      ],
+      "resultElementId": "bat",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_horse",
+      "inputs": [
+        "mammal",
+        "movement"
+      ],
+      "resultElementId": "horse",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_turtle",
+      "inputs": [
+        "reptile",
+        "water"
+      ],
+      "resultElementId": "turtle",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_lizard",
+      "inputs": [
+        "reptile",
+        "soil"
+      ],
+      "resultElementId": "lizard",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_snake",
+      "inputs": [
+        "reptile",
+        "grass"
+      ],
+      "resultElementId": "snake",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_bee",
+      "inputs": [
+        "insect",
+        "flower"
+      ],
+      "resultElementId": "bee",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_ant",
+      "inputs": [
+        "insect",
+        "soil"
+      ],
+      "resultElementId": "ant",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_firefly",
+      "inputs": [
+        "insect",
+        "light"
+      ],
+      "resultElementId": "firefly",
+      "kind": "explicit",
+      "discovery": "normal",
+      "requirements": [
+        {
+          "type": "set_revealed",
+          "setId": "animals"
+        }
+      ],
+      "gateBehavior": "dormant"
+    },
+    {
+      "id": "phase8a_metal",
+      "inputs": [
+        "heat",
+        "rock"
+      ],
+      "resultElementId": "metal",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_salt",
+      "inputs": [
+        "ocean",
+        "heat"
+      ],
+      "resultElementId": "salt",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_beach",
+      "inputs": [
+        "sand",
+        "ocean"
+      ],
+      "resultElementId": "beach",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_cave",
+      "inputs": [
+        "rock",
+        "void"
+      ],
+      "resultElementId": "cave",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_valley",
+      "inputs": [
+        "mountain",
+        "soil"
+      ],
+      "resultElementId": "valley",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_waterfall",
+      "inputs": [
+        "mountain",
+        "river"
+      ],
+      "resultElementId": "waterfall",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_fog",
+      "inputs": [
+        "humidity",
+        "night"
+      ],
+      "resultElementId": "fog",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_rainbow",
+      "inputs": [
+        "rain",
+        "light"
+      ],
+      "resultElementId": "rainbow",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_lightning",
+      "inputs": [
+        "cloud",
+        "energy"
+      ],
+      "resultElementId": "lightning",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_shrub",
+      "inputs": [
+        "grass",
+        "tree"
+      ],
+      "resultElementId": "shrub",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_climber",
+      "inputs": [
+        "sprout",
+        "tree"
+      ],
+      "resultElementId": "climber",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_berry",
+      "inputs": [
+        "shrub",
+        "fruit"
+      ],
+      "resultElementId": "berry",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_root",
+      "inputs": [
+        "tree",
+        "soil"
+      ],
+      "resultElementId": "root",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_aquatic_plant",
+      "inputs": [
+        "grass",
+        "water"
+      ],
+      "resultElementId": "aquatic_plant",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_thorn",
+      "inputs": [
+        "cactus",
+        "rock"
+      ],
+      "resultElementId": "thorn",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_pollen",
+      "inputs": [
+        "flower",
+        "wind"
+      ],
+      "resultElementId": "pollen",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_truffle",
+      "inputs": [
+        "mycelium",
+        "tree"
+      ],
+      "resultElementId": "truffle",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_glowing_fungus",
+      "inputs": [
+        "fungus",
+        "shadow"
+      ],
+      "resultElementId": "glowing_fungus",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_mycorrhiza",
+      "inputs": [
+        "mycelium",
+        "root"
+      ],
+      "resultElementId": "mycorrhiza",
+      "kind": "explicit",
+      "discovery": "normal"
+    },
+    {
+      "id": "phase8a_yeast",
+      "inputs": [
+        "fruit",
+        "spore"
+      ],
+      "resultElementId": "yeast",
+      "kind": "explicit",
+      "discovery": "normal"
+    }
+  ],
+  "collections": [],
+  "anomalies": [
+    {
+      "id": "wolf_moon_instability",
+      "inputs": [
+        "wolf",
+        "moon"
+      ],
+      "visibility": "archive",
+      "category": "mythic",
+      "messageKey": "anomalies.wolf_moon_instability.message"
+    }
+  ],
+  "unlocks": [
+    {
+      "id": "reveal_animals_via_fish",
+      "target": {
+        "type": "set",
+        "setId": "animals"
+      },
+      "requirements": [
+        {
+          "type": "element_discovered",
+          "elementId": "fish"
+        }
+      ],
+      "revealMode": "normal"
+    }
+  ],
+  "setAnnouncements": [
+    {
+      "setId": "animals",
+      "paths": [
+        [
+          {
+            "type": "element_discovered",
+            "elementId": "creature"
+          }
+        ]
+      ]
+    }
+  ],
+  "collectionReveals": [],
+  "registries": {
+    "tags": [
+      "aquatic",
+      "mammal",
+      "bird",
+      "reptile",
+      "insect",
+      "wetland",
+      "small_creature",
+      "world",
+      "plants",
+      "fungi"
+    ],
+    "eras": []
+  },
+  "locales": {
+    "it": {
+      "sets.animals.name": "Animali",
+      "sets.animals.description": "Ali, pinne, zampe: strade diverse della vita.",
+      "anomalies.wolf_moon_instability.message": "La notte risponde al richiamo, ma la forma non si chiude.",
+      "elements.fish.name": "Pesce",
+      "elements.fish.description": "Un corpo che attraversa l’acqua con pinne e branchie.",
+      "elements.mammal.name": "Mammifero",
+      "elements.mammal.description": "Il ramo della vita che nutre i piccoli e custodisce il calore.",
+      "elements.bird.name": "Uccello",
+      "elements.bird.description": "Piume e ali aprono una strada nel vento.",
+      "elements.reptile.name": "Rettile",
+      "elements.reptile.description": "Squame e tepore della pietra accompagnano questo ramo animale.",
+      "elements.insect.name": "Insetto",
+      "elements.insect.description": "Una piccola forma a sei zampe attraversa il prato.",
+      "elements.frog.name": "Rana",
+      "elements.frog.description": "Una voce della palude vive tra acqua e terra.",
+      "elements.snail.name": "Lumaca",
+      "elements.snail.description": "Un cammino lento lascia una traccia nell’umidità.",
+      "elements.butterfly.name": "Farfalla",
+      "elements.butterfly.description": "Ali leggere visitano le corolle.",
+      "elements.spider.name": "Ragno",
+      "elements.spider.description": "Una trama sottile prende forma negli angoli in ombra.",
+      "elements.shark.name": "Squalo",
+      "elements.shark.description": "Una sagoma attraversa le acque profonde.",
+      "elements.crab.name": "Granchio",
+      "elements.crab.description": "Chele e carapace incontrano il fondo fangoso.",
+      "elements.owl.name": "Gufo",
+      "elements.owl.description": "Un volo silenzioso osserva la notte.",
+      "elements.seagull.name": "Gabbiano",
+      "elements.seagull.description": "Il vento del mare porta un richiamo di ali.",
+      "elements.duck.name": "Anatra",
+      "elements.duck.description": "Piume e zampe palmate trovano un’altra via sull’acqua.",
+      "elements.crow.name": "Corvo",
+      "elements.crow.description": "Una voce scura e una mente attenta.",
+      "elements.mouse.name": "Topo",
+      "elements.mouse.description": "Piccole zampe cercano semi tra i fili d’erba.",
+      "elements.rabbit.name": "Coniglio",
+      "elements.rabbit.description": "Orecchie attente emergono dal prato.",
+      "elements.squirrel.name": "Scoiattolo",
+      "elements.squirrel.description": "Una coda leggera percorre i rami.",
+      "elements.deer.name": "Cervo",
+      "elements.deer.description": "Un passo quieto abita il margine della foresta.",
+      "elements.fox.name": "Volpe",
+      "elements.fox.description": "Una presenza furtiva percorre il crepuscolo.",
+      "elements.wolf.name": "Lupo",
+      "elements.wolf.description": "Un richiamo attraversa il buio della notte.",
+      "elements.bear.name": "Orso",
+      "elements.bear.description": "Una grande presenza percorre boschi e pendii.",
+      "elements.goat.name": "Capra",
+      "elements.goat.description": "Zoccoli sicuri trovano passaggi sui pendii.",
+      "elements.bat.name": "Pipistrello",
+      "elements.bat.description": "Il volo appartiene anche a un ramo senza piume.",
+      "elements.horse.name": "Cavallo",
+      "elements.horse.description": "La corsa dà una forma riconoscibile al movimento.",
+      "elements.turtle.name": "Tartaruga",
+      "elements.turtle.description": "Un carapace accompagna un cammino tra terra e acqua.",
+      "elements.lizard.name": "Lucertola",
+      "elements.lizard.description": "Un piccolo corpo squamato corre vicino al suolo.",
+      "elements.snake.name": "Serpente",
+      "elements.snake.description": "Una linea viva scivola tra le erbe.",
+      "elements.bee.name": "Ape",
+      "elements.bee.description": "Un piccolo volo lega un fiore al successivo.",
+      "elements.ant.name": "Formica",
+      "elements.ant.description": "Una pista minuta attraversa il terreno.",
+      "elements.firefly.name": "Lucciola",
+      "elements.firefly.description": "Una luce viva punteggia il buio.",
+      "elements.metal.name": "Metallo",
+      "elements.metal.description": "Il calore incontra la materia della roccia.",
+      "elements.salt.name": "Sale",
+      "elements.salt.description": "L’acqua si ritira e lascia piccoli cristalli.",
+      "elements.beach.name": "Spiaggia",
+      "elements.beach.description": "Un confine mobile tra sabbia e mare.",
+      "elements.cave.name": "Grotta",
+      "elements.cave.description": "Un vuoto si apre dentro la roccia.",
+      "elements.valley.name": "Valle",
+      "elements.valley.description": "Il terreno trova spazio tra i rilievi.",
+      "elements.waterfall.name": "Cascata",
+      "elements.waterfall.description": "Il fiume incontra un salto di quota.",
+      "elements.fog.name": "Nebbia",
+      "elements.fog.description": "L’umidità vela il paesaggio nella notte.",
+      "elements.rainbow.name": "Arcobaleno",
+      "elements.rainbow.description": "La luce attraversa le gocce e si separa in colori.",
+      "elements.lightning.name": "Fulmine",
+      "elements.lightning.description": "Una scarica attraversa il cielo.",
+      "elements.shrub.name": "Cespuglio",
+      "elements.shrub.description": "Una forma legnosa cresce vicino al suolo.",
+      "elements.climber.name": "Rampicante",
+      "elements.climber.description": "Il germoglio trova nei rami un sostegno.",
+      "elements.berry.name": "Bacca",
+      "elements.berry.description": "Un piccolo frutto custodisce semi.",
+      "elements.root.name": "Radice",
+      "elements.root.description": "La pianta esplora la terra sotto la superficie.",
+      "elements.aquatic_plant.name": "Pianta acquatica",
+      "elements.aquatic_plant.description": "Una forma vegetale abita l’acqua.",
+      "elements.thorn.name": "Spina",
+      "elements.thorn.description": "Una punta rigida protegge la pianta.",
+      "elements.pollen.name": "Polline",
+      "elements.pollen.description": "Una polvere di fiore viaggia nell’aria.",
+      "elements.truffle.name": "Tartufo",
+      "elements.truffle.description": "Un frutto nascosto del micelio vive accanto agli alberi.",
+      "elements.glowing_fungus.name": "Fungo bioluminescente",
+      "elements.glowing_fungus.description": "Una luce tenue emerge dall’ombra del sottobosco.",
+      "elements.mycorrhiza.name": "Micorriza",
+      "elements.mycorrhiza.description": "Radici e micelio intrecciano uno scambio.",
+      "elements.yeast.name": "Lievito",
+      "elements.yeast.description": "Un fungo microscopico abita anche la superficie dei frutti."
+    }
+  }
+}

@@ -11,6 +11,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - run: npm run audit:proposal:8a
       - run: npm run validate:pwa
       - run: npm run profile:catalog
       - run: npm run profile:map

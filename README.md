@@ -14,6 +14,8 @@ Phase 7.5A implements **Shell + Laboratory + shared visual language**. See [Phas
 
 See [Visual & UX Alignment](docs/VISUAL_UX_ALIGNMENT.md) for the current redesign target. Functional correctness from Phases 0–7 remains authoritative; the present screen composition is not considered final until Phase 7.5 is visually approved. New Phase 8 content also requires canon review before merge.
 
+Phase 8A currently has a [proposed authoring dossier](docs/PHASE_8A_NOTES.md), audited separately with `npm run audit:proposal:8a`. It is **not loaded by the game**: runtime remains the canonical 67-element seed. Two colliding candidates were excluded and implementation is paused for the requested human direction under the long-run protocol. The 118-element dry-run count is not the playable content count.
+
 ## Run and verify
 
 Use Node.js 22.12+ (22, 24 or 26+) and npm. CI uses Node 22.
