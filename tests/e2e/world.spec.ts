@@ -24,6 +24,7 @@ async function importFixture(page: Page, file: string) {
   await page
     .getByRole("button", { name: "Conferma sostituzione del progresso" })
     .click();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Combina", exact: true }),
   ).toBeVisible();
@@ -102,7 +103,7 @@ test("feature deep-link guards and owned starter sheets without Set browser link
 test("normal Set and Collection reveal compose once with reduced motion", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/"); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   for (const [a, b] of [
     ["Energia", "Materia"],
     ["Vuoto", "Tempo"],
@@ -152,7 +153,7 @@ test("Collection completion is persistent, lighter, anonymous, searchable and sh
   await page.goto("/collections");
   await page.getByRole("searchbox").fill("Verde");
   await expect(page.getByRole("link", { name: /Verde ovunque/ })).toBeVisible();
-  await page.goto("/");
+  await page.goto("/"); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await combine(page, "Nuvola", "Nuvola");
   await expect(page.locator(".reaction-stage")).toHaveAttribute(
     "data-emphasis",
@@ -178,7 +179,7 @@ test("Collection completion is persistent, lighter, anonymous, searchable and sh
 test("unrevealed thematic collections are absent from search and direct detail", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/"); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   for (const [a, b] of [
     ["Energia", "Materia"],
     ["Vuoto", "Tempo"],

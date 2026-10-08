@@ -79,11 +79,20 @@ function RoutedLaboratoryApplication({
   const [snapshot, setSnapshot] = useState<ApplicationSnapshot>();
   const [slots, setSlots] = useState<[string?, string?]>([]);
   const [reaction, publishReaction] = useState<LabReaction>();
+  const [playMode, setPlayMode] = useState<'classic' | 'table'>('table');
   const updateState = useSyncExternalStore(updates.subscribe, updates.getSnapshot);
   const setReaction = (value?: LabReaction) => {
     updates.setReveal(reactionPresentation(value).acknowledgement);
     publishReaction(value);
   };
+  useEffect(() => {
+    const acknowledgement = reactionPresentation(reaction).acknowledgement;
+    updates.setReveal(acknowledgement);
+    if (playMode !== 'table' || !acknowledgement) return;
+    // The readable in-table reveal is nonmodal. Keep update-safe protection for its brief motion.
+    const timer = window.setTimeout(() => updates.setReveal(false), 950);
+    return () => window.clearTimeout(timer);
+  }, [reaction, playMode]);
   useEffect(() => { void boot.then(registerProductionWorker, registerProductionWorker); return () => updates.setReveal(false); }, [boot]);
   const location = useLocation(),
     navigate = useNavigate();
@@ -299,8 +308,11 @@ function RoutedLaboratoryApplication({
           </button>
         </div>
       )}
-      <div className="lab-panels" hidden={active !== "lab"}>
+      <div className="lab-panels" data-playfeel={playMode === 'table'} hidden={active !== "lab"}>
         <Laboratory
+          mode={playMode}
+          setMode={setPlayMode}
+          beginInteraction={updates.beginOperation}
           model={model}
           hint={
             features.map && (

@@ -43,3 +43,17 @@ it('searches owned DTOs accent-insensitively and by visible aliases/Set without 
   expect(searchLibrary(elements, 'Origini', 'all', 'set', false)).toHaveLength(4);
   expect(searchLibrary(elements, 'Funghi', 'all', 'recent', false)).toHaveLength(0);
 });
+it('observed anomalies are quiet only while unchanged, and eligible resolutions use a genuine transaction', async () => {
+  const content=structuredClone(index.content);
+  content.recipes.push({id:'fixture_resolution',inputs:['moon','life'],resultElementId:'light',kind:'explicit',discovery:'alternate',requirements:[{type:'min_level',level:2}],gateBehavior:'anomaly'});
+  content.anomalies[0]!.resolutionRecipeId='fixture_resolution';
+  const gated=buildIndex(validateContent(content)),repo=new MemorySaveRepository(),app=new SaveApplication(repo,gated,()=>now);
+  const save=createSave(gated,now); save.discoveredElements.moon={firstDiscoveredAt:now}; save.discoveredElements.life={firstDiscoveredAt:now};
+  await repo.createNew(save,0); await app.start();
+  const observed=await app.combine('moon','life'); expect(rememberedAttempt('moon','life',observed.snapshot,gated)?.kind).toBe('anomaly');
+  const eligible=structuredClone(observed.snapshot); eligible.save.xp=250;
+  expect(rememberedAttempt('moon','life',eligible,gated)).toBeUndefined();
+  await repo.persist(eligible.save,observed.snapshot.revision); await app.load();
+  const resolved=await app.combine('moon','life'); expect(resolved.resolution.events).toContainEqual({type:'anomaly_resolved',anomalyId:'lunar_life_instability'});
+  expect(resolved.snapshot.save.anomalies.lunar_life_instability?.resolvedAt).toBeTruthy();
+});

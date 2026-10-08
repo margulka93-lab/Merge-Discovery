@@ -15,6 +15,7 @@ test('Phase 7.5C production observatory visual cohesion and accessible constella
   await page.getByLabel('JSON del salvataggio (diagnostica)').fill(JSON.stringify({ product: 'merge_discovery', saveSchemaVersion: payload.saveSchemaVersion, contentVersionSeen: payload.contentVersionSeen, payload }));
   await page.getByRole('button', { name: 'Verifica import', exact: true }).click();
   await page.getByRole('button', { name: 'Conferma sostituzione del progresso' }).click();
+  await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Combina', exact: true })).toBeVisible();
   mkdirSync(directory, { recursive: true });
   const audits = [];
@@ -47,6 +48,7 @@ test('Phase 7.5C production observatory visual cohesion and accessible constella
   await page.setViewportSize({width:1440,height:900});
   for (const [url,name] of [['/','laboratory'],['/collection','collection']] as const) {
     await page.goto(url);
+    if(url==='/') await page.getByRole('button',{name:'Laboratorio classico',exact:true}).click();
     await expect(page.getByRole('heading',{name:url==='/' ? 'Laboratorio' : 'Collezione',exact:true})).toBeVisible();
     await expect(page.getByText('La schermata si sta aprendo…')).toHaveCount(0);
     await expect(page.locator(url==='/' ? '#laboratory' : '#catalog-content')).toBeVisible();

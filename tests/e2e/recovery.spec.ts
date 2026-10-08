@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 test('isolated fatal-content/boundary fixture is accessible and exports the actual untouched save',async({page})=>{
-  await page.goto('/'); await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible();
+  await page.goto('/'); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
+  await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible();
   for(const mode of ['fatal','boundary']) {
     await page.goto(`/tests/ui-fixtures/recovery.html?mode=${mode}`);
     await expect(page.locator('main')).toBeFocused();
@@ -13,6 +14,7 @@ test('isolated fatal-content/boundary fixture is accessible and exports the actu
     await page.setViewportSize({width:320,height:568});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(320);
   }
-  await page.goto('/'); await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible();
+  await page.goto('/'); await page.getByRole('button', { name: 'Laboratorio classico', exact: true }).click();
+  await expect(page.getByRole('button',{name:'Combina',exact:true})).toBeVisible();
   expect(await page.locator('.level-badge').count()).toBeLessThanOrEqual(2);
 });

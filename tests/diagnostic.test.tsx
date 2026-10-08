@@ -12,7 +12,8 @@ import { loadSeed } from '../src/content/load';
 afterEach(cleanup);
 it('boots the playable Laboratory without revealing hidden content', async () => {
   render(<App />);
-  await screen.findByRole('heading', { name: 'Laboratorio' });
+  await screen.findByRole('button', { name: 'Tavolo libero' });
+  fireEvent.click(screen.getByRole('button', { name: 'Laboratorio classico' }));
   expect(screen.getByRole('button', { name: 'Combina' }).hasAttribute('disabled')).toBe(true);
   expect(document.body.textContent).not.toMatch(/Funghi|Muffa|67|lunar_life/);
 });

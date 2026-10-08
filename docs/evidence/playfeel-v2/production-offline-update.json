@@ -1,0 +1,11 @@
+{
+  "production": true,
+  "offline": true,
+  "knownReplaySaveUnchanged": true,
+  "discoveryPersistsOnReload": true,
+  "realWaitingWorker": true,
+  "blockedDuringDrag": true,
+  "explicitUpdateSaveUnchanged": true,
+  "tableLayoutLocal": true,
+  "humanApproval": "PENDING"
+}
