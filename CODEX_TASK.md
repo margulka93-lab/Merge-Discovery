@@ -1,32 +1,37 @@
-# CODEX_TASK.md — PLAYFEEL V3 (blocking feedback on PR #16)
+# CODEX_TASK.md — Isolario + Atlante Vivente: architecture checkpoint
 
-## Current task
+## New product direction
 
-The player **tested PLAYFEEL V2 and rejected its game feel**.
+The user has selected **Isolario + Atlante Vivente**:
 
-Do not request another generic playtest of the unchanged V2 build. Instead, implement the specific corrections in **`docs/tasks/PLAYFEEL_V3.md`**.
+- grow a painterly, interactive island/world through discoveries;
+- let the player visibly transform and inhabit the world;
+- maintain a living illustrated Atlas that records discoveries and actual changes;
+- reuse the existing Merge Discovery resolver/content/save/visibility/PWA systems instead of rewriting them.
 
-### Direct feedback
+Read **`docs/proposals/ISOLARIO_ATLANTE_MIGRATION.md`** for the detailed proposal.
 
-> Il tavolo è ancora troppo meccanico. Una combinazione fallita riporta la figura nella sua posizione iniziale; la tavola è troppo piccola; la lista a destra è troppo ingombrante e richiede troppo scorrimento. Avvicinati molto di più alla fluidità di Little Alchemy 2.
+## Immediate next Codex work (when explicitly launched)
 
-### Required changes
+**Architecture-only checkpoint, not a mass implementation or rewrite.**
 
-1. Failed combos **must not snap figures back**. Both figures stay on table near drop site with gentle local separation if overlapping; canceled gestures are separate.
-2. Remove 16–84% canvas positional clamp; table figures move freely across nearly all usable canvas.
-3. Greatly enlarge visible desktop/table play surface and suppress oversized shell chrome while playing.
-4. Rebuild desktop library as compact dense vertical icon+name list (not big 3-column cards), narrower and easier to search and scan.
-5. Mobile: full-height-first canvas, compact collapsed quick-item dock; expand library as overlay/sheet **without shrinking or shifting the board**. Touch drag from library directly to target must work.
-6. Make figures look like free-floating collectible images rather than big buttons; microfeedback for successful/failed merges must be non-blocking.
-7. Keep immediate reusable known results, no XP on replay, new alternate discovery and revisitable anomalies, keyboard/touch accessibility and classic Lab regression.
-8. Run specific post-drop coordinate, canvas-size and 30-step E2E tests, record failed-merge video and new screenshots at progressed save state.
+1. Read `AGENTS.md`, the Isolario migration proposal, and current domain/save/world/importer/UI architecture.
+2. Audit pending PRs #9–16 and identify which modules/commits to reuse selectively.
+3. Recommend a clean base branch and safe stacking/rebase plan **without merging anything**.
+4. Specify interfaces and data contracts for `WorldState`, `WorldRepository`, world manifestations, safe projections, Atlas view and renderer.
+5. Outline a constrained 1-island, 15–20-discovery interactive proof-of-concept, with desktop/mobile test gates and realistic art-asset needs.
+6. Write an ADR/architecture plan and a bounded Codex task for the prototype. **Do not implement the prototype before the user reviews the checkpoint.**
 
-### Sources and constraints
+## Paused work
 
-Read `AGENTS.md`, `docs/tasks/PLAYFEEL_V3.md`, prior `docs/tasks/PLAYFEEL_V2.md`, `docs/VISUAL_BIBLE_REFERENCE.md`, `docs/RESPONSIVE_AND_UI_STATES.md`, `docs/MOTION_AUDIO.md`, `docs/ACCESSIBILITY.md`, and current `src/ui/lab/FreeTable.tsx` / `playfeel.css`.
+- Old `PLAYFEEL_V3.md` remains archived but is no longer the current goal.
+- PRs #9–16 remain as-is, without automatic approval/merge.
+- Do not expand Phase 8B/8C, rewrite 67 seed recipes, or start Android.
+- Do not duplicate the existing resolver, save engine or Content Studio.
+- Do not assume that a game with a small world background behind the old FreeTable fulfills this new direction.
 
-Use Little Alchemy 2 as an **interaction and information-density benchmark**, not as an art/branding asset source.
+## Approval gates
 
-**Update existing draft PR #16** on `codex/playfeel-v2`, base `codex/ux-1`. Do **not** open a new PR, merge, modify #13–15, start Android or add new content.
+The user must approve the first world's *interaction concept and visual direction*, and the resulting prototype must pass a real human playtest on PC/phone.
 
-Passing tests does not constitute playfeel approval; require another user playtest **after the corrections are implemented**.
+A green CI run alone does not validate the concept.
