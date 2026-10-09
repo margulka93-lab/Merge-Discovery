@@ -40,6 +40,7 @@ import { AppShell } from "../ui/shell/AppShell";
 import { Laboratory } from "../ui/lab/Laboratory";
 import { InlineNotice } from "../ui/components/LabComponents";
 import { saveRuntime } from "./saveRuntime";
+import { WorldEntry } from './WorldEntry';
 
 import { updates, registerProductionWorker } from '../platform/pwa/updates';
 import { audio } from '../platform/audio/AudioEngine';
@@ -48,6 +49,7 @@ import { UpdateNotice } from '../ui/platform/UpdateNotice';
 import { PlatformRecovery } from './PlatformRecovery';
 import { exportRawRecovery } from './rawRecovery';
 const DiscoveryMap = lazy(() => import('../ui/map/DiscoveryMap').then(m => ({ default: m.DiscoveryMap })));
+const IslandProof = lazy(() => import('./IslandProof').then(m => ({ default: m.IslandProof })));
 const AnomalyArchive = lazy(() => import('../ui/anomalies/AnomalyArchive').then(m => ({ default: m.AnomalyArchive })));
 const SaveDiagnostics = lazy(() => import('../ui/SaveDiagnostics').then(m => ({ default: m.SaveDiagnostics })));
 const SettingsPanel = lazy(() => import('../ui/settings/SettingsPanel').then(m => ({ default: m.SettingsPanel })));
@@ -59,6 +61,9 @@ const SetIndex = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default
 const SetDetail = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default: m.SetDetail })));
 const ElementDetail = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default: m.ElementDetail })));
 const UnknownDetail = lazy(() => import('../ui/catalog/Catalog').then(m => ({ default: m.UnknownDetail })));
+
+// Session-only input continuity across the optional Mondo route; never persisted as gameplay state.
+const discoveryDraft = new WeakMap<SaveApplication, [string?, string?]>();
 
 function RouteReady({ path, children }: { path: string; children: React.ReactNode }) {
   useLayoutEffect(() => { if (path !== '/') document.getElementById('catalog-content')?.focus({ preventScroll: true }); }, [path]);
@@ -73,14 +78,17 @@ function RoutedLaboratoryApplication({
   boot: Promise<ApplicationSnapshot>;
 }) {
   const [snapshot, setSnapshot] = useState<ApplicationSnapshot>();
-  const [slots, setSlots] = useState<[string?, string?]>([]);
+  const [slots, setSlots] = useState<[string?, string?]>(() => discoveryDraft.get(application) ?? []);
+  useEffect(() => { discoveryDraft.set(application, slots); }, [application, slots]);
   const [reaction, publishReaction] = useState<LabReaction>();
+  const mounted = useRef(true);
   const updateState = useSyncExternalStore(updates.subscribe, updates.getSnapshot);
   const setReaction = (value?: LabReaction) => {
+    if (!mounted.current) return;
     updates.setReveal(reactionPresentation(value).acknowledgement);
     publishReaction(value);
   };
-  useEffect(() => { void boot.then(registerProductionWorker, registerProductionWorker); return () => updates.setReveal(false); }, [boot]);
+  useEffect(() => { mounted.current = true; void boot.then(registerProductionWorker, registerProductionWorker); return () => { mounted.current = false; updates.setReveal(false); }; }, [boot]);
   const location = useLocation(),
     navigate = useNavigate();
   const active =
@@ -160,7 +168,13 @@ function RoutedLaboratoryApplication({
     let alive = true;
     boot.then(
       (value) => {
-        if (alive) setSnapshot(value);
+        if (alive) {
+          setSnapshot(value);
+          setSlots(current => [
+            current[0] && value.save.discoveredElements[current[0]] ? current[0] : undefined,
+            current[1] && value.save.discoveredElements[current[1]] ? current[1] : undefined,
+          ]);
+        }
       },
       (cause) => {
         if (alive) setError(saveErrorMessage(cause));
@@ -233,7 +247,7 @@ function RoutedLaboratoryApplication({
       setSnapshot(await application.updatePreferences(change)),
     );
   return (
-    <AppShell model={model} active={active} navigate={setActive}>
+    <AppShell model={model} active={active} navigate={setActive} worldEntry={<WorldEntry snapshot={snapshot} busy={busy} />}>
       <div
         className="live-announcement sr-only"
         role="status"
@@ -533,10 +547,19 @@ export function LaboratoryApplication(
   );
 }
 const status = engineStatus();
+function DiscoveryRoute() {
+  const runtime = saveRuntime();
+  // The first boot is shared; each route entry reads current commits, including contextual experiments.
+  const boot = useMemo(() => runtime.boot.then(() => runtime.application.load()), [runtime]);
+  return <LaboratoryApplication application={runtime.application} boot={boot} />;
+}
 export function App() {
   return status.ready ? (
     <BrowserRouter>
-      <LaboratoryApplication {...saveRuntime()} />
+      <Suspense fallback={<p role="status">Apertura…</p>}><Routes>
+        <Route path="/island" element={<IslandProof />} />
+        <Route path="*" element={<DiscoveryRoute />} />
+      </Routes></Suspense>
     </BrowserRouter>
   ) : (
     <PlatformRecovery fatal exportRaw={exportRawRecovery} reload={() => window.location.reload()} />

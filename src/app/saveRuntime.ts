@@ -2,12 +2,13 @@ import { loadSeed } from '../content/load';
 import { SaveApplication } from '../application/save/SaveApplication';
 import { IndexedDbSaveRepository } from '../persistence/indexeddb/IndexedDbSaveRepository';
 
-let runtime: { application: SaveApplication; boot: ReturnType<SaveApplication['start']> } | undefined;
+let runtime: { application: SaveApplication; repository: IndexedDbSaveRepository; boot: ReturnType<SaveApplication['start']> } | undefined;
 /** One boot promise avoids duplicate new-game creation under React StrictMode. */
 export function saveRuntime() {
   if (!runtime) {
-    const application = new SaveApplication(new IndexedDbSaveRepository(), loadSeed());
-    runtime = { application, boot: application.start() };
+    const repository = new IndexedDbSaveRepository();
+    const application = new SaveApplication(repository, loadSeed());
+    runtime = { application, repository, boot: application.start() };
   }
   return runtime;
 }

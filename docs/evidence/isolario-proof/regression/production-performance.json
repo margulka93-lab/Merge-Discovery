@@ -1,0 +1,22 @@
+{
+  "coldLabReadyMs": 265.6545000000042,
+  "warmLabReadyMs": 91.60040000002482,
+  "switches": [
+    {
+      "route": "/collection",
+      "readyMs": 488.6625000000058
+    },
+    {
+      "route": "/explore/map?element=water",
+      "readyMs": 504.32500000001164
+    },
+    {
+      "route": "/",
+      "readyMs": 140.1423000000068
+    }
+  ],
+  "committedUiPublicationMs": 131.93950000000768,
+  "mapNodes": 8,
+  "timing": "informational, no hardware-sensitive pass threshold",
+  "boundedMapNodes": true
+}

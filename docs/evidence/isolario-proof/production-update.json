@@ -1,0 +1,7 @@
+{
+  "realWaitingWorker": true,
+  "blockedDuringNewDiscovery": true,
+  "explicitUpdate": true,
+  "reloads": 1,
+  "worldAndSaveUnchanged": true
+}

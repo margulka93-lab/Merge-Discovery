@@ -1,0 +1,6 @@
+
+> merge-discovery@0.1.0 validate:pwa
+> tsx scripts/validate-pwa.ts
+
+Production island precache: PASS (709950 B, five WebP rasters).
+PWA manifest/icons/exact precache/no runtime cache/chunk budgets: PASS (26 assets, 12 JS chunks).

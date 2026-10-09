@@ -1036,3 +1036,9 @@ nav button[aria-current="page"] {
     outline: 2px solid Highlight;
   }
 }
+.world-entry{display:flex;flex-direction:column;justify-content:center;min-height:44px;padding:8px 12px;border:1px solid var(--color-border);border-radius:12px;color:var(--color-text);text-decoration:none;line-height:1.25;gap:4px;overflow-wrap:anywhere}
+.world-entry small{font-size:.72em;color:var(--color-text-muted)}
+.world-entry:focus-visible{outline:3px solid var(--color-text);outline-offset:3px}
+.world-entry-desktop{margin-top:16px}
+@media(max-width:767px){.world-entry-desktop{display:none}.mobile-header .world-entry{max-width:42%;flex-shrink:0;font-size:.85em}.mobile-header{flex-wrap:wrap}}
+@media(forced-colors:active){.world-entry{border-color:LinkText;color:LinkText}.world-entry small{color:LinkText}}

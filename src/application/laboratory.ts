@@ -111,7 +111,7 @@ export function laboratoryModel(
       };
     });
   const destinations: Destination[] = [
-    { id: "lab", label: "Laboratorio", symbol: "✧" },
+    { id: "lab", label: "Scopri", symbol: "✧" },
   ];
   const features = featureDisclosure(snapshot, index);
   if (features.collection)

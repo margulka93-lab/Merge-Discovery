@@ -1,0 +1,905 @@
+{
+  "desktopKeyboard": false,
+  "mobileEmulation": true,
+  "physicalPhone": false,
+  "canonicalDiscoveries": 20,
+  "worldCommits": 11,
+  "mutationKinds": 3,
+  "replayNoWrite": true,
+  "reload": true,
+  "atlasFocusReturn": true,
+  "axeAA": true,
+  "legacyLab": true,
+  "stores": {
+    "save": {
+      "id": "single_player",
+      "revision": 21,
+      "current": {
+        "saveSchemaVersion": 1,
+        "contentVersionSeen": "0.1.0",
+        "createdAt": "2026-10-09T13:01:14.348Z",
+        "updatedAt": "2026-10-09T13:01:23.697Z",
+        "xp": 2430,
+        "discoveredElements": {
+          "void": {
+            "firstDiscoveredAt": "2026-10-09T13:01:14.348Z"
+          },
+          "energy": {
+            "firstDiscoveredAt": "2026-10-09T13:01:14.348Z"
+          },
+          "matter": {
+            "firstDiscoveredAt": "2026-10-09T13:01:14.348Z"
+          },
+          "time": {
+            "firstDiscoveredAt": "2026-10-09T13:01:14.348Z"
+          },
+          "light": {
+            "firstDiscoveredAt": "2026-10-09T13:01:15.141Z",
+            "firstRecipeId": "void_energy_to_light"
+          },
+          "heat": {
+            "firstDiscoveredAt": "2026-10-09T13:01:15.550Z",
+            "firstRecipeId": "energy_energy_to_heat"
+          },
+          "plasma": {
+            "firstDiscoveredAt": "2026-10-09T13:01:15.995Z",
+            "firstRecipeId": "energy_matter_to_plasma"
+          },
+          "space": {
+            "firstDiscoveredAt": "2026-10-09T13:01:16.349Z",
+            "firstRecipeId": "void_time_to_space"
+          },
+          "gravity": {
+            "firstDiscoveredAt": "2026-10-09T13:01:16.674Z",
+            "firstRecipeId": "matter_space_to_gravity"
+          },
+          "cosmic_dust": {
+            "firstDiscoveredAt": "2026-10-09T13:01:17.009Z",
+            "firstRecipeId": "matter_time_to_cosmic_dust"
+          },
+          "star": {
+            "firstDiscoveredAt": "2026-10-09T13:01:17.364Z",
+            "firstRecipeId": "plasma_gravity_to_star"
+          },
+          "planet": {
+            "firstDiscoveredAt": "2026-10-09T13:01:17.706Z",
+            "firstRecipeId": "star_cosmic_dust_to_planet"
+          },
+          "lava": {
+            "firstDiscoveredAt": "2026-10-09T13:01:18.049Z",
+            "firstRecipeId": "planet_heat_to_lava"
+          },
+          "rock": {
+            "firstDiscoveredAt": "2026-10-09T13:01:18.479Z",
+            "firstRecipeId": "lava_time_to_rock"
+          },
+          "soil": {
+            "firstDiscoveredAt": "2026-10-09T13:01:18.966Z",
+            "firstRecipeId": "rock_time_to_soil"
+          },
+          "comet": {
+            "firstDiscoveredAt": "2026-10-09T13:01:19.463Z",
+            "firstRecipeId": "cosmic_dust_space_to_comet"
+          },
+          "water": {
+            "firstDiscoveredAt": "2026-10-09T13:01:19.830Z",
+            "firstRecipeId": "planet_comet_to_water"
+          },
+          "ocean": {
+            "firstDiscoveredAt": "2026-10-09T13:01:20.327Z",
+            "firstRecipeId": "water_planet_to_ocean"
+          },
+          "life": {
+            "firstDiscoveredAt": "2026-10-09T13:01:21.059Z",
+            "firstRecipeId": "ocean_energy_to_life"
+          },
+          "seed": {
+            "firstDiscoveredAt": "2026-10-09T13:01:21.562Z",
+            "firstRecipeId": "life_soil_to_seed"
+          },
+          "sprout": {
+            "firstDiscoveredAt": "2026-10-09T13:01:22.070Z",
+            "firstRecipeId": "seed_water_to_sprout"
+          },
+          "tree": {
+            "firstDiscoveredAt": "2026-10-09T13:01:22.571Z",
+            "firstRecipeId": "sprout_time_to_tree"
+          },
+          "movement": {
+            "firstDiscoveredAt": "2026-10-09T13:01:23.215Z",
+            "firstRecipeId": "life_energy_to_movement"
+          },
+          "creature": {
+            "firstDiscoveredAt": "2026-10-09T13:01:23.697Z",
+            "firstRecipeId": "life_movement_to_creature"
+          }
+        },
+        "discoveredRecipeIds": [
+          "void_energy_to_light",
+          "energy_energy_to_heat",
+          "energy_matter_to_plasma",
+          "void_time_to_space",
+          "matter_space_to_gravity",
+          "matter_time_to_cosmic_dust",
+          "plasma_gravity_to_star",
+          "star_cosmic_dust_to_planet",
+          "planet_heat_to_lava",
+          "lava_time_to_rock",
+          "rock_time_to_soil",
+          "cosmic_dust_space_to_comet",
+          "planet_comet_to_water",
+          "water_planet_to_ocean",
+          "ocean_energy_to_life",
+          "life_soil_to_seed",
+          "seed_water_to_sprout",
+          "sprout_time_to_tree",
+          "life_energy_to_movement",
+          "life_movement_to_creature"
+        ],
+        "testedPairs": {
+          "energy::void": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:15.141Z"
+          },
+          "energy::energy": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:15.550Z"
+          },
+          "energy::matter": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:15.995Z"
+          },
+          "time::void": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:16.349Z"
+          },
+          "matter::space": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:16.674Z"
+          },
+          "matter::time": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:17.009Z"
+          },
+          "gravity::plasma": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:17.364Z"
+          },
+          "cosmic_dust::star": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:17.706Z"
+          },
+          "heat::planet": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:18.049Z"
+          },
+          "lava::time": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:18.479Z"
+          },
+          "rock::time": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:18.966Z"
+          },
+          "cosmic_dust::space": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:19.463Z"
+          },
+          "comet::planet": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:19.830Z"
+          },
+          "planet::water": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:20.327Z"
+          },
+          "energy::ocean": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:21.059Z"
+          },
+          "life::soil": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:21.562Z"
+          },
+          "seed::water": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:22.070Z"
+          },
+          "sprout::time": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:22.571Z"
+          },
+          "energy::life": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:23.215Z"
+          },
+          "life::movement": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:23.697Z"
+          }
+        },
+        "anomalies": {},
+        "revealedSetIds": [
+          "origins",
+          "cosmos",
+          "world",
+          "life",
+          "plants"
+        ],
+        "completedSetIds": [],
+        "completedCollectionChapterIds": [],
+        "favoriteElementIds": [],
+        "settings": {
+          "informationMode": "balanced",
+          "proactiveHints": "off",
+          "reducedMotion": true,
+          "highContrast": false,
+          "textScale": "default",
+          "soundEnabled": false,
+          "musicEnabled": false,
+          "dragEnabled": false
+        }
+      },
+      "backup": {
+        "saveSchemaVersion": 1,
+        "contentVersionSeen": "0.1.0",
+        "createdAt": "2026-10-09T13:01:14.348Z",
+        "updatedAt": "2026-10-09T13:01:23.215Z",
+        "xp": 2310,
+        "discoveredElements": {
+          "void": {
+            "firstDiscoveredAt": "2026-10-09T13:01:14.348Z"
+          },
+          "energy": {
+            "firstDiscoveredAt": "2026-10-09T13:01:14.348Z"
+          },
+          "matter": {
+            "firstDiscoveredAt": "2026-10-09T13:01:14.348Z"
+          },
+          "time": {
+            "firstDiscoveredAt": "2026-10-09T13:01:14.348Z"
+          },
+          "light": {
+            "firstDiscoveredAt": "2026-10-09T13:01:15.141Z",
+            "firstRecipeId": "void_energy_to_light"
+          },
+          "heat": {
+            "firstDiscoveredAt": "2026-10-09T13:01:15.550Z",
+            "firstRecipeId": "energy_energy_to_heat"
+          },
+          "plasma": {
+            "firstDiscoveredAt": "2026-10-09T13:01:15.995Z",
+            "firstRecipeId": "energy_matter_to_plasma"
+          },
+          "space": {
+            "firstDiscoveredAt": "2026-10-09T13:01:16.349Z",
+            "firstRecipeId": "void_time_to_space"
+          },
+          "gravity": {
+            "firstDiscoveredAt": "2026-10-09T13:01:16.674Z",
+            "firstRecipeId": "matter_space_to_gravity"
+          },
+          "cosmic_dust": {
+            "firstDiscoveredAt": "2026-10-09T13:01:17.009Z",
+            "firstRecipeId": "matter_time_to_cosmic_dust"
+          },
+          "star": {
+            "firstDiscoveredAt": "2026-10-09T13:01:17.364Z",
+            "firstRecipeId": "plasma_gravity_to_star"
+          },
+          "planet": {
+            "firstDiscoveredAt": "2026-10-09T13:01:17.706Z",
+            "firstRecipeId": "star_cosmic_dust_to_planet"
+          },
+          "lava": {
+            "firstDiscoveredAt": "2026-10-09T13:01:18.049Z",
+            "firstRecipeId": "planet_heat_to_lava"
+          },
+          "rock": {
+            "firstDiscoveredAt": "2026-10-09T13:01:18.479Z",
+            "firstRecipeId": "lava_time_to_rock"
+          },
+          "soil": {
+            "firstDiscoveredAt": "2026-10-09T13:01:18.966Z",
+            "firstRecipeId": "rock_time_to_soil"
+          },
+          "comet": {
+            "firstDiscoveredAt": "2026-10-09T13:01:19.463Z",
+            "firstRecipeId": "cosmic_dust_space_to_comet"
+          },
+          "water": {
+            "firstDiscoveredAt": "2026-10-09T13:01:19.830Z",
+            "firstRecipeId": "planet_comet_to_water"
+          },
+          "ocean": {
+            "firstDiscoveredAt": "2026-10-09T13:01:20.327Z",
+            "firstRecipeId": "water_planet_to_ocean"
+          },
+          "life": {
+            "firstDiscoveredAt": "2026-10-09T13:01:21.059Z",
+            "firstRecipeId": "ocean_energy_to_life"
+          },
+          "seed": {
+            "firstDiscoveredAt": "2026-10-09T13:01:21.562Z",
+            "firstRecipeId": "life_soil_to_seed"
+          },
+          "sprout": {
+            "firstDiscoveredAt": "2026-10-09T13:01:22.070Z",
+            "firstRecipeId": "seed_water_to_sprout"
+          },
+          "tree": {
+            "firstDiscoveredAt": "2026-10-09T13:01:22.571Z",
+            "firstRecipeId": "sprout_time_to_tree"
+          },
+          "movement": {
+            "firstDiscoveredAt": "2026-10-09T13:01:23.215Z",
+            "firstRecipeId": "life_energy_to_movement"
+          }
+        },
+        "discoveredRecipeIds": [
+          "void_energy_to_light",
+          "energy_energy_to_heat",
+          "energy_matter_to_plasma",
+          "void_time_to_space",
+          "matter_space_to_gravity",
+          "matter_time_to_cosmic_dust",
+          "plasma_gravity_to_star",
+          "star_cosmic_dust_to_planet",
+          "planet_heat_to_lava",
+          "lava_time_to_rock",
+          "rock_time_to_soil",
+          "cosmic_dust_space_to_comet",
+          "planet_comet_to_water",
+          "water_planet_to_ocean",
+          "ocean_energy_to_life",
+          "life_soil_to_seed",
+          "seed_water_to_sprout",
+          "sprout_time_to_tree",
+          "life_energy_to_movement"
+        ],
+        "testedPairs": {
+          "energy::void": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:15.141Z"
+          },
+          "energy::energy": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:15.550Z"
+          },
+          "energy::matter": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:15.995Z"
+          },
+          "time::void": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:16.349Z"
+          },
+          "matter::space": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:16.674Z"
+          },
+          "matter::time": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:17.009Z"
+          },
+          "gravity::plasma": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:17.364Z"
+          },
+          "cosmic_dust::star": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:17.706Z"
+          },
+          "heat::planet": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:18.049Z"
+          },
+          "lava::time": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:18.479Z"
+          },
+          "rock::time": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:18.966Z"
+          },
+          "cosmic_dust::space": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:19.463Z"
+          },
+          "comet::planet": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:19.830Z"
+          },
+          "planet::water": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:20.327Z"
+          },
+          "energy::ocean": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:21.059Z"
+          },
+          "life::soil": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:21.562Z"
+          },
+          "seed::water": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:22.070Z"
+          },
+          "sprout::time": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:22.571Z"
+          },
+          "energy::life": {
+            "lastOutcome": "success",
+            "testedAgainstContentVersion": "0.1.0",
+            "lastTestedAt": "2026-10-09T13:01:23.215Z"
+          }
+        },
+        "anomalies": {},
+        "revealedSetIds": [
+          "origins",
+          "cosmos",
+          "world",
+          "life",
+          "plants"
+        ],
+        "completedSetIds": [],
+        "completedCollectionChapterIds": [],
+        "favoriteElementIds": [],
+        "settings": {
+          "informationMode": "balanced",
+          "proactiveHints": "off",
+          "reducedMotion": true,
+          "highContrast": false,
+          "textScale": "default",
+          "soundEnabled": false,
+          "musicEnabled": false,
+          "dragEnabled": false
+        }
+      }
+    },
+    "world": {
+      "id": "first_island",
+      "generation": "db012a65-4fa9-4d6e-963e-18f11ad25624",
+      "revision": 11,
+      "current": {
+        "worldSchemaVersion": 1,
+        "definitionVersionSeen": "0.1.0",
+        "profileGeneration": "db012a65-4fa9-4d6e-963e-18f11ad25624",
+        "worldId": "first_island",
+        "unlockedIslandIds": [
+          "first_island"
+        ],
+        "placements": {
+          "light": {
+            "id": "light",
+            "manifestationId": "light",
+            "zoneId": "west",
+            "anchorId": "west_sky",
+            "kind": "environment",
+            "variantId": "light",
+            "committedAt": "2026-10-09T13:01:15.289Z"
+          },
+          "rock": {
+            "id": "rock",
+            "manifestationId": "rock",
+            "zoneId": "west",
+            "anchorId": "west_ridge",
+            "kind": "terrain",
+            "variantId": "rock",
+            "committedAt": "2026-10-09T13:01:18.641Z"
+          },
+          "soil": {
+            "id": "soil",
+            "manifestationId": "soil",
+            "zoneId": "west",
+            "anchorId": "west_patch",
+            "kind": "terrain",
+            "variantId": "soil",
+            "committedAt": "2026-10-09T13:01:19.123Z"
+          },
+          "water": {
+            "id": "water",
+            "manifestationId": "water",
+            "zoneId": "west",
+            "anchorId": "west_basin",
+            "kind": "environment",
+            "variantId": "water",
+            "committedAt": "2026-10-09T13:01:19.989Z"
+          },
+          "ocean": {
+            "id": "ocean",
+            "manifestationId": "ocean",
+            "zoneId": "west",
+            "anchorId": "west_coast",
+            "kind": "environment",
+            "variantId": "ocean",
+            "committedAt": "2026-10-09T13:01:20.493Z"
+          },
+          "tree": {
+            "id": "tree",
+            "manifestationId": "tree",
+            "zoneId": "west",
+            "anchorId": "west_patch",
+            "kind": "living_object",
+            "variantId": "tree",
+            "committedAt": "2026-10-09T13:01:22.760Z"
+          },
+          "creature": {
+            "id": "creature",
+            "manifestationId": "creature",
+            "zoneId": "west",
+            "anchorId": "west_inhabitant",
+            "kind": "living_object",
+            "variantId": "creature",
+            "committedAt": "2026-10-09T13:01:23.857Z"
+          }
+        },
+        "observations": [
+          {
+            "id": "mutation_1",
+            "mutationId": "mutation_1",
+            "sequence": 1,
+            "manifestationId": "light",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:15.289Z"
+          },
+          {
+            "id": "mutation_2",
+            "mutationId": "mutation_2",
+            "sequence": 2,
+            "manifestationId": "heat",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:15.707Z"
+          },
+          {
+            "id": "mutation_3",
+            "mutationId": "mutation_3",
+            "sequence": 3,
+            "manifestationId": "lava",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:18.205Z"
+          },
+          {
+            "id": "mutation_4",
+            "mutationId": "mutation_4",
+            "sequence": 4,
+            "manifestationId": "rock",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:18.641Z"
+          },
+          {
+            "id": "mutation_5",
+            "mutationId": "mutation_5",
+            "sequence": 5,
+            "manifestationId": "soil",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:19.123Z"
+          },
+          {
+            "id": "mutation_6",
+            "mutationId": "mutation_6",
+            "sequence": 6,
+            "manifestationId": "water",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:19.989Z"
+          },
+          {
+            "id": "mutation_7",
+            "mutationId": "mutation_7",
+            "sequence": 7,
+            "manifestationId": "ocean",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:20.493Z"
+          },
+          {
+            "id": "mutation_8",
+            "mutationId": "mutation_8",
+            "sequence": 8,
+            "manifestationId": "seed",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:21.741Z"
+          },
+          {
+            "id": "mutation_9",
+            "mutationId": "mutation_9",
+            "sequence": 9,
+            "manifestationId": "sprout",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:22.239Z"
+          },
+          {
+            "id": "mutation_10",
+            "mutationId": "mutation_10",
+            "sequence": 10,
+            "manifestationId": "tree",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:22.760Z"
+          },
+          {
+            "id": "mutation_11",
+            "mutationId": "mutation_11",
+            "sequence": 11,
+            "manifestationId": "creature",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:23.857Z"
+          }
+        ],
+        "appliedCommands": {
+          "a950c0a8-c57f-423f-b9c6-f2c480a17283": {
+            "payloadHash": "[\"light\",\"west_sky\"]",
+            "mutationId": "mutation_1"
+          },
+          "ef15e8e7-39be-401e-8b1a-d4e49ebcc3bb": {
+            "payloadHash": "[\"heat\",\"west_ridge\"]",
+            "mutationId": "mutation_2"
+          },
+          "1cb343e6-b922-48bc-841b-f345cd21defc": {
+            "payloadHash": "[\"lava\",\"west_ridge\"]",
+            "mutationId": "mutation_3"
+          },
+          "dca0f0dc-94e3-41fe-ae33-728dac8426ba": {
+            "payloadHash": "[\"rock\",\"west_ridge\"]",
+            "mutationId": "mutation_4"
+          },
+          "577ef926-fee1-46fa-9340-3c6c0cc22916": {
+            "payloadHash": "[\"soil\",\"west_patch\"]",
+            "mutationId": "mutation_5"
+          },
+          "ca360425-7c9c-463a-a828-4b0dc52f9149": {
+            "payloadHash": "[\"water\",\"west_basin\"]",
+            "mutationId": "mutation_6"
+          },
+          "255a17d5-0a10-4fa0-b5fc-cc24c087006e": {
+            "payloadHash": "[\"ocean\",\"west_coast\"]",
+            "mutationId": "mutation_7"
+          },
+          "c01ea921-4455-4eeb-83db-f4e37585e1f2": {
+            "payloadHash": "[\"seed\",\"west_patch\"]",
+            "mutationId": "mutation_8"
+          },
+          "c1d11f3a-fe27-4173-bc44-e84b199a55e9": {
+            "payloadHash": "[\"sprout\",\"west_patch\"]",
+            "mutationId": "mutation_9"
+          },
+          "6b1b3935-6335-40a3-80d6-a41a8f633137": {
+            "payloadHash": "[\"tree\",\"west_patch\"]",
+            "mutationId": "mutation_10"
+          },
+          "47cc3fc4-1755-40e5-8997-a078e6426e3f": {
+            "payloadHash": "[\"creature\",\"west_inhabitant\"]",
+            "mutationId": "mutation_11"
+          }
+        }
+      },
+      "backup": {
+        "worldSchemaVersion": 1,
+        "definitionVersionSeen": "0.1.0",
+        "profileGeneration": "db012a65-4fa9-4d6e-963e-18f11ad25624",
+        "worldId": "first_island",
+        "unlockedIslandIds": [
+          "first_island"
+        ],
+        "placements": {
+          "light": {
+            "id": "light",
+            "manifestationId": "light",
+            "zoneId": "west",
+            "anchorId": "west_sky",
+            "kind": "environment",
+            "variantId": "light",
+            "committedAt": "2026-10-09T13:01:15.289Z"
+          },
+          "rock": {
+            "id": "rock",
+            "manifestationId": "rock",
+            "zoneId": "west",
+            "anchorId": "west_ridge",
+            "kind": "terrain",
+            "variantId": "rock",
+            "committedAt": "2026-10-09T13:01:18.641Z"
+          },
+          "soil": {
+            "id": "soil",
+            "manifestationId": "soil",
+            "zoneId": "west",
+            "anchorId": "west_patch",
+            "kind": "terrain",
+            "variantId": "soil",
+            "committedAt": "2026-10-09T13:01:19.123Z"
+          },
+          "water": {
+            "id": "water",
+            "manifestationId": "water",
+            "zoneId": "west",
+            "anchorId": "west_basin",
+            "kind": "environment",
+            "variantId": "water",
+            "committedAt": "2026-10-09T13:01:19.989Z"
+          },
+          "ocean": {
+            "id": "ocean",
+            "manifestationId": "ocean",
+            "zoneId": "west",
+            "anchorId": "west_coast",
+            "kind": "environment",
+            "variantId": "ocean",
+            "committedAt": "2026-10-09T13:01:20.493Z"
+          },
+          "tree": {
+            "id": "tree",
+            "manifestationId": "tree",
+            "zoneId": "west",
+            "anchorId": "west_patch",
+            "kind": "living_object",
+            "variantId": "tree",
+            "committedAt": "2026-10-09T13:01:22.760Z"
+          }
+        },
+        "observations": [
+          {
+            "id": "mutation_1",
+            "mutationId": "mutation_1",
+            "sequence": 1,
+            "manifestationId": "light",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:15.289Z"
+          },
+          {
+            "id": "mutation_2",
+            "mutationId": "mutation_2",
+            "sequence": 2,
+            "manifestationId": "heat",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:15.707Z"
+          },
+          {
+            "id": "mutation_3",
+            "mutationId": "mutation_3",
+            "sequence": 3,
+            "manifestationId": "lava",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:18.205Z"
+          },
+          {
+            "id": "mutation_4",
+            "mutationId": "mutation_4",
+            "sequence": 4,
+            "manifestationId": "rock",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:18.641Z"
+          },
+          {
+            "id": "mutation_5",
+            "mutationId": "mutation_5",
+            "sequence": 5,
+            "manifestationId": "soil",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:19.123Z"
+          },
+          {
+            "id": "mutation_6",
+            "mutationId": "mutation_6",
+            "sequence": 6,
+            "manifestationId": "water",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:19.989Z"
+          },
+          {
+            "id": "mutation_7",
+            "mutationId": "mutation_7",
+            "sequence": 7,
+            "manifestationId": "ocean",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:20.493Z"
+          },
+          {
+            "id": "mutation_8",
+            "mutationId": "mutation_8",
+            "sequence": 8,
+            "manifestationId": "seed",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:21.741Z"
+          },
+          {
+            "id": "mutation_9",
+            "mutationId": "mutation_9",
+            "sequence": 9,
+            "manifestationId": "sprout",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:22.239Z"
+          },
+          {
+            "id": "mutation_10",
+            "mutationId": "mutation_10",
+            "sequence": 10,
+            "manifestationId": "tree",
+            "zoneId": "west",
+            "committedAt": "2026-10-09T13:01:22.760Z"
+          }
+        ],
+        "appliedCommands": {
+          "a950c0a8-c57f-423f-b9c6-f2c480a17283": {
+            "payloadHash": "[\"light\",\"west_sky\"]",
+            "mutationId": "mutation_1"
+          },
+          "ef15e8e7-39be-401e-8b1a-d4e49ebcc3bb": {
+            "payloadHash": "[\"heat\",\"west_ridge\"]",
+            "mutationId": "mutation_2"
+          },
+          "1cb343e6-b922-48bc-841b-f345cd21defc": {
+            "payloadHash": "[\"lava\",\"west_ridge\"]",
+            "mutationId": "mutation_3"
+          },
+          "dca0f0dc-94e3-41fe-ae33-728dac8426ba": {
+            "payloadHash": "[\"rock\",\"west_ridge\"]",
+            "mutationId": "mutation_4"
+          },
+          "577ef926-fee1-46fa-9340-3c6c0cc22916": {
+            "payloadHash": "[\"soil\",\"west_patch\"]",
+            "mutationId": "mutation_5"
+          },
+          "ca360425-7c9c-463a-a828-4b0dc52f9149": {
+            "payloadHash": "[\"water\",\"west_basin\"]",
+            "mutationId": "mutation_6"
+          },
+          "255a17d5-0a10-4fa0-b5fc-cc24c087006e": {
+            "payloadHash": "[\"ocean\",\"west_coast\"]",
+            "mutationId": "mutation_7"
+          },
+          "c01ea921-4455-4eeb-83db-f4e37585e1f2": {
+            "payloadHash": "[\"seed\",\"west_patch\"]",
+            "mutationId": "mutation_8"
+          },
+          "c1d11f3a-fe27-4173-bc44-e84b199a55e9": {
+            "payloadHash": "[\"sprout\",\"west_patch\"]",
+            "mutationId": "mutation_9"
+          },
+          "6b1b3935-6335-40a3-80d6-a41a8f633137": {
+            "payloadHash": "[\"tree\",\"west_patch\"]",
+            "mutationId": "mutation_10"
+          }
+        }
+      }
+    }
+  }
+}

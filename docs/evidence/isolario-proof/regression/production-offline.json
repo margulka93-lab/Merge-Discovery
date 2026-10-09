@@ -1,0 +1,57 @@
+{
+  "manifestErrors": [],
+  "installabilityErrors": [],
+  "production": true,
+  "controller": true,
+  "precache": {
+    "keys": [
+      "merge-discovery-build-bb914827976b02d2-test-release-1"
+    ],
+    "urls": [
+      "/assets/AnomalyArchive-CdlGUKiX.js",
+      "/assets/Catalog-De3wgYRn.js",
+      "/assets/DiscoveryMap-Cd3gA50p.css",
+      "/assets/DiscoveryMap-D0sB-WIM.js",
+      "/assets/IslandProof-CFnK-tEi.js",
+      "/assets/IslandProof-OI2Kvvrk.css",
+      "/assets/SaveDiagnostics-D_sfaEPU.js",
+      "/assets/SettingsPanel-BMEfASGr.js",
+      "/assets/ThematicCollections-DXVIcUQ9.js",
+      "/assets/catalog-5ti7OcbD.css",
+      "/assets/base-DA4A5nch.png",
+      "/assets/creature-DlB6doP3.png",
+      "/assets/index-Ch2q2tua.css",
+      "/assets/index-zs0rrZi0.js",
+      "/assets/react-runtime-CTvR5Qwm.js",
+      "/assets/soil-DckNskc2.png",
+      "/assets/storage-Cm7D3lyf.js",
+      "/assets/tree-CTVny1tB.png",
+      "/icons/icon-192.png",
+      "/assets/validation-Ky_Aq7Oc.js",
+      "/icons/icon-512.png",
+      "/icons/maskable-512.png",
+      "/index.html",
+      "/assets/water-CHmq3e93.png",
+      "/manifest.webmanifest"
+    ]
+  },
+  "offlineRoutes": [
+    "/",
+    "/collection",
+    "/sets",
+    "/sets/origins",
+    "/elements/water",
+    "/collections",
+    "/collections/water_cycle",
+    "/explore/anomalies",
+    "/explore/map?element=water",
+    "/settings"
+  ],
+  "exportRoundTrip": true,
+  "offlineCombine": true,
+  "indexedDbAfterReload": true,
+  "hintOffline": true,
+  "offlinePreferences": true,
+  "offlineInformationSettings": true,
+  "saveXp": 8480
+}

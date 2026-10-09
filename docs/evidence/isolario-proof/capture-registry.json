@@ -1,0 +1,102 @@
+[
+  {
+    "file": "atlas-1440x900.png",
+    "bytes": 187783,
+    "sha256": "6ec76574bc9aaecb3faf4580814213d873b1497e22a9d80f5bb25f54974e26ba",
+    "width": 1440,
+    "height": 900,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "atlas-320x568.png",
+    "bytes": 42070,
+    "sha256": "916773e2df131d35c343fb3baa2803848652597bdd8bbfa3353beeff60b8d64c",
+    "width": 320,
+    "height": 568,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "atlas-390x844.png",
+    "bytes": 60413,
+    "sha256": "f76ccc352c3ba832f895bb04c4c5d9eb90cc4c1318e1facbe6fc90d1e12ba31f",
+    "width": 390,
+    "height": 844,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "capture-1440.webm",
+    "bytes": 1727659,
+    "sha256": "2f2f13ade2d3e0b2bd7074a75ee5a6ddd91a44ee96f115ffe8bfe04d31776879",
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "capture-390.webm",
+    "bytes": 1302160,
+    "sha256": "b0bf393bdfbfa1423fe65f6794db80ac3312d3410f118af6318f91d1ef6aaa5a",
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "initial-1440x900.png",
+    "bytes": 1467656,
+    "sha256": "35ccfbf2b398151053a2c9caa102aacca8376bda613bd657985bf311388cd216",
+    "width": 1440,
+    "height": 900,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "initial-320x568.png",
+    "bytes": 232879,
+    "sha256": "a3991057ad78e3c7a9855daabc942158e194ea9faaf08ed3cf31ab2f4c3d2ba8",
+    "width": 320,
+    "height": 568,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "initial-390x844.png",
+    "bytes": 328670,
+    "sha256": "6a81c5088edf922bf59899942c7dcdb99cf0254cb83d7e7057f5ebe8bb152947",
+    "width": 390,
+    "height": 844,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "intermediate-1440x900.png",
+    "bytes": 1472054,
+    "sha256": "d7060fa52f9ac423813f4902f7c694c875970628b98ccdf2063d14f0ea92e874",
+    "width": 1440,
+    "height": 900,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "intermediate-390x844.png",
+    "bytes": 332399,
+    "sha256": "556115b301bfec36f64630293d19846d2db61464ce34c41cb09c28ed76433498",
+    "width": 390,
+    "height": 844,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "transformed-1440x900.png",
+    "bytes": 1502331,
+    "sha256": "f057692a4af0162a8afc35d6b30d8f9839b9082ee6ab604b9415eb156caef9da",
+    "width": 1440,
+    "height": 900,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "transformed-320x568.png",
+    "bytes": 241072,
+    "sha256": "9cc9cd67ebde5ec4324d4762fb6f2cb1c05a69b0784a373f708c666d84da97f1",
+    "width": 320,
+    "height": 568,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  },
+  {
+    "file": "transformed-390x844.png",
+    "bytes": 340980,
+    "sha256": "68c8beca792104061797ff0da1ec34df1455bddc14e0701d44c4facf3d40461c",
+    "width": 390,
+    "height": 844,
+    "origin": "real automated browser capture; emulated mobile, not physical device"
+  }
+]

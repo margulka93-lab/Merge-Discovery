@@ -1,0 +1,62 @@
+[
+  {
+    "url": "/",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/collection",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/sets",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/sets/origins",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/elements/water",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/collections",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/collections/water_cycle",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/explore/anomalies",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/explore/map",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  },
+  {
+    "url": "/settings",
+    "axeViolations": 0,
+    "overflow": false,
+    "targets": "44px"
+  }
+]

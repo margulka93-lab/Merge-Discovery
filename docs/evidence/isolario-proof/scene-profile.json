@@ -1,0 +1,190 @@
+{
+  "url": "http://127.0.0.1:5190/island",
+  "environment": "Windows, headless Chromium on host; mobile viewport emulation, fresh initial scene",
+  "physicalPhone": false,
+  "production": false,
+  "viewport": [
+    390,
+    844
+  ],
+  "coldReadyMs": 1125.3924000000002,
+  "samples": 180,
+  "p95FrameGapMs": 16.700000000000273,
+  "maxFrameGapMs": 16.800000000000182,
+  "assets": [
+    {
+      "file": "base.png",
+      "bytes": 2564331,
+      "sha256": "420c211d8935904965db8206ec93f88eb69d2f7bcdee436db251493de971381b",
+      "width": 1536,
+      "height": 1024,
+      "transparentPixels": 0,
+      "opaquePixels": 1572864,
+      "finalArt": false
+    },
+    {
+      "file": "creature.png",
+      "bytes": 1665618,
+      "sha256": "180de9eab68e5da67e69057efc1f755f9fb2f6814dd1c00b81ef1c117fbc9503",
+      "width": 1536,
+      "height": 1024,
+      "transparentPixels": 1114794,
+      "opaquePixels": 0,
+      "finalArt": false
+    },
+    {
+      "file": "soil.png",
+      "bytes": 1849285,
+      "sha256": "0aa2103e7c51882f5ce20f391d1865e7c58d139e67332b82442a7539341b804e",
+      "width": 1983,
+      "height": 793,
+      "transparentPixels": 635932,
+      "opaquePixels": 3,
+      "finalArt": false
+    },
+    {
+      "file": "tree.png",
+      "bytes": 1975535,
+      "sha256": "e888a246aa6fb478d4b85b99e44cd07c46a3d5399e910573510737e23cbb1512",
+      "width": 1536,
+      "height": 1024,
+      "transparentPixels": 980868,
+      "opaquePixels": 0,
+      "finalArt": false
+    },
+    {
+      "file": "water.png",
+      "bytes": 1647339,
+      "sha256": "25fab1feb5089584903bf11c23644ac02d0439d3414a8ada447a2d8c00b90502",
+      "width": 1983,
+      "height": 793,
+      "transparentPixels": 677670,
+      "opaquePixels": 0,
+      "finalArt": false
+    }
+  ],
+  "rasterBytes": 9702108,
+  "rasterMiB": 9.25265121459961,
+  "budgetBytes": 5242880,
+  "budgetPassed": false,
+  "anchors": {
+    "west_sky": {
+      "x": 300,
+      "y": 110
+    },
+    "east_sky": {
+      "x": 700,
+      "y": 110
+    },
+    "west_ridge": {
+      "x": 460,
+      "y": 270
+    },
+    "east_ridge": {
+      "x": 610,
+      "y": 290
+    },
+    "west_patch": {
+      "x": 265,
+      "y": 280
+    },
+    "east_patch": {
+      "x": 710,
+      "y": 445
+    },
+    "west_basin": {
+      "x": 405,
+      "y": 355
+    },
+    "east_basin": {
+      "x": 645,
+      "y": 390
+    },
+    "west_coast": {
+      "x": 235,
+      "y": 430
+    },
+    "east_coast": {
+      "x": 780,
+      "y": 525
+    },
+    "west_inhabitant": {
+      "x": 330,
+      "y": 365
+    },
+    "east_inhabitant": {
+      "x": 740,
+      "y": 480
+    }
+  },
+  "sprites": {
+    "light": {
+      "width": 230,
+      "height": 140,
+      "pivotX": 115,
+      "pivotY": 70
+    },
+    "heat": {
+      "width": 140,
+      "height": 65,
+      "pivotX": 70,
+      "pivotY": 40
+    },
+    "lava": {
+      "width": 145,
+      "height": 75,
+      "pivotX": 72,
+      "pivotY": 40
+    },
+    "rock": {
+      "width": 120,
+      "height": 90,
+      "pivotX": 60,
+      "pivotY": 65
+    },
+    "soil": {
+      "width": 140,
+      "height": 57,
+      "pivotX": 70,
+      "pivotY": 28
+    },
+    "water": {
+      "width": 168,
+      "height": 72,
+      "pivotX": 84,
+      "pivotY": 36
+    },
+    "ocean": {
+      "width": 180,
+      "height": 80,
+      "pivotX": 90,
+      "pivotY": 40
+    },
+    "seed": {
+      "width": 35,
+      "height": 40,
+      "pivotX": 17,
+      "pivotY": 30
+    },
+    "sprout": {
+      "width": 66,
+      "height": 85,
+      "pivotX": 33,
+      "pivotY": 75
+    },
+    "tree": {
+      "width": 270,
+      "height": 180,
+      "pivotX": 135,
+      "pivotY": 170
+    },
+    "creature": {
+      "width": 95,
+      "height": 63,
+      "pivotX": 47,
+      "pivotY": 55
+    }
+  },
+  "decodedRgbaBytes": 31454520,
+  "scope": "structural measurement, not a human playtest or device GPU benchmark"
+}

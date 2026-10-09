@@ -1,0 +1,286 @@
+
+> merge-discovery@0.1.0 check
+> npm run typecheck && npm run lint && npm test && npm run build
+
+
+> merge-discovery@0.1.0 typecheck
+> tsc --noEmit
+
+
+> merge-discovery@0.1.0 lint
+> eslint .
+
+
+C:\Users\margh\.codex\worktrees\isolario-foundation\MERGE DISCOVERY\test-results-production\.playwright-artifacts-1\traces\resources\033308e3a0421d32c69cd68cb4f8888aabbc37e8.js
+  2:1  warning  Unused eslint-disable directive (no problems were reported from 'no-undef')
+  4:1  warning  Unused eslint-disable directive (no problems were reported from 'no-undef')
+
+C:\Users\margh\.codex\worktrees\isolario-foundation\MERGE DISCOVERY\test-results-production\.playwright-artifacts-1\traces\resources\419963e2735a6a7937ea007cd8a870317d345dc1.js
+  2:1  warning  Unused eslint-disable directive (no problems were reported from 'no-undef')
+  4:1  warning  Unused eslint-disable directive (no problems were reported from 'no-undef')
+
+C:\Users\margh\.codex\worktrees\isolario-foundation\MERGE DISCOVERY\test-results-production\.playwright-artifacts-1\traces\resources\a531194ed1a2abbb5bd971f595808231964d8407.js
+  2:1  warning  Unused eslint-disable directive (no problems were reported from 'no-undef')
+  4:1  warning  Unused eslint-disable directive (no problems were reported from 'no-undef')
+
+✖ 6 problems (0 errors, 6 warnings)
+  0 errors and 6 warnings potentially fixable with the `--fix` option.
+
+
+> merge-discovery@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 C:/Users/margh/.codex/worktrees/isolario-foundation/MERGE DISCOVERY
+
+
+ Test Files  14 passed (14)
+      Tests  231 passed (231)
+   Start at  14:57:43
+   Duration  14.36s (tests 42%, import 20%, transform 19%, environment 18%)
+
+
+> merge-discovery@0.1.0 build
+> npm run validate:content && npm run simulate:content && npm run validate:world && npm run simulate:world && tsc --noEmit && vite build
+
+
+> merge-discovery@0.1.0 validate:content
+> tsx scripts/validate-content.ts
+
+Content valid: 67 elements, 64 recipes, 6 Sets, 4 Collections, 1 anomaly.
+Strict schemas, references, localization, identities, ambiguity, Set completion and non-secret reachability: PASS.
+
+> merge-discovery@0.1.0 simulate:content
+> tsx scripts/simulate-content.ts
+
+{
+  "starters": 4,
+  "totalElements": 67,
+  "reachableElements": 67,
+  "unreachableRequired": [],
+  "unrevealedSets": [],
+  "blockedUnlocks": [],
+  "maxDependencyDepth": 11,
+  "anomaliesObserved": [
+    "lunar_life_instability"
+  ],
+  "checkpoints": [
+    {
+      "depth": 0,
+      "discovered": 4,
+      "xp": 0,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 1,
+      "discovered": 9,
+      "xp": 520,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 2,
+      "discovered": 14,
+      "xp": 1250,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 3,
+      "discovered": 18,
+      "xp": 1790,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 4,
+      "discovered": 22,
+      "xp": 2260,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 5,
+      "discovered": 28,
+      "xp": 3135,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 6,
+      "discovered": 31,
+      "xp": 3535,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life"
+      ]
+    },
+    {
+      "depth": 7,
+      "discovered": 39,
+      "xp": 4405,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life"
+      ]
+    },
+    {
+      "depth": 8,
+      "discovered": 49,
+      "xp": 5680,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 9,
+      "discovered": 57,
+      "xp": 6965,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 10,
+      "discovered": 64,
+      "xp": 7930,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 11,
+      "discovered": 67,
+      "xp": 8480,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    }
+  ],
+  "completedCollectionChapterIds": [
+    "children_of_stars",
+    "water_cycle",
+    "rocky_world",
+    "green_everywhere"
+  ]
+}
+
+> merge-discovery@0.1.0 validate:world
+> tsx scripts/validate-world.ts
+
+{
+  "valid": true,
+  "world": "first_island",
+  "definitionVersion": "0.1.0",
+  "mappings": 11,
+  "anchors": 12,
+  "authoredReachability": "11/11",
+  "assetRegistry": "provisional geometry, not final raster assets"
+}
+
+> merge-discovery@0.1.0 simulate:world
+> tsx scripts/simulate-world.ts
+
+{
+  "scope": "Foundation application simulation; no island UI/human playtest",
+  "baseCommit": "8ce18be6ed1081b45f3e51255ebf690ae38cafe3",
+  "starters": [
+    "void",
+    "energy",
+    "matter",
+    "time"
+  ],
+  "newDiscoveries": 20,
+  "owned": 24,
+  "xp": 2430,
+  "mappingsReached": 11,
+  "kinds": [
+    "environment",
+    "terrain",
+    "living_object"
+  ],
+  "noAutomaticSpawn": true,
+  "canonicalSaveUnchangedByWorld": true,
+  "knownReplayWrites": 0,
+  "canonicalContentChanged": false,
+  "worldSchemaVersion": 1,
+  "saveSchemaVersion": 1,
+  "visualApproval": "PENDING",
+  "humanPlaytest": "NOT RUN - Island/Atlas tranche"
+}
+vite v7.3.7 building client environment for production...
+transforming...
+node_modules/zod/v4/core/regexes.js (74:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/zod/v4/core/util.js (400:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 235 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                  0.83 kB │ gzip:  0.41 kB
+dist/assets/water-CHmq3e93.png               1,647.34 kB
+dist/assets/creature-DlB6doP3.png            1,665.62 kB
+dist/assets/soil-DckNskc2.png                1,849.29 kB
+dist/assets/tree-CTVny1tB.png                1,975.54 kB
+dist/assets/base-DA4A5nch.png                2,564.33 kB
+dist/assets/DiscoveryMap-Cd3gA50p.css            3.76 kB │ gzip:  1.29 kB
+dist/assets/catalog-5ti7OcbD.css                 6.87 kB │ gzip:  1.83 kB
+dist/assets/IslandProof-OI2Kvvrk.css             9.54 kB │ gzip:  2.82 kB
+dist/assets/index-Ch2q2tua.css                  26.36 kB │ gzip:  5.97 kB
+dist/assets/AnomalyArchive-CdlGUKiX.js           2.15 kB │ gzip:  0.97 kB
+dist/assets/SaveDiagnostics-D_sfaEPU.js          2.83 kB │ gzip:  1.28 kB
+dist/assets/SettingsPanel-BMEfASGr.js            3.34 kB │ gzip:  1.21 kB
+dist/assets/ThematicCollections-DXVIcUQ9.js      4.17 kB │ gzip:  1.51 kB
+dist/assets/DiscoveryMap-D0sB-WIM.js             7.51 kB │ gzip:  2.77 kB
+dist/assets/Catalog-De3wgYRn.js                 12.26 kB │ gzip:  3.90 kB
+dist/assets/IslandProof-CFnK-tEi.js             33.92 kB │ gzip: 11.27 kB
+dist/assets/storage-Cm7D3lyf.js                 96.41 kB │ gzip: 32.43 kB
+dist/assets/validation-Ky_Aq7Oc.js              96.73 kB │ gzip: 27.41 kB
+dist/assets/index-zs0rrZi0.js                  117.80 kB │ gzip: 31.66 kB
+dist/assets/react-runtime-CTvR5Qwm.js          263.03 kB │ gzip: 83.62 kB
+✓ built in 3.56s

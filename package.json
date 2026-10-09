@@ -16,7 +16,7 @@
     "simulate:content": "tsx scripts/simulate-content.ts",
     "validate:world": "tsx scripts/validate-world.ts",
     "simulate:world": "tsx scripts/simulate-world.ts",
-    "build": "npm run validate:content && npm run simulate:content && npm run validate:world && npm run simulate:world && tsc --noEmit && vite build",
+    "build": "npm run validate:content && npm run simulate:content && npm run validate:world && npm run simulate:world && npm run validate:island-assets && tsc --noEmit && vite build",
     "preview": "vite preview",
     "check": "npm run typecheck && npm run lint && npm test && npm run build",
     "test:e2e": "playwright test",
@@ -24,7 +24,8 @@
     "profile:map": "tsx scripts/profile-map.ts",
     "validate:pwa": "tsx scripts/validate-pwa.ts",
     "measure:bundle": "tsx scripts/measure-bundle.ts",
-    "test:production": "playwright test --config playwright.production.config.ts"
+    "test:production": "playwright test --config playwright.production.config.ts",
+    "validate:island-assets": "tsx scripts/validate-island-assets.ts"
   },
   "dependencies": {
     "dexie": "^4.4.6",

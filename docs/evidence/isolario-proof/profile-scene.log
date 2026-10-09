@@ -1,0 +1,8 @@
+{
+  "coldReadyMs": 1125.3924000000002,
+  "samples": 180,
+  "p95FrameGapMs": 16.700000000000273,
+  "maxFrameGapMs": 16.800000000000182,
+  "rasterBytes": 9702108,
+  "budgetPassed": false
+}

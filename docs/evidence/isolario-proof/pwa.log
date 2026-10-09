@@ -1,0 +1,5 @@
+
+> merge-discovery@0.1.0 validate:pwa
+> tsx scripts/validate-pwa.ts
+
+PWA manifest/icons/exact precache/no runtime cache/chunk budgets: PASS (25 assets, 11 JS chunks).

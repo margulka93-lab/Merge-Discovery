@@ -1,0 +1,11 @@
+{
+  "production": true,
+  "serviceWorker": true,
+  "offlineLazyRoute": true,
+  "offlineArt": true,
+  "canonicalFixture": "real application route, explicitly imported via UI",
+  "worldMutations": 6,
+  "saveUnchanged": true,
+  "atlas": true,
+  "reload": true
+}
