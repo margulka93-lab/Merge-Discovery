@@ -1,42 +1,38 @@
-# CODEX_TASK.md — Isolario + Atlante vertical slice
+# CODEX_TASK.md — Discovery-first consolidation after Isolario Foundation
 
-## State
+## Current state
 
-**Architecture checkpoint APPROVED on 2026-10-09**, under the conditions in `docs/ISOLARIO_CHECKPOINT_APPROVED.md`.
+- **PR #17 Isolario Foundation is merged into `main`**.
+- PR #18 Isolario Concept Proof is now a **draft based on `main`**, not yet approved or merged.
+- The user has clarified a critical product rule: **discovering combinations/elements remains the main gameplay; the Island/Mondo is a secondary screen showing world consequences, and the Atlas records knowledge plus manifested changes.**
 
-Read the approved checkpoint document first. `docs/tasks/ISOLARIO_ATLANTE_PROTOTYPE.md` is now executable within these limits even though its original heading records the prior pre-approval state.
+**Primary product direction:** `docs/DISCOVERY_FIRST_WORLD_ATLAS.md`.
 
-## Required reading
+## Immediate next task: harden PR #18, no blanket merge
 
-- `AGENTS.md`
-- **`docs/ISOLARIO_CHECKPOINT_APPROVED.md`**
-- **`docs/tasks/ISOLARIO_ATLANTE_PROTOTYPE.md`**
-- `docs/adr/ISOLARIO_ATLANTE_ARCHITECTURE.md`
-- `docs/proposals/ISOLARIO_ATLANTE_MIGRATION.md`
-- All required documents enumerated in the prototype task, especially resolver, save/versioning, visibility, visual direction, responsive and accessibility.
+Read `AGENTS.md`, `docs/DISCOVERY_FIRST_WORLD_ATLAS.md`, `docs/ISOLARIO_FEASIBILITY_REVIEW.md`, `docs/ISOLARIO_CHECKPOINT_APPROVED.md`, and relevant renderer/PWA, save, responsive and accessibility docs.
 
-## Implementation workflow
+Work **in existing branch/PR #18**, base `main`, preserving the technical contracts from #17. Do not create a massive integration of historic PRs.
 
-- Base fresh foundation branch on **latest `main`**, recording SHA at kickoff. Do not reset to the historical audit SHA.
-- Preserve PRs #9–16, without merging or force-pushing them. Extract selected small helpers only with provenance.
-- Draft stacked PRs: **foundation → island → atlas**, with independent tests and readable reviews.
-- Foundation may begin immediately: world types/index/validator, WorldRepository, generation-safe IndexedDB lifecycle and projections.
-- **Before producing final scene asset batches**, supply a sample visual composition (island barren/developed at 1440, 390 and 320) for human approval. Continue safe foundation/tests while visual design is pending.
-- Island gameplay: 4 starters + 20 existing canonical discoveries; 11 authored mappings including generic Creature; 3 distinct environmental effects; anchors chosen by player; no new recipe/Set/XP semantics.
-- Atlas: full gate after 3 discoveries, safe known content and separate actual world observations.
-- Keep historic Laboratory accessible on its original route during prototype review; expose Isolario on `/island`, don't redirect `/` automatically.
-- Build and test with real seed from fresh save, including a complete 20-discovery route and first creature habitat, save/reload, mobile/keyboard and offline.
-- No merge before visual and human PC/mobile playtest approval.
-- Note world-only diagnostic backup is **not** full portable backup and is a pre-release limitation.
+1. Keep route `/` as discovery/combinations home. The Island remains a separate `/island` route and never mandatory for discovering new elements.
+2. Add a small, accessible, responsive **Mondo** entry point in the existing navigation, gated only by an appropriate obvious product rule (no hidden-spoiler metadata), and a clear one-step return to **Scopri**. Do not redesign the entire main Laboratory here.
+3. Reframe the Island's in-scene A+B tray as optional/contextual. No duplicate resolver; Island visits should primarily let the player see and manifest consequences of discoveries made in Scopri.
+4. If an owned element now enables a valid world action, expose a restrained `Nuova possibilità nel Mondo` cue through the safe world projector, not raw manifest lists. Do not require an island visit for progression.
+5. Optimize the five runtime island raster images from ~9.25MiB toward **≤5 MiB combined**, measuring actual bytes, alpha quality, visual comparison and production PWA precache. Use appropriately downsampled WebP/AVIF if browser support and quality allow. Do not simply increase a budget threshold or add unsafe runtime image caching.
+6. Keep Atlas as prototype first page, recording only actual safe knowledge and committed changes; don't present it as the complete editorial book yet.
+7. Preserve old/save world compatibility, no content changes, no new XP/Set unlocks, update-safe rules and offline boot. Run old+new E2E, production PWA, 320/390/1440 screenshots, visual before/after raster comparisons.
+8. Document manual playtest still pending and portability limitation: canonical save export is NOT a combined world+save backup.
+9. End with PR still **draft** and no merge. Require approval after screenshots and the player's desktop/mobile playtest.
 
-## Do not do
+## Don't merge historic drafts indiscriminately
 
-- Do not change locked 67-element seed, resolver semantics, PlayerSave schema, or PWA update safety.
-- Do not activate 51 proposed 8A candidates.
-- Do not import full old UI or FreeTable as Isolario.
-- Do not build a procedural archipelago, full world editor, Content Studio migration, Android, or new eras.
-- Do not claim approved final art or tested physical devices without evidence.
+- #9–11 visual system: selective future integration, not all commits.
+- #13/#16 old free table: not approved as definitive primary interaction; extract helper logic only.
+- #14/#15 runtime content importer/Studio: preserve and later extract to independent PRs not dependent on abandoned UI.
+- #12 Phase 8A: candidates remain unapproved canon.
 
-## Delivery
+Keep the canonical 67 elements unchanged. Do not start Android, full archipelago, content expansion or mass art asset production.
 
-First provide foundation PR draft and scene sample for review. Once sample is approved, finish island and atlas PR drafts with required E2E, validator, save migration and offline evidence.
+## Result expected
+
+PR #18 updated as a lightweight, discover-first **optional World screen** with optimised assets and no core game regressions. After review, separately plan a dedicated Scopri experience and full Atlante integration.
