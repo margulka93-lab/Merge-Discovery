@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-09",
+  "scope": "Isolario Foundation + static visual sample only",
+  "baseCommit": "8ce18be6ed1081b45f3e51255ebf690ae38cafe3",
+  "branch": "codex/isolario-foundation",
+  "check": {
+    "result": "PASS",
+    "unitComponentTests": 225,
+    "files": 13,
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "build": "PASS"
+  },
+  "e2e": {
+    "result": "PASS",
+    "tests": 27,
+    "focusedFoundationRerun": 7,
+    "realIndexedDBMigration": true,
+    "competingTabs": true
+  },
+  "production": {
+    "result": "PASS",
+    "tests": 11,
+    "realWaitingWorker": true,
+    "canonicalOfflineReloadExport": true,
+    "worldOffline": "explicitly seeded application-simulation fixture; no Island UI"
+  },
+  "reachability": {
+    "canonical": 67,
+    "total": 67,
+    "maxDepth": 11,
+    "seedChanged": false,
+    "world": 11,
+    "totalMappings": 11
+  },
+  "journey": {
+    "starters": 4,
+    "newCanonicalDiscoveries": 20,
+    "owned": 24,
+    "xp": 2430,
+    "manifestations": 11,
+    "kindCount": 3,
+    "creatureHabitat": true,
+    "knownReplayWrites": 0,
+    "worldAwardsXp": false,
+    "automaticSpawn": false
+  },
+  "persistence": {
+    "dexieVersions": [
+      1,
+      2
+    ],
+    "nativeIndexedDBVersions": [
+      10,
+      20
+    ],
+    "saveSchemaVersion": 1,
+    "worldSchemaVersion": 1,
+    "fixtureCount": 7,
+    "byteIdenticalCanonicalSlots": true,
+    "atomicGenerationImportReset": true,
+    "abortAfterWorldPutRollback": true,
+    "abortGenerationWriteRollback": true,
+    "blockedUpgrade": true,
+    "corruptAndMissingWorldCurrentNoAutoReset": true,
+    "explicitBackupRecovery": true,
+    "portableWorldBackup": false
+  },
+  "pwa": {
+    "result": "PASS",
+    "assets": 18,
+    "jsChunks": 10,
+    "semanticsChanged": false
+  },
+  "bundle": {
+    "entryBefore": 116740,
+    "entryAfter": 117311,
+    "totalJsBefore": 604707,
+    "totalJsAfter": 605651,
+    "totalGzipBefore": 186304,
+    "totalGzipAfter": 186595
+  },
+  "profiles": {
+    "catalog1000": "PASS",
+    "map1000": "PASS",
+    "fullPairMatrix": false
+  },
+  "sample": {
+    "sizes": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        568
+      ]
+    ],
+    "states": [
+      "initial",
+      "developed"
+    ],
+    "captures": 6,
+    "builtInImagegen": true,
+    "finalAssets": false,
+    "visualApproval": "PENDING",
+    "axeAA": "PASS",
+    "documentOverflow": false
+  },
+  "notRun": [
+    "physical phone",
+    "manual screen reader",
+    "human Island playtest",
+    "world renderer profiling",
+    "Island/Atlas UI"
+  ],
+  "oldPullRequestsChanged": false,
+  "merged": false
+}

@@ -1,0 +1,94 @@
+{
+  "checkedOn": "2026-10-09",
+  "main": "39c62ada194651d27c153d3be5d5444fc3c27ce8",
+  "pullRequests": [
+    {
+      "number": 9,
+      "title": "Phase 7.5A: align observatory shell and Laboratory visual hierarchy",
+      "url": "https://github.com/margulka93-lab/Merge-Discovery/pull/9",
+      "state": "open",
+      "merged": false,
+      "draft": false,
+      "base": "main",
+      "head": "codex/phase-7-5a",
+      "headSha": "c22cbe35ef03c6a0cf5352b31bdb750a9c748789"
+    },
+    {
+      "number": 10,
+      "title": "Phase 7.5B: dark knowledge screens (stacked on unapproved PR #9)",
+      "url": "https://github.com/margulka93-lab/Merge-Discovery/pull/10",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base": "codex/phase-7-5a",
+      "head": "codex/phase-7-5b",
+      "headSha": "46a5478a8ae30b0693fc6377bbe60d176ee65cdd"
+    },
+    {
+      "number": 11,
+      "title": "Phase 7.5C: observatory exploration and Settings (stacked on PR #10)",
+      "url": "https://github.com/margulka93-lab/Merge-Discovery/pull/11",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base": "codex/phase-7-5b",
+      "head": "codex/phase-7-5c",
+      "headSha": "682b4765bac36533a59f944b31ad0bc85c6563a3"
+    },
+    {
+      "number": 12,
+      "title": "Phase 8A preflight: proposed Life/Animals pack, blocked on collision direction (stacked on #11)",
+      "url": "https://github.com/margulka93-lab/Merge-Discovery/pull/12",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base": "codex/phase-7-5c",
+      "head": "codex/phase-8a",
+      "headSha": "0225bdd4be09115ff46b5280a2fad7343b65a659"
+    },
+    {
+      "number": 13,
+      "title": "UX-1: Laboratorio rapido e Tavolo libero accessibile (stacked su PR #11)",
+      "url": "https://github.com/margulka93-lab/Merge-Discovery/pull/13",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base": "codex/phase-7-5c",
+      "head": "codex/ux-1",
+      "headSha": "2267a444c9a41741040642fdf89c2530eda2941c"
+    },
+    {
+      "number": 14,
+      "title": "CONTENT-1A — runtime ZIP importer, offline packs e validazione (stacked su #13)",
+      "url": "https://github.com/margulka93-lab/Merge-Discovery/pull/14",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base": "codex/ux-1",
+      "head": "codex/content-1a",
+      "headSha": "85d7a2146b3fc2e893ba0d47934780a1122d7305"
+    },
+    {
+      "number": 15,
+      "title": "CONTENT-1B: Studio visuale, bozze offline e sandbox Phase 8A",
+      "url": "https://github.com/margulka93-lab/Merge-Discovery/pull/15",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base": "codex/content-1a",
+      "head": "codex/content-1b",
+      "headSha": "be21cbe09cc8bd77ed6e1a0d833843b938a9c284"
+    },
+    {
+      "number": 16,
+      "title": "PLAYFEEL V2 — Tavolo libero immediato, replay e dock mobile (stacked #13)",
+      "url": "https://github.com/margulka93-lab/Merge-Discovery/pull/16",
+      "state": "open",
+      "merged": false,
+      "draft": true,
+      "base": "codex/ux-1",
+      "head": "codex/playfeel-v2",
+      "headSha": "3afcb5a9bc36827251517aa4ff7c1369747a5d5e"
+    }
+  ]
+}

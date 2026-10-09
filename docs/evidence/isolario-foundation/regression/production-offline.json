@@ -1,0 +1,50 @@
+{
+  "manifestErrors": [],
+  "installabilityErrors": [],
+  "production": true,
+  "controller": true,
+  "precache": {
+    "keys": [
+      "merge-discovery-build-52ba6f936dd757ab"
+    ],
+    "urls": [
+      "/assets/AnomalyArchive-BFry1K1z.js",
+      "/assets/Catalog-BFtSNySb.js",
+      "/assets/DiscoveryMap-Cd3gA50p.css",
+      "/assets/DiscoveryMap-c_U-oRfk.js",
+      "/assets/SaveDiagnostics-D5gx4k9V.js",
+      "/assets/SettingsPanel-DxdgyLu2.js",
+      "/assets/ThematicCollections-BYwwTCT2.js",
+      "/assets/catalog-5ti7OcbD.css",
+      "/assets/index-Ch2q2tua.css",
+      "/assets/index-D6xLfWQB.js",
+      "/assets/react-runtime-DuPBgRW0.js",
+      "/assets/storage-E3N4n8uI.js",
+      "/assets/validation-DRBpZDWE.js",
+      "/icons/icon-192.png",
+      "/icons/icon-512.png",
+      "/icons/maskable-512.png",
+      "/index.html",
+      "/manifest.webmanifest"
+    ]
+  },
+  "offlineRoutes": [
+    "/",
+    "/collection",
+    "/sets",
+    "/sets/origins",
+    "/elements/water",
+    "/collections",
+    "/collections/water_cycle",
+    "/explore/anomalies",
+    "/explore/map?element=water",
+    "/settings"
+  ],
+  "exportRoundTrip": true,
+  "offlineCombine": true,
+  "indexedDbAfterReload": true,
+  "hintOffline": true,
+  "offlinePreferences": true,
+  "offlineInformationSettings": true,
+  "saveXp": 8480
+}

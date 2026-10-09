@@ -1,0 +1,239 @@
+{
+  "kind": "canonical route audit, not prototype implementation",
+  "baseCommit": "39c62ada194651d27c153d3be5d5444fc3c27ce8",
+  "starters": [
+    "void",
+    "energy",
+    "matter",
+    "time"
+  ],
+  "newDiscoveries": 20,
+  "finalOwned": 24,
+  "finalXp": 2430,
+  "knownReplayXpDelta": 0,
+  "canonicalContentChanged": false,
+  "worldActionsImplemented": false,
+  "designApproval": "PENDING",
+  "steps": [
+    {
+      "step": 1,
+      "recipeId": "void_energy_to_light",
+      "inputs": [
+        "void",
+        "energy"
+      ],
+      "result": "light",
+      "xp": 100,
+      "owned": 5
+    },
+    {
+      "step": 2,
+      "recipeId": "energy_energy_to_heat",
+      "inputs": [
+        "energy",
+        "energy"
+      ],
+      "result": "heat",
+      "xp": 200,
+      "owned": 6
+    },
+    {
+      "step": 3,
+      "recipeId": "energy_matter_to_plasma",
+      "inputs": [
+        "energy",
+        "matter"
+      ],
+      "result": "plasma",
+      "xp": 320,
+      "owned": 7
+    },
+    {
+      "step": 4,
+      "recipeId": "void_time_to_space",
+      "inputs": [
+        "void",
+        "time"
+      ],
+      "result": "space",
+      "xp": 420,
+      "owned": 8
+    },
+    {
+      "step": 5,
+      "recipeId": "matter_space_to_gravity",
+      "inputs": [
+        "matter",
+        "space"
+      ],
+      "result": "gravity",
+      "xp": 540,
+      "owned": 9
+    },
+    {
+      "step": 6,
+      "recipeId": "matter_time_to_cosmic_dust",
+      "inputs": [
+        "matter",
+        "time"
+      ],
+      "result": "cosmic_dust",
+      "xp": 640,
+      "owned": 10
+    },
+    {
+      "step": 7,
+      "recipeId": "plasma_gravity_to_star",
+      "inputs": [
+        "plasma",
+        "gravity"
+      ],
+      "result": "star",
+      "xp": 810,
+      "owned": 11
+    },
+    {
+      "step": 8,
+      "recipeId": "star_cosmic_dust_to_planet",
+      "inputs": [
+        "star",
+        "cosmic_dust"
+      ],
+      "result": "planet",
+      "xp": 930,
+      "owned": 12
+    },
+    {
+      "step": 9,
+      "recipeId": "planet_heat_to_lava",
+      "inputs": [
+        "planet",
+        "heat"
+      ],
+      "result": "lava",
+      "xp": 1080,
+      "owned": 13
+    },
+    {
+      "step": 10,
+      "recipeId": "lava_time_to_rock",
+      "inputs": [
+        "lava",
+        "time"
+      ],
+      "result": "rock",
+      "xp": 1180,
+      "owned": 14
+    },
+    {
+      "step": 11,
+      "recipeId": "rock_time_to_soil",
+      "inputs": [
+        "rock",
+        "time"
+      ],
+      "result": "soil",
+      "xp": 1280,
+      "owned": 15
+    },
+    {
+      "step": 12,
+      "recipeId": "cosmic_dust_space_to_comet",
+      "inputs": [
+        "cosmic_dust",
+        "space"
+      ],
+      "result": "comet",
+      "xp": 1400,
+      "owned": 16
+    },
+    {
+      "step": 13,
+      "recipeId": "planet_comet_to_water",
+      "inputs": [
+        "planet",
+        "comet"
+      ],
+      "result": "water",
+      "xp": 1500,
+      "owned": 17
+    },
+    {
+      "step": 14,
+      "recipeId": "water_planet_to_ocean",
+      "inputs": [
+        "water",
+        "planet"
+      ],
+      "result": "ocean",
+      "xp": 1620,
+      "owned": 18
+    },
+    {
+      "step": 15,
+      "recipeId": "ocean_energy_to_life",
+      "inputs": [
+        "ocean",
+        "energy"
+      ],
+      "result": "life",
+      "xp": 1820,
+      "owned": 19
+    },
+    {
+      "step": 16,
+      "recipeId": "life_soil_to_seed",
+      "inputs": [
+        "life",
+        "soil"
+      ],
+      "result": "seed",
+      "xp": 1970,
+      "owned": 20
+    },
+    {
+      "step": 17,
+      "recipeId": "seed_water_to_sprout",
+      "inputs": [
+        "seed",
+        "water"
+      ],
+      "result": "sprout",
+      "xp": 2070,
+      "owned": 21
+    },
+    {
+      "step": 18,
+      "recipeId": "sprout_time_to_tree",
+      "inputs": [
+        "sprout",
+        "time"
+      ],
+      "result": "tree",
+      "xp": 2190,
+      "owned": 22
+    },
+    {
+      "step": 19,
+      "recipeId": "life_energy_to_movement",
+      "inputs": [
+        "life",
+        "energy"
+      ],
+      "result": "movement",
+      "xp": 2310,
+      "owned": 23
+    },
+    {
+      "step": 20,
+      "recipeId": "life_movement_to_creature",
+      "inputs": [
+        "life",
+        "movement"
+      ],
+      "result": "creature",
+      "xp": 2430,
+      "owned": 24
+    }
+  ]
+}

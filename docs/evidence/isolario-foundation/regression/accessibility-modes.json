@@ -1,0 +1,17 @@
+{
+  "savedReducedMotion": true,
+  "osReducedMotion": true,
+  "forcedColors": true,
+  "extraLargeAllRoutes": true,
+  "landscape": [
+    844,
+    390
+  ],
+  "zoomReflowEquivalent": "1440x900 at 200% = 720x450 CSS pixels",
+  "keyboardSmoke": true,
+  "searchKeyboardViewport": [
+    390,
+    500
+  ],
+  "manualScreenReader": "NOT RUN - release checklist required"
+}

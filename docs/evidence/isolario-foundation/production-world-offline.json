@@ -1,0 +1,12 @@
+{
+  "production": true,
+  "realServiceWorker": true,
+  "fixtureOrigin": "real application simulation, explicitly seeded world row",
+  "offlineCanonicalCombine": true,
+  "separateWorldRetainedAcrossReloadExport": true,
+  "xp": 2430,
+  "worldObservations": 11,
+  "portableWorldExport": false,
+  "islandUI": "NOT IMPLEMENTED",
+  "worldSafePointUI": "Island tranche"
+}
