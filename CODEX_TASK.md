@@ -1,39 +1,32 @@
-# CODEX_TASK.md — PLAYFEEL-V2 (priority change)
+# CODEX_TASK.md — PLAYFEEL V3 (blocking feedback on PR #16)
 
-## Current priority
+## Current task
 
-**Prototype real gameplay feel before content growth.**
+The player **tested PLAYFEEL V2 and rejected its game feel**.
 
-The user has chosen **Tavolo libero as the primary Merge Discovery gameplay mode**, keeping the two-slot Laboratory as a secondary accessible option.
+Do not request another generic playtest of the unchanged V2 build. Instead, implement the specific corrections in **`docs/tasks/PLAYFEEL_V3.md`**.
 
-Start by reading:
+### Direct feedback
 
-1. `AGENTS.md`
-2. **`docs/tasks/PLAYFEEL_V2.md`** — current detailed task and acceptance criteria.
-3. `docs/proposals/UX_1_TWO_MODES.md`
-4. `docs/VISUAL_BIBLE_REFERENCE.md`
-5. `docs/VISUAL_UX_ALIGNMENT.md`
-6. Relevant domain, save, search, hint-safety, PWA, responsiveness and accessibility specs.
+> Il tavolo è ancora troppo meccanico. Una combinazione fallita riporta la figura nella sua posizione iniziale; la tavola è troppo piccola; la lista a destra è troppo ingombrante e richiede troppo scorrimento. Avvicinati molto di più alla fluidità di Little Alchemy 2.
 
-## Branch/pr relationship
+### Required changes
 
-Existing PRs #9–15 remain **draft/unmerged**.
+1. Failed combos **must not snap figures back**. Both figures stay on table near drop site with gentle local separation if overlapping; canceled gestures are separate.
+2. Remove 16–84% canvas positional clamp; table figures move freely across nearly all usable canvas.
+3. Greatly enlarge visible desktop/table play surface and suppress oversized shell chrome while playing.
+4. Rebuild desktop library as compact dense vertical icon+name list (not big 3-column cards), narrower and easier to search and scan.
+5. Mobile: full-height-first canvas, compact collapsed quick-item dock; expand library as overlay/sheet **without shrinking or shifting the board**. Touch drag from library directly to target must work.
+6. Make figures look like free-floating collectible images rather than big buttons; microfeedback for successful/failed merges must be non-blocking.
+7. Keep immediate reusable known results, no XP on replay, new alternate discovery and revisitable anomalies, keyboard/touch accessibility and classic Lab regression.
+8. Run specific post-drop coordinate, canvas-size and 30-step E2E tests, record failed-merge video and new screenshots at progressed save state.
 
-- PR #13 `codex/ux-1` is the existing implementation baseline.
-- Create a **separate stacked draft PR** `codex/playfeel-v2` against `codex/ux-1`, without changing #14 and #15.
-- Do not treat #13 as visually/gameplay approved.
-- If prototype is later approved, reconcile/rebase the CONTENT-1A/B branches #14/#15 onto the approved UI baseline as a separate integration task.
+### Sources and constraints
 
-## What not to work on yet
+Read `AGENTS.md`, `docs/tasks/PLAYFEEL_V3.md`, prior `docs/tasks/PLAYFEEL_V2.md`, `docs/VISUAL_BIBLE_REFERENCE.md`, `docs/RESPONSIVE_AND_UI_STATES.md`, `docs/MOTION_AUDIO.md`, `docs/ACCESSIBILITY.md`, and current `src/ui/lab/FreeTable.tsx` / `playfeel.css`.
 
-Pause `CODEX_LONG_RUN.md` execution beyond the already-created drafts.
+Use Little Alchemy 2 as an **interaction and information-density benchmark**, not as an art/branding asset source.
 
-Do not add Phase 8B/8C content, change proposed Phase 8A canon, start Android or expand Content Studio here.
+**Update existing draft PR #16** on `codex/playfeel-v2`, base `codex/ux-1`. Do **not** open a new PR, merge, modify #13–15, start Android or add new content.
 
-Do not merge any PR automatically.
-
-## Acceptance
-
-A **genuinely fluid 30-combination human playtest** on PC and smartphone is required before approval, in addition to all automated checks and recorded interactions. Animated drag-overlap and result reuse are central, not optional polish.
-
-Follow `docs/tasks/PLAYFEEL_V2.md` strictly and deliver only the prototype as a separate draft PR.
+Passing tests does not constitute playfeel approval; require another user playtest **after the corrections are implemented**.
