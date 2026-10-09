@@ -1,0 +1,11 @@
+
+> merge-discovery@0.1.0 profile:catalog
+> tsx scripts/profile-catalog.ts
+
+{
+  "elements": 1000,
+  "authoredRecipes": 64,
+  "projectionMs": 207.5,
+  "cachedProjectionsAndDetailsMs": 3.53,
+  "fullPairMatrix": false
+}

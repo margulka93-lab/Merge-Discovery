@@ -5,20 +5,27 @@ import { assertRevision, emptySlots, nextSlots } from '../snapshots';
 export class MemorySaveRepository implements SaveRepository {
   readonly adapter = 'memory' as const;
   private slots: SaveSlots;
+  private generation = crypto.randomUUID();
+  /** Synchronous guard shared with memory world adapter to model an atomic transaction. */
+  readProfile() { return { generation: this.generation, save: structuredClone(this.slots) }; }
   /** Raw fixtures deliberately support corruption/recovery tests. */
   constructor(slots: SaveSlots = emptySlots()) { this.slots = structuredClone(slots); }
   async load() { return structuredClone(this.slots); }
   async createNew(snapshot: PlayerSave, expectedRevision: number) { return this.commit(snapshot, expectedRevision, true); }
   async persist(snapshot: PlayerSave, expectedRevision: number, previousValid?: PlayerSave | null) { return this.commit(snapshot, expectedRevision, false, previousValid); }
-  async import(snapshot: PlayerSave, expectedRevision: number, previousValid?: PlayerSave | null) { return this.persist(snapshot, expectedRevision, previousValid); }
+  async import(snapshot: PlayerSave, expectedRevision: number, previousValid?: PlayerSave | null) {
+    const revision = this.commit(snapshot, expectedRevision, false, previousValid); this.generation = crypto.randomUUID(); return revision;
+  }
   async export() { return structuredClone(this.slots.current); }
   private commit(snapshot: PlayerSave, expected: number, create = false, previousValid?: PlayerSave | null) {
     const next = nextSlots(this.slots, snapshot, expected, create, previousValid);
     this.slots = next;
+    if (create) this.generation = crypto.randomUUID();
     return next.revision;
   }
   async clear(expectedRevision: number) {
     assertRevision(this.slots, expectedRevision);
     this.slots = { ...emptySlots(), revision: this.slots.revision + 1 };
+    this.generation = crypto.randomUUID();
   }
 }

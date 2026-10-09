@@ -26,6 +26,7 @@ export function SaveDiagnostics({ application, boot, onSnapshot, beginOperation 
     <p role="status">{snapshot ? `Salvataggio creato/caricato · schema ${snapshot.save.saveSchemaVersion} · contenuto ${snapshot.save.contentVersionSeen} · adapter ${application.repository.adapter}` : 'Caricamento salvataggio…'}</p>
     {error && <p role="alert">{error}</p>}
     {snapshot?.notices.includes('new_possibilities_available') && <p>Nuove possibilità disponibili.</p>}
+    <p>Questo JSON trasferisce soltanto le scoperte e le preferenze. Il mondo Isolario non è incluso: la sua esportazione diagnostica separata non è un backup completo della partita.</p>
     <button disabled={busy || !snapshot} onClick={() => void run(async () => {
       const exported = await application.exportSave(); setJson(exported);
       await application.previewImport(exported); setRoundTrip(true);
@@ -37,6 +38,7 @@ export function SaveDiagnostics({ application, boot, onSnapshot, beginOperation 
     {preview && <div>
       <p>Preview: {preview.discoveries} scoperte · {preview.xp} XP · schema {preview.schemaVersion}.</p>
       <p>La conferma sostituirà il progresso locale. Il precedente salvataggio valido resterà nel backup.</p>
+      <p>L’importazione avvierà una nuova generazione del mondo, vuota. Il mondo precedente resterà disponibile soltanto come copia diagnostica locale.</p>
       <button disabled={busy} onClick={() => void run(async () => { const value = await application.confirmImport(preview, true); setSnapshot(value); onSnapshot?.(value); setPreview(undefined); })}>Conferma sostituzione del progresso</button>
       <button disabled={busy} onClick={() => setPreview(undefined)}>Annulla import</button>
     </div>}

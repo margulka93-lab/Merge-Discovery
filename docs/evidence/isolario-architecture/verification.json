@@ -1,0 +1,20 @@
+{
+  "scope": "architecture-only checkpoint",
+  "date": "2026-10-09",
+  "base": "39c62ada194651d27c153d3be5d5444fc3c27ce8",
+  "branch": "codex/isolario-architecture-audit",
+  "check": { "result": "PASS", "unitTests": 186, "testFiles": 12, "typecheck": "PASS", "lint": "PASS", "build": "PASS" },
+  "content": { "validation": "PASS", "reachable": 67, "total": 67, "depth": 11, "modified": false },
+  "pwa": { "result": "PASS", "precacheAssets": 18, "jsChunks": 10 },
+  "proposedPath": { "actualSaveApplicationUsed": true, "repository": "memory", "starters": 4, "newDiscoveries": 20, "finalOwned": 24, "xp": 2430, "knownReplayXpDelta": 0 },
+  "commands": ["npm ci", "npm run check", "npx tsx docs/evidence/isolario-architecture/verify-path.ts", "npm run lint", "npm run typecheck", "npm run validate:pwa"],
+  "existingPRsAudited": [9, 10, 11, 12, 13, 14, 15, 16],
+  "existingPRsChanged": false,
+  "prototypeImplemented": false,
+  "worldRendererBenchmark": "NOT RUN - renderer not implemented",
+  "allDraftBrowserSuites": "NOT RERUN in architecture audit",
+  "humanConceptApproval": "PENDING",
+  "humanVisualApproval": "PENDING",
+  "humanPCAndPhonePlaytest": "NOT RUN - prototype not implemented",
+  "commitPushOrMergePerformed": false
+}

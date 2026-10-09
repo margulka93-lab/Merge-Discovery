@@ -1,0 +1,58 @@
+[
+  {
+    "file": "developed-1440x900.png",
+    "width": 1440,
+    "height": 900,
+    "bytes": 1868434,
+    "sha256": "7DBA25D3B4F34B0D625FFA68505726515CB03C80C8FBC948908FE6366A6B99CD"
+  },
+  {
+    "file": "developed-320x568.png",
+    "width": 320,
+    "height": 568,
+    "bytes": 186360,
+    "sha256": "20AA39D7FCACB2AA4DB4329686ADD5B8A15D90DE75BC3E5F2808FDFABCC09C93"
+  },
+  {
+    "file": "developed-390x844.png",
+    "width": 390,
+    "height": 844,
+    "bytes": 298596,
+    "sha256": "D29A6E0D3D8972683B2034F29EE0760C6B3E84241A790A2B82B64FF54D72AC51"
+  },
+  {
+    "file": "developed.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 2594836,
+    "sha256": "6B661F833107C4EC7A6EAABAF3CE8D2840C65A26AFC836F937DE6ECB522B65AF"
+  },
+  {
+    "file": "initial-1440x900.png",
+    "width": 1440,
+    "height": 900,
+    "bytes": 1792403,
+    "sha256": "7CD6079D8B61B42DA177B4FCC5570BA8373F3A23BF8FD0C88C218C8D84E0AB6A"
+  },
+  {
+    "file": "initial-320x568.png",
+    "width": 320,
+    "height": 568,
+    "bytes": 174903,
+    "sha256": "7056812E5D0F0FEA23AA4AAD45C5AECF296FB29AAC8607350231CB046745E554"
+  },
+  {
+    "file": "initial-390x844.png",
+    "width": 390,
+    "height": 844,
+    "bytes": 283640,
+    "sha256": "8A7BC40290C2490542C6A71D684DCFB8C3272B38AC5593D0FB9F9E970D593D89"
+  },
+  {
+    "file": "initial.png",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 2564331,
+    "sha256": "420C211D8935904965DB8206EC93F88EB69D2F7BCDEE436DB251493DE971381B"
+  }
+]

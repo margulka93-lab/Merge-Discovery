@@ -1,0 +1,70 @@
+
+> merge-discovery@0.1.0 measure:bundle
+> tsx scripts/measure-bundle.ts docs/evidence/isolario-foundation/bundle-after.json
+
+{
+  "entry": {
+    "file": "index-D6xLfWQB.js",
+    "bytes": 117311,
+    "gzipBytes": 31513
+  },
+  "largestChunk": {
+    "file": "react-runtime-DuPBgRW0.js",
+    "bytes": 263031,
+    "gzipBytes": 83616
+  },
+  "totalJsBytes": 605651,
+  "totalGzipBytes": 186595,
+  "chunks": [
+    {
+      "file": "AnomalyArchive-BFry1K1z.js",
+      "bytes": 2150,
+      "gzipBytes": 967
+    },
+    {
+      "file": "Catalog-BFtSNySb.js",
+      "bytes": 12259,
+      "gzipBytes": 3902
+    },
+    {
+      "file": "DiscoveryMap-c_U-oRfk.js",
+      "bytes": 7505,
+      "gzipBytes": 2770
+    },
+    {
+      "file": "index-D6xLfWQB.js",
+      "bytes": 117311,
+      "gzipBytes": 31513
+    },
+    {
+      "file": "react-runtime-DuPBgRW0.js",
+      "bytes": 263031,
+      "gzipBytes": 83616
+    },
+    {
+      "file": "SaveDiagnostics-D5gx4k9V.js",
+      "bytes": 2832,
+      "gzipBytes": 1286
+    },
+    {
+      "file": "SettingsPanel-DxdgyLu2.js",
+      "bytes": 3338,
+      "gzipBytes": 1215
+    },
+    {
+      "file": "storage-E3N4n8uI.js",
+      "bytes": 96411,
+      "gzipBytes": 32429
+    },
+    {
+      "file": "ThematicCollections-BYwwTCT2.js",
+      "bytes": 4174,
+      "gzipBytes": 1511
+    },
+    {
+      "file": "validation-DRBpZDWE.js",
+      "bytes": 96640,
+      "gzipBytes": 27386
+    }
+  ]
+}
