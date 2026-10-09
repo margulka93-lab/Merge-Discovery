@@ -30,10 +30,12 @@ export function NavigationRail({
   model,
   active,
   navigate,
+  worldEntry,
 }: {
   model: LabModel;
   active: string;
   navigate: (id: string) => void;
+  worldEntry?: ReactNode;
 }) {
   return (
     <aside className="navigation-rail">
@@ -54,6 +56,7 @@ export function NavigationRail({
           active={active}
           navigate={navigate}
         />
+        <div className="world-entry-desktop">{worldEntry}</div>
       </nav>
       <p className="rail-note">
         Combina. Scopri.
@@ -90,11 +93,13 @@ export function AppShell({
   active,
   navigate,
   children,
+  worldEntry,
 }: {
   model: LabModel;
   active: string;
   navigate: (id: string) => void;
   children: ReactNode;
+  worldEntry?: ReactNode;
 }) {
   return (
     <div
@@ -104,13 +109,14 @@ export function AppShell({
       <a className="skip-link" href={active === "lab" ? "#laboratory" : "#catalog-content"}>
         {active === "lab" ? "Vai al laboratorio" : "Vai al contenuto"}
       </a>
-      <NavigationRail model={model} active={active} navigate={navigate} />
+      <NavigationRail model={model} active={active} navigate={navigate} worldEntry={worldEntry} />
       <header className="mobile-header">
         <h1 className="sr-only">Merge Discovery</h1>
         <span className="brand-mark" aria-hidden="true">
           ✧
         </span>
         <DiscoveryLevelBadge model={model} />
+        {worldEntry}
       </header>
       {children}
       <BottomNavigation model={model} active={active} navigate={navigate} />

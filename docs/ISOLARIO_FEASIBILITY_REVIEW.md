@@ -1,6 +1,8 @@
 # Isolario + Atlante Vivente — Concept Proof review
 
 2026-10-09 · **prototipo da valutare, non concept approvato automaticamente**.
+
+**Aggiornamento discovery-first:** [revisione corrente della #18](DISCOVERY_FIRST_PR18_REVIEW.md). La Scoperta è la home, Mondo è facoltativo, A+B contestuale; i raster runtime sono ora 0,68 MiB. Le misure e i limiti qui sotto descrivono il primo proof (`6112afc`); non sostituiscono i risultati aggiornati né un'approvazione umana.
 Scope/base e nuova priorità: [task della tranche](tasks/ISOLARIO_CONCEPT_PROOF.md). Evidenze riproducibili: [cartella proof](evidence/isolario-proof/README.md).
 
 Il recupero della Foundation permette di provare il ciclo reale senza riscrivere resolver, save, visibility o PWA. Il risultato supporta la fattibilità tecnica di una **scena authored piccola**, ma non dimostra ancora sostenibilità di molte isole, piacere per dieci minuti, prestazioni di un telefono fisico o approvazione della direzione artistica. Prima della produzione completa occorre la review umana di questo slice.

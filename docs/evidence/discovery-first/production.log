@@ -1,0 +1,30 @@
+
+> merge-discovery@0.1.0 test:production
+> playwright test --config playwright.production.config.ts
+
+[WebServer] (node:4212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:34676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:35376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\production\island-foundation.spec.ts:4:1 › production offline keeps separate world fixture across canonical combine/reload/export (3.5s)
+  ok  2 tests\production\island-proof.spec.ts:10:1 › real production offline lazy scene, separate world commits, atlas and reload (4.0s)
+  ok  3 tests\production\island-proof.spec.ts:30:1 › production waiting worker is blocked by primary discovery, then explicit update preserves world (3.5s)
+  ok  4 tests\production\pwa.spec.ts:39:1 › production precache opens every eligible route offline, commits and preserves save/export (10.8s)
+  ok  5 tests\production\pwa.spec.ts:84:1 › real waiting worker around a discovery waits for acknowledgement, reloads once without XP loss (3.8s)
+  ok  6 tests\production\pwa.spec.ts:115:3 › production AA/responsive 320x568 (20.8s)
+  ok  7 tests\production\pwa.spec.ts:115:3 › production AA/responsive 390x844 (21.5s)
+  ok  8 tests\production\pwa.spec.ts:115:3 › production AA/responsive 768x1024 (21.6s)
+  ok  9 tests\production\pwa.spec.ts:115:3 › production AA/responsive 1024x768 (23.7s)
+  ok 10 tests\production\pwa.spec.ts:115:3 › production AA/responsive 1440x900 (23.3s)
+  ok 11 tests\production\pwa.spec.ts:115:3 › production AA/responsive 1920x1080 (20.8s)
+  ok 12 tests\production\pwa.spec.ts:131:1 › production preferences/OS motion, forced colors, extra-large text, zoom reflow, keyboard and viewport changes (28.6s)
+  ok 13 tests\production\pwa.spec.ts:157:1 › production structural performance smoke records cold/warm and secondary routes (4.5s)
+
+  13 passed (3.2m)

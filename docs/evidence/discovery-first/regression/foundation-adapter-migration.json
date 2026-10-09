@@ -1,0 +1,10 @@
+{
+  "browser": "Chromium desktop automated, real IndexedDB",
+  "canonicalBytesUnchanged": true,
+  "versionchangeClosesOldConnection": true,
+  "staleSaveRejected": true,
+  "staleWorldRejected": true,
+  "importRotatesGeneration": true,
+  "staleGenerationRejected": true,
+  "islandUI": "NOT IMPLEMENTED"
+}

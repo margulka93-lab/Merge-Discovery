@@ -1,0 +1,276 @@
+
+> merge-discovery@0.1.0 check
+> npm run typecheck && npm run lint && npm test && npm run build
+
+
+> merge-discovery@0.1.0 typecheck
+> tsc --noEmit
+
+
+> merge-discovery@0.1.0 lint
+> eslint .
+
+
+> merge-discovery@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 C:/Users/margh/.codex/worktrees/isolario-foundation/MERGE DISCOVERY
+
+
+ Test Files  14 passed (14)
+      Tests  231 passed (231)
+   Start at  19:06:16
+   Duration  10.47s (tests 35%, environment 25%, import 21%, transform 18%)
+
+
+> merge-discovery@0.1.0 build
+> npm run validate:content && npm run simulate:content && npm run validate:world && npm run simulate:world && npm run validate:island-assets && tsc --noEmit && vite build
+
+
+> merge-discovery@0.1.0 validate:content
+> tsx scripts/validate-content.ts
+
+Content valid: 67 elements, 64 recipes, 6 Sets, 4 Collections, 1 anomaly.
+Strict schemas, references, localization, identities, ambiguity, Set completion and non-secret reachability: PASS.
+
+> merge-discovery@0.1.0 simulate:content
+> tsx scripts/simulate-content.ts
+
+{
+  "starters": 4,
+  "totalElements": 67,
+  "reachableElements": 67,
+  "unreachableRequired": [],
+  "unrevealedSets": [],
+  "blockedUnlocks": [],
+  "maxDependencyDepth": 11,
+  "anomaliesObserved": [
+    "lunar_life_instability"
+  ],
+  "checkpoints": [
+    {
+      "depth": 0,
+      "discovered": 4,
+      "xp": 0,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 1,
+      "discovered": 9,
+      "xp": 520,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 2,
+      "discovered": 14,
+      "xp": 1250,
+      "revealedSetIds": [
+        "origins"
+      ]
+    },
+    {
+      "depth": 3,
+      "discovered": 18,
+      "xp": 1790,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 4,
+      "discovered": 22,
+      "xp": 2260,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 5,
+      "discovered": 28,
+      "xp": 3135,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos"
+      ]
+    },
+    {
+      "depth": 6,
+      "discovered": 31,
+      "xp": 3535,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life"
+      ]
+    },
+    {
+      "depth": 7,
+      "discovered": 39,
+      "xp": 4405,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life"
+      ]
+    },
+    {
+      "depth": 8,
+      "discovered": 49,
+      "xp": 5680,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 9,
+      "discovered": 57,
+      "xp": 6965,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 10,
+      "discovered": 64,
+      "xp": 7930,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    },
+    {
+      "depth": 11,
+      "discovered": 67,
+      "xp": 8480,
+      "revealedSetIds": [
+        "origins",
+        "world",
+        "cosmos",
+        "life",
+        "plants",
+        "fungi"
+      ]
+    }
+  ],
+  "completedCollectionChapterIds": [
+    "children_of_stars",
+    "water_cycle",
+    "rocky_world",
+    "green_everywhere"
+  ]
+}
+
+> merge-discovery@0.1.0 validate:world
+> tsx scripts/validate-world.ts
+
+{
+  "valid": true,
+  "world": "first_island",
+  "definitionVersion": "0.1.0",
+  "mappings": 11,
+  "anchors": 12,
+  "authoredReachability": "11/11",
+  "assetRegistry": "provisional geometry, not final raster assets"
+}
+
+> merge-discovery@0.1.0 simulate:world
+> tsx scripts/simulate-world.ts
+
+{
+  "scope": "Foundation application simulation; no island UI/human playtest",
+  "baseCommit": "8ce18be6ed1081b45f3e51255ebf690ae38cafe3",
+  "starters": [
+    "void",
+    "energy",
+    "matter",
+    "time"
+  ],
+  "newDiscoveries": 20,
+  "owned": 24,
+  "xp": 2430,
+  "mappingsReached": 11,
+  "kinds": [
+    "environment",
+    "terrain",
+    "living_object"
+  ],
+  "noAutomaticSpawn": true,
+  "canonicalSaveUnchangedByWorld": true,
+  "knownReplayWrites": 0,
+  "canonicalContentChanged": false,
+  "worldSchemaVersion": 1,
+  "saveSchemaVersion": 1,
+  "visualApproval": "PENDING",
+  "humanPlaytest": "NOT RUN - Island/Atlas tranche"
+}
+
+> merge-discovery@0.1.0 validate:island-assets
+> tsx scripts/validate-island-assets.ts
+
+{"rasters":5,"bytes":709950,"budget":5242880,"hashAndAlphaVerified":true,"pass":true}
+vite v7.3.7 building client environment for production...
+transforming...
+node_modules/zod/v4/core/regexes.js (74:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/zod/v4/core/util.js (400:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 236 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                0.83 kB │ gzip:  0.41 kB
+dist/assets/creature-Z9avW5wb.webp            61.45 kB
+dist/assets/water-CXclAI4l.webp               74.05 kB
+dist/assets/soil-C4HodY8a.webp                86.06 kB
+dist/assets/tree-CQZhtT9o.webp               104.25 kB
+dist/assets/base-BFtw5rxT.webp               384.14 kB
+dist/assets/DiscoveryMap-Cd3gA50p.css          3.76 kB │ gzip:  1.29 kB
+dist/assets/catalog-5ti7OcbD.css               6.87 kB │ gzip:  1.83 kB
+dist/assets/IslandProof-OI2Kvvrk.css           9.54 kB │ gzip:  2.82 kB
+dist/assets/index-DQ3RFA7-.css                27.07 kB │ gzip:  6.08 kB
+dist/assets/AnomalyArchive-BI7Rw4LS.js         2.15 kB │ gzip:  0.97 kB
+dist/assets/SaveDiagnostics-D-6go6jX.js        2.83 kB │ gzip:  1.29 kB
+dist/assets/SettingsPanel-JshHBtow.js          3.34 kB │ gzip:  1.21 kB
+dist/assets/ThematicCollections-Dw3nOWW7.js    4.17 kB │ gzip:  1.51 kB
+dist/assets/DiscoveryMap-BRKmKEPU.js           7.51 kB │ gzip:  2.77 kB
+dist/assets/Catalog-_l-4PwHf.js               12.26 kB │ gzip:  3.90 kB
+dist/assets/IslandProof-DNMIKjkt.js           12.28 kB │ gzip:  4.66 kB
+dist/assets/islandRuntime-CIpSTt_o.js         21.51 kB │ gzip:  6.87 kB
+dist/assets/storage-Cm7D3lyf.js               96.41 kB │ gzip: 32.43 kB
+dist/assets/validation-Ky_Aq7Oc.js            96.73 kB │ gzip: 27.41 kB
+dist/assets/index-_tM5f9_0.js                118.97 kB │ gzip: 32.00 kB
+dist/assets/react-runtime-CTvR5Qwm.js        263.03 kB │ gzip: 83.62 kB
+✓ built in 3.43s

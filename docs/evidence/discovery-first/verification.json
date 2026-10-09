@@ -1,0 +1,88 @@
+{
+  "generatedAt": "2026-10-09T17:11:51.397Z",
+  "baseMain": "ac1621a2b67efd8f205dc4d42eab4ddb621c32ea",
+  "scope": "existing draft PR18, discovery-first optional World, no merge",
+  "unitComponent": 231,
+  "e2e": 33,
+  "production": 13,
+  "check": "PASS",
+  "pwaValidator": "PASS",
+  "rasterValidator": "PASS",
+  "canonicalUnchangedAgainstMain": true,
+  "seed": {
+    "elements": 67,
+    "recipes": 64,
+    "sets": 6,
+    "collections": 4,
+    "anomalies": 1,
+    "reachable": "67/67",
+    "dependencyDepth": 11
+  },
+  "world": {
+    "reachable": "11/11",
+    "worldRepositoryContractsUnchanged": true
+  },
+  "pwa": {
+    "build": "5bb39c9bfff91acc",
+    "assets": 26,
+    "cachedBytes": 1410796,
+    "atomicPrecache": true,
+    "runtimeCache": false,
+    "offlineRouteAndArt": true,
+    "explicitWaitingUpdate": true,
+    "reloads": 1
+  },
+  "rasters": {
+    "before": 9702108,
+    "after": 709950,
+    "budget": 5242880,
+    "pass": true,
+    "alphaMaxError": 0,
+    "alphaComparison": "against resized source"
+  },
+  "bundle": {
+    "beforeEntry": 117795,
+    "afterEntry": 118969,
+    "beforeTotal": 640139,
+    "afterTotal": 641185,
+    "beforeGzip": 198014,
+    "afterGzip": 198626
+  },
+  "ui": {
+    "home": "/",
+    "optionalWorld": "/island",
+    "discoveryFirst": true,
+    "contextualExperiment": true,
+    "keyboard": true,
+    "touchEmulated": true,
+    "inputRoundTrip": true,
+    "worldReadFailureDoesNotBlockDiscovery": true,
+    "navigationDuringCommitGuard": true,
+    "browserBackNoInvisibleRevealLock": true,
+    "viewportSizes": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        568
+      ]
+    ],
+    "axeAA": true,
+    "reducedMotion": true,
+    "forcedColors": true,
+    "text200Percent": true
+  },
+  "manualPlaytest": "NOT RUN",
+  "physicalPhone": "NOT RUN",
+  "screenReaderHuman": "NOT RUN",
+  "visualApproval": "PENDING",
+  "exportWorldAndSaveBundle": "NOT IMPLEMENTED; canonical export v1 excludes WorldState",
+  "noExpansion": true,
+  "noHistoricBlanketMerge": true
+}

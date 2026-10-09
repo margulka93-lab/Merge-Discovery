@@ -1,0 +1,14 @@
+[WebServer] (node:37664) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:11468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\island-proof.spec.ts:40:3 › device 1440 › playable concept loop 1440x900 (17.5s)
+  ok 2 tests\e2e\island-proof.spec.ts:40:3 › device 390 › playable concept loop 390x844 (16.0s)
+  ok 3 tests\e2e\island-proof.spec.ts:82:1 › small screen, landscape, text, forced colors, no spoilers and explicit east placement (2.4s)
+  ok 4 tests\e2e\island-proof.spec.ts:100:1 › UI world failure keeps discovery, explicit retry and waiting update guards the commit (1.6s)
+  ok 5 tests\e2e\island-proof.spec.ts:117:1 › world projection failure never blocks primary discovery and hides the cue (1.2s)
+
+  5 passed (41.2s)

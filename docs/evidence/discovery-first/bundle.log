@@ -1,0 +1,76 @@
+{
+  "entry": {
+    "file": "index-_tM5f9_0.js",
+    "bytes": 118969,
+    "gzipBytes": 32003
+  },
+  "largestChunk": {
+    "file": "react-runtime-CTvR5Qwm.js",
+    "bytes": 263031,
+    "gzipBytes": 83616
+  },
+  "totalJsBytes": 641185,
+  "totalGzipBytes": 198626,
+  "chunks": [
+    {
+      "file": "AnomalyArchive-BI7Rw4LS.js",
+      "bytes": 2150,
+      "gzipBytes": 966
+    },
+    {
+      "file": "Catalog-_l-4PwHf.js",
+      "bytes": 12259,
+      "gzipBytes": 3900
+    },
+    {
+      "file": "DiscoveryMap-BRKmKEPU.js",
+      "bytes": 7505,
+      "gzipBytes": 2770
+    },
+    {
+      "file": "index-_tM5f9_0.js",
+      "bytes": 118969,
+      "gzipBytes": 32003
+    },
+    {
+      "file": "IslandProof-DNMIKjkt.js",
+      "bytes": 12284,
+      "gzipBytes": 4658
+    },
+    {
+      "file": "islandRuntime-CIpSTt_o.js",
+      "bytes": 21506,
+      "gzipBytes": 6869
+    },
+    {
+      "file": "react-runtime-CTvR5Qwm.js",
+      "bytes": 263031,
+      "gzipBytes": 83616
+    },
+    {
+      "file": "SaveDiagnostics-D-6go6jX.js",
+      "bytes": 2832,
+      "gzipBytes": 1286
+    },
+    {
+      "file": "SettingsPanel-JshHBtow.js",
+      "bytes": 3338,
+      "gzipBytes": 1214
+    },
+    {
+      "file": "storage-Cm7D3lyf.js",
+      "bytes": 96411,
+      "gzipBytes": 32430
+    },
+    {
+      "file": "ThematicCollections-Dw3nOWW7.js",
+      "bytes": 4174,
+      "gzipBytes": 1508
+    },
+    {
+      "file": "validation-Ky_Aq7Oc.js",
+      "bytes": 96726,
+      "gzipBytes": 27406
+    }
+  ]
+}

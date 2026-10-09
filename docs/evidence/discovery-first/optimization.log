@@ -1,0 +1,83 @@
+{
+  "originalCommit": "6112afc38507eb418bcd15a81be94db1e4a683a7",
+  "encoder": "Chromium Canvas WebP quality .92; alpha lossless at resized resolution",
+  "results": [
+    {
+      "name": "base",
+      "sourceBytes": 2564331,
+      "bytes": 384142,
+      "sha256": "a2c4d9246c4338da12415f4f860703292ed2cf9f4d083f27447562372ede46f6",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "width": 1536,
+      "height": 1024,
+      "alphaMaxError": 0,
+      "transparentPixels": 0,
+      "translucentPixels": 0,
+      "rgbRMSE": 2.7118585581096792
+    },
+    {
+      "name": "soil",
+      "sourceBytes": 1849285,
+      "bytes": 86064,
+      "sha256": "0ba7fb046d564b48f5eeaed4969a36af6dad8503a1fa4c026ac1ec0859d9b805",
+      "sourceWidth": 1983,
+      "sourceHeight": 793,
+      "width": 768,
+      "height": 307,
+      "alphaMaxError": 0,
+      "transparentPixels": 96586,
+      "translucentPixels": 139190,
+      "rgbRMSE": 10.712435893807498
+    },
+    {
+      "name": "water",
+      "sourceBytes": 1647339,
+      "bytes": 74050,
+      "sha256": "ad00b5627872ef158c916e77b12b25e2a0d35c54adc974e07b9c8dc1fb4c165a",
+      "sourceWidth": 1983,
+      "sourceHeight": 793,
+      "width": 768,
+      "height": 307,
+      "alphaMaxError": 0,
+      "transparentPixels": 104656,
+      "translucentPixels": 131120,
+      "rgbRMSE": 7.030873402451619
+    },
+    {
+      "name": "tree",
+      "sourceBytes": 1975535,
+      "bytes": 104248,
+      "sha256": "313dda5e1c8c56a5b1b1b3507674f84ea1d1cbed2cb68e0ecd97d46886ecac7a",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "width": 768,
+      "height": 512,
+      "alphaMaxError": 0,
+      "transparentPixels": 246142,
+      "translucentPixels": 147074,
+      "rgbRMSE": 16.383320722347804
+    },
+    {
+      "name": "creature",
+      "sourceBytes": 1665618,
+      "bytes": 61446,
+      "sha256": "a4a9525a97f174372ecd3b9c742a16a0e9736bbea51ff6df1d28001c9f377638",
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "width": 768,
+      "height": 512,
+      "alphaMaxError": 0,
+      "transparentPixels": 279495,
+      "translucentPixels": 113721,
+      "rgbRMSE": 17.77749067845606
+    }
+  ],
+  "sourceBytes": 9702108,
+  "bytes": 709950,
+  "reductionPercent": 92.68251806720767,
+  "budget": 5242880,
+  "pass": true,
+  "originalDecodedBytes": 31454520,
+  "decodedBytes": 11323392
+}

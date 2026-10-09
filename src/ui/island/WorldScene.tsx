@@ -1,10 +1,10 @@
 import { scenePoints, sceneSprites } from '../../application/island/scenePresentation';
 import type { SafeWorldProjection } from '../../application/island/projection';
-import base from '../../assets/island-proof/base.png';
-import tree from '../../assets/island-proof/tree.png';
-import soil from '../../assets/island-proof/soil.png';
-import water from '../../assets/island-proof/water.png';
-import creature from '../../assets/island-proof/creature.png';
+import base from '../../assets/island-proof/base.webp';
+import tree from '../../assets/island-proof/tree.webp';
+import soil from '../../assets/island-proof/soil.webp';
+import water from '../../assets/island-proof/water.webp';
+import creature from '../../assets/island-proof/creature.webp';
 const rasters: Record<string,string> = {tree,soil,water,ocean:water,creature};
 
 /** Authored modular SVG studies; rough props are deliberately not advertised as final art. */
