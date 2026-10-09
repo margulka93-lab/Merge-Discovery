@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-09",
+  "scope": "Concept Proof Slice only",
+  "parentPR": 17,
+  "parentSha": "9aa9130021f0205aa4fabae559b53af175ce5c3b",
+  "branch": "codex/isolario-concept-proof",
+  "unitComponent": {
+    "passed": 231,
+    "total": 231,
+    "files": 14
+  },
+  "e2e": {
+    "passed": 31,
+    "total": 31,
+    "includesFreshUIKeyboardTouch": true
+  },
+  "production": {
+    "passed": 13,
+    "total": 13,
+    "includesRealOfflineWorldAtlasAndExplicitWaitingUpdate": true
+  },
+  "typecheck": "PASS",
+  "lint": "PASS",
+  "build": "PASS",
+  "canonicalValidator": "PASS",
+  "worldValidator": "PASS",
+  "reachability": {
+    "canonical": 67,
+    "total": 67,
+    "maxDependencyDepth": 11,
+    "world": 11,
+    "worldTotal": 11
+  },
+  "canonicalContentChanged": false,
+  "saveSchemaChanged": false,
+  "worldMappingChanged": false,
+  "canonicalJourney": {
+    "starters": 4,
+    "newDiscoveries": 20,
+    "owned": 24,
+    "xp": 2430,
+    "fixtureBypassInFreshUI": false
+  },
+  "pwa": {
+    "assets": 25,
+    "jsChunks": 11,
+    "semanticsChanged": false,
+    "addedNavigationAllowlist": [
+      "/island"
+    ],
+    "runtimeCache": false
+  },
+  "bundle": {
+    "beforeEntry": 117311,
+    "afterEntry": 117795,
+    "beforeJs": 605651,
+    "afterJs": 640139,
+    "beforeGzip": 186595,
+    "afterGzip": 198014,
+    "lazyScene": {
+      "file": "IslandProof-CFnK-tEi.js",
+      "bytes": 33918,
+      "gzipBytes": 11273
+    }
+  },
+  "raster": {
+    "bytes": 9702108,
+    "miB": 9.25265121459961,
+    "budgetBytes": 5242880,
+    "budgetPassed": false,
+    "decodedRgbaBytes": 31454520
+  },
+  "screenshots": {
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        568
+      ]
+    ],
+    "states": [
+      "initial",
+      "transformed",
+      "atlas"
+    ],
+    "source": "real browser UI dev"
+  },
+  "video": {
+    "files": [
+      "capture-1440.webm",
+      "capture-390.webm"
+    ],
+    "source": "real automated browser; touch emulation, not physical phone"
+  },
+  "accessibility": {
+    "axeAA": true,
+    "minTargets44px": true,
+    "viewportChecks": 7,
+    "reducedMotion": true,
+    "forcedColors": true,
+    "text200PercentAt320": true,
+    "focusEscapeReturn": true
+  },
+  "notRun": [
+    "physical phone",
+    "real software keyboard",
+    "manual screen reader",
+    "independent human 10–15 minute playtest",
+    "production transformed-scene device GPU profile"
+  ],
+  "visualApproval": "PENDING HUMAN REVIEW",
+  "canonApproval": "no new canonical decisions",
+  "productionAssets": "NOT PRODUCED",
+  "expansion": "NONE",
+  "merged": false
+}

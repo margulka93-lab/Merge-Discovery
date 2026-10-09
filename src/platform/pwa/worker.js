@@ -38,7 +38,7 @@ self.addEventListener('message', event => {
 self.addEventListener('fetch', event => {
   const request = event.request, url = new URL(request.url);
   if (request.method !== 'GET' || url.origin !== self.location.origin) return;
-  const appNavigation = request.mode === 'navigate' && /^\/(?:$|collection\/?$|collections(?:\/[^/]+)?\/?$|sets(?:\/[^/]+)?\/?$|elements\/[^/]+\/?$|explore(?:\/(?:map|anomalies))?\/?$|map\/?$|anomalies\/?$|settings\/?$)/.test(url.pathname);
+  const appNavigation = request.mode === 'navigate' && /^\/(?:$|island\/?$|collection\/?$|collections(?:\/[^/]+)?\/?$|sets(?:\/[^/]+)?\/?$|elements\/[^/]+\/?$|explore(?:\/(?:map|anomalies))?\/?$|map\/?$|anomalies\/?$|settings\/?$)/.test(url.pathname);
   // Navigation query strings are UI selection, never imported/save data.
   if (!appNavigation && (url.search || (!allowed.has(url.pathname) && !/^\/assets\/[^/]+-[\w-]+\.(?:js|css)$/.test(url.pathname)))) return;
   event.respondWith((async () => {

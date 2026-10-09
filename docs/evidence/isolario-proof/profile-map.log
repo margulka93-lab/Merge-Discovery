@@ -1,0 +1,11 @@
+
+> merge-discovery@0.1.0 profile:map
+> tsx scripts/profile-map.ts
+
+{
+  "elements": 1000,
+  "authoredRecipes": 64,
+  "projectionMs": 294.56,
+  "cachedCatalogAndLocalMapsMs": 198.74,
+  "fullPairMatrix": false
+}

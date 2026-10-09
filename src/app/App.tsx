@@ -48,6 +48,7 @@ import { UpdateNotice } from '../ui/platform/UpdateNotice';
 import { PlatformRecovery } from './PlatformRecovery';
 import { exportRawRecovery } from './rawRecovery';
 const DiscoveryMap = lazy(() => import('../ui/map/DiscoveryMap').then(m => ({ default: m.DiscoveryMap })));
+const IslandProof = lazy(() => import('./IslandProof').then(m => ({ default: m.IslandProof })));
 const AnomalyArchive = lazy(() => import('../ui/anomalies/AnomalyArchive').then(m => ({ default: m.AnomalyArchive })));
 const SaveDiagnostics = lazy(() => import('../ui/SaveDiagnostics').then(m => ({ default: m.SaveDiagnostics })));
 const SettingsPanel = lazy(() => import('../ui/settings/SettingsPanel').then(m => ({ default: m.SettingsPanel })));
@@ -536,7 +537,10 @@ const status = engineStatus();
 export function App() {
   return status.ready ? (
     <BrowserRouter>
-      <LaboratoryApplication {...saveRuntime()} />
+      <Suspense fallback={<p role="status">Apertura…</p>}><Routes>
+        <Route path="/island" element={<IslandProof />} />
+        <Route path="*" element={<LaboratoryApplication {...saveRuntime()} />} />
+      </Routes></Suspense>
     </BrowserRouter>
   ) : (
     <PlatformRecovery fatal exportRaw={exportRawRecovery} reload={() => window.location.reload()} />
