@@ -6,7 +6,7 @@ const browser = await chromium.launch();
 try {
   const page = await browser.newPage({viewport:{width:390,height:844}}), started = performance.now();
   const url = process.argv[2] ?? 'http://127.0.0.1:5190/island';
-  await page.goto(url); await page.getByRole('button',{name:'Essenze',exact:true}).waitFor();
+  await page.goto(url); await page.getByRole('button',{name:'Luoghi',exact:true}).waitFor();
   await page.locator('.proof-base').evaluate(async node => (node as HTMLImageElement).decode());
   const coldReadyMs = performance.now()-started;
   const frames = await page.evaluate(async () => {
@@ -26,6 +26,6 @@ try {
   }));
   const total=assets.reduce((s,a)=>s+a.bytes,0);
   const report={url,environment:'Windows, headless Chromium on host; mobile viewport emulation, fresh initial scene',physicalPhone:false,production:false,viewport:[390,844],coldReadyMs,...frames,assets,rasterBytes:total,rasterMiB:total/1048576,budgetBytes:5*1048576,budgetPassed:total<=5*1048576,anchors:scenePoints,sprites:sceneSprites,decodedRgbaBytes:assets.reduce((s,a)=>s+a.width*a.height*4,0),scope:'structural measurement, not a human playtest or device GPU benchmark'};
-  writeFileSync('docs/evidence/isolario-proof/scene-profile.json',JSON.stringify(report,null,2));
+  writeFileSync(process.argv[3] ?? 'docs/evidence/discovery-first/scene-profile.json',JSON.stringify(report,null,2));
   console.log(JSON.stringify({coldReadyMs,...frames,rasterBytes:total,budgetPassed:report.budgetPassed},null,2));
 } finally {await browser.close();}

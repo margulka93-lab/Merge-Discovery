@@ -37,6 +37,8 @@ npm run measure:bundle
 
 Rigenerazione tecnica opzionale: `npx tsx scripts/optimize-island-assets.ts` legge i PNG dal commit indicato, esporta WebP .92 e tavole comparative. Può aggiornare gli hash in funzione della versione Chromium; il validator richiede file/report coerenti. Non inventa asset.
 
+Con server dev attivo: `npx tsx scripts/profile-island-proof.ts http://127.0.0.1:5190/island` profila la scena iniziale e verifica dimensioni/alpha dei WebP. Output aggiornato `scene-profile.json`; misura informativa su host headless, non benchmark GPU o telefono fisico.
+
 Report `loop-1440.json`/`loop-390.json`: scoperte nella home, undici world commit, ritorno con input, replay contestuale senza scrittura/XP, reload e Atlas/focus/axe. `production-offline.json` dichiara la fixture canonica importata attraverso la UI; `production-update.json` registra il vero waiting worker. `regression` conserva i report freschi delle schermate Phase 7 e della compatibilità Foundation, separati dalle evidenze storiche.
 
 `verification.json`, log check/E2E/production/PWA e bundle-before/after riportano l'esito conclusivo. Rimangono pendenti playtest umano desktop/mobile, telefono fisico, screen reader umano e review grafica. Export canonico v1 **non** contiene il mondo.
