@@ -19,9 +19,9 @@ Un singolo `artKey` stabile punta a un master/asset locale; un elemento può ave
 
 Prima approvazione visiva su **12 elementi canonici**:
 
-`void`, `energy`, `matter`, `time`, `light`, `heat`, `water`, `fire` *se presente nel content attivo*, `rock`, `steam`, `tree`, `creature`.
+`void`, `energy`, `matter`, `time`, `light`, `heat`, `water`, `lava`, `rock`, `steam`, `tree`, `creature`.
 
-**Prima di fissare il lotto, verificare gli ID realmente presenti nel content schema**. Un esempio nel poster non è autorizzazione ad aggiungere un elemento/ricetta: se `fire` o altri ID non sono canonici, sostituirli con un elemento effettivo della stessa famiglia.
+Gli ID sopra sono stati verificati nel seed attuale da 67 elementi. **`fire` (Fuoco) non è un elemento canonico nel seed:** compare nei concept grafici ma non deve essere introdotto implicitamente come nuova ricetta o asset associato.
 
 Confrontare almeno: 4 starter, 2 elementi fenomeno, 2 solidi, 2 forme di vita e 2 risultati avanzati. Differenziarli **senza** dipendere solo dal colore.
 
