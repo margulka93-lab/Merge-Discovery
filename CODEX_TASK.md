@@ -1,37 +1,42 @@
-# CODEX_TASK.md — Isolario + Atlante Vivente: architecture checkpoint
+# CODEX_TASK.md — Isolario + Atlante vertical slice
 
-## New product direction
+## State
 
-The user has selected **Isolario + Atlante Vivente**:
+**Architecture checkpoint APPROVED on 2026-10-09**, under the conditions in `docs/ISOLARIO_CHECKPOINT_APPROVED.md`.
 
-- grow a painterly, interactive island/world through discoveries;
-- let the player visibly transform and inhabit the world;
-- maintain a living illustrated Atlas that records discoveries and actual changes;
-- reuse the existing Merge Discovery resolver/content/save/visibility/PWA systems instead of rewriting them.
+Read the approved checkpoint document first. `docs/tasks/ISOLARIO_ATLANTE_PROTOTYPE.md` is now executable within these limits even though its original heading records the prior pre-approval state.
 
-Read **`docs/proposals/ISOLARIO_ATLANTE_MIGRATION.md`** for the detailed proposal.
+## Required reading
 
-## Immediate next Codex work (when explicitly launched)
+- `AGENTS.md`
+- **`docs/ISOLARIO_CHECKPOINT_APPROVED.md`**
+- **`docs/tasks/ISOLARIO_ATLANTE_PROTOTYPE.md`**
+- `docs/adr/ISOLARIO_ATLANTE_ARCHITECTURE.md`
+- `docs/proposals/ISOLARIO_ATLANTE_MIGRATION.md`
+- All required documents enumerated in the prototype task, especially resolver, save/versioning, visibility, visual direction, responsive and accessibility.
 
-**Architecture-only checkpoint, not a mass implementation or rewrite.**
+## Implementation workflow
 
-1. Read `AGENTS.md`, the Isolario migration proposal, and current domain/save/world/importer/UI architecture.
-2. Audit pending PRs #9–16 and identify which modules/commits to reuse selectively.
-3. Recommend a clean base branch and safe stacking/rebase plan **without merging anything**.
-4. Specify interfaces and data contracts for `WorldState`, `WorldRepository`, world manifestations, safe projections, Atlas view and renderer.
-5. Outline a constrained 1-island, 15–20-discovery interactive proof-of-concept, with desktop/mobile test gates and realistic art-asset needs.
-6. Write an ADR/architecture plan and a bounded Codex task for the prototype. **Do not implement the prototype before the user reviews the checkpoint.**
+- Base fresh foundation branch on **latest `main`**, recording SHA at kickoff. Do not reset to the historical audit SHA.
+- Preserve PRs #9–16, without merging or force-pushing them. Extract selected small helpers only with provenance.
+- Draft stacked PRs: **foundation → island → atlas**, with independent tests and readable reviews.
+- Foundation may begin immediately: world types/index/validator, WorldRepository, generation-safe IndexedDB lifecycle and projections.
+- **Before producing final scene asset batches**, supply a sample visual composition (island barren/developed at 1440, 390 and 320) for human approval. Continue safe foundation/tests while visual design is pending.
+- Island gameplay: 4 starters + 20 existing canonical discoveries; 11 authored mappings including generic Creature; 3 distinct environmental effects; anchors chosen by player; no new recipe/Set/XP semantics.
+- Atlas: full gate after 3 discoveries, safe known content and separate actual world observations.
+- Keep historic Laboratory accessible on its original route during prototype review; expose Isolario on `/island`, don't redirect `/` automatically.
+- Build and test with real seed from fresh save, including a complete 20-discovery route and first creature habitat, save/reload, mobile/keyboard and offline.
+- No merge before visual and human PC/mobile playtest approval.
+- Note world-only diagnostic backup is **not** full portable backup and is a pre-release limitation.
 
-## Paused work
+## Do not do
 
-- Old `PLAYFEEL_V3.md` remains archived but is no longer the current goal.
-- PRs #9–16 remain as-is, without automatic approval/merge.
-- Do not expand Phase 8B/8C, rewrite 67 seed recipes, or start Android.
-- Do not duplicate the existing resolver, save engine or Content Studio.
-- Do not assume that a game with a small world background behind the old FreeTable fulfills this new direction.
+- Do not change locked 67-element seed, resolver semantics, PlayerSave schema, or PWA update safety.
+- Do not activate 51 proposed 8A candidates.
+- Do not import full old UI or FreeTable as Isolario.
+- Do not build a procedural archipelago, full world editor, Content Studio migration, Android, or new eras.
+- Do not claim approved final art or tested physical devices without evidence.
 
-## Approval gates
+## Delivery
 
-The user must approve the first world's *interaction concept and visual direction*, and the resulting prototype must pass a real human playtest on PC/phone.
-
-A green CI run alone does not validate the concept.
+First provide foundation PR draft and scene sample for review. Once sample is approved, finish island and atlas PR drafts with required E2E, validator, save migration and offline evidence.
